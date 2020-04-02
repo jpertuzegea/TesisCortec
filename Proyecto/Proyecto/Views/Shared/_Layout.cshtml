@@ -1,0 +1,346 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesis</title>
+
+    <!-- CSS -->
+    <link href="~/Plantilla/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Plantilla/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Plantilla/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="~/Plantilla/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+    <link href="~/Plantilla/css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="~/Plantilla/css/animate.css" rel="stylesheet">
+    <link href="~/Plantilla/css/style.css" rel="stylesheet">
+    <link href="~/Plantilla/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link href="~/Imagenes/pavicon.png" rel="icon">
+    <link href="~/Plantilla/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+    <!-- Mainly scripts -->
+    <script src="~/Plantilla/js/jquery-2.1.1.js"></script>
+    <script src="~/Plantilla/js/bootstrap.min.js"></script>
+    <script src="~/Plantilla/js/plugins/toastr/toastr.min.js"></script>
+
+    <script src="~/Plantilla/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Plantilla/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="~/Plantilla/js/inspinia.js"></script>
+    <script src="~/Plantilla/js/plugins/pace/pace.min.js"></script>
+
+    <!-- JS -->
+    <!-- Para el pdf con js -->
+    <script type="text/javascript" src="~/JS_PDF/jspdf.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.addimage.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.from_html.js"></script>
+
+    <script src="~/Plantilla/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Plantilla/js/plugins/dataTables/datatables.min.js"></script>
+
+    <script src="~/Js_Utilidades/Utilidades.js"></script>
+
+    <!-- Morris -->
+    <script src="~/Plantilla/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="~/Plantilla/js/plugins/morris/morris.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'ExampleFile' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+
+    <script src="~/Js_Utilidades/Modals.js"></script>
+    <script src="~/Js_Utilidades/Validacion_Doble_clic_Submit.js"></script>
+      
+</head>
+
+<body oncontextmenu="return false">
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+
+                        <div align="center">
+                            <div class="dropdown profile-element">
+                                <a href="@Url.Action("Index", "Inicio" )" title="Inicio" class="links">
+                                    <span>
+                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { IdEncriptado =  System.Web.HttpContext.Current.Session["IdUsuarioSesion"]})" /> 
+                                    </span>
+                                </a>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="clear">
+                                        <span class="block m-t-xs">
+                                            <strong class="font-bold">@Session["nombre_usuario_Tesis"]</strong>
+                                        </span> <span class="text-muted text-xs block">Administrador <b class="caret"></b></span>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="contacts.html">Contacts</a></li>
+                                    <li><a href="mailbox.html">Mailbox</a></li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Login")</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Administracion</span> <span class="fa arrow"></span></a>
+
+                        <ul class="nav nav-second-level collapse">  
+                            <li>@Html.ActionLink("Personas", "index", "Personas")</li> 
+                        </ul>
+                    </li>
+
+                   
+ 
+ 
+                    
+ 
+
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Bienvenido al <FONT COLOR="#1ab394">.:Sistema TESIS:.</FONT> </span>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="pull-right">46h ago</small>
+                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right text-navy">5h ago</small>
+                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/profile.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right">23h ago</small>
+                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="mailbox.html">
+                                            <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        @*
+                            <li class="dropdown">
+                                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-alerts">
+                                    <li>
+                                        <a href="mailbox.html">
+                                            <div>
+                                                <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                                <span class="pull-right text-muted small">4 minutes ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="profile.html">
+                                            <div>
+                                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                                <span class="pull-right text-muted small">12 minutes ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="grid_options.html">
+                                            <div>
+                                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                                <span class="pull-right text-muted small">4 minutes ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <div class="text-center link-block">
+                                            <a href="notifications.html">
+                                                <strong>See All Alerts</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>*@
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <img width="40" height="30" src="~/Imagenes/LogoSigecor.png" />
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <div class="feed-element">
+                                        <a href="#" class="pull-left">
+                                            <img alt="image" class="img-circle" width="250" height="200" src="~/Imagenes/LogoSigecor.png">
+                                        </a>
+                                        <div class="media-body ">
+                                            @*<small class="pull-right">46h ago</small>*@
+                                            El Aplicativo <strong> TESIS </strong>. <br>
+                                            <small class="text-muted">Fue Diseñado y Creado Por :</small>
+                                        </div>
+                                    </div>
+                                    <div class="contact-box">
+                                        <a href="https://www.facebook.com/jorgedavid.pertuzegea" target="_blank">
+                                            <div class="text-center">
+                                                <strong>Ingeniero de Sistemas</strong>. <br>
+                                                <small class="text-muted">Jorge David Pertuz Egea.</small>
+                                            </div>
+                                            <br />
+                                            <div class="col-sm-8">
+                                                <div class="text-center">
+                                                    <img width="220" height="200" class="img-circle" src="~/Imagenes/2.jpeg" />
+                                                </div>
+                                                <br />
+                                                <div class="text-center">
+                                                    <img width="40" height="30" src="~/Imagenes/facebook.png" />
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                        <li>@Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Login")</li>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            @RenderBody()
+
+            <div id="area">
+
+            </div>
+
+            @*estructura vacia del modal*@
+            <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content animated flipInY">
+                        <div id="contenido">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="footer">
+                    <div class="pull-right">
+                        10GB of <strong>250GB</strong> Free.
+                    </div>
+                    <div>
+                        <strong>Copyright</strong> Example Company &copy; 2014-2017
+                    </div>
+                </div>*@
+
+            <div class="footer">
+
+                <!--<div class="pull-right">
+                 10GB of <strong>250GB</strong> Free.
+                 </div>
+
+                 <div>
+                  <strong>Copyright</strong> Example Company &copy; 2014-2015
+                  </div>-->
+
+                <a href="@Url.Action("Index", "Inicio" )" title="Inicio" class="links">
+                    <div align="center"><img src="~/Imagenes/footer.png" alt="" /></div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

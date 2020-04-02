@@ -1,0 +1,82 @@
+﻿@model DAO.Personas
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesis | Bienvenido</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesis | Bienvenido</title>
+
+    <link href="~/Plantilla/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Plantilla/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Plantilla/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="~/Plantilla/css/animate.css" rel="stylesheet">
+    <link href="~/Plantilla/css/style.css" rel="stylesheet">
+    <link href="~/Imagenes/pavicon.png" rel="icon">
+
+
+    <!-- Mainly scripts -->
+    <script src="~/Plantilla/js/jquery-2.1.1.js"></script>
+    <script src="~/Plantilla/js/bootstrap.min.js"></script>
+    <script src="~/Plantilla/js/plugins/toastr/toastr.min.js"></script>
+    <script src="~/Js_Utilidades/Validacion_Doble_clic_Submit.js"></script>
+
+
+</head>
+<body class="gray-bg" oncontextmenu="return false">
+
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <script type="text/javascript">
+            toastr.error("@ViewBag.Acceso", "@ViewBag.Mensaje");
+        </script>
+    }
+
+     
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <img width="190" src="~/Imagenes/LogoSigecor.png" alt>
+            </div>
+            <h3>Bienvenidos a Soft Tesis</h3>
+            <p>
+                Software para la Administracion de los cursos  Desarrollado por :
+            </p>
+            <p>Ing. Luz karina Duran</p> 
+            <h3>Inicio de Sesion</h3>
+
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { onsubmit = "return  ValidarDobleCLic()" }))
+            { // el return indica que la accion del formulario llega false cuando ya le han dado clic una vez
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                </div>
+
+                <div class="form-group">
+                    <input id="Clave" name="Clave" type="password" class="form-control" placeholder="Contraseña" required="">
+                </div>
+
+                <button type="submit" id="boton" name="boton" class="btn btn-primary block full-width m-b">Iniciar Sesion</button>
+
+                <p class="text-muted text-center"><small>Universidad Popular del Cesar</small></p>
+                <p class="text-muted text-center"><small> <b>CONTACTO CELULAR : </b> ( +57 ) 315 - 534 - 2264 </small></p>
+                <p class="text-muted text-center"><small> <b>Email : </b> UPC@hotmail.com </small> </p>
+            }
+
+        </div>
+    </div> 
+</body>
+</html>
