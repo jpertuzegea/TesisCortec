@@ -18,12 +18,11 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(Personas Personas)
-        {
-             
-            Bll_Login BLL_Login = new BLL_Login();
+        public ActionResult Index(Personas Persona)
+        { 
+            Bll_Login BLL_Login = new Bll_Login();
 
-            if (BLL_Login.IniciarSesion(Usuarios_Model))
+            if (BLL_Login.IniciarSesion(Persona))
             {// Si las credenciales son correctas
                 return RedirectToAction("Index", "Inicio");
             }
