@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace BLL.Enums
 {
-    public enum EnumEstados
+    public enum EnumTipoDocumento
     {
-        Inactivo = 0,
-        Activo = 1
+        Cedula = 0,
+        TarjetaIdentidad = 1,
+        RegistroCivil = 2,
+        Pasaporte = 3
     }
 }

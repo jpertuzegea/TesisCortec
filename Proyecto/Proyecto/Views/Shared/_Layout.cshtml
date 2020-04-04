@@ -48,6 +48,7 @@
     <script src="~/Plantilla/js/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="~/Plantilla/js/plugins/morris/morris.js"></script>
 
+
     <script>
         $(document).ready(function () {
             $('.dataTables-example').DataTable({
@@ -81,7 +82,7 @@
 
     <script src="~/Js_Utilidades/Modals.js"></script>
     <script src="~/Js_Utilidades/Validacion_Doble_clic_Submit.js"></script>
-      
+
 </head>
 
 <body oncontextmenu="return false">
@@ -95,13 +96,13 @@
                             <div class="dropdown profile-element">
                                 <a href="@Url.Action("Index", "Inicio" )" title="Inicio" class="links">
                                     <span>
-                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { IdEncriptado =  System.Web.HttpContext.Current.Session["IdUsuarioSesion"]})" /> 
+                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId = 1003 @*System.Web.HttpContext.Current.Session["IdUsuarioSesion"]*@})" /> 
                                     </span>
                                 </a>
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                     <span class="clear">
                                         <span class="block m-t-xs">
-                                            <strong class="font-bold">@Session["nombre_usuario_Tesis"]</strong>
+                                            <strong class="font-bold">@Session["NombreUsuarioTesis"]</strong>
                                         </span> <span class="text-muted text-xs block">Administrador <b class="caret"></b></span>
                                     </span>
                                 </a>
@@ -123,8 +124,9 @@
                     <li>
                         <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Administracion</span> <span class="fa arrow"></span></a>
 
-                        <ul class="nav nav-second-level collapse">  
-                            <li>@Html.ActionLink("Personas", "index", "Personas")</li> 
+                        <ul class="nav nav-second-level collapse">
+                            <li>@Html.ActionLink("Personas", "index", "Personas")</li>
+                            <li>@Html.ActionLink("Notas Rapidas", "index", "NotasRapidas")</li>
                         </ul>
                     </li>
 

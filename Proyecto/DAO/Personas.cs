@@ -14,20 +14,29 @@ namespace DAO
     
     public partial class Personas
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Personas()
+        {
+            this.NotasRapidas = new HashSet<NotasRapidas>();
+        }
+    
         public int PersonaId { get; set; }
         public byte[] Imagen { get; set; }
         public string ContetType { get; set; }
         public string TipoDocumento { get; set; }
         public string NumDocumento { get; set; }
-        public string NombreComplpeto { get; set; }
+        public string NombreCompleto { get; set; }
         public string CodigoInstitucional { get; set; }
-        public System.DateTime FechaNacimiento { get; set; }
         public string Email { get; set; }
         public string Ciudad { get; set; }
+        public string Departamento { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Clave { get; set; }
         public System.DateTime FechaIngreso { get; set; }
         public byte Estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotasRapidas> NotasRapidas { get; set; }
     }
 }

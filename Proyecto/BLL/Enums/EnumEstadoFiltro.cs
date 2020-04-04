@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Enums
 {
-    public enum EnumEstados
+    public enum EnumEstadoFiltro
     {
         Inactivo = 0,
-        Activo = 1
+        Activo = 1,
+        Todos = 2
     }
 }

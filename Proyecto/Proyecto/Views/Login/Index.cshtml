@@ -4,6 +4,8 @@
     Layout = null;
 }
 
+    <script src="~/Js_Utilidades/Modals.js"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,13 +72,27 @@
                     <input id="Clave" name="Clave" type="password" class="form-control" placeholder="Contraseña" required="">
                 </div>
 
-                <button type="submit" id="boton" name="boton" class="btn btn-primary block full-width m-b">Iniciar Sesion</button>
-                <button type="submit" id="Registrarse" name="Registrarse" class="btn btn-danger block full-width m-b">Registrarse</button>
+                <button type="submit" id="boton" name="boton" class="btn btn-primary block full-width m-b">Iniciar Sesion</button> 
+                <a href="#myModal2" onclick="RegistrarPersona()" data-toggle="modal" id="1">Registrarse ...<i class="fa fa-edit"></i></a>
 
                 <p class="text-muted text-center"><small>Universidad Popular del Cesar</small></p>
                 <p class="text-muted text-center"><small> <b>CONTACTO CELULAR : </b> ( +57 ) 315 - 534 - 2264 </small></p>
                 <p class="text-muted text-center"><small> <b>Email : </b> UPC@hotmail.com </small> </p>
             }
+
+
+            @*estructura vacia del modal*@
+            <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content animated flipInY">
+                        <div id="contenido">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div> 

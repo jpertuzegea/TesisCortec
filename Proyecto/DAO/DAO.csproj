@@ -117,6 +117,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codigos.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotasRapidas.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="Personas.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>

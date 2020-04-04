@@ -25,6 +25,8 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Codigos> Codigos { get; set; }
+        public virtual DbSet<NotasRapidas> NotasRapidas { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
     }
 }

@@ -4,7 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TESIS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TESIS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Codigos">
+          <Key>
+            <PropertyRef Name="CodigoInstitucionalId" />
+          </Key>
+          <Property Name="CodigoInstitucionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contador" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotasRapidas">
+          <Key>
+            <PropertyRef Name="NotaRapidaId" />
+          </Key>
+          <Property Name="NotaRapidaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaPublicacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaFinalizacion" Type="datetime" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" />
+          <Property Name="Mensaje" Type="varchar" MaxLength="250" />
+          <Property Name="UsuarioPublica" Type="int" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="PersonaId" />
@@ -14,25 +33,71 @@
           <Property Name="ContetType" Type="varchar" MaxLength="50" />
           <Property Name="TipoDocumento" Type="varchar" MaxLength="50" />
           <Property Name="NumDocumento" Type="varchar" MaxLength="50" />
-          <Property Name="NombreComplpeto" Type="varchar" MaxLength="70" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="70" />
           <Property Name="CodigoInstitucional" Type="varchar" MaxLength="50" />
-          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="Departamento" Type="varchar" MaxLength="50" />
           <Property Name="Direccion" Type="varchar" MaxLength="150" />
           <Property Name="Telefono" Type="varchar" MaxLength="50" />
           <Property Name="Clave" Type="varchar" MaxLength="254" />
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
+        <Association Name="FK__NotasRapi__Usuar__6477ECF3">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="NotasRapidas" Type="Self.NotasRapidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="NotasRapidas">
+              <PropertyRef Name="UsuarioPublica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TESIS_ModelStoreContainer">
+          <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__NotasRapi__Usuar__6477ECF3" Association="Self.FK__NotasRapi__Usuar__6477ECF3">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="NotasRapidas" EntitySet="NotasRapidas" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TESIS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TESIS_BD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Codigos" EntityType="TESIS_Model.Codigos" />
+          <EntitySet Name="NotasRapidas" EntityType="TESIS_Model.NotasRapidas" />
+          <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
+          <AssociationSet Name="FK__NotasRapi__Usuar__6477ECF3" Association="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="NotasRapidas" EntitySet="NotasRapidas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Codigos">
+          <Key>
+            <PropertyRef Name="CodigoInstitucionalId" />
+          </Key>
+          <Property Name="CodigoInstitucionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contador" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotasRapidas">
+          <Key>
+            <PropertyRef Name="NotaRapidaId" />
+          </Key>
+          <Property Name="NotaRapidaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFinalizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioPublica" Type="Int32" />
+          <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3" FromRole="NotasRapidas" ToRole="Personas" />
+        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="PersonaId" />
@@ -42,44 +107,75 @@
           <Property Name="ContetType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NumDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NombreComplpeto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="CodigoInstitucional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Clave" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3" FromRole="Personas" ToRole="NotasRapidas" />
         </EntityType>
-        <EntityContainer Name="TESIS_BD" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Personas" EntityType="Self.Personas" />
-        </EntityContainer>
+        <Association Name="FK__NotasRapi__Usuar__6477ECF3">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
+          <End Type="TESIS_Model.NotasRapidas" Role="NotasRapidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="NotasRapidas">
+              <PropertyRef Name="UsuarioPublica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TESIS_ModelStoreContainer" CdmEntityContainer="TESIS_BD">
+          <EntitySetMapping Name="Codigos">
+            <EntityTypeMapping TypeName="TESIS_Model.Codigos">
+              <MappingFragment StoreEntitySet="Codigos">
+                <ScalarProperty Name="Contador" ColumnName="Contador" />
+                <ScalarProperty Name="CodigoInstitucionalId" ColumnName="CodigoInstitucionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotasRapidas">
+            <EntityTypeMapping TypeName="TESIS_Model.NotasRapidas">
+              <MappingFragment StoreEntitySet="NotasRapidas">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UsuarioPublica" ColumnName="UsuarioPublica" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
+                <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+                <ScalarProperty Name="NotaRapidaId" ColumnName="NotaRapidaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="TESIS_Model.Personas">
               <MappingFragment StoreEntitySet="Personas">
-                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="ContetType" ColumnName="ContetType" />
-                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
-                <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
-                <ScalarProperty Name="NombreComplpeto" ColumnName="NombreComplpeto" />
-                <ScalarProperty Name="CodigoInstitucional" ColumnName="CodigoInstitucional" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Clave" ColumnName="Clave" />
-                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CodigoInstitucional" ColumnName="CodigoInstitucional" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="ContetType" ColumnName="ContetType" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
