@@ -17,6 +17,7 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personas()
         {
+            this.Cursos = new HashSet<Cursos>();
             this.NotasRapidas = new HashSet<NotasRapidas>();
         }
     
@@ -36,6 +37,8 @@ namespace DAO
         public System.DateTime FechaIngreso { get; set; }
         public byte Estado { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cursos> Cursos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotasRapidas> NotasRapidas { get; set; }
     }

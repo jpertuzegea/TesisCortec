@@ -60,54 +60,53 @@ namespace Proyecto.Controllers
             }
         }
 
-        ////Update Notas_Rapidas
-        //[HttpGet]
-        //public ActionResult Notas_RapidasUpdt(string id)
-        //{
-        //    BLL_Login.VerificarSesionActiva(); // verifica que la sesion sea correcta
 
-        //    BLL_NotasRapidas BLL_NotasRapidas = new BLL_NotasRapidas();
-        //    NotaRapidaModel Notas_Rapidas_Model = Assemblers_NotasRapidas.De_Entidad_a_Modelo(BLL_NotasRapidas.GetNotasRapidasByNotaRapidaId(id));
+        [HttpGet]
+        public ActionResult NotasRapidasUpdt(int id)
+        {
+            Bll_Login.VerificarSesionActiva();
 
-        //    ViewBag.Estado = new SelectList(Funciones_Enum.mi_lista_enum<Enum_Estados>(), "Value", "Text", (int)Notas_Rapidas_Model.Estado);
+            Bll_NotasRapidas Bll_NotasRapidas = new Bll_NotasRapidas();
+            NotasRapidas NotaRapida = Bll_NotasRapidas.GetNotasRapidasByNotaRapidaId(id);
+            //NotaRapida.FechaFinalizacionView = NotaRapida.FechaFinalizacion.ToString("yyyy-MM-dd");
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)NotaRapida.Estado); 
+            return View(NotaRapida);
+        }
 
-        //    return View(Notas_Rapidas_Model);
-        //}
+        //Update Notas_Rapidas
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NotasRapidasUpdt(NotasRapidas NotasRapidas)
+        {
+            Bll_Login.VerificarSesionActiva();
 
-        ////Update Notas_Rapidas
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Notas_RapidasUpdt(NotaRapidaModel Notas_Rapidas_Model)
-        //{
-        //    BLL_Login.VerificarSesionActiva(); // verifica que la sesion sea correcta
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)NotasRapidas.Estado);
 
-        //    ViewBag.Estado = new SelectList(Funciones_Enum.mi_lista_enum<Enum_Estados>(), "Value", "Text", (int)Notas_Rapidas_Model.Estado);
+            if (NotasRapidas != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    Bll_NotasRapidas Bll_NotasRapidas = new Bll_NotasRapidas();
 
-        //    if (Notas_Rapidas_Model != null)
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            BLL_NotasRapidas BLL_NotasRapidas = new BLL_NotasRapidas();
-
-        //            if (BLL_NotasRapidas.UpdateNotasRapidas(Notas_Rapidas_Model))
-        //            {
-        //                return RedirectToAction("Index");
-        //            }
-        //            else
-        //            {
-        //                return View(Notas_Rapidas_Model);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return View(Notas_Rapidas_Model);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View(Notas_Rapidas_Model);
-        //    }
-        //}
+                    if (Bll_NotasRapidas.ModificarNotasRapidas(NotasRapidas))
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View(NotasRapidas);
+                    }
+                }
+                else
+                {
+                    return View(NotasRapidas);
+                }
+            }
+            else
+            {
+                return View(NotasRapidas);
+            }
+        }
 
     }
 }

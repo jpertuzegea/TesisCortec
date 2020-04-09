@@ -1,4 +1,5 @@
-﻿@model IEnumerable <DAO.NotasRapidas>
+﻿
+@model IEnumerable<DAO.Cursos>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +13,7 @@
         <br>
         @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
             {*@
-        <a data-toggle="modal" class="btn btn-primary" onclick="CrearNotaRapida()" id="btn_NuevaNotaRapida" href="#myModal2">Nueva Nota Rapida</a>
+        <a data-toggle="modal" class="btn btn-primary" onclick="CrearCurso()" id="btn_NuevoCurso" href="#myModal2">Nuevo Curso</a>
         @*}*@
     </div>
 
@@ -27,7 +28,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5 align="center">Listado de Notas Rapidas Existentes en el Sistema</h5>
+                    <h5 align="center">Listado de Cursos Existentes en el Sistema</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -55,21 +56,27 @@
 
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
-                                <tr>
+                                <tr> 
                                     <th>
-                                        Titulo
+                                        Nombre
                                     </th>
                                     <th>
-                                        Mensaje
+                                        Descripcion
                                     </th>
                                     <th>
-                                        Usuario Que Publica
+                                        Cantidad Horas
                                     </th>
                                     <th>
-                                        Fecha Publicacion
+                                        Titulo Otorgado
                                     </th>
                                     <th>
-                                        Fecha Finalizacion
+                                        Valor Curso
+                                    </th>
+                                    <th>
+                                        Duracion Horas
+                                    </th>
+                                    <th>
+                                        Docente
                                     </th>
                                     <th>
                                         Estado
@@ -80,50 +87,62 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Titulo)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Mensaje)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UsuarioPublica)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FechaPublicacion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FechaFinalizacion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
-                                        </td>
-                                        <td>
-                                            @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
-                                                {*@
-                                            <a href="#myModal2" onclick="ModificarNotaRapida(this.id)" data-toggle="modal" id="@item.NotaRapidaId"><i class="fa fa-edit"></i></a>
-                                            @*}*@
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CantidadHoras)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TituloOtorgado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ValorCurso)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DuracionHoras)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Docente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
+            {*@
+                                        <a href="#myModal2" onclick="ModificarCurso(this.id)" data-toggle="modal" id="@item.CursoId"><i class="fa fa-edit"></i></a>
+                                        @*}*@
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>
-                                        Titulo
+                                        Nombre
                                     </th>
                                     <th>
-                                        Mensaje
+                                        Descripcion
                                     </th>
                                     <th>
-                                        Usuario Que Publica
+                                        Cantidad Horas
                                     </th>
                                     <th>
-                                        Fecha Publicacion
+                                        Titulo Otorgado
                                     </th>
                                     <th>
-                                        Fecha Finalizacion
+                                        Valor Curso
+                                    </th>
+                                    <th>
+                                        Duracion Horas
+                                    </th>
+                                    <th>
+                                        Docente
                                     </th>
                                     <th>
                                         Estado

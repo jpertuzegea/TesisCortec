@@ -20,3 +20,12 @@ function ModificarNotaRapida(id) {
 }
 // -------- fin notas rapidas --------
 
+// -------- inicio Cursos --------
+function CrearCurso() {
+    $("#contenido").load("/Cursos/CursosAdd");
+}
+function ModificarCurso(id) {
+    $("#contenido").load("/Cursos/CursosUpdt/" + id);
+}
+// -------- fin notas rapidas --------
+

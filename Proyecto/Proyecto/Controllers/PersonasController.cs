@@ -16,6 +16,7 @@ namespace Proyecto.Controllers
         // GET: Personas
         public ActionResult Index()
         {
+            Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             List<Personas> Lista = Bll_Personas.ListarPersonas(BLL.Enums.EnumEstadoFiltro.Activo);
             return View(Lista);
@@ -25,6 +26,7 @@ namespace Proyecto.Controllers
         // GET: PersonaAdd
         public ActionResult PersonaAdd()
         {
+            //Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text");
             return View();
         }
@@ -34,6 +36,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PersonaAdd(Personas Persona, HttpPostedFileBase file)
         {
+            //Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", Persona.TipoDocumento);
 
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult PersonasUpdt(int id)
         {
+            Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas persona = Bll_Personas.GetPersonaByPersonaId(id);
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)persona.Estado);
@@ -70,6 +74,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PersonasUpdt(Personas Persona)
         {
+            Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)Persona.Estado);
 
             if (Persona != null)
@@ -88,9 +93,6 @@ namespace Proyecto.Controllers
                 }
                 else
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors)
-     .Where(y => y.Count > 0)
-     .ToList();
                     return View(Persona);
                 }
             }
@@ -102,6 +104,7 @@ namespace Proyecto.Controllers
 
         public ActionResult ConvertirImagen(int PersonaId)
         {
+            Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas Persona = Bll_Personas.GetImagenByPersonaId(PersonaId);
 

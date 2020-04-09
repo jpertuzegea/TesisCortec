@@ -140,6 +140,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\EvidenciaCorreoController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NotasRapidasController.cs" />
@@ -195,6 +197,10 @@
     <Content Include="Views\NotasRapidas\Index.cshtml" />
     <Content Include="Views\NotasRapidas\NotasRapidasAdd.cshtml" />
     <Content Include="Views\Login\Expiracion.cshtml" />
+    <Content Include="Views\EvidenciaCorreo\Index.cshtml" />
+    <Content Include="Views\NotasRapidas\NotasRapidasUpdt.cshtml" />
+    <Content Include="Views\Cursos\Index.cshtml" />
+    <Content Include="Views\Cursos\CursosAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

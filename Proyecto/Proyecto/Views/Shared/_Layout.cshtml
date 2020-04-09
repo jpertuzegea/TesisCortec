@@ -96,7 +96,7 @@
                             <div class="dropdown profile-element">
                                 <a href="@Url.Action("Index", "Inicio" )" title="Inicio" class="links">
                                     <span>
-                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId = 1003 @*System.Web.HttpContext.Current.Session["IdUsuarioSesion"]*@})" /> 
+                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId = 1003 @*System.Web.HttpContext.Current.Session["IdUsuarioSesion"]*@})" />
                                     </span>
                                 </a>
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -127,14 +127,22 @@
                         <ul class="nav nav-second-level collapse">
                             <li>@Html.ActionLink("Personas", "index", "Personas")</li>
                             <li>@Html.ActionLink("Notas Rapidas", "index", "NotasRapidas")</li>
+                            <li>@Html.ActionLink("Cursos", "index", "Cursos")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
+
+                        <ul class="nav nav-second-level collapse">
+                            <li>@Html.ActionLink("Evidencia Correo", "index", "EvidenciaCorreo")</li>
                         </ul>
                     </li>
 
-                   
- 
- 
-                    
- 
+
+
+
+
+
 
                 </ul>
             </div>
@@ -152,7 +160,7 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bienvenido al <FONT COLOR="#1ab394">.:Sistema TESIS:.</FONT> </span>
+                            <span class="m-r-sm text-muted welcome-message">Bienvenido al <b><FONT COLOR="#1ab394">.:Sistema TESIS:.</FONT> </b></span>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -259,34 +267,42 @@
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
                                     <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" width="250" height="200" src="~/Imagenes/LogoSigecor.png">
-                                        </a>
-                                        <div class="media-body ">
+
+                                        <div class="text-center" class="media-body ">
                                             @*<small class="pull-right">46h ago</small>*@
                                             El Aplicativo <strong> TESIS </strong>. <br>
-                                            <small class="text-muted">Fue Diseñado y Creado Por :</small>
+
+                                            <a href="#" class="text-center" class="pull-left">
+                                                <img alt="image" class="img-circle" width="250" height="200" src="~/Imagenes/LogoSigecor.png">
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="contact-box">
-                                        <a href="https://www.facebook.com/jorgedavid.pertuzegea" target="_blank">
+
+                                        <div class="text-center" class="col-sm-8">
                                             <div class="text-center">
-                                                <strong>Ingeniero de Sistemas</strong>. <br>
-                                                <small class="text-muted">Jorge David Pertuz Egea.</small>
+                                                <h4><strong> Luz Karina Duran. </strong></h4>
                                             </div>
-                                            <br />
-                                            <div class="col-sm-8">
-                                                <div class="text-center">
-                                                    <img width="220" height="200" class="img-circle" src="~/Imagenes/2.jpeg" />
-                                                </div>
-                                                <br />
-                                                <div class="text-center">
-                                                    <img width="40" height="30" src="~/Imagenes/facebook.png" />
-                                                </div>
+
+                                            <div class="text-center">
+                                                <img width="120" height="110" class="img-circle" src="~/Imagenes/Imagen Luz.jpeg" />
+                                            </div> 
+                                        </div>
+                                        <br />
+
+                                        <div class="text-center" class="col-sm-8">
+
+                                            <div class="text-center">
+                                                <h4><strong>Kroly Labastidas.</strong></h4>
                                             </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </a>
+
+                                            <div class="text-center">
+                                                <img width="120" height="110" class="img-circle" src="~/Imagenes/Imagen Yuli.jpeg" />
+                                            </div> 
+                                        </div>
+
+                                        <div class="clearfix">
+                                        </div> 
                                     </div>
                                 </li>
 

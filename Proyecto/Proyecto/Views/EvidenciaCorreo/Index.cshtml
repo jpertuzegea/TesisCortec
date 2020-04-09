@@ -1,4 +1,4 @@
-﻿@model IEnumerable <DAO.NotasRapidas>
+﻿@model IEnumerable<DAO.EvidenciaCorreo>
 
 @{
     ViewBag.Title = "Index";
@@ -10,24 +10,21 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <br>
-        @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
-            {*@
-        <a data-toggle="modal" class="btn btn-primary" onclick="CrearNotaRapida()" id="btn_NuevaNotaRapida" href="#myModal2">Nueva Nota Rapida</a>
-        @*}*@
+
     </div>
 
     <div class="col-lg-2">
     </div>
 </div>
 
-@*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 4))// 4 es poder listar los departamentos
+@*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 4))// 4 es poder listar los Departamentos
     {*@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5 align="center">Listado de Notas Rapidas Existentes en el Sistema</h5>
+                    <h5 align="center">Listado de Evidencia Correos</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -57,24 +54,23 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Titulo
+                                        Email Destino
+                                    </th>
+                                    <th>
+                                        Email Remitente
+                                    </th>
+                                    <th>
+                                        Asunto
                                     </th>
                                     <th>
                                         Mensaje
                                     </th>
                                     <th>
-                                        Usuario Que Publica
+                                        Fecha
                                     </th>
                                     <th>
-                                        Fecha Publicacion
+                                        Estado Envio
                                     </th>
-                                    <th>
-                                        Fecha Finalizacion
-                                    </th>
-                                    <th>
-                                        Estado
-                                    </th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,28 +78,22 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Titulo)
+                                            @Html.DisplayFor(modelItem => item.EmailDestino)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmailRemitente)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Asunto)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Mensaje)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.UsuarioPublica)
+                                            @Html.DisplayFor(modelItem => item.Fecha)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.FechaPublicacion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FechaFinalizacion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
-                                        </td>
-                                        <td>
-                                            @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
-                                                {*@
-                                            <a href="#myModal2" onclick="ModificarNotaRapida(this.id)" data-toggle="modal" id="@item.NotaRapidaId"><i class="fa fa-edit"></i></a>
-                                            @*}*@
+                                            @Html.DisplayFor(modelItem => item.EstadoEnvio)
                                         </td>
                                     </tr>
                                 }
@@ -111,24 +101,23 @@
                             <tfoot>
                                 <tr>
                                     <th>
-                                        Titulo
+                                        Email Destino
+                                    </th>
+                                    <th>
+                                        Email Remitente
+                                    </th>
+                                    <th>
+                                        Asunto
                                     </th>
                                     <th>
                                         Mensaje
                                     </th>
                                     <th>
-                                        Usuario Que Publica
+                                        Fecha
                                     </th>
                                     <th>
-                                        Fecha Publicacion
+                                        Estado Envio
                                     </th>
-                                    <th>
-                                        Fecha Finalizacion
-                                    </th>
-                                    <th>
-                                        Estado
-                                    </th>
-                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>

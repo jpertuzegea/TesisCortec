@@ -46,8 +46,37 @@ FOREIGN KEY (UsuarioPublica) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (NotasRapidas, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
+CREATE TABLE EvidenciaCorreo(
+EvidenciaCorreoId INT NOT NULL IDENTITY(1,1), 
+EmailDestino VARCHAR(70),
+EmailRemitente VARCHAR(70),
+Asunto VARCHAR(250),
+Mensaje VARCHAR(2000), 
+Fecha DATETIME,
+EstadoEnvio VARCHAR(20),
+PRIMARY KEY (EvidenciaCorreoId)
+);
+DBCC CHECKIDENT (EvidenciaCorreo, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
+CREATE TABLE Cursos(
+CursoId INT NOT NULL IDENTITY(1,1), 
+Nombre VARCHAR(70),
+Descripcion VARCHAR(255),
+CantidadHoras INT,
+TituloOtorgado VARCHAR(100),
+ValorCurso INT,
+DuracionHoras INT,
+Docente INT,
+Estado TINYINT NOT NULL,
+PRIMARY KEY (CursoId),
+FOREIGN KEY (Docente) REFERENCES Personas (PersonaId)
+);
+DBCC CHECKIDENT (Cursos, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
 
 -- Borrado de tablas --
+Drop table Cursos;
+Drop table EvidenciaCorreo;
 Drop table NotasRapidas;
 Drop table Codigos;
 Drop table Personas;

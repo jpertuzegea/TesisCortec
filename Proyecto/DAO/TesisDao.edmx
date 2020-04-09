@@ -12,6 +12,33 @@
           <Property Name="CodigoInstitucionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Contador" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="70" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="CantidadHoras" Type="int" />
+          <Property Name="TituloOtorgado" Type="varchar" MaxLength="100" />
+          <Property Name="ValorCurso" Type="int" />
+          <Property Name="DuracionHoras" Type="int" />
+          <Property Name="Docente" Type="int" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EvidenciaCorreo">
+          <Key>
+            <PropertyRef Name="EvidenciaCorreoId" />
+          </Key>
+          <Property Name="EvidenciaCorreoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoCorrespondencia" Type="tinyint" />
+          <Property Name="EmailDestino" Type="varchar" MaxLength="70" />
+          <Property Name="EmailRemitente" Type="varchar" MaxLength="70" />
+          <Property Name="Asunto" Type="varchar" MaxLength="250" />
+          <Property Name="Mensaje" Type="varchar" MaxLength="2000" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="EstadoEnvio" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="NotasRapidas">
           <Key>
             <PropertyRef Name="NotaRapidaId" />
@@ -44,6 +71,18 @@
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Cursos__Docente__6FE99F9F">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="Docente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__NotasRapi__Usuar__6477ECF3">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="NotasRapidas" Type="Self.NotasRapidas" Multiplicity="*" />
@@ -58,8 +97,14 @@
         </Association>
         <EntityContainer Name="TESIS_ModelStoreContainer">
           <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvidenciaCorreo" EntityType="Self.EvidenciaCorreo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cursos__Docente__6FE99F9F" Association="Self.FK__Cursos__Docente__6FE99F9F">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
           <AssociationSet Name="FK__NotasRapi__Usuar__6477ECF3" Association="Self.FK__NotasRapi__Usuar__6477ECF3">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
@@ -71,8 +116,14 @@
       <Schema Namespace="TESIS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TESIS_BD" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Codigos" EntityType="TESIS_Model.Codigos" />
+          <EntitySet Name="Cursos" EntityType="TESIS_Model.Cursos" />
+          <EntitySet Name="EvidenciaCorreo" EntityType="TESIS_Model.EvidenciaCorreo" />
           <EntitySet Name="NotasRapidas" EntityType="TESIS_Model.NotasRapidas" />
           <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
+          <AssociationSet Name="FK__Cursos__Docente__6FE99F9F" Association="TESIS_Model.FK__Cursos__Docente__6FE99F9F">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
           <AssociationSet Name="FK__NotasRapi__Usuar__6477ECF3" Association="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
@@ -84,6 +135,34 @@
           </Key>
           <Property Name="CodigoInstitucionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Contador" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadHoras" Type="Int32" />
+          <Property Name="TituloOtorgado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorCurso" Type="Int32" />
+          <Property Name="DuracionHoras" Type="Int32" />
+          <Property Name="Docente" Type="Int32" />
+          <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__6FE99F9F" FromRole="Cursos" ToRole="Personas" />
+        </EntityType>
+        <EntityType Name="EvidenciaCorreo">
+          <Key>
+            <PropertyRef Name="EvidenciaCorreoId" />
+          </Key>
+          <Property Name="EvidenciaCorreoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoCorrespondencia" Type="Byte" />
+          <Property Name="EmailDestino" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="EmailRemitente" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Asunto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="EstadoEnvio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NotasRapidas">
           <Key>
@@ -117,8 +196,21 @@
           <Property Name="Clave" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__6FE99F9F" FromRole="Personas" ToRole="Cursos" />
           <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3" FromRole="Personas" ToRole="NotasRapidas" />
         </EntityType>
+        <Association Name="FK__Cursos__Docente__6FE99F9F">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
+          <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="Docente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__NotasRapi__Usuar__6477ECF3">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
           <End Type="TESIS_Model.NotasRapidas" Role="NotasRapidas" Multiplicity="*" />
@@ -142,6 +234,35 @@
               <MappingFragment StoreEntitySet="Codigos">
                 <ScalarProperty Name="Contador" ColumnName="Contador" />
                 <ScalarProperty Name="CodigoInstitucionalId" ColumnName="CodigoInstitucionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="TESIS_Model.Cursos">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Docente" ColumnName="Docente" />
+                <ScalarProperty Name="DuracionHoras" ColumnName="DuracionHoras" />
+                <ScalarProperty Name="ValorCurso" ColumnName="ValorCurso" />
+                <ScalarProperty Name="TituloOtorgado" ColumnName="TituloOtorgado" />
+                <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvidenciaCorreo">
+            <EntityTypeMapping TypeName="TESIS_Model.EvidenciaCorreo">
+              <MappingFragment StoreEntitySet="EvidenciaCorreo">
+                <ScalarProperty Name="EstadoEnvio" ColumnName="EstadoEnvio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="EmailRemitente" ColumnName="EmailRemitente" />
+                <ScalarProperty Name="EmailDestino" ColumnName="EmailDestino" />
+                <ScalarProperty Name="TipoCorrespondencia" ColumnName="TipoCorrespondencia" />
+                <ScalarProperty Name="EvidenciaCorreoId" ColumnName="EvidenciaCorreoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

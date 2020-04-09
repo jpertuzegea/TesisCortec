@@ -12,16 +12,15 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class NotasRapidas
+    public partial class EvidenciaCorreo
     {
-        public int NotaRapidaId { get; set; }
-        public System.DateTime FechaPublicacion { get; set; }
-        public System.DateTime FechaFinalizacion { get; set; }
-        public string Titulo { get; set; }
+        public int EvidenciaCorreoId { get; set; }
+        public Nullable<byte> TipoCorrespondencia { get; set; }
+        public string EmailDestino { get; set; }
+        public string EmailRemitente { get; set; }
+        public string Asunto { get; set; }
         public string Mensaje { get; set; }
-        public Nullable<int> UsuarioPublica { get; set; }
-        public byte Estado { get; set; }
-    
-        public virtual Personas Personas { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
+        public string EstadoEnvio { get; set; }
     }
 }

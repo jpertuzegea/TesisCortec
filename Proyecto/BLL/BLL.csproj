@@ -139,7 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bll_Codigo.cs" />
+    <Compile Include="Bll_Cursos.cs" />
     <Compile Include="Bll_Email.cs" />
+    <Compile Include="Bll_EvidenciaCorreo.cs" />
     <Compile Include="Bll_File.cs" />
     <Compile Include="Bll_Login.cs" />
     <Compile Include="Bll_NotasRapidas.cs" />
