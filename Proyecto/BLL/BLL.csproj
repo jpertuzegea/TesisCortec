@@ -143,12 +143,15 @@
     <Compile Include="Bll_Email.cs" />
     <Compile Include="Bll_EvidenciaCorreo.cs" />
     <Compile Include="Bll_File.cs" />
+    <Compile Include="Bll_IngresoAlSistema.cs" />
     <Compile Include="Bll_Login.cs" />
     <Compile Include="Bll_NotasRapidas.cs" />
     <Compile Include="Bll_Personas.cs" />
+    <Compile Include="Enums\EnumEstadoAcceso.cs" />
     <Compile Include="Enums\EnumEstadoFiltro.cs" />
     <Compile Include="Enums\EnumEstados.cs" />
     <Compile Include="Enums\EnumTipoDocumento.cs" />
+    <Compile Include="Enums\EnumRolAcademico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\FuncionesEnum.cs" />
   </ItemGroup>

@@ -63,7 +63,7 @@
 
                 <div class="form-group">
                     <label>Docente</label>
-                    @Html.EditorFor(model => model.Docente, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(x => x.Docente, (IEnumerable<SelectListItem>)ViewBag.Departamentos, "Seleccione una opcion", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Docente, "", new { @class = "text-danger" })
                 </div>
 

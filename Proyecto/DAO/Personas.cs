@@ -36,6 +36,7 @@ namespace DAO
         public string Clave { get; set; }
         public System.DateTime FechaIngreso { get; set; }
         public byte Estado { get; set; }
+        public byte RolAcademico { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cursos> Cursos { get; set; }

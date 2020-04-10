@@ -1,34 +1,28 @@
-﻿@model IEnumerable<DAO.NotasRapidas>
+﻿@model IEnumerable<DAO.IngresosAlSistema>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
+ 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <br>
-        @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
-        {*@
-        <a data-toggle="modal" class="btn btn-primary" onclick="CrearNotaRapida()" id="btn_NuevaNotaRapida" href="#myModal2">Nueva Nota Rapida</a>
-        <a data-toggle="modal" class="btn btn-primary" onclick="ModificarPanelInformaivo()" id="btn_ModificarPanelInformaivo" href="#myModal2">Nuevo Panel Informativo</a>
-        @*}*@
+
     </div>
 
     <div class="col-lg-2">
     </div>
 </div>
 
-@*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 4))// 4 es poder listar los departamentos
+@*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 4))// 4 es poder listar los Departamentos
     {*@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5 align="center">Listado de Notas Rapidas Existentes en el Sistema</h5>
+                    <h5 align="center">Listado de Ingsos al Sistema Registrado</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -58,24 +52,20 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Titulo
+                                        Numero
                                     </th>
                                     <th>
-                                        Mensaje
+                                        Nombre Usuario
                                     </th>
                                     <th>
-                                        Usuario Que Publica
+                                        Fecha
                                     </th>
                                     <th>
-                                        Fecha Publicacion
-                                    </th>
-                                    <th>
-                                        Fecha Finalizacion
+                                        IP
                                     </th>
                                     <th>
                                         Estado
                                     </th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,53 +73,64 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Titulo)
+                                            @Html.DisplayFor(modelItem => item.IngresoAlSistemaId)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Mensaje)
+                                            @Html.DisplayFor(modelItem => item.Usuario)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.UsuarioPublica)
+                                            @Html.DisplayFor(modelItem => item.FechaIntento)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.FechaPublicacion)
+                                            @{
+                                                string Ip_a_Mostrar = "";
+                                                if (item.IP_Origen == "::1")
+                                                {// significa que es la ip del servidor donde esta alojada la aplicacion
+                                                    Ip_a_Mostrar = "Servidor";
+                                                }
+                                                else
+                                                {
+                                                    Ip_a_Mostrar = item.IP_Origen;
+                                                }
+
+                                            }
+                                            @Ip_a_Mostrar
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.FechaFinalizacion)
+                                            @{
+                                                string Estado = "";
+                                                if (item.EstadoAcceso == 1)
+                                                {
+                                                    Estado = "Acceso Exitoso";
+                                                }
+                                                else if (item.EstadoAcceso == 0)
+                                                {
+                                                    Estado = "Acceso Fallido";
+                                                }
+                                            }
+                                            @Estado
                                         </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
-                                        </td>
-                                        <td>
-                                            @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
-                                                {*@
-                                            <a href="#myModal2" onclick="ModificarNotaRapida(this.id)" data-toggle="modal" id="@item.NotaRapidaId"><i class="fa fa-edit"></i></a>
-                                            @*}*@
-                                        </td>
+
                                     </tr>
                                 }
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>
-                                        Titulo
+                                        Numero
                                     </th>
                                     <th>
-                                        Mensaje
+                                        Nombre Usuario
                                     </th>
                                     <th>
-                                        Usuario Que Publica
+                                        Fecha
                                     </th>
                                     <th>
-                                        Fecha Publicacion
-                                    </th>
-                                    <th>
-                                        Fecha Finalizacion
+                                        IP
                                     </th>
                                     <th>
                                         Estado
                                     </th>
-                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>

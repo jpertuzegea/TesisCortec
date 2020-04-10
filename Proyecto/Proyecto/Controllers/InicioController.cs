@@ -18,6 +18,11 @@ namespace Proyecto.Controllers
             List<NotasRapidas> Lista = Bll_NotasRapidas.VisualizarNotas();
             return View(Lista);
         }
+        public ActionResult PanelInformativo()
+        {
+            Bll_Login.VerificarSesionActiva(); 
+            return View(); 
+        }
 
     }
 }

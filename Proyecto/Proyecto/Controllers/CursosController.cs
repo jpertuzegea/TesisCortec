@@ -30,6 +30,12 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
+
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
+            ViewBag.Departamentos = lista;
+
+            ViewBag.Docente = lista;
+           
             return View();
         }
 

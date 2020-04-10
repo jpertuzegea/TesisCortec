@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BLL
 {
@@ -19,8 +20,7 @@ namespace BLL
         {
             BD = new TESIS_BD();
         }
-
-
+         
         public Personas GetPersonaByPersonaId(int? PersonaId)
         {
             try
@@ -53,8 +53,7 @@ namespace BLL
             bool respuesta = BD.Personas.Count(e => e.Email == Email) > 0;
             return respuesta;
         }
-
-
+         
         public List<Personas> ListarPersonas(EnumEstadoFiltro Filtro)
         {
             try
@@ -89,7 +88,7 @@ namespace BLL
             if (Persona != null)
             {// si el objeto es diferente de nulo
                 try
-                { 
+                {
                     if (!ValidaEmailExiste(Persona.Email))
                     {
                         Bll_Codigo Bll_Codigo = new Bll_Codigo();
@@ -98,7 +97,8 @@ namespace BLL
 
                         Persona.FechaIngreso = DateTime.Now.Date;
                         Persona.Estado = (byte)EnumEstados.Activo;
-
+                        Persona.RolAcademico = (byte)EnumRolAcademico.Estudiante;
+                        
                         BD.Personas.Add(Persona);
                         Bll_Codigo.GuardarCodigo(Codigo);
                         BD.SaveChanges();
@@ -149,13 +149,20 @@ namespace BLL
                     Perso.Departamento = Persona.Departamento;
                     Perso.Direccion = Persona.Direccion;
                     Perso.Telefono = Persona.Telefono;
-                    Perso.Clave = Persona.Clave;
+                    Perso.RolAcademico = (byte)Persona.RolAcademico;  
+
+
+                    if (Persona.Clave != null)
+                    {
+                        Perso.Clave = Persona.Clave;
+                    }
+
                     Perso.Estado = Persona.Estado;
 
                     BD.Entry(Perso).State = EntityState.Modified;
                     BD.SaveChanges();
 
-                    Bll_File.EscribirLog($"Persona modificada con exito");
+                    Bll_File.EscribirLog("Persona modificada con exito");
 
                     return true;
                 }
@@ -170,7 +177,21 @@ namespace BLL
                 return false;
             }
         }
+         
+        public List<SelectListItem> ArmarSelectCursos(EnumEstadoFiltro filtro)
+        {
+            List<Personas> Lista = null;
+            Lista = ListarPersonas(EnumEstadoFiltro.Todos);
 
+            List<SelectListItem> result = new List<SelectListItem>();
+            foreach (var item in Lista)
+            {
+                var nombre = item.NombreCompleto;
+                var valor = item.PersonaId;
+                result.Add(new SelectListItem() { Text = nombre, Value = valor.ToString() });
+            }
+            return result;
+        }
 
     }
 }

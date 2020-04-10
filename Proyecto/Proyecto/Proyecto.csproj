@@ -142,6 +142,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EvidenciaCorreoController.cs" />
+    <Compile Include="Controllers\IngresosAlSistemaController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NotasRapidasController.cs" />
@@ -149,6 +150,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PanelInformativo.cs" />
+    <Compile Include="Models\Variables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,10 +204,12 @@
     <Content Include="Views\NotasRapidas\NotasRapidasUpdt.cshtml" />
     <Content Include="Views\Cursos\Index.cshtml" />
     <Content Include="Views\Cursos\CursosAdd.cshtml" />
+    <Content Include="Views\IngresosAlSistema\Index.cshtml" />
+    <Content Include="Views\Inicio\PanelInformativo.cshtml" />
+    <Content Include="Views\NotasRapidas\PanelInformativoUpdt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

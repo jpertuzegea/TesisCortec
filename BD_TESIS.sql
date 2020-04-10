@@ -17,7 +17,7 @@ Departamento VARCHAR(50),
 Direccion VARCHAR(150),
 Telefono VARCHAR(50),
 Clave VARCHAR(254),
--- Rol TINYINT NOT NULL, -- debe haber una tabla que relacione rol y usuario 
+RolAcademico TINYINT NOT NULL,
 FechaIngreso DATETIME NOT NULL,
 Estado TINYINT NOT NULL,
 PRIMARY KEY (PersonaId)
@@ -73,8 +73,19 @@ FOREIGN KEY (Docente) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (Cursos, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
+CREATE TABLE IngresosAlSistema(
+IngresoAlSistemaId INT NOT NULL IDENTITY(1,1),
+Usuario VARCHAR(70),
+FechaIntento DATETIME NOT null,
+IP_Origen VARCHAR(16),
+EstadoAcceso TINYINT NOT NULL,
+PRIMARY KEY (IngresoAlSistemaId)
+);
+DBCC CHECKIDENT (IngresosAlSistema, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
 
 -- Borrado de tablas --
+Drop table IngresosAlSistema;
 Drop table Cursos;
 Drop table EvidenciaCorreo;
 Drop table NotasRapidas;

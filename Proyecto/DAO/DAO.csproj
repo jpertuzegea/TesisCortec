@@ -126,6 +126,9 @@
     <Compile Include="EvidenciaCorreo.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="IngresosAlSistema.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="NotasRapidas.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>

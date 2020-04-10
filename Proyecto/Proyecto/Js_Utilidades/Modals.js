@@ -5,8 +5,7 @@
 function RegistrarPersona() {
     $("#contenido").load("/Personas/PersonaAdd");
 } 
-function ModificarPersona(id) {
-    alert(id);
+function ModificarPersona(id) { 
     $("#contenido").load("/Personas/PersonasUpdt/" + id);
 } // -------- fin Personas --------
 
@@ -18,6 +17,10 @@ function CrearNotaRapida() {
 function ModificarNotaRapida(id) {
     $("#contenido").load("/NotasRapidas/NotasRapidasUpdt/" + id);
 }
+function ModificarPanelInformaivo() {
+    $("#contenido").load("/NotasRapidas/PanelInformativoUpdt");
+}
+
 // -------- fin notas rapidas --------
 
 // -------- inicio Cursos --------
@@ -29,3 +32,9 @@ function ModificarCurso(id) {
 }
 // -------- fin notas rapidas --------
 
+function VisualizarInforme() { 
+    
+    $('#MyModaInicio').modal('show');
+    $("#ContentInicio").load("/Inicio/PanelInformativo");
+   
+}

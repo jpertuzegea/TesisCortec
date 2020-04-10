@@ -2,8 +2,10 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
+using Proyecto.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -69,7 +71,7 @@ namespace Proyecto.Controllers
             Bll_NotasRapidas Bll_NotasRapidas = new Bll_NotasRapidas();
             NotasRapidas NotaRapida = Bll_NotasRapidas.GetNotasRapidasByNotaRapidaId(id);
             //NotaRapida.FechaFinalizacionView = NotaRapida.FechaFinalizacion.ToString("yyyy-MM-dd");
-            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)NotaRapida.Estado); 
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)NotaRapida.Estado);
             return View(NotaRapida);
         }
 
@@ -107,6 +109,63 @@ namespace Proyecto.Controllers
                 return View(NotasRapidas);
             }
         }
+
+        [HttpGet]
+        public ActionResult PanelInformativoUpdt()
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            PanelInformativo PanelInformativo = new PanelInformativo();
+            PanelInformativo.Imagen = Variables.Imagen;
+            PanelInformativo.ContetType = Variables.ContetType;
+            PanelInformativo.Estado = Variables.Estado;
+
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)PanelInformativo.Estado);
+
+
+            return View(PanelInformativo);
+        }
+
+        //Update Notas_Rapidas
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PanelInformativoUpdt(PanelInformativo PanelInformativo, HttpPostedFileBase file)
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)PanelInformativo.Estado);
+
+            if (PanelInformativo != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var FotoCategoria = new BinaryReader(file.InputStream))
+                        {
+                            imagenData = FotoCategoria.ReadBytes(file.ContentLength);
+                        }
+                        Variables.Imagen = imagenData;
+                        Variables.ContetType = file.ContentType;
+                    }
+ 
+                    Variables.Estado = PanelInformativo.Estado;
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(PanelInformativo);
+                }
+            }
+            else
+            {
+                return View(PanelInformativo);
+            }
+        }
+
+
 
     }
 }

@@ -12,14 +12,12 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class EvidenciaCorreo
+    public partial class IngresosAlSistema
     {
-        public int EvidenciaCorreoId { get; set; } 
-        public string EmailDestino { get; set; }
-        public string EmailRemitente { get; set; }
-        public string Asunto { get; set; }
-        public string Mensaje { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
-        public string EstadoEnvio { get; set; }
+        public int IngresoAlSistemaId { get; set; }
+        public string Usuario { get; set; }
+        public System.DateTime FechaIntento { get; set; }
+        public string IP_Origen { get; set; }
+        public byte EstadoAcceso { get; set; }
     }
 }

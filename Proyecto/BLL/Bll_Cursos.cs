@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BLL
 {
@@ -142,5 +143,21 @@ namespace BLL
 
         }
 
+
+        // Arma un select list de Cursos, con la propiedad value y name 
+        public List<SelectListItem> ArmarSelectClientes(EnumEstadoFiltro filtro)
+        {
+            List<Cursos> Lista = null;
+            Lista = ListarCursos(EnumEstadoFiltro.Todos);
+
+            List<SelectListItem> result = new List<SelectListItem>();
+            foreach (var item in Lista)
+            {
+                var nombre = item.Nombre;
+                var valor = item.CursoId;
+                result.Add(new SelectListItem() { Text = nombre, Value = valor.ToString() });
+            }
+            return result;
+        } 
     }
 }

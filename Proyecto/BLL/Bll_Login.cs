@@ -24,15 +24,21 @@ namespace BLL
                &&
                u.Estado == (byte)EnumEstadoFiltro.Activo).FirstOrDefault();
 
+            Bll_IngresoAlSistema Bll_IngresoAlSistema = new Bll_IngresoAlSistema();
+
             if ((login != null))
             {
                 System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = login.PersonaId;
-                System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto;
+                System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto; 
+
+                Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Exitoso);
 
                 return true;
             }
             else
             {
+                Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Fallido);
+
                 return false;
             }
         }
@@ -66,11 +72,11 @@ namespace BLL
 
         // Metodo para crear Cookies
         public void CrearCookie(string NombreCookie, string ValorCookie, int ExpiracionSegundos)
-        { 
+        {
             System.Web.HttpCookie Cookie = new System.Web.HttpCookie(NombreCookie);
             Cookie.Value = ValorCookie;
             Cookie.Expires = DateTime.Now.AddSeconds(ExpiracionSegundos);
-            System.Web.HttpContext.Current.Response.Cookies.Add(Cookie); 
+            System.Web.HttpContext.Current.Response.Cookies.Add(Cookie);
         }
     }
 }

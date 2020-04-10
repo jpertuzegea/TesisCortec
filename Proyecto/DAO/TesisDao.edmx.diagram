@@ -5,11 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="351f6fd49b594b948404705afe4f9a39" Name="Diagram1" ZoomLevel="56">
-        <EntityTypeShape EntityType="TESIS_Model.Codigos" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3" PointY="4.5" />
-        <EntityTypeShape EntityType="TESIS_Model.EvidenciaCorreo" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TESIS_Model.Codigos" Width="1.5" PointX="5" PointY="1.25" />
+        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="TESIS_Model.EvidenciaCorreo" Width="1.5" PointX="5" PointY="3.125" />
+        <EntityTypeShape EntityType="TESIS_Model.IngresosAlSistema" Width="1.5" PointX="6.875" PointY="0.875" />
         <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="1" PointY="0.5" />
         <AssociationConnector Association="TESIS_Model.FK__Cursos__Docente__6FE99F9F" />
         <AssociationConnector Association="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3" />
       </Diagram>

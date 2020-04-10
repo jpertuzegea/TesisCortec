@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<DAO.NotasRapidas>
 
+<script src="~/Js_Utilidades/Modals.js"></script>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    var xxx = true;
 }
 
 <audio src="~/Audios/bienvenida.wav" autoplay></audio>
 
 <div class="wrapper wrapper-content animated fadeInRight">
+
     <div class="row">
         <div class="col-lg-3">
         </div>
@@ -21,6 +23,19 @@
             </div>
         </div>
         <div class="col-lg-3">
+        </div>
+
+
+        @*estructura vacia del modal*@
+        <div class="modal inmodal" id="MyModaInicio" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content animated flipInY">
+                    <div id="ContentInicio">
+
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -51,3 +66,11 @@
 
     </div>
 </div>
+
+
+@{ if (Proyecto.Models.Variables.Estado == 1)
+    {
+        <img onload="VisualizarInforme()" alt="image" class="img-responsive" width="1%" height="1%" src="~/Imagenes/fondo.png">
+    }
+}
+

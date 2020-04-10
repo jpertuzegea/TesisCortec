@@ -104,7 +104,22 @@ namespace Proyecto.Controllers
 
         public ActionResult ConvertirImagen(int PersonaId)
         {
+
             Bll_Login.VerificarSesionActiva();
+
+            if (PersonaId == 0)// panel informativo siempre sera 0 (se reutilizo el metodo)
+            {
+                if (Proyecto.Models.Variables.Imagen != null)
+                {
+                    return File(Proyecto.Models.Variables.Imagen, Proyecto.Models.Variables.ContetType);
+                }
+                else
+                {
+                    return null;
+                } 
+            }
+             
+           
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas Persona = Bll_Personas.GetImagenByPersonaId(PersonaId);
 
