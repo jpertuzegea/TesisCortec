@@ -132,7 +132,7 @@ namespace BLL
                     //NotasRapidas.UsuarioPublica = ;// No se puede modificar nunca
                     Notas.Estado = (byte)NotasRapidas.Estado;
 
-                    BD.Entry(NotasRapidas).State = EntityState.Modified;
+                    BD.Entry(Notas).State = EntityState.Modified;
                     BD.SaveChanges();
                     return true;
                 }

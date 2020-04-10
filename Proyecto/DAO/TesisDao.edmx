@@ -67,7 +67,7 @@
           <Property Name="PersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Imagen" Type="varbinary(max)" />
           <Property Name="ContetType" Type="varchar" MaxLength="50" />
-          <Property Name="TipoDocumento" Type="varchar" MaxLength="50" />
+          <Property Name="TipoDocumento" Type="tinyint" Nullable="false" />
           <Property Name="NumDocumento" Type="varchar" MaxLength="50" />
           <Property Name="NombreCompleto" Type="varchar" MaxLength="70" />
           <Property Name="CodigoInstitucional" Type="varchar" MaxLength="50" />
@@ -81,7 +81,7 @@
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Cursos__Docente__0E6E26BF">
+        <Association Name="FK__Cursos__Docente__1BC821DD">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,7 +93,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NotasRapi__Usuar__09A971A2">
+        <Association Name="FK__NotasRapi__Usuar__17036CC0">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="NotasRapidas" Type="Self.NotasRapidas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,11 +112,11 @@
           <EntitySet Name="IngresosAlSistema" EntityType="Self.IngresosAlSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cursos__Docente__0E6E26BF" Association="Self.FK__Cursos__Docente__0E6E26BF">
+          <AssociationSet Name="FK__Cursos__Docente__1BC821DD" Association="Self.FK__Cursos__Docente__1BC821DD">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__NotasRapi__Usuar__09A971A2" Association="Self.FK__NotasRapi__Usuar__09A971A2">
+          <AssociationSet Name="FK__NotasRapi__Usuar__17036CC0" Association="Self.FK__NotasRapi__Usuar__17036CC0">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
           </AssociationSet>
@@ -132,11 +132,11 @@
           <EntitySet Name="IngresosAlSistema" EntityType="TESIS_Model.IngresosAlSistema" />
           <EntitySet Name="NotasRapidas" EntityType="TESIS_Model.NotasRapidas" />
           <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
-          <AssociationSet Name="FK__Cursos__Docente__6FE99F9F" Association="TESIS_Model.FK__Cursos__Docente__6FE99F9F">
+          <AssociationSet Name="FK__Cursos__Docente__1BC821DD" Association="TESIS_Model.FK__Cursos__Docente__1BC821DD">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__NotasRapi__Usuar__6477ECF3" Association="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3">
+          <AssociationSet Name="FK__NotasRapi__Usuar__17036CC0" Association="TESIS_Model.FK__NotasRapi__Usuar__17036CC0">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
           </AssociationSet>
@@ -161,13 +161,13 @@
           <Property Name="DuracionHoras" Type="Int32" />
           <Property Name="Docente" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__6FE99F9F" FromRole="Cursos" ToRole="Personas" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__1BC821DD" FromRole="Cursos" ToRole="Personas" />
         </EntityType>
         <EntityType Name="EvidenciaCorreo">
           <Key>
             <PropertyRef Name="EvidenciaCorreoId" />
           </Key>
-          <Property Name="EvidenciaCorreoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" /> 
+          <Property Name="EvidenciaCorreoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmailDestino" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="EmailRemitente" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="Asunto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -196,7 +196,7 @@
           <Property Name="Mensaje" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioPublica" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3" FromRole="NotasRapidas" ToRole="Personas" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__17036CC0" FromRole="NotasRapidas" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -205,7 +205,7 @@
           <Property Name="PersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ContetType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumento" Type="Byte" Nullable="false" />
           <Property Name="NumDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NombreCompleto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="CodigoInstitucional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -215,13 +215,13 @@
           <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Clave" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="RolAcademico" Type="Byte" Nullable="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__6FE99F9F" FromRole="Personas" ToRole="Cursos" />
-          <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__6477ECF3" FromRole="Personas" ToRole="NotasRapidas" />
-          <Property Name="RolAcademico" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__1BC821DD" FromRole="Personas" ToRole="Cursos" />
+          <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__17036CC0" FromRole="Personas" ToRole="NotasRapidas" />
         </EntityType>
-        <Association Name="FK__Cursos__Docente__6FE99F9F">
+        <Association Name="FK__Cursos__Docente__1BC821DD">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -233,7 +233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NotasRapi__Usuar__6477ECF3">
+        <Association Name="FK__NotasRapi__Usuar__17036CC0">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
           <End Type="TESIS_Model.NotasRapidas" Role="NotasRapidas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -314,9 +314,9 @@
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="TESIS_Model.Personas">
               <MappingFragment StoreEntitySet="Personas">
-                <ScalarProperty Name="RolAcademico" ColumnName="RolAcademico" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="RolAcademico" ColumnName="RolAcademico" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />

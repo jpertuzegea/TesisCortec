@@ -7,7 +7,7 @@ CREATE TABLE Personas(
 PersonaId INT NOT NULL IDENTITY(1,1),
 Imagen VARBINARY(MAX),
 ContetType VARCHAR(50), 
-TipoDocumento VARCHAR(50),
+TipoDocumento TINYINT NOT NULL,
 NumDocumento VARCHAR(50),
 NombreCompleto VARCHAR(70),
 CodigoInstitucional VARCHAR(50), -- Auto incremental  

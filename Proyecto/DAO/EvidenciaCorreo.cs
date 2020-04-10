@@ -14,7 +14,7 @@ namespace DAO
     
     public partial class EvidenciaCorreo
     {
-        public int EvidenciaCorreoId { get; set; } 
+        public int EvidenciaCorreoId { get; set; }
         public string EmailDestino { get; set; }
         public string EmailRemitente { get; set; }
         public string Asunto { get; set; }

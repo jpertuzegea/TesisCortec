@@ -14,7 +14,7 @@ function ModificarPersona(id) {
 function CrearNotaRapida() {
     $("#contenido").load("/NotasRapidas/NotasRapidasAdd");
 }
-function ModificarNotaRapida(id) {
+function ModificarNotaRapida(id) { 
     $("#contenido").load("/NotasRapidas/NotasRapidasUpdt/" + id);
 }
 function ModificarPanelInformaivo() {
@@ -28,7 +28,7 @@ function CrearCurso() {
     $("#contenido").load("/Cursos/CursosAdd");
 }
 function ModificarCurso(id) {
-    $("#contenido").load("/Cursos/CursosUpdt/" + id);
+    $("#contenido").load("/Cursos/CursoUpdt/" + id);
 }
 // -------- fin notas rapidas --------
 

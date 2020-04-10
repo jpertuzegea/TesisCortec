@@ -18,7 +18,7 @@ namespace Proyecto.Controllers
         {
             Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
-            List<Personas> Lista = Bll_Personas.ListarPersonas(BLL.Enums.EnumEstadoFiltro.Activo);
+            List<Personas> Lista = Bll_Personas.ListarPersonas(BLL.Enums.EnumEstadoFiltro.Todos);
             return View(Lista);
         }
 
@@ -65,7 +65,7 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas persona = Bll_Personas.GetPersonaByPersonaId(id);
-            ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)persona.Estado);
+            ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)persona.TipoDocumento);
             return View(persona);
         }
 

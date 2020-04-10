@@ -32,7 +32,7 @@ namespace Proyecto.Controllers
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
 
             List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
-            ViewBag.Departamentos = lista;
+            ViewBag.Docente = new SelectList(lista, "Value", "Text");
 
             ViewBag.Docente = lista;
            
@@ -42,11 +42,14 @@ namespace Proyecto.Controllers
         // POST: Crear Notas_Rapidas
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CursoAdd(Cursos Curso)
+        public ActionResult CursosAdd(Cursos Curso)
         {
             Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
+
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo); 
+            ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
 
             if (ModelState.IsValid)
             {
@@ -70,11 +73,15 @@ namespace Proyecto.Controllers
 
         [HttpGet]
         public ActionResult CursoUpdt(int id)
-        {
+        { 
             Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
+
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
+            ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
+
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
             return View(Curso);
         }
@@ -87,6 +94,8 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
+            ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
 
             if (Curso != null)
             {

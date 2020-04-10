@@ -24,7 +24,7 @@ namespace DAO
         public int PersonaId { get; set; }
         public byte[] Imagen { get; set; }
         public string ContetType { get; set; }
-        public string TipoDocumento { get; set; }
+        public byte TipoDocumento { get; set; }
         public string NumDocumento { get; set; }
         public string NombreCompleto { get; set; }
         public string CodigoInstitucional { get; set; }
@@ -34,9 +34,9 @@ namespace DAO
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Clave { get; set; }
+        public byte RolAcademico { get; set; }
         public System.DateTime FechaIngreso { get; set; }
         public byte Estado { get; set; }
-        public byte RolAcademico { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cursos> Cursos { get; set; }
