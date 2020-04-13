@@ -1,4 +1,5 @@
-﻿using BLL.Enums;
+﻿using BCrypt.Net;
+using BLL.Enums;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace BLL
         {
             BD = new TESIS_BD();
         }
-         
+
         public Personas GetPersonaByPersonaId(int? PersonaId)
         {
             try
@@ -53,13 +54,13 @@ namespace BLL
             bool respuesta = BD.Personas.Count(e => e.Email == Email) > 0;
             return respuesta;
         }
-         
+
         public List<Personas> ListarPersonas(EnumEstadoFiltro Filtro)
         {
             try
             {
                 List<Personas> Lista = null;
-
+               
                 switch (Filtro)
                 {
                     case EnumEstadoFiltro.Activo://Activo
@@ -74,6 +75,7 @@ namespace BLL
                         Lista = BD.Personas.ToList();
                         break;
                 }
+                 
                 return (Lista);// retorna una lista de entidades
             }
             catch (Exception error)
@@ -93,12 +95,14 @@ namespace BLL
                     {
                         Bll_Codigo Bll_Codigo = new Bll_Codigo();
                         int Codigo = Bll_Codigo.ObtenerCodigo();
+
                         Persona.CodigoInstitucional = "Cod-" + Codigo;
 
+                        Persona.Clave = Persona.Clave.ComputeHash(HashType.SHA256);
                         Persona.FechaIngreso = DateTime.Now.Date;
                         Persona.Estado = (byte)EnumEstados.Activo;
                         Persona.RolAcademico = (byte)EnumRolAcademico.Estudiante;
-                        
+
                         BD.Personas.Add(Persona);
                         Bll_Codigo.GuardarCodigo(Codigo);
                         BD.SaveChanges();
@@ -107,8 +111,8 @@ namespace BLL
                             "\n Se informa que su inscripcion fue realizada de manera exitosa en la plataforma TESIS. \n" +
                             "Sus datos de acceso son : \n " +
                             $"Usuario: {Persona.Email} \n" +
-                            $"Clave: {Persona.Clave} \n\n" +
-                            "Desde este momento puede disfrutar de nustros curos Online \n" +
+                            $"Clave: ************  \n\n" +
+                            "Desde este momento puede disfrutar de nuestros cursos Online \n" +
                             "Feliz resto de dia.";
 
                         Bll_Email Bll_Email = new Bll_Email();
@@ -149,12 +153,12 @@ namespace BLL
                     Perso.Departamento = Persona.Departamento;
                     Perso.Direccion = Persona.Direccion;
                     Perso.Telefono = Persona.Telefono;
-                    Perso.RolAcademico = (byte)Persona.RolAcademico;  
+                    Perso.RolAcademico = (byte)Persona.RolAcademico;
 
 
                     if (Persona.Clave != null)
                     {
-                        Perso.Clave = Persona.Clave;
+                        Perso.Clave = Persona.Clave.ComputeHash(HashType.SHA256);
                     }
 
                     Perso.Estado = Persona.Estado;
@@ -177,19 +181,95 @@ namespace BLL
                 return false;
             }
         }
-         
-        public List<SelectListItem> ArmarSelectCursos(EnumEstadoFiltro filtro)
+
+        public bool CambioImagen(HttpPostedFileBase file)
+        {
+            Personas Perso = GetPersonaByPersonaId((int)HttpContext.Current.Session["IdUsuarioTesis"]);
+
+            if (Perso != null)
+            {
+                try
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var foto_Persona = new BinaryReader(file.InputStream))
+                        {
+                            imagenData = foto_Persona.ReadBytes(file.ContentLength);
+                        }
+
+                        Perso.Imagen = imagenData;
+                    }
+
+                    BD.Entry(Perso).State = EntityState.Modified;
+                    BD.SaveChanges();
+
+                    Bll_File.EscribirLog("Avatar modificado con exito");
+
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    Bll_File.EscribirLog(error.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool CambioClave(string NuevaClave)
+        {
+            Personas Perso = GetPersonaByPersonaId((int)HttpContext.Current.Session["IdUsuarioTesis"]);
+
+            if (Perso != null)
+            {
+                try
+                {
+                    if (NuevaClave != null)
+                    {
+                        Perso.Clave = NuevaClave.ComputeHash(HashType.SHA256);
+                    }
+
+                    BD.Entry(Perso).State = EntityState.Modified;
+                    BD.SaveChanges();
+
+                    Bll_File.EscribirLog("Clave modificada con exito");
+
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    Bll_File.EscribirLog(error.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public List<SelectListItem> ArmarSelectPersona(EnumEstadoFiltro filtro, EnumRolAcademico RolAcademico = EnumRolAcademico.Estudiante)
         {
             List<Personas> Lista = null;
-            Lista = ListarPersonas(EnumEstadoFiltro.Todos);
-
             List<SelectListItem> result = new List<SelectListItem>();
-            foreach (var item in Lista)
+
+            Lista = ListarPersonas(EnumEstadoFiltro.Todos).Where(p => p.RolAcademico == (byte)RolAcademico).ToList();
+
+            if (Lista.Count > 0)
             {
-                var nombre = item.NombreCompleto;
-                var valor = item.PersonaId;
-                result.Add(new SelectListItem() { Text = nombre, Value = valor.ToString() });
+                foreach (var item in Lista)
+                {
+                    var nombre = item.NombreCompleto;
+                    var valor = item.PersonaId;
+                    result.Add(new SelectListItem() { Text = nombre, Value = valor.ToString() });
+                }
             }
+
             return result;
         }
 

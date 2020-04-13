@@ -56,15 +56,12 @@
 
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
-                                <tr> 
+                                <tr>
                                     <th>
                                         Nombre
                                     </th>
                                     <th>
                                         Descripcion
-                                    </th>
-                                    <th>
-                                        Cantidad Horas
                                     </th>
                                     <th>
                                         Titulo Otorgado
@@ -87,38 +84,35 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Nombre)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Descripcion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CantidadHoras)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TituloOtorgado)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ValorCurso)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DuracionHoras)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Docente)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Estado)
-                                    </td>
-                                    <td>
-                                        @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
-            {*@
-                                        <a href="#myModal2" onclick="ModificarCurso(this.id)" data-toggle="modal" id="@item.CursoId"><i class="fa fa-edit"></i></a>
-                                        @*}*@
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TituloOtorgado)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ValorCurso)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DuracionHoras)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Docente)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Estado)
+                                        </td>
+                                        <td>
+                                            @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
+                                                {*@
+                                            <a href="#myModal2" onclick="ModificarCurso(this.id)" data-toggle="modal" id="@item.CursoId"><i class="fa fa-edit"></i></a>
+                                            @*}*@
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
                             <tfoot>
@@ -129,9 +123,7 @@
                                     <th>
                                         Descripcion
                                     </th>
-                                    <th>
-                                        Cantidad Horas
-                                    </th>
+
                                     <th>
                                         Titulo Otorgado
                                     </th>

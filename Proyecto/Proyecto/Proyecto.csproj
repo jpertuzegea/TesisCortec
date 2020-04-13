@@ -166,6 +166,7 @@
     <Content Include="Js_Utilidades\Modals.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -208,6 +209,9 @@
     <Content Include="Views\Inicio\PanelInformativo.cshtml" />
     <Content Include="Views\NotasRapidas\PanelInformativoUpdt.cshtml" />
     <Content Include="Views\Cursos\CursoUpdt.cshtml" />
+    <Content Include="Views\Personas\CambioImagen.cshtml" />
+    <Content Include="Views\Personas\CambioClave.cshtml" />
+    <Content Include="Views\Cursos\CursosOfertados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

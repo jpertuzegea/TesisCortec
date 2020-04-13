@@ -1,4 +1,5 @@
-﻿using BLL.Enums;
+﻿using BCrypt.Net;
+using BLL.Enums;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,10 @@ namespace BLL
         // Metodo para validar Inicio de Sesion al sistema
         public Boolean IniciarSesion(Personas Persona)
         {
+            var MyClave = Persona.Clave.ComputeHash(HashType.SHA256);
             Personas login = BD.Personas.Where(u => u.Email.ToUpper().Equals(Persona.Email.ToUpper())
                &&
-               u.Clave.Equals(Persona.Clave)
+               u.Clave.Equals(MyClave)
                &&
                u.Estado == (byte)EnumEstadoFiltro.Activo).FirstOrDefault();
 

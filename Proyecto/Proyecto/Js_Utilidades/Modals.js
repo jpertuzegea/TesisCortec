@@ -4,17 +4,24 @@
 // -------- inicio Personas --------
 function RegistrarPersona() {
     $("#contenido").load("/Personas/PersonaAdd");
-} 
-function ModificarPersona(id) { 
+}
+function ModificarPersona(id) {
     $("#contenido").load("/Personas/PersonasUpdt/" + id);
-} // -------- fin Personas --------
+}
+function CambiarImagen(id) {
+    $("#contenido").load("/Personas/CambioImagen/" + id);
+}
+function CambiarClave(id) {
+    $("#contenido").load("/Personas/CambioClave/" + id);
+}
+// -------- fin Personas --------
 
 
 // -------- inicio notas rapidas --------
 function CrearNotaRapida() {
     $("#contenido").load("/NotasRapidas/NotasRapidasAdd");
 }
-function ModificarNotaRapida(id) { 
+function ModificarNotaRapida(id) {
     $("#contenido").load("/NotasRapidas/NotasRapidasUpdt/" + id);
 }
 function ModificarPanelInformaivo() {
@@ -32,9 +39,9 @@ function ModificarCurso(id) {
 }
 // -------- fin notas rapidas --------
 
-function VisualizarInforme() { 
-    
+function VisualizarInforme() {
+
     $('#MyModaInicio').modal('show');
     $("#ContentInicio").load("/Inicio/PanelInformativo");
-   
+
 }

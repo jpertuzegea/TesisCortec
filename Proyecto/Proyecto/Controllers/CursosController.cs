@@ -24,6 +24,20 @@ namespace Proyecto.Controllers
             return View(Cursos);
         }
 
+        // GET: CursosOfertados
+        public ActionResult CursosOfertados()
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            Bll_Cursos Bll_Cursos = new Bll_Cursos();
+            List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Activo);
+
+            return View(Cursos);
+        }
+
+        
+
+
         // GET: CursoAdd
         public ActionResult CursosAdd()
         {
@@ -31,7 +45,7 @@ namespace Proyecto.Controllers
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
 
-            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo, EnumRolAcademico.Docente);
             ViewBag.Docente = new SelectList(lista, "Value", "Text");
 
             ViewBag.Docente = lista;
@@ -48,7 +62,7 @@ namespace Proyecto.Controllers
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
 
-            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo); 
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo,EnumRolAcademico.Docente); 
             ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
 
             if (ModelState.IsValid)
@@ -79,7 +93,7 @@ namespace Proyecto.Controllers
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
 
-            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo, EnumRolAcademico.Docente);
             ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
@@ -94,7 +108,7 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
-            List<SelectListItem> lista = new Bll_Personas().ArmarSelectCursos(EnumEstadoFiltro.Activo);
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo, EnumRolAcademico.Docente);
             ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
 
             if (Curso != null)

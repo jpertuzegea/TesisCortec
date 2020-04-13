@@ -1,0 +1,45 @@
+﻿
+@model IEnumerable<DAO.Cursos>
+
+@{
+    ViewBag.Title = "CursosOfertados";
+}
+
+<div align="center" class="modal-header"> 
+    <b> <h1 style="color:#1ab394" > Cursos Ofertados</h1></b>
+</div> 
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="ibox">
+                    <div class="ibox-content product-box">
+
+                        <img width="170" height="170" alt="image" src="~/Imagenes/areas.jpg" />
+                        <div class="product-desc">
+                            <span class="product-price">
+                                $ @item.ValorCurso
+                            </span>
+                            <small class="text-muted">Category</small>
+                            <a href="#" class="product-name"> @item.Nombre</a>
+
+                            <div class="small m-t-xs">
+                                @item.Descripcion
+                            </div>
+                            <div class="m-t text-righ">
+
+                                <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

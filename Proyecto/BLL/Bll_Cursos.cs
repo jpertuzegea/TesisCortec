@@ -119,8 +119,7 @@ namespace BLL
                 try
                 {
                     Cur.Nombre = Curso.Nombre;
-                    Cur.Descripcion = Curso.Descripcion;
-                    Cur.CantidadHoras = Curso.CantidadHoras;
+                    Cur.Descripcion = Curso.Descripcion; 
                     Cur.TituloOtorgado = Curso.TituloOtorgado;
                     Cur.ValorCurso = Curso.ValorCurso;
                     Cur.DuracionHoras = Curso.DuracionHoras;

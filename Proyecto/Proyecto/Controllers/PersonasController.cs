@@ -65,7 +65,10 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas persona = Bll_Personas.GetPersonaByPersonaId(id);
+
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)persona.TipoDocumento);
+            ViewBag.RolAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumRolAcademico>(), "Value", "Text", persona.RolAcademico);
+
             return View(persona);
         }
 
@@ -76,6 +79,7 @@ namespace Proyecto.Controllers
         {
             Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)Persona.Estado);
+            ViewBag.RolAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumRolAcademico>(), "Value", "Text", Persona.RolAcademico);
 
             if (Persona != null)
             {
@@ -116,10 +120,9 @@ namespace Proyecto.Controllers
                 else
                 {
                     return null;
-                } 
+                }
             }
              
-           
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas Persona = Bll_Personas.GetImagenByPersonaId(PersonaId);
 
@@ -136,6 +139,69 @@ namespace Proyecto.Controllers
             }
             return null;
         }
+
+
+        // GET: CambioImagen
+        public ActionResult CambioImagen()
+        {
+            Bll_Login.VerificarSesionActiva();
+            return View();
+        }
+
+        // POST: CambioImagen
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CambioImagen(HttpPostedFileBase file)
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            if (ModelState.IsValid)
+            {
+                Bll_Personas Bll_Personas = new Bll_Personas();
+
+                if (Bll_Personas.CambioImagen(file))
+                {
+                    return RedirectToAction("Index", "Inicio");
+                }
+                else
+                {// no creado
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        // GET: CambioClave
+        public ActionResult CambioClave()
+        {
+            Bll_Login.VerificarSesionActiva();
+            return View();
+        }
+
+        // POST: CambioClave
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CambioClave(string Clave, string NuevaClave)
+        {
+            Bll_Login.VerificarSesionActiva();
+             
+            Bll_Personas Bll_Personas = new Bll_Personas();
+
+            if (Bll_Personas.CambioClave(NuevaClave))
+            {
+                return RedirectToAction("Index", "Inicio");
+            }
+            else
+            {// no creado
+                return View();
+            }
+
+        }
+
 
     }
 }
