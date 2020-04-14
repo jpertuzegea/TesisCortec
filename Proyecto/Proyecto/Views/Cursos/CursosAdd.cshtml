@@ -7,7 +7,7 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("CursosAdd", "Cursos", FormMethod.Post, new { onsubmit = "return  ValidarDobleCLicRegistrar()" }))
+@using (Html.BeginForm("CursosAdd", "Cursos", FormMethod.Post, new { onsubmit = "return  ValidarDobleCLicRegistrar()", enctype = "multipart/form-data" }))
 { // el return indica que la accion del formulario llega false cuando ya le han dado clic una vez
 
     @Html.AntiForgeryToken()
@@ -40,14 +40,15 @@
                     @Html.EditorFor(model => model.TituloOtorgado, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.TituloOtorgado, "", new { @class = "text-danger" })
                 </div>
-            </div>
-            <div class="col-sm-6 ">
-                <br>
                 <div class="form-group">
                     <label>Valor Curso</label>
                     @Html.EditorFor(model => model.ValorCurso, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ValorCurso, "", new { @class = "text-danger" })
                 </div>
+
+            </div>
+            <div class="col-sm-6 ">
+                <br>
 
                 <div class="form-group">
                     <label>Duracion Horas</label>
@@ -59,6 +60,11 @@
                     <label>Docente</label>
                     @Html.DropDownListFor(x => x.Docente, (IEnumerable<SelectListItem>)ViewBag.Departamentos, "Seleccione una opcion", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Docente, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label>Foto</label>
+                    <input class="form-control m-b" src="~/Fotos/sin_foto.jpg" type="file" name="file" />
                 </div>
 
                 <div class="form-group">

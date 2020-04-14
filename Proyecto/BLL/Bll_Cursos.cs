@@ -3,9 +3,11 @@ using DAO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace BLL
@@ -87,11 +89,45 @@ namespace BLL
             }
         }
 
+        public byte[] GetImagenByCursoId(int CursoId)
+        {
+            try
+            {
+                Cursos Cursos = BD.Cursos.Find(CursoId);
+                if (Cursos != null)
+                {
+                    return (Cursos.Imagen);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
+
+
+
         // metodo para crear un Curso
-        public Boolean GuardarCursos(Cursos Curso)
+        public Boolean GuardarCursos(Cursos Curso, HttpPostedFileBase file)
         {
             if (Curso != null)
             {// si el objeto es diferente de nulo
+                 
+                if (file != null && file.ContentLength > 0)
+                {
+                    byte[] imagenData = null;
+                    using (var foto_Persona = new BinaryReader(file.InputStream))
+                    {
+                        imagenData = foto_Persona.ReadBytes(file.ContentLength);
+                    }
+                    Curso.Imagen = imagenData; 
+                } 
+
                 try
                 {
                     BD.Cursos.Add(Curso);
@@ -110,16 +146,26 @@ namespace BLL
             }
         }
 
-        public Boolean ModificarCursos(Cursos Curso)
+        public Boolean ModificarCursos(Cursos Curso, HttpPostedFileBase file)
         {
             Cursos Cur = GetCursoByCursoId(Curso.CursoId);
 
             if (Cur != null)
-            {
+            { 
                 try
                 {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var foto_Persona = new BinaryReader(file.InputStream))
+                        {
+                            imagenData = foto_Persona.ReadBytes(file.ContentLength);
+                        }
+                        Cur.Imagen = imagenData;
+                    }
+
                     Cur.Nombre = Curso.Nombre;
-                    Cur.Descripcion = Curso.Descripcion; 
+                    Cur.Descripcion = Curso.Descripcion;
                     Cur.TituloOtorgado = Curso.TituloOtorgado;
                     Cur.ValorCurso = Curso.ValorCurso;
                     Cur.DuracionHoras = Curso.DuracionHoras;
@@ -157,6 +203,6 @@ namespace BLL
                 result.Add(new SelectListItem() { Text = nombre, Value = valor.ToString() });
             }
             return result;
-        } 
+        }
     }
 }

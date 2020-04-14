@@ -2,6 +2,7 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
+using Proyecto.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +19,7 @@ namespace Proyecto.Controllers
         {
             Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
-            List<Personas> Lista = Bll_Personas.ListarPersonas(BLL.Enums.EnumEstadoFiltro.Todos);
+            List<Personas> Lista = Bll_Personas.ListarPersonas(EnumEstadoFiltro.Todos);
             return View(Lista);
         }
 
@@ -34,7 +35,7 @@ namespace Proyecto.Controllers
         // POST:   PersonaAdd
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PersonaAdd(Personas Persona, HttpPostedFileBase file)
+        public ActionResult PersonaAdd(Personas Persona)
         {
             //Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", Persona.TipoDocumento);
@@ -113,24 +114,24 @@ namespace Proyecto.Controllers
 
             if (PersonaId == 0)// panel informativo siempre sera 0 (se reutilizo el metodo)
             {
-                if (Proyecto.Models.Variables.Imagen != null)
+                if (Variables.Imagen != null)
                 {
-                    return File(Proyecto.Models.Variables.Imagen, Proyecto.Models.Variables.ContetType);
+                    return File(  Variables.Imagen, Proyecto.Models.Variables.ContetType);
                 }
                 else
                 {
                     return null;
                 }
             }
-             
-            Bll_Personas Bll_Personas = new Bll_Personas();
-            Personas Persona = Bll_Personas.GetImagenByPersonaId(PersonaId);
 
-            if (Persona != null)
+            Bll_Personas Bll_Personas = new Bll_Personas();
+            byte[] PersonaImagen = Bll_Personas.GetImagenByPersonaId(PersonaId);
+
+            if (PersonaImagen != null)
             {
-                if (Persona.Imagen != null)
+                if (PersonaImagen != null)
                 {
-                    return File(Persona.Imagen, "image/jpg");
+                    return File(PersonaImagen, "image/jpg");
                 }
                 else
                 {
@@ -188,7 +189,7 @@ namespace Proyecto.Controllers
         public ActionResult CambioClave(string Clave, string NuevaClave)
         {
             Bll_Login.VerificarSesionActiva();
-             
+
             Bll_Personas Bll_Personas = new Bll_Personas();
 
             if (Bll_Personas.CambioClave(NuevaClave))

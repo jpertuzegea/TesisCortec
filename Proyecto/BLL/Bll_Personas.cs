@@ -43,10 +43,28 @@ namespace BLL
             }
         }
 
-        public Personas GetImagenByPersonaId(int PersonaId)
-        {
-            Personas Persona = BD.Personas.Find(PersonaId);
-            return Persona;
+        public byte[] GetImagenByPersonaId(int PersonaId)
+        {  
+            try
+            {
+                Personas Persona = BD.Personas.Find(PersonaId);
+                if (Persona != null)
+                {
+                    return (Persona.Imagen);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+
+
+
         }
 
         public bool ValidaEmailExiste(string Email)

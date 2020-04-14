@@ -17,6 +17,8 @@ namespace DAO
         public int CursoId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
+        public byte[] Imagen { get; set; }
+        public string ContetType { get; set; }
         public string TituloOtorgado { get; set; }
         public Nullable<int> ValorCurso { get; set; }
         public Nullable<int> DuracionHoras { get; set; }

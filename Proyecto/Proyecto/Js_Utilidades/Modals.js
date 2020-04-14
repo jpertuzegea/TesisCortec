@@ -37,6 +37,10 @@ function CrearCurso() {
 function ModificarCurso(id) {
     $("#contenido").load("/Cursos/CursoUpdt/" + id);
 }
+function DetalleCurso(id) { 
+    $('#MyModalDetalle').modal('show');
+    $("#ContentDetalle").load("/Cursos/DetalleCurso/" + id);
+}
 // -------- fin notas rapidas --------
 
 function VisualizarInforme() {

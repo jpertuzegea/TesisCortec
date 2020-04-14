@@ -19,30 +19,38 @@ namespace BLL
         // Metodo para validar Inicio de Sesion al sistema
         public Boolean IniciarSesion(Personas Persona)
         {
-            var MyClave = Persona.Clave.ComputeHash(HashType.SHA256);
-            Personas login = BD.Personas.Where(u => u.Email.ToUpper().Equals(Persona.Email.ToUpper())
-               &&
-               u.Clave.Equals(MyClave)
-               &&
-               u.Estado == (byte)EnumEstadoFiltro.Activo).FirstOrDefault();
-
-            Bll_IngresoAlSistema Bll_IngresoAlSistema = new Bll_IngresoAlSistema();
-
-            if ((login != null))
+            try
             {
-                System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = login.PersonaId;
-                System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto; 
+                var MyClave = Persona.Clave.ComputeHash(HashType.SHA256);
+                Personas login = BD.Personas.Where(u => u.Email.ToUpper().Equals(Persona.Email.ToUpper())
+                   &&
+                   u.Clave.Equals(MyClave)
+                   &&
+                   u.Estado == (byte)EnumEstadoFiltro.Activo).FirstOrDefault();
 
-                Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Exitoso);
+                Bll_IngresoAlSistema Bll_IngresoAlSistema = new Bll_IngresoAlSistema();
 
-                return true;
+                if ((login != null))
+                {
+                    System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = login.PersonaId;
+                    System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto;
+
+                    Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Exitoso);
+
+                    return true;
+                }
+                else
+                {
+                    Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Fallido); 
+                    return false;
+                }
             }
-            else
+            catch (Exception error)
             {
-                Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Fallido);
-
+                Bll_File.EscribirLog(error.ToString());
                 return false;
             }
+
         }
 
         // Metodo para cerrar la sesiojn y eliminar las variables de Sesion

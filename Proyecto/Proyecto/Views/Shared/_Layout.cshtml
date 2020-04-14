@@ -124,10 +124,22 @@
                         <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Administracion</span> <span class="fa arrow"></span></a>
 
                         <ul class="nav nav-second-level collapse">
-                            <li>@Html.ActionLink("Personas", "index", "Personas")</li>
-                            <li>@Html.ActionLink("Notas Rapidas", "index", "NotasRapidas")</li>
-                            <li>@Html.ActionLink("Cursos", "index", "Cursos")</li>
-                            <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
+                            <li>@Html.ActionLink("Gestion de Personas", "index", "Personas")</li>
+                            <li>@Html.ActionLink("Gestion Notas Rapidas", "index", "NotasRapidas")</li>
+
+
+
+                            <li>
+                                <a href="#">@*<i class="fa fa-sitemap"></i>*@ <span class="nav-label">Cursos</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li> 
+                                    <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
+                                </ul>
+                            </li>
+
+
+
+                            
                         </ul>
                     </li>
                     <li>

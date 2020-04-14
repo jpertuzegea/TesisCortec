@@ -3,7 +3,7 @@ using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic; 
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,15 +27,22 @@ namespace Proyecto.Controllers
         // GET: CursosOfertados
         public ActionResult CursosOfertados()
         {
-            Bll_Login.VerificarSesionActiva();
-
+            Bll_Login.VerificarSesionActiva(); 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Activo);
 
             return View(Cursos);
         }
 
-        
+        [HttpGet]
+        public ActionResult DetalleCurso(int id)
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            Bll_Cursos Bll_Cursos = new Bll_Cursos();
+            Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
+            return View(Curso);
+        }
 
 
         // GET: CursoAdd
@@ -48,28 +55,26 @@ namespace Proyecto.Controllers
             List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo, EnumRolAcademico.Docente);
             ViewBag.Docente = new SelectList(lista, "Value", "Text");
 
-            ViewBag.Docente = lista;
-           
             return View();
         }
 
         // POST: Crear Notas_Rapidas
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CursosAdd(Cursos Curso)
+        public ActionResult CursosAdd(Cursos Curso, HttpPostedFileBase file)
         {
             Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
 
-            List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo,EnumRolAcademico.Docente); 
+            List<SelectListItem> lista = new Bll_Personas().ArmarSelectPersona(EnumEstadoFiltro.Activo, EnumRolAcademico.Docente);
             ViewBag.Docente = new SelectList(lista, "Value", "Text", Curso.Docente);
 
             if (ModelState.IsValid)
             {
                 Bll_Cursos Bll_Cursos = new Bll_Cursos();
 
-                if (Bll_Cursos.GuardarCursos(Curso))
+                if (Bll_Cursos.GuardarCursos(Curso, file))
                 {// pregunta si la funcion de creacion se ejecuto con exito
                     return RedirectToAction("Index");
                 }
@@ -84,10 +89,9 @@ namespace Proyecto.Controllers
             }
         }
 
-
         [HttpGet]
         public ActionResult CursoUpdt(int id)
-        { 
+        {
             Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
@@ -103,7 +107,7 @@ namespace Proyecto.Controllers
         //Update Curso
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CursoUpdt(Cursos Curso)
+        public ActionResult CursoUpdt(Cursos Curso, HttpPostedFileBase file)
         {
             Bll_Login.VerificarSesionActiva();
 
@@ -117,7 +121,7 @@ namespace Proyecto.Controllers
                 {
                     Bll_Cursos Bll_Cursos = new Bll_Cursos();
 
-                    if (Bll_Cursos.ModificarCursos(Curso))
+                    if (Bll_Cursos.ModificarCursos(Curso, file))
                     {
                         return RedirectToAction("Index");
                     }
@@ -135,6 +139,27 @@ namespace Proyecto.Controllers
             {
                 return View(Curso);
             }
-        } 
+        }
+
+
+        public ActionResult MostrarImagenCurso(int CursoId)
+        {
+            Bll_Login.VerificarSesionActiva();
+            Bll_Cursos Bll_Cursos = new Bll_Cursos();
+            byte[] CursoImagen = Bll_Cursos.GetImagenByCursoId(CursoId);
+
+            if (CursoImagen != null)
+            {
+                if (CursoImagen != null)
+                {
+                    return File(CursoImagen, "image/jpg");
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
     }
 }

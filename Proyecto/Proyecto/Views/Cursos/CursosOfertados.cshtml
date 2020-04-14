@@ -5,9 +5,9 @@
     ViewBag.Title = "CursosOfertados";
 }
 
-<div align="center" class="modal-header"> 
-    <b> <h1 style="color:#1ab394" > Cursos Ofertados</h1></b>
-</div> 
+<div align="center" class="modal-header">
+    <b> <h1 style="color:#1ab394"> Cursos Ofertados</h1></b>
+</div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
 
@@ -15,30 +15,43 @@
 
         @foreach (var item in Model)
         {
-            <div class="col-md-3">
-                <div class="ibox">
-                    <div class="ibox-content product-box">
+            <a onclick="DetalleCurso(@item.CursoId)">
+                <div class="col-md-3">
+                    <div class="ibox">
+                        <div class="ibox-content product-box">
 
-                        <img width="170" height="170" alt="image" src="~/Imagenes/areas.jpg" />
-                        <div class="product-desc">
-                            <span class="product-price">
-                                $ @item.ValorCurso
-                            </span>
-                            <small class="text-muted">Category</small>
-                            <a href="#" class="product-name"> @item.Nombre</a>
+                            <img width="170" height="170" alt="image" src="@Url.Action("MostrarImagenCurso", "Cursos", new { CursoId = item.CursoId })" />
+                            <div class="product-desc">
+                                <span class="product-price">
+                                    $ @String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0,0}", item.ValorCurso)
+                                </span>
+                                <a href="#" class="product-name">Titulo: @item.Nombre</a>
+                                <small class="text-muted">Duracion: @item.DuracionHoras Horas</small>
 
-                            <div class="small m-t-xs">
-                                @item.Descripcion
-                            </div>
-                            <div class="m-t text-righ">
-
-                                <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                <div class="small m-t-xs">
+                                    @item.Descripcion
+                                </div>
+                                <div class="m-t text-righ">
+                                    <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         }
+    </div>
+
+    @*estructura vacia del modal*@
+    <div class="modal inmodal" id="MyModalDetalle" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated flipInY">
+                <div id="ContentDetalle">
+
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

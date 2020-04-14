@@ -212,6 +212,7 @@
     <Content Include="Views\Personas\CambioImagen.cshtml" />
     <Content Include="Views\Personas\CambioClave.cshtml" />
     <Content Include="Views\Cursos\CursosOfertados.cshtml" />
+    <Content Include="Views\Cursos\DetalleCurso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
