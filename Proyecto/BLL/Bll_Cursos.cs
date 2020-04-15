@@ -110,14 +110,12 @@ namespace BLL
             }
         }
 
-
-
         // metodo para crear un Curso
         public Boolean GuardarCursos(Cursos Curso, HttpPostedFileBase file)
         {
             if (Curso != null)
             {// si el objeto es diferente de nulo
-                 
+
                 if (file != null && file.ContentLength > 0)
                 {
                     byte[] imagenData = null;
@@ -125,8 +123,8 @@ namespace BLL
                     {
                         imagenData = foto_Persona.ReadBytes(file.ContentLength);
                     }
-                    Curso.Imagen = imagenData; 
-                } 
+                    Curso.Imagen = imagenData;
+                }
 
                 try
                 {
@@ -151,7 +149,7 @@ namespace BLL
             Cursos Cur = GetCursoByCursoId(Curso.CursoId);
 
             if (Cur != null)
-            { 
+            {
                 try
                 {
                     if (file != null && file.ContentLength > 0)
@@ -185,9 +183,26 @@ namespace BLL
             {
                 return false;
             }
-
         }
 
+
+        public bool Matricularse(int CursoId, string Nombre, string Codigo)
+        {
+            string Mesnaje = 
+                         $"Buen dia señor(a): {  System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] }.\n" +
+                         $"Se informa que su matricula en el curso [ {Nombre} ] con codigo: [ { Codigo} ], se ha realizado de manera exitosa. \n" +
+                         $"Fecha Matricula: {DateTime.Now} \n " +
+                         "Gracias por su pago, le deseamos exito en este nuevo curso. \n " +
+
+                         "Despues de 24 horas, el curso estara disponible en su perfil. \n" +
+                         "Feliz resto de dia.";
+
+            string Email = new Bll_Personas().GetEmailByPersonaId((int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"]);
+            Bll_Email Bll_Email = new Bll_Email();
+            Bll_Email.EnviarCorreo(Email, "Matricula Exitosa", Mesnaje);
+
+            return true;
+        }
 
         // Arma un select list de Cursos, con la propiedad value y name 
         public List<SelectListItem> ArmarSelectClientes(EnumEstadoFiltro filtro)

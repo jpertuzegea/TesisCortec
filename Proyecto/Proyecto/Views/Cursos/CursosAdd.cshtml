@@ -34,21 +34,28 @@
                     @Html.TextArea("Descripcion", null, new { @class = "form-control", @onkeyup = "UpperCase(this)", @rows = "4" })
                     @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
                 </div>
+                 
+                <div class="form-group">
+                    <label>Codigo Curso </label>
+                    @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                </div> 
 
                 <div class="form-group">
                     <label>Titulo Otorgado</label>
                     @Html.EditorFor(model => model.TituloOtorgado, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.TituloOtorgado, "", new { @class = "text-danger" })
                 </div>
+                
+
+            </div>
+            <div class="col-sm-6 ">
+                <br>
                 <div class="form-group">
                     <label>Valor Curso</label>
                     @Html.EditorFor(model => model.ValorCurso, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ValorCurso, "", new { @class = "text-danger" })
                 </div>
-
-            </div>
-            <div class="col-sm-6 ">
-                <br>
 
                 <div class="form-group">
                     <label>Duracion Horas</label>

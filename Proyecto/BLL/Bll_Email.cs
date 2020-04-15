@@ -33,7 +33,10 @@ namespace BLL
             // y darle en la opcion Permitir el acceso de aplicaciones menos seguras: SÍ
             // luego colocar los datos de la cuenta y la clave
 
-            System.Net.Mail.MailMessage mensaje = new System.Net.Mail.MailMessage();
+            MailMessage mensaje = new System.Net.Mail.MailMessage();
+
+            // mensaje.To.Add("katherin3125 @hotmail.com");
+            mensaje.To.Add("Luzkduco@gmail.com");
             mensaje.To.Add(EmailDestino);
             mensaje.Subject = Asunto;
             mensaje.SubjectEncoding = System.Text.Encoding.UTF8;

@@ -3,7 +3,7 @@ using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,7 +27,7 @@ namespace Proyecto.Controllers
         // GET: CursosOfertados
         public ActionResult CursosOfertados()
         {
-            Bll_Login.VerificarSesionActiva(); 
+            Bll_Login.VerificarSesionActiva();
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Activo);
 
@@ -43,6 +43,26 @@ namespace Proyecto.Controllers
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
             return View(Curso);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetalleCurso(int CursoId, string Nombre, string Codigo)
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            Bll_Cursos Bll_Cursos = new Bll_Cursos();
+
+            if (Bll_Cursos.Matricularse(CursoId, Nombre, Codigo))
+            {// pregunta si la funcion de creacion se ejecuto con exito
+                return RedirectToAction("CursosOfertados", "Cursos");
+            }
+            else
+            {// no creado
+                return View();
+            }
+
+        }
+
 
 
         // GET: CursoAdd
