@@ -17,7 +17,7 @@ namespace BLL
 
 
         // Metodo para validar Inicio de Sesion al sistema
-        public Boolean IniciarSesion(Personas Persona)
+        public bool IniciarSesion(Personas Persona)
         {
             try
             {
@@ -34,14 +34,17 @@ namespace BLL
                 {
                     System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = login.PersonaId;
                     System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto;
+                    Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
+
+                    System.Web.HttpContext.Current.Session["CursosMatriculadosActivos"] = Bll_CursoEstudiante.ObtenerCantidadCusosActivosByPersonaId(login.PersonaId);
 
                     Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Exitoso);
-
+                  
                     return true;
                 }
                 else
                 {
-                    Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Fallido); 
+                    Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Fallido);
                     return false;
                 }
             }

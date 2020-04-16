@@ -87,7 +87,7 @@ namespace BLL
         }
 
         // metodo para crear una NotasRapidas
-        public Boolean GuardarNotaRapida(NotasRapidas NotasRapidas)
+        public bool GuardarNotaRapida(NotasRapidas NotasRapidas)
         {
             if (NotasRapidas != null)
             {// si el objeto es diferente de nulo
@@ -115,7 +115,7 @@ namespace BLL
             }
         }
 
-        public Boolean ModificarNotasRapidas(NotasRapidas NotasRapidas)
+        public bool ModificarNotasRapidas(NotasRapidas NotasRapidas)
         {
             NotasRapidas Notas = GetNotasRapidasByNotaRapidaId(NotasRapidas.NotaRapidaId);
 

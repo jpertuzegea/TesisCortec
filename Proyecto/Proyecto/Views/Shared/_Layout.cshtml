@@ -69,12 +69,9 @@
                                 .css('font-size', 'inherit');
                         }
                     }
-                ]
-
-            });
-
-        });
-
+                ] 
+            }); 
+        }); 
     </script>
 
     <script src="~/Js_Utilidades/Modals.js"></script>
@@ -91,9 +88,9 @@
 
                         <div align="center">
                             <div class="dropdown profile-element">
-                                <a href="@Url.Action("Index", "Inicio" )" title="Inicio" class="links">
+                                <a href="@Url.Action("Index", "Inicio")" title="Inicio" class="links">
                                     <span>
-                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId = (int) System.Web.HttpContext.Current.Session["IdUsuarioTesis"]  })" />
+                                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"] })" />
                                     </span>
                                 </a>
 
@@ -132,8 +129,9 @@
                             <li>
                                 <a href="#">@*<i class="fa fa-sitemap"></i>*@ <span class="nav-label">Cursos</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
-                                    <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li> 
+                                    <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li>
                                     <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
+                                    <li>@Html.ActionLink("Mis Cursos", "Index", "CursoEstudiante")</li>
                                 </ul>
                             </li>
 
@@ -173,7 +171,13 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bienvenido al <b><FONT COLOR="#1ab394">.:Sistema TESIS:.</FONT> </b></span>
+                            <span class="m-r-sm text-muted welcome-message">
+                                <b><FONT COLOR="#1ab394">Cursos Matriculados:</FONT> </b>  <FONT COLOR="red"> 
+                                    [ @Html.ActionLink( System.Web.HttpContext.Current.Session["CursosMatriculadosActivos"].ToString() , "Index", "CursoEstudiante") ] 
+                                </FONT>
+                            </span>
+
+                             
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">

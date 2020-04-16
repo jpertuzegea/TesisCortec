@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6cb95c0b66ca43d4b586cbd19b14399e" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="CORTECBDModel.Codigos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CORTECBDModel.CursoEstudiante" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CORTECBDModel.Cursos" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CORTECBDModel.EvidenciaCorreo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CORTECBDModel.IngresosAlSistema" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CORTECBDModel.NotasRapidas" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CORTECBDModel.Personas" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="CORTECBDModel.FK__CursoEstu__Curso__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="CORTECBDModel.FK__CursoEstu__Estud__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="CORTECBDModel.FK__Cursos__Docente__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="CORTECBDModel.FK__NotasRapi__Usuar__2A4B4B5E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

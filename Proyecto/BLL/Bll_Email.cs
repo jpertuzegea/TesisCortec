@@ -21,7 +21,7 @@ namespace BLL
         }
 
         // Metodo que arma el Email y lo envia 
-        public Boolean EnviarCorreo(string EmailDestino, string Asunto, string Mensaje)
+        public bool EnviarCorreo(string EmailDestino, string Asunto, string Mensaje)
         {
             string EmailRemitente = ConfigurationManager.AppSettings.Get("EmailRemitente");
             string PasswordEmailRemitente = ConfigurationManager.AppSettings.Get("PasswordEmailRemitente");

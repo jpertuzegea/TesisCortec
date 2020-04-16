@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TESIS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CORTECBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Codigos">
           <Key>
             <PropertyRef Name="CodigoInstitucionalId" />
@@ -17,9 +17,10 @@
             <PropertyRef Name="CursoEstudianteId" />
           </Key>
           <Property Name="CursoEstudianteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CursoId" Type="int" />
-          <Property Name="EstudianteId" Type="int" />
-          <Property Name="FechaMatricula" Type="datetime" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="EstudianteId" Type="int" Nullable="false" />
+          <Property Name="FechaMatricula" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Cursos">
           <Key>
@@ -90,8 +91,8 @@
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CursoEstu__Curso__1E6F845E">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+        <Association Name="FK__CursoEstu__Curso__31EC6D26">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
@@ -102,8 +103,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CursoEstu__Estud__1F63A897">
-          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+        <Association Name="FK__CursoEstu__Estud__32E0915F">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
@@ -114,7 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__Docente__1B9317B3">
+        <Association Name="FK__Cursos__Docente__2F10007B">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NotasRapi__Usuar__16CE6296">
+        <Association Name="FK__NotasRapi__Usuar__2A4B4B5E">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="NotasRapidas" Type="Self.NotasRapidas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -138,7 +139,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TESIS_ModelStoreContainer">
+        <EntityContainer Name="CORTECBDModelStoreContainer">
           <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursoEstudiante" EntityType="Self.CursoEstudiante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
@@ -146,52 +147,28 @@
           <EntitySet Name="IngresosAlSistema" EntityType="Self.IngresosAlSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CursoEstu__Curso__1E6F845E" Association="Self.FK__CursoEstu__Curso__1E6F845E">
+          <AssociationSet Name="FK__CursoEstu__Curso__31EC6D26" Association="Self.FK__CursoEstu__Curso__31EC6D26">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
           </AssociationSet>
-          <AssociationSet Name="FK__CursoEstu__Estud__1F63A897" Association="Self.FK__CursoEstu__Estud__1F63A897">
+          <AssociationSet Name="FK__CursoEstu__Estud__32E0915F" Association="Self.FK__CursoEstu__Estud__32E0915F">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__Docente__1B9317B3" Association="Self.FK__Cursos__Docente__1B9317B3">
+          <AssociationSet Name="FK__Cursos__Docente__2F10007B" Association="Self.FK__Cursos__Docente__2F10007B">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__NotasRapi__Usuar__16CE6296" Association="Self.FK__NotasRapi__Usuar__16CE6296">
+          <AssociationSet Name="FK__NotasRapi__Usuar__2A4B4B5E" Association="Self.FK__NotasRapi__Usuar__2A4B4B5E">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TESIS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TESIS_BD" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Codigos" EntityType="TESIS_Model.Codigos" />
-          <EntitySet Name="CursoEstudiante" EntityType="TESIS_Model.CursoEstudiante" />
-          <EntitySet Name="Cursos" EntityType="TESIS_Model.Cursos" />
-          <EntitySet Name="EvidenciaCorreo" EntityType="TESIS_Model.EvidenciaCorreo" />
-          <EntitySet Name="IngresosAlSistema" EntityType="TESIS_Model.IngresosAlSistema" />
-          <EntitySet Name="NotasRapidas" EntityType="TESIS_Model.NotasRapidas" />
-          <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
-          <AssociationSet Name="FK__CursoEstu__Curso__1E6F845E" Association="TESIS_Model.FK__CursoEstu__Curso__1E6F845E">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CursoEstu__Estud__1F63A897" Association="TESIS_Model.FK__CursoEstu__Estud__1F63A897">
-            <End Role="Personas" EntitySet="Personas" />
-            <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cursos__Docente__1B9317B3" Association="TESIS_Model.FK__Cursos__Docente__1B9317B3">
-            <End Role="Personas" EntitySet="Personas" />
-            <End Role="Cursos" EntitySet="Cursos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__NotasRapi__Usuar__16CE6296" Association="TESIS_Model.FK__NotasRapi__Usuar__16CE6296">
-            <End Role="Personas" EntitySet="Personas" />
-            <End Role="NotasRapidas" EntitySet="NotasRapidas" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="CORTECBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Codigos">
           <Key>
             <PropertyRef Name="CodigoInstitucionalId" />
@@ -204,11 +181,12 @@
             <PropertyRef Name="CursoEstudianteId" />
           </Key>
           <Property Name="CursoEstudianteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CursoId" Type="Int32" />
-          <Property Name="EstudianteId" Type="Int32" />
-          <Property Name="FechaMatricula" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__CursoEstu__Curso__1E6F845E" FromRole="CursoEstudiante" ToRole="Cursos" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__CursoEstu__Estud__1F63A897" FromRole="CursoEstudiante" ToRole="Personas" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="EstudianteId" Type="Int32" Nullable="false" />
+          <Property Name="FechaMatricula" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__CursoEstu__Curso__31EC6D26" FromRole="CursoEstudiante" ToRole="Cursos" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__CursoEstu__Estud__32E0915F" FromRole="CursoEstudiante" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Cursos">
           <Key>
@@ -224,8 +202,8 @@
           <Property Name="DuracionHoras" Type="Int32" />
           <Property Name="Docente" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Curso__1E6F845E" FromRole="Cursos" ToRole="CursoEstudiante" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__1B9317B3" FromRole="Cursos" ToRole="Personas" />
+          <NavigationProperty Name="CursoEstudiante" Relationship="Self.FK__CursoEstu__Curso__31EC6D26" FromRole="Cursos" ToRole="CursoEstudiante" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__Cursos__Docente__2F10007B" FromRole="Cursos" ToRole="Personas" />
         </EntityType>
         <EntityType Name="EvidenciaCorreo">
           <Key>
@@ -260,7 +238,7 @@
           <Property Name="Mensaje" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioPublica" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__16CE6296" FromRole="NotasRapidas" ToRole="Personas" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__NotasRapi__Usuar__2A4B4B5E" FromRole="NotasRapidas" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -281,13 +259,13 @@
           <Property Name="RolAcademico" Type="Byte" Nullable="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Estud__1F63A897" FromRole="Personas" ToRole="CursoEstudiante" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__1B9317B3" FromRole="Personas" ToRole="Cursos" />
-          <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__16CE6296" FromRole="Personas" ToRole="NotasRapidas" />
+          <NavigationProperty Name="CursoEstudiante" Relationship="Self.FK__CursoEstu__Estud__32E0915F" FromRole="Personas" ToRole="CursoEstudiante" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__Docente__2F10007B" FromRole="Personas" ToRole="Cursos" />
+          <NavigationProperty Name="NotasRapidas" Relationship="Self.FK__NotasRapi__Usuar__2A4B4B5E" FromRole="Personas" ToRole="NotasRapidas" />
         </EntityType>
-        <Association Name="FK__CursoEstu__Curso__1E6F845E">
-          <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="0..1" />
-          <End Type="TESIS_Model.CursoEstudiante" Role="CursoEstudiante" Multiplicity="*" />
+        <Association Name="FK__CursoEstu__Curso__31EC6D26">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
               <PropertyRef Name="CursoId" />
@@ -297,9 +275,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CursoEstu__Estud__1F63A897">
-          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
-          <End Type="TESIS_Model.CursoEstudiante" Role="CursoEstudiante" Multiplicity="*" />
+        <Association Name="FK__CursoEstu__Estud__32E0915F">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="PersonaId" />
@@ -309,9 +287,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__Docente__1B9317B3">
-          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
-          <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="*" />
+        <Association Name="FK__Cursos__Docente__2F10007B">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="PersonaId" />
@@ -321,9 +299,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NotasRapi__Usuar__16CE6296">
-          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
-          <End Type="TESIS_Model.NotasRapidas" Role="NotasRapidas" Multiplicity="*" />
+        <Association Name="FK__NotasRapi__Usuar__2A4B4B5E">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="NotasRapidas" Type="Self.NotasRapidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="PersonaId" />
@@ -333,101 +311,127 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="CORTECBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Codigos" EntityType="Self.Codigos" />
+          <EntitySet Name="CursoEstudiante" EntityType="Self.CursoEstudiante" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+          <EntitySet Name="EvidenciaCorreo" EntityType="Self.EvidenciaCorreo" />
+          <EntitySet Name="IngresosAlSistema" EntityType="Self.IngresosAlSistema" />
+          <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" />
+          <AssociationSet Name="FK__CursoEstu__Curso__31EC6D26" Association="Self.FK__CursoEstu__Curso__31EC6D26">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursoEstu__Estud__32E0915F" Association="Self.FK__CursoEstu__Estud__32E0915F">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__Docente__2F10007B" Association="Self.FK__Cursos__Docente__2F10007B">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NotasRapi__Usuar__2A4B4B5E" Association="Self.FK__NotasRapi__Usuar__2A4B4B5E">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="NotasRapidas" EntitySet="NotasRapidas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TESIS_ModelStoreContainer" CdmEntityContainer="TESIS_BD">
+        <EntityContainerMapping StorageEntityContainer="CORTECBDModelStoreContainer" CdmEntityContainer="CORTECBDEntities">
           <EntitySetMapping Name="Codigos">
-            <EntityTypeMapping TypeName="TESIS_Model.Codigos">
+            <EntityTypeMapping TypeName="CORTECBDModel.Codigos">
               <MappingFragment StoreEntitySet="Codigos">
-                <ScalarProperty Name="Contador" ColumnName="Contador" />
                 <ScalarProperty Name="CodigoInstitucionalId" ColumnName="CodigoInstitucionalId" />
+                <ScalarProperty Name="Contador" ColumnName="Contador" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CursoEstudiante">
-            <EntityTypeMapping TypeName="TESIS_Model.CursoEstudiante">
+            <EntityTypeMapping TypeName="CORTECBDModel.CursoEstudiante">
               <MappingFragment StoreEntitySet="CursoEstudiante">
-                <ScalarProperty Name="FechaMatricula" ColumnName="FechaMatricula" />
-                <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
-                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
                 <ScalarProperty Name="CursoEstudianteId" ColumnName="CursoEstudianteId" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+                <ScalarProperty Name="FechaMatricula" ColumnName="FechaMatricula" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cursos">
-            <EntityTypeMapping TypeName="TESIS_Model.Cursos">
+            <EntityTypeMapping TypeName="CORTECBDModel.Cursos">
               <MappingFragment StoreEntitySet="Cursos">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Docente" ColumnName="Docente" />
-                <ScalarProperty Name="DuracionHoras" ColumnName="DuracionHoras" />
-                <ScalarProperty Name="ValorCurso" ColumnName="ValorCurso" />
-                <ScalarProperty Name="TituloOtorgado" ColumnName="TituloOtorgado" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="TituloOtorgado" ColumnName="TituloOtorgado" />
+                <ScalarProperty Name="ValorCurso" ColumnName="ValorCurso" />
+                <ScalarProperty Name="DuracionHoras" ColumnName="DuracionHoras" />
+                <ScalarProperty Name="Docente" ColumnName="Docente" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EvidenciaCorreo">
-            <EntityTypeMapping TypeName="TESIS_Model.EvidenciaCorreo">
+            <EntityTypeMapping TypeName="CORTECBDModel.EvidenciaCorreo">
               <MappingFragment StoreEntitySet="EvidenciaCorreo">
-                <ScalarProperty Name="EstadoEnvio" ColumnName="EstadoEnvio" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
-                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
-                <ScalarProperty Name="EmailRemitente" ColumnName="EmailRemitente" />
-                <ScalarProperty Name="EmailDestino" ColumnName="EmailDestino" />
                 <ScalarProperty Name="EvidenciaCorreoId" ColumnName="EvidenciaCorreoId" />
+                <ScalarProperty Name="EmailDestino" ColumnName="EmailDestino" />
+                <ScalarProperty Name="EmailRemitente" ColumnName="EmailRemitente" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="EstadoEnvio" ColumnName="EstadoEnvio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IngresosAlSistema">
-            <EntityTypeMapping TypeName="TESIS_Model.IngresosAlSistema">
+            <EntityTypeMapping TypeName="CORTECBDModel.IngresosAlSistema">
               <MappingFragment StoreEntitySet="IngresosAlSistema">
-                <ScalarProperty Name="EstadoAcceso" ColumnName="EstadoAcceso" />
-                <ScalarProperty Name="IP_Origen" ColumnName="IP_Origen" />
-                <ScalarProperty Name="FechaIntento" ColumnName="FechaIntento" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="IngresoAlSistemaId" ColumnName="IngresoAlSistemaId" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="FechaIntento" ColumnName="FechaIntento" />
+                <ScalarProperty Name="IP_Origen" ColumnName="IP_Origen" />
+                <ScalarProperty Name="EstadoAcceso" ColumnName="EstadoAcceso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NotasRapidas">
-            <EntityTypeMapping TypeName="TESIS_Model.NotasRapidas">
+            <EntityTypeMapping TypeName="CORTECBDModel.NotasRapidas">
               <MappingFragment StoreEntitySet="NotasRapidas">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="UsuarioPublica" ColumnName="UsuarioPublica" />
-                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
-                <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
                 <ScalarProperty Name="NotaRapidaId" ColumnName="NotaRapidaId" />
+                <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+                <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="UsuarioPublica" ColumnName="UsuarioPublica" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Personas">
-            <EntityTypeMapping TypeName="TESIS_Model.Personas">
+            <EntityTypeMapping TypeName="CORTECBDModel.Personas">
               <MappingFragment StoreEntitySet="Personas">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
-                <ScalarProperty Name="RolAcademico" ColumnName="RolAcademico" />
-                <ScalarProperty Name="Clave" ColumnName="Clave" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CodigoInstitucional" ColumnName="CodigoInstitucional" />
-                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-                <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
-                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="CodigoInstitucional" ColumnName="CodigoInstitucional" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="RolAcademico" ColumnName="RolAcademico" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

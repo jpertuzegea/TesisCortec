@@ -13,10 +13,10 @@ namespace DAO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TESIS_BD : DbContext
+    public partial class CORTECBDEntities : DbContext
     {
-        public TESIS_BD()
-            : base("name=TESIS_BD")
+        public CORTECBDEntities()
+            : base("name=CORTECBDEntities")
         {
         }
     

@@ -111,7 +111,7 @@ namespace BLL
         }
 
         // metodo para crear un Curso
-        public Boolean GuardarCursos(Cursos Curso, HttpPostedFileBase file)
+        public bool GuardarCursos(Cursos Curso, HttpPostedFileBase file)
         {
             if (Curso != null)
             {// si el objeto es diferente de nulo
@@ -144,7 +144,7 @@ namespace BLL
             }
         }
 
-        public Boolean ModificarCursos(Cursos Curso, HttpPostedFileBase file)
+        public bool ModificarCursos(Cursos Curso, HttpPostedFileBase file)
         {
             Cursos Cur = GetCursoByCursoId(Curso.CursoId);
 
@@ -188,8 +188,9 @@ namespace BLL
 
         public bool Matricularse(int CursoId, string Nombre, string Codigo)
         {
-            string Mesnaje = 
-                         $"Buen dia señor(a): {  System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] }.\n" +
+            int EstudianteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
+            string Mesnaje =
+                         $"Buen dia señor(a): {EstudianteId}.\n" +
                          $"Se informa que su matricula en el curso [ {Nombre} ] con codigo: [ { Codigo} ], se ha realizado de manera exitosa. \n" +
                          $"Fecha Matricula: {DateTime.Now} \n " +
                          "Gracias por su pago, le deseamos exito en este nuevo curso. \n " +
@@ -197,7 +198,11 @@ namespace BLL
                          "Despues de 24 horas, el curso estara disponible en su perfil. \n" +
                          "Feliz resto de dia.";
 
-            string Email = new Bll_Personas().GetEmailByPersonaId((int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"]);
+            string Email = new Bll_Personas().GetEmailByPersonaId(EstudianteId);
+             
+            Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
+            Bll_CursoEstudiante.GuardarCursoEstudiante(CursoId, EstudianteId);
+             
             Bll_Email Bll_Email = new Bll_Email();
             Bll_Email.EnviarCorreo(Email, "Matricula Exitosa", Mesnaje);
 
