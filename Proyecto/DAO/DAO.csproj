@@ -138,6 +138,9 @@
     <Compile Include="NotasRapidas.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="PanelInformativo.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="Personas.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>

@@ -12,15 +12,11 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class CursoEstudiante
+    public partial class PanelInformativo
     {
-        public int CursoEstudianteId { get; set; }
-        public int CursoId { get; set; }
-        public int EstudianteId { get; set; }
-        public System.DateTime FechaMatricula { get; set; }
+        public int PanelInformativoId { get; set; }
+        public byte[] Imagen { get; set; }
+        public string ContetType { get; set; }
         public byte Estado { get; set; }
-    
-        public virtual Cursos Cursos { get; set; }
-        public virtual Personas Personas { get; set; }
     }
 }

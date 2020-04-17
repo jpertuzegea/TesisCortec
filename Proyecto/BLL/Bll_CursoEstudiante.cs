@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using BLL.Enums;
 
 namespace BLL
 {
@@ -59,16 +60,18 @@ namespace BLL
 
         public bool Matricularse(int CursoId, string Nombre, string Codigo)
         {
-            if (CursoId > 0 && Nombre.Length > 3 && Codigo.Length > 3)
+            if (CursoId > 0 && Nombre.Length > 3 && Codigo.Length > 0)
             {// si el objeto es diferente de nulo
                 try
                 {
                     int EstudianteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
 
                     CursoEstudiante CursoEstudiante = new CursoEstudiante();
+
                     CursoEstudiante.CursoId = CursoId;
                     CursoEstudiante.EstudianteId = EstudianteId;
                     CursoEstudiante.FechaMatricula = DateTime.Now;
+                    CursoEstudiante.Estado = (byte)EnumEstados.Activo;
 
                     BD.CursoEstudiante.Add(CursoEstudiante);
                     BD.SaveChanges();

@@ -1,8 +1,7 @@
 ﻿using BLL;
 using BLL.Enums;
 using BLL.Utilidades;
-using DAO;
-using Proyecto.Models;
+using DAO; 
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -114,14 +113,10 @@ namespace Proyecto.Controllers
         public ActionResult PanelInformativoUpdt()
         {
             Bll_Login.VerificarSesionActiva();
-
-            PanelInformativo PanelInformativo = new PanelInformativo();
-            PanelInformativo.Imagen = Variables.Imagen;
-            PanelInformativo.ContetType = Variables.ContetType;
-            PanelInformativo.Estado = Variables.Estado;
+            Bll_PanelInformativo Bll_PanelInformativo = new Bll_PanelInformativo();
+            PanelInformativo PanelInformativo = Bll_PanelInformativo.ObtenerPanelInformativoByPanelInformativoId();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)PanelInformativo.Estado);
-
 
             return View(PanelInformativo);
         }
@@ -135,24 +130,20 @@ namespace Proyecto.Controllers
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)PanelInformativo.Estado);
 
-            if (PanelInformativo != null)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (file != null && file.ContentLength > 0)
                 {
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        byte[] imagenData = null;
-                        using (var FotoCategoria = new BinaryReader(file.InputStream))
-                        {
-                            imagenData = FotoCategoria.ReadBytes(file.ContentLength);
-                        }
-                        Variables.Imagen = imagenData;
-                        Variables.ContetType = file.ContentType;
-                    }
- 
-                    Variables.Estado = PanelInformativo.Estado;
+                    Bll_PanelInformativo Bll_PanelInformativo = new Bll_PanelInformativo();
 
-                    return RedirectToAction("Index");
+                    if (Bll_PanelInformativo.ModificarPanelInformativo(PanelInformativo, file))
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View(PanelInformativo);
+                    }
                 }
                 else
                 {

@@ -17,9 +17,10 @@
             <PropertyRef Name="CursoEstudianteId" />
           </Key>
           <Property Name="CursoEstudianteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CursoId" Type="int" />
-          <Property Name="EstudianteId" Type="int" />
-          <Property Name="FechaMatricula" Type="datetime" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="EstudianteId" Type="int" Nullable="false" />
+          <Property Name="FechaMatricula" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Cursos">
           <Key>
@@ -84,6 +85,15 @@
           <Property Name="UsuarioPublica" Type="int" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="PanelInformativo">
+          <Key>
+            <PropertyRef Name="PanelInformativoId" />
+          </Key>
+          <Property Name="PanelInformativoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imagen" Type="varbinary(max)" />
+          <Property Name="ContetType" Type="varchar" MaxLength="70" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="PersonaId" />
@@ -104,8 +114,8 @@
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CursoEstu__Curso__1E6F845E">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+        <Association Name="FK__CursoEstu__Curso__51EF2864">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
@@ -116,8 +126,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CursoEstu__Estud__1F63A897">
-          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+        <Association Name="FK__CursoEstu__Estud__52E34C9D">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
@@ -128,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__Docente__1B9317B3">
+        <Association Name="FK__Cursos__Docente__4F12BBB9">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MaterialD__Curso__3CF40B7E">
+        <Association Name="FK__MaterialD__Curso__57A801BA">
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="MaterialDidactico" Type="Self.MaterialDidactico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MaterialD__Docen__3DE82FB7">
+        <Association Name="FK__MaterialD__Docen__589C25F3">
           <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="MaterialDidactico" Type="Self.MaterialDidactico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +174,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NotasRapi__Usuar__16CE6296">
+        <Association Name="FK__NotasRapi__Usuar__4A4E069C">
           <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
           <End Role="NotasRapidas" Type="Self.NotasRapidas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,28 +194,29 @@
           <EntitySet Name="IngresosAlSistema" EntityType="Self.IngresosAlSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialDidactico" EntityType="Self.MaterialDidactico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PanelInformativo" EntityType="Self.PanelInformativo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CursoEstu__Curso__1E6F845E" Association="Self.FK__CursoEstu__Curso__1E6F845E">
+          <AssociationSet Name="FK__CursoEstu__Curso__51EF2864" Association="Self.FK__CursoEstu__Curso__51EF2864">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
           </AssociationSet>
-          <AssociationSet Name="FK__CursoEstu__Estud__1F63A897" Association="Self.FK__CursoEstu__Estud__1F63A897">
+          <AssociationSet Name="FK__CursoEstu__Estud__52E34C9D" Association="Self.FK__CursoEstu__Estud__52E34C9D">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__Docente__1B9317B3" Association="Self.FK__Cursos__Docente__1B9317B3">
+          <AssociationSet Name="FK__Cursos__Docente__4F12BBB9" Association="Self.FK__Cursos__Docente__4F12BBB9">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__MaterialD__Curso__3CF40B7E" Association="Self.FK__MaterialD__Curso__3CF40B7E">
+          <AssociationSet Name="FK__MaterialD__Curso__57A801BA" Association="Self.FK__MaterialD__Curso__57A801BA">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="MaterialDidactico" EntitySet="MaterialDidactico" />
           </AssociationSet>
-          <AssociationSet Name="FK__MaterialD__Docen__3DE82FB7" Association="Self.FK__MaterialD__Docen__3DE82FB7">
+          <AssociationSet Name="FK__MaterialD__Docen__589C25F3" Association="Self.FK__MaterialD__Docen__589C25F3">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="MaterialDidactico" EntitySet="MaterialDidactico" />
           </AssociationSet>
-          <AssociationSet Name="FK__NotasRapi__Usuar__16CE6296" Association="Self.FK__NotasRapi__Usuar__16CE6296">
+          <AssociationSet Name="FK__NotasRapi__Usuar__4A4E069C" Association="Self.FK__NotasRapi__Usuar__4A4E069C">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
           </AssociationSet>
@@ -223,30 +234,31 @@
           <EntitySet Name="MaterialDidactico" EntityType="TESIS_Model.MaterialDidactico" />
           <EntitySet Name="NotasRapidas" EntityType="TESIS_Model.NotasRapidas" />
           <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
-          <AssociationSet Name="FK__CursoEstu__Curso__1E6F845E" Association="TESIS_Model.FK__CursoEstu__Curso__1E6F845E">
+          <AssociationSet Name="FK__CursoEstu__Curso__52593CB8" Association="TESIS_Model.FK__CursoEstu__Curso__52593CB8">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
           </AssociationSet>
-          <AssociationSet Name="FK__CursoEstu__Estud__1F63A897" Association="TESIS_Model.FK__CursoEstu__Estud__1F63A897">
+          <AssociationSet Name="FK__CursoEstu__Estud__534D60F1" Association="TESIS_Model.FK__CursoEstu__Estud__534D60F1">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__Docente__1B9317B3" Association="TESIS_Model.FK__Cursos__Docente__1B9317B3">
+          <AssociationSet Name="FK__Cursos__Docente__45F365D3" Association="TESIS_Model.FK__Cursos__Docente__45F365D3">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__MaterialD__Curso__3CF40B7E" Association="TESIS_Model.FK__MaterialD__Curso__3CF40B7E">
+          <AssociationSet Name="FK__MaterialD__Curso__4E88ABD4" Association="TESIS_Model.FK__MaterialD__Curso__4E88ABD4">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="MaterialDidactico" EntitySet="MaterialDidactico" />
           </AssociationSet>
-          <AssociationSet Name="FK__MaterialD__Docen__3DE82FB7" Association="TESIS_Model.FK__MaterialD__Docen__3DE82FB7">
+          <AssociationSet Name="FK__MaterialD__Docen__4F7CD00D" Association="TESIS_Model.FK__MaterialD__Docen__4F7CD00D">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="MaterialDidactico" EntitySet="MaterialDidactico" />
           </AssociationSet>
-          <AssociationSet Name="FK__NotasRapi__Usuar__16CE6296" Association="TESIS_Model.FK__NotasRapi__Usuar__16CE6296">
+          <AssociationSet Name="FK__NotasRapi__Usuar__412EB0B6" Association="TESIS_Model.FK__NotasRapi__Usuar__412EB0B6">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
           </AssociationSet>
+          <EntitySet Name="PanelInformativo" EntityType="TESIS_Model.PanelInformativo" />
         </EntityContainer>
         <EntityType Name="Codigos">
           <Key>
@@ -260,11 +272,12 @@
             <PropertyRef Name="CursoEstudianteId" />
           </Key>
           <Property Name="CursoEstudianteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CursoId" Type="Int32" />
-          <Property Name="EstudianteId" Type="Int32" />
-          <Property Name="FechaMatricula" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__CursoEstu__Curso__1E6F845E" FromRole="CursoEstudiante" ToRole="Cursos" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__CursoEstu__Estud__1F63A897" FromRole="CursoEstudiante" ToRole="Personas" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="EstudianteId" Type="Int32" Nullable="false" />
+          <Property Name="FechaMatricula" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__CursoEstu__Curso__52593CB8" FromRole="CursoEstudiante" ToRole="Cursos" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__CursoEstu__Estud__534D60F1" FromRole="CursoEstudiante" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Cursos">
           <Key>
@@ -280,9 +293,9 @@
           <Property Name="DuracionHoras" Type="Int32" />
           <Property Name="Docente" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Curso__1E6F845E" FromRole="Cursos" ToRole="CursoEstudiante" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__1B9317B3" FromRole="Cursos" ToRole="Personas" />
-          <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Curso__3CF40B7E" FromRole="Cursos" ToRole="MaterialDidactico" />
+          <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Curso__52593CB8" FromRole="Cursos" ToRole="CursoEstudiante" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__45F365D3" FromRole="Cursos" ToRole="Personas" />
+          <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Curso__4E88ABD4" FromRole="Cursos" ToRole="MaterialDidactico" />
         </EntityType>
         <EntityType Name="EvidenciaCorreo">
           <Key>
@@ -319,8 +332,8 @@
           <Property Name="Version" Type="Int32" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__MaterialD__Curso__3CF40B7E" FromRole="MaterialDidactico" ToRole="Cursos" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__MaterialD__Docen__3DE82FB7" FromRole="MaterialDidactico" ToRole="Personas" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__MaterialD__Curso__4E88ABD4" FromRole="MaterialDidactico" ToRole="Cursos" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__MaterialD__Docen__4F7CD00D" FromRole="MaterialDidactico" ToRole="Personas" />
         </EntityType>
         <EntityType Name="NotasRapidas">
           <Key>
@@ -333,7 +346,7 @@
           <Property Name="Mensaje" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioPublica" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__16CE6296" FromRole="NotasRapidas" ToRole="Personas" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__412EB0B6" FromRole="NotasRapidas" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -354,13 +367,13 @@
           <Property Name="RolAcademico" Type="Byte" Nullable="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Estud__1F63A897" FromRole="Personas" ToRole="CursoEstudiante" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__1B9317B3" FromRole="Personas" ToRole="Cursos" />
-          <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Docen__3DE82FB7" FromRole="Personas" ToRole="MaterialDidactico" />
-          <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__16CE6296" FromRole="Personas" ToRole="NotasRapidas" />
+          <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Estud__534D60F1" FromRole="Personas" ToRole="CursoEstudiante" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__45F365D3" FromRole="Personas" ToRole="Cursos" />
+          <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Docen__4F7CD00D" FromRole="Personas" ToRole="MaterialDidactico" />
+          <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__412EB0B6" FromRole="Personas" ToRole="NotasRapidas" />
         </EntityType>
-        <Association Name="FK__CursoEstu__Curso__1E6F845E">
-          <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="0..1" />
+        <Association Name="FK__CursoEstu__Curso__52593CB8">
+          <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
           <End Type="TESIS_Model.CursoEstudiante" Role="CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
@@ -371,8 +384,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CursoEstu__Estud__1F63A897">
-          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
+        <Association Name="FK__CursoEstu__Estud__534D60F1">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
           <End Type="TESIS_Model.CursoEstudiante" Role="CursoEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
@@ -383,7 +396,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__Docente__1B9317B3">
+        <Association Name="FK__Cursos__Docente__45F365D3">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -395,7 +408,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MaterialD__Curso__3CF40B7E">
+        <Association Name="FK__MaterialD__Curso__4E88ABD4">
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
           <End Type="TESIS_Model.MaterialDidactico" Role="MaterialDidactico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -407,7 +420,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MaterialD__Docen__3DE82FB7">
+        <Association Name="FK__MaterialD__Docen__4F7CD00D">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
           <End Type="TESIS_Model.MaterialDidactico" Role="MaterialDidactico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -419,7 +432,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NotasRapi__Usuar__16CE6296">
+        <Association Name="FK__NotasRapi__Usuar__412EB0B6">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="0..1" />
           <End Type="TESIS_Model.NotasRapidas" Role="NotasRapidas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -431,6 +444,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PanelInformativo">
+          <Key>
+            <PropertyRef Name="PanelInformativoId" />
+          </Key>
+          <Property Name="PanelInformativoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContetType" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Byte" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -448,6 +470,7 @@
           <EntitySetMapping Name="CursoEstudiante">
             <EntityTypeMapping TypeName="TESIS_Model.CursoEstudiante">
               <MappingFragment StoreEntitySet="CursoEstudiante">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaMatricula" ColumnName="FechaMatricula" />
                 <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
                 <ScalarProperty Name="CursoId" ColumnName="CursoId" />
@@ -541,6 +564,16 @@
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PanelInformativo">
+            <EntityTypeMapping TypeName="TESIS_Model.PanelInformativo">
+              <MappingFragment StoreEntitySet="PanelInformativo">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ContetType" ColumnName="ContetType" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="PanelInformativoId" ColumnName="PanelInformativoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

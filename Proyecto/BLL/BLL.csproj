@@ -151,6 +151,7 @@
     <Compile Include="Bll_Login.cs" />
     <Compile Include="Bll_MaterialDidactico.cs" />
     <Compile Include="Bll_NotasRapidas.cs" />
+    <Compile Include="Bll_PanelInformativo.cs" />
     <Compile Include="Bll_Personas.cs" />
     <Compile Include="Bll_Seguridad.cs" />
     <Compile Include="Enums\EnumEstadoAcceso.cs" />

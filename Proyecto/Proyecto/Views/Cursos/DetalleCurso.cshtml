@@ -44,7 +44,6 @@
                 <div class="form-group">
                     <label>Codigo Curso </label>
                     @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control", @disabled = true } })
-                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">

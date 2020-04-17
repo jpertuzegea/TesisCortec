@@ -2,7 +2,6 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
-using Proyecto.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -114,9 +113,11 @@ namespace Proyecto.Controllers
 
             if (PersonaId == 0)// panel informativo siempre sera 0 (se reutilizo el metodo)
             {
-                if (Variables.Imagen != null)
+                Bll_PanelInformativo Bll_PanelInformativo = new Bll_PanelInformativo();
+                PanelInformativo PanelInformativo = Bll_PanelInformativo.ObtenerPanelInformativoByPanelInformativoId();
+                if (PanelInformativo.Imagen != null)
                 {
-                    return File(  Variables.Imagen, Proyecto.Models.Variables.ContetType);
+                    return File(PanelInformativo.Imagen, PanelInformativo.ContetType);
                 }
                 else
                 {
