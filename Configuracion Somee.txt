@@ -7,7 +7,12 @@ Usuario: Certec
 Clave:39590321.....
 ------------------------------
 
-Server Somee
+Server Hosting
 Usuario: Certec
 Clave:39590321.....
 ------------------------------
+
+BD
+Server: CORTECBD.mssql.somee.com
+Usuario: Certec_SQLLogin_1
+Clave: 3uvnorbw1q

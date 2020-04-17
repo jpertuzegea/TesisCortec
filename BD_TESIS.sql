@@ -106,12 +106,27 @@ FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
 FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (Cursos, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1
-
-
-
-
-
+ 
+ 
+CREATE TABLE MaterialDidactico(
+MaterialDidacticoId INT NOT NULL IDENTITY(1,1), 
+CursoId INT NOT NULL, 
+DocenteId INT NOT NULL,  
+Contenido  varbinary(max),
+Filename VARCHAR(220) DEFAULT NULL,
+ContentType VARCHAR(120) DEFAULT NULL,
+Version INT NOT NULL, 
+FechaRegistro DATETIME NOT null,
+Estado TINYINT NOT NULL, 
+PRIMARY KEY (MaterialDidacticoId), 
+FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
+FOREIGN KEY (DocenteId) REFERENCES Personas (PersonaId)
+);
+DBCC CHECKIDENT (MaterialDidactico, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+ 
+ 
 -- Borrado de tablas --
+Drop table MaterialDidactico;
 Drop table CursoEstudiante;
 Drop table IngresosAlSistema;
 Drop table Cursos;

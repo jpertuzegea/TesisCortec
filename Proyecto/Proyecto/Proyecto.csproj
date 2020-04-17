@@ -146,6 +146,7 @@
     <Compile Include="Controllers\IngresosAlSistemaController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MaterialDidacticoController.cs" />
     <Compile Include="Controllers\NotasRapidasController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1661,9 +1662,11 @@
     <Content Include="Views\Cursos\CursosOfertados.cshtml" />
     <Content Include="Views\Cursos\DetalleCurso.cshtml" />
     <Content Include="Views\CursoEstudiante\Index.cshtml" />
+    <Content Include="Views\Cursos\CursosDictados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\MaterialDidactico\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

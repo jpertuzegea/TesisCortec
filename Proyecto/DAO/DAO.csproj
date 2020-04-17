@@ -118,42 +118,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Codigos.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="CursoEstudiante.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Cursos.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="EvidenciaCorreo.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="IngresosAlSistema.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialDidactico.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="NotasRapidas.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Personas.cs">
-      <DependentUpon>Prueba.tt</DependentUpon>
+      <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Prueba.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Prueba.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Prueba.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Prueba.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Prueba.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Prueba.edmx</DependentUpon>
-    </Compile>
     <Compile Include="TesisDao.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -181,28 +169,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="Prueba.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Prueba.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Prueba.edmx.diagram">
-      <DependentUpon>Prueba.edmx</DependentUpon>
-    </None>
     <None Include="TesisDao.edmx.diagram">
       <DependentUpon>TesisDao.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Prueba.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Prueba.edmx</DependentUpon>
-      <LastGenOutput>Prueba.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Prueba.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Prueba.edmx</DependentUpon>
-      <LastGenOutput>Prueba.cs</LastGenOutput>
-    </Content>
     <Content Include="TesisDao.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TesisDao.Context.cs</LastGenOutput>

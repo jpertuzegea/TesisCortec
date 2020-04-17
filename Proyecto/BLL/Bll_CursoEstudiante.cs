@@ -25,8 +25,8 @@ namespace BLL
             {
                 List<CursoEstudiante> Lista = null;
                 Lista = BD.CursoEstudiante.Include(x => x.Personas).Include(y => y.Cursos).Where(x => x.EstudianteId == PersonaId).ToList();
-                 
-                return Lista; 
+
+                return Lista;
             }
             catch (Exception error)
             {
@@ -57,12 +57,14 @@ namespace BLL
             }
         }
 
-        public bool GuardarCursoEstudiante(int CursoId, int EstudianteId)
+        public bool Matricularse(int CursoId, string Nombre, string Codigo)
         {
-            if (CursoId > 0 && EstudianteId > 0)
+            if (CursoId > 0 && Nombre.Length > 3 && Codigo.Length > 3)
             {// si el objeto es diferente de nulo
                 try
                 {
+                    int EstudianteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
+
                     CursoEstudiante CursoEstudiante = new CursoEstudiante();
                     CursoEstudiante.CursoId = CursoId;
                     CursoEstudiante.EstudianteId = EstudianteId;
@@ -70,7 +72,22 @@ namespace BLL
 
                     BD.CursoEstudiante.Add(CursoEstudiante);
                     BD.SaveChanges();
+
                     HttpContext.Current.Session["CursosMatriculadosActivos"] = (int)HttpContext.Current.Session["CursosMatriculadosActivos"] + 1;
+
+                    string Mesnaje =
+                                 $"Buen dia señor(a): {EstudianteId}.\n" +
+                                 $"Se informa que su matricula en el curso [ {Nombre} ] con codigo: [ { Codigo} ], se ha realizado de manera exitosa. \n" +
+                                 $"Fecha Matricula: {DateTime.Now} \n " +
+                                 "Gracias por su pago, le deseamos exito en este nuevo curso. \n " +
+
+                                 "Despues de 24 horas, el curso estara disponible en su perfil. \n" +
+                                 "Feliz resto de dia.";
+
+                    string Email = new Bll_Personas().GetEmailByPersonaId(EstudianteId);
+                    Bll_Email Bll_Email = new Bll_Email();
+                    Bll_Email.EnviarCorreo(Email, "Matricula Exitosa", Mesnaje);
+
                     return true;
                 }
                 catch (Exception error)

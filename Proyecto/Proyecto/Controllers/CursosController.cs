@@ -50,9 +50,9 @@ namespace Proyecto.Controllers
         {
             Bll_Login.VerificarSesionActiva();
 
-            Bll_Cursos Bll_Cursos = new Bll_Cursos();
+            Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
 
-            if (Bll_Cursos.Matricularse(CursoId, Nombre, Codigo))
+            if (Bll_CursoEstudiante.Matricularse(CursoId, Nombre, Codigo))
             {// pregunta si la funcion de creacion se ejecuto con exito
                 return RedirectToAction("CursosOfertados", "Cursos");
             }
@@ -62,8 +62,19 @@ namespace Proyecto.Controllers
             }
 
         }
+         
 
+        [HttpGet]
+        public ActionResult CursosDictados()
+        {
+            Bll_Login.VerificarSesionActiva();
 
+            int DocenteId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
+            Bll_Cursos Bll_Cursos = new Bll_Cursos();
+            List<Cursos> Curso = Bll_Cursos.ListarCursosByDocenteId(EnumEstadoFiltro.Activo, DocenteId);
+            return View(Curso);
+        }
+         
 
         // GET: CursoAdd
         public ActionResult CursosAdd()

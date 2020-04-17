@@ -5,16 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="351f6fd49b594b948404705afe4f9a39" Name="Diagram1" ZoomLevel="56">
-        <EntityTypeShape EntityType="TESIS_Model.Codigos" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.CursoEstudiante" Width="1.5" PointX="5.25" PointY="3.125" />
-        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="2.875" PointY="1.5" />
-        <EntityTypeShape EntityType="TESIS_Model.EvidenciaCorreo" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.IngresosAlSistema" Width="1.5" PointX="7.75" PointY="4.75" />
-        <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3" PointY="6" />
-        <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="0.5" PointY="1.25" />
+        <EntityTypeShape EntityType="TESIS_Model.Codigos" Width="1.5" PointX="5.25" PointY="0.625" />
+        <EntityTypeShape EntityType="TESIS_Model.CursoEstudiante" Width="1.5" PointX="5.375" PointY="3.875" />
+        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3.125" PointY="4.375" />
+        <EntityTypeShape EntityType="TESIS_Model.EvidenciaCorreo" Width="1.5" PointX="7.25" PointY="0.625" />
+        <EntityTypeShape EntityType="TESIS_Model.IngresosAlSistema" Width="1.5" PointX="9.25" PointY="0.625" />
+        <EntityTypeShape EntityType="TESIS_Model.MaterialDidactico" Width="1.5" PointX="8.375" PointY="3.875" />
+        <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3.25" PointY="0.875" />
+        <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="1" PointY="0.75" />
         <AssociationConnector Association="TESIS_Model.FK__CursoEstu__Curso__1E6F845E" />
         <AssociationConnector Association="TESIS_Model.FK__CursoEstu__Estud__1F63A897" />
         <AssociationConnector Association="TESIS_Model.FK__Cursos__Docente__1B9317B3" />
+        <AssociationConnector Association="TESIS_Model.FK__MaterialD__Curso__3CF40B7E" />
+        <AssociationConnector Association="TESIS_Model.FK__MaterialD__Docen__3DE82FB7" />
         <AssociationConnector Association="TESIS_Model.FK__NotasRapi__Usuar__16CE6296" />
       </Diagram>
     </edmx:Diagrams>

@@ -52,6 +52,39 @@ namespace BLL
             }
         }
 
+
+        public List<Cursos> ListarCursosByDocenteId(EnumEstadoFiltro Filtro, int DocenteId)
+        {
+            try
+            {
+                List<Cursos> ListCursos = null;
+
+                switch (Filtro)
+                {
+                    case EnumEstadoFiltro.Activo://Activo
+                        ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Activo && c.Docente == DocenteId).ToList();
+                        break;
+
+                    case EnumEstadoFiltro.Inactivo://Inactivo
+                        ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Activo && c.Docente == DocenteId).ToList();
+                        break;
+
+                    case EnumEstadoFiltro.Todos:// Todos
+                        ListCursos = BD.Cursos.ToList();
+                        break;
+                }
+
+                return (ListCursos);
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
+
+
+
         // Metodo para listar los Cursos existentes que se encentren en estado activo y  la fecha este vigente
         public List<Cursos> VisualizarCursos()
         {
@@ -163,6 +196,7 @@ namespace BLL
                     }
 
                     Cur.Nombre = Curso.Nombre;
+                    Cur.Docente = Curso.Docente;
                     Cur.Descripcion = Curso.Descripcion;
                     Cur.TituloOtorgado = Curso.TituloOtorgado;
                     Cur.ValorCurso = Curso.ValorCurso;
@@ -183,30 +217,6 @@ namespace BLL
             {
                 return false;
             }
-        }
-
-
-        public bool Matricularse(int CursoId, string Nombre, string Codigo)
-        {
-            int EstudianteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
-            string Mesnaje =
-                         $"Buen dia señor(a): {EstudianteId}.\n" +
-                         $"Se informa que su matricula en el curso [ {Nombre} ] con codigo: [ { Codigo} ], se ha realizado de manera exitosa. \n" +
-                         $"Fecha Matricula: {DateTime.Now} \n " +
-                         "Gracias por su pago, le deseamos exito en este nuevo curso. \n " +
-
-                         "Despues de 24 horas, el curso estara disponible en su perfil. \n" +
-                         "Feliz resto de dia.";
-
-            string Email = new Bll_Personas().GetEmailByPersonaId(EstudianteId);
-             
-            Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
-            Bll_CursoEstudiante.GuardarCursoEstudiante(CursoId, EstudianteId);
-             
-            Bll_Email Bll_Email = new Bll_Email();
-            Bll_Email.EnviarCorreo(Email, "Matricula Exitosa", Mesnaje);
-
-            return true;
         }
 
         // Arma un select list de Cursos, con la propiedad value y name 
