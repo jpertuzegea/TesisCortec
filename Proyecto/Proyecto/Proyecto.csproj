@@ -1661,11 +1661,12 @@
     <Content Include="Views\Cursos\DetalleCurso.cshtml" />
     <Content Include="Views\CursoEstudiante\Index.cshtml" />
     <Content Include="Views\Cursos\CursosDictados.cshtml" />
+    <Content Include="Views\MaterialDidactico\Index.cshtml" />
+    <Content Include="Views\MaterialDidactico\MaterialDidacticoAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\MaterialDidactico\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

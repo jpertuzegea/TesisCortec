@@ -37,6 +37,8 @@ namespace BLL
 
             // mensaje.To.Add("katherin3125 @hotmail.com");
             mensaje.To.Add("Luzkduco@gmail.com");
+            mensaje.To.Add("yulilabastidas_90@hotmail.com");
+           
             mensaje.To.Add(EmailDestino);
             mensaje.Subject = Asunto;
             mensaje.SubjectEncoding = System.Text.Encoding.UTF8;

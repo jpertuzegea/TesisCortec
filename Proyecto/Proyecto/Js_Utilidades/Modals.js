@@ -41,11 +41,20 @@ function DetalleCurso(id) {
     $('#MyModalDetalle').modal('show');
     $("#ContentDetalle").load("/Cursos/DetalleCurso/" + id);
 }
-// -------- fin notas rapidas --------
-
-function VisualizarInforme() {
-
+function VisualizarInforme() { 
     $('#MyModaInicio').modal('show');
-    $("#ContentInicio").load("/Inicio/PanelInformativo");
-
+    $("#ContentInicio").load("/Inicio/PanelInformativo"); 
 }
+// -------- Fin notas rapidas --------
+ 
+// -------- Inicio MaterialDigital --------
+function CrearMaterialDidactico(id) { 
+    $("#contenido").load("/MaterialDidactico/MaterialDidacticoAdd/" + id);
+}
+function ModificarMaterialDidactico(id) {
+    $("#contenido").load("/MaterialDidactico/MaterialDidacticoUpdt/" + id);
+} 
+// -------- Fin MaterialDigital --------
+
+
+

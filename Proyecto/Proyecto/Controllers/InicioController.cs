@@ -12,8 +12,7 @@ namespace Proyecto.Controllers
     {
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
-
+            Bll_Login.VerificarSesionActiva(); 
             Bll_NotasRapidas Bll_NotasRapidas = new Bll_NotasRapidas();
             List<NotasRapidas> Lista = Bll_NotasRapidas.VisualizarNotas();
 
