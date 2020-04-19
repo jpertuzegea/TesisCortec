@@ -19,12 +19,10 @@ namespace BLL
             BD = new TESIS_BD();
         }
 
-        public bool GuardarMaterialDidactico(int CursoId, HttpPostedFileBase file)
+        public bool GuardarMaterialDidactico(MaterialDidactico MaterialDidactico, HttpPostedFileBase file)
         {
-            if (CursoId > 0)
+            if (MaterialDidactico.CursoId > 0)
             {// si el objeto es diferente de nulo
-
-                MaterialDidactico MaterialDidactico = new MaterialDidactico();
 
                 if (file != null && file.ContentLength > 0)
                 {
@@ -33,12 +31,12 @@ namespace BLL
                     string filename_con_extension = file.FileName;
                     // string filename = Path.GetFileNameWithoutExtension(filename_con_extension);
                     string ContentType = file.ContentType;
-                    // string extencion = Path.GetExtension(file.FileName); 
+                    string extencion = Path.GetExtension(file.FileName);
 
-                    MaterialDidactico.CursoId = CursoId;
+                    MaterialDidactico.CursoId = MaterialDidactico.CursoId;
                     MaterialDidactico.DocenteId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
                     MaterialDidactico.Contenido = contenido;
-                    MaterialDidactico.Filename = filename_con_extension;
+                    MaterialDidactico.Filename = MaterialDidactico.Filename + extencion;
                     MaterialDidactico.ContentType = ContentType;
                     MaterialDidactico.Version = 1;
                     MaterialDidactico.FechaRegistro = DateTime.Now;
@@ -99,7 +97,7 @@ namespace BLL
 
 
 
-        
+
 
 
     }

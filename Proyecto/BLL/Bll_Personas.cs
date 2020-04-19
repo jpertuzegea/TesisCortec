@@ -61,7 +61,7 @@ namespace BLL
             {
                 Bll_File.EscribirLog(error.ToString());
                 return null;
-            } 
+            }
         }
         public string GetEmailByPersonaId(int PersonaId)
         {
@@ -81,7 +81,7 @@ namespace BLL
             {
                 Bll_File.EscribirLog(error.ToString());
                 return null;
-            } 
+            }
         }
 
         public bool ValidaEmailExiste(string Email)
@@ -95,7 +95,7 @@ namespace BLL
             try
             {
                 List<Personas> Lista = null;
-               
+
                 switch (Filtro)
                 {
                     case EnumEstadoFiltro.Activo://Activo
@@ -110,7 +110,7 @@ namespace BLL
                         Lista = BD.Personas.ToList();
                         break;
                 }
-                 
+
                 return (Lista);// retorna una lista de entidades
             }
             catch (Exception error)
@@ -137,6 +137,15 @@ namespace BLL
                         Persona.FechaIngreso = DateTime.Now.Date;
                         Persona.Estado = (byte)EnumEstados.Activo;
                         Persona.RolAcademico = (byte)EnumRolAcademico.Estudiante;
+
+                        // ----------- Aca se guarda la imagen por defecto de Usuario sin Foto  -----------
+                        string dataFile = HttpContext.Current.Server.MapPath("~/Imagenes/Sin Foto.jpg");
+                        FileStream foto = new FileStream(dataFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                        Byte[] arreglo = new Byte[foto.Length];
+                        BinaryReader reader = new BinaryReader(foto);
+                        arreglo = reader.ReadBytes(Convert.ToInt32(foto.Length));
+                        Persona.Imagen = arreglo;
+                        // ---------------------------------------------------------------------------------
 
                         BD.Personas.Add(Persona);
                         Bll_Codigo.GuardarCodigo(Codigo);
@@ -235,7 +244,7 @@ namespace BLL
 
                         Perso.Imagen = imagenData;
                     }
-
+                     
                     BD.Entry(Perso).State = EntityState.Modified;
                     BD.SaveChanges();
 

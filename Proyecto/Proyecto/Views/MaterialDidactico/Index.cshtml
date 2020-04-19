@@ -59,7 +59,10 @@
                                 <tr>
 
                                     <th>
-                                        Nombre Curso
+                                        Nombre Material
+                                    </th>
+                                    <th>
+                                        Mensaje
                                     </th>
                                     <th>
                                         Docente
@@ -77,29 +80,35 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Cursos.Nombre)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FechaRegistro)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink(" ", "DescargarDocumento", "MaterialDidactico", new { MaterialDidacticoId = item.MaterialDidacticoId }, new { @class = "fa fa-cloud-download", @title = "Descargar Material" })
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Filename)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Mensaje)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaRegistro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(" ", "DescargarDocumento", "MaterialDidactico", new { MaterialDidacticoId = item.MaterialDidacticoId }, new { @class = "fa fa-cloud-download", @title = "Descargar Material" })
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>
-                                        Nombre Curso
+                                        Nombre Material
+                                    </th>
+                                    <th>
+                                       Mensaje
                                     </th>
                                     <th>
                                         Docente

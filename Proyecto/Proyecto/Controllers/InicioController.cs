@@ -17,7 +17,7 @@ namespace Proyecto.Controllers
             List<NotasRapidas> Lista = Bll_NotasRapidas.VisualizarNotas();
 
             Bll_PanelInformativo Bll_PanelInformativo = new Bll_PanelInformativo();
-            ViewBag.PanelInformativo = 1;// Bll_PanelInformativo.ObtenerPanelInformativoByPanelInformativoId().Estado;
+            ViewBag.PanelInformativo = Bll_PanelInformativo.ObtenerPanelInformativoByPanelInformativoId().Estado;
             return View(Lista);
         }
         public ActionResult PanelInformativo()

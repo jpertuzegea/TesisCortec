@@ -96,11 +96,13 @@
                                     <td>
                                         @*<a href="#" onclick="" title="Foro del Curso" data-toggle="modal" id="@item.CursoId"><i class="fa fa-comments"></i></a>*@
                                     </td>
+
                                     <td>
-                                        <a href="#" onclick="" title="Material Didactico" data-toggle="modal" id="@item.CursoId"><i class="fa fa-book"></i></a>
+                                        @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
                                     </td>
+
                                     <td>
-                                 @*       <a href="#" onclick="" title="Mis Notas" data-toggle="modal" id="@item.CursoId"><i class="fa fa-graduation-cap"></i></a>*@
+                                        @*       <a href="#" onclick="" title="Mis Notas" data-toggle="modal" id="@item.CursoId"><i class="fa fa-graduation-cap"></i></a>*@
                                     </td>
                                 </tr>
                                 }

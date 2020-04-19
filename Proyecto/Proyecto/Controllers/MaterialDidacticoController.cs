@@ -36,16 +36,16 @@ namespace Proyecto.Controllers
 
 
         [HttpPost]
-        public ActionResult MaterialDidacticoAdd(HttpPostedFileBase file, int CursoId)
+        public ActionResult MaterialDidacticoAdd(MaterialDidactico MaterialDidactico, HttpPostedFileBase file)
         {
             Bll_Login.VerificarSesionActiva();
-            ViewBag.CursoId = CursoId;
+            ViewBag.CursoId = MaterialDidactico.CursoId;
 
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
 
-            if (Bll_MaterialDidactico.GuardarMaterialDidactico(CursoId, file))
+            if (Bll_MaterialDidactico.GuardarMaterialDidactico(MaterialDidactico, file))
             {// pregunta si la funcion de creacion se ejecuto con exito
-                return RedirectToAction("Index", new { CursoId = CursoId });
+                return RedirectToAction("Index", new { CursoId = MaterialDidactico.CursoId });
             }
             else
             {// no creado

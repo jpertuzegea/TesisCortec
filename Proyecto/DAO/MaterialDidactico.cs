@@ -19,6 +19,7 @@ namespace DAO
         public int DocenteId { get; set; }
         public byte[] Contenido { get; set; }
         public string Filename { get; set; }
+        public string Mensaje { get; set; }
         public string ContentType { get; set; }
         public int Version { get; set; }
         public System.DateTime FechaRegistro { get; set; }

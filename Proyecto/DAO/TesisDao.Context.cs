@@ -32,7 +32,7 @@ namespace DAO
         public virtual DbSet<IngresosAlSistema> IngresosAlSistema { get; set; }
         public virtual DbSet<MaterialDidactico> MaterialDidactico { get; set; }
         public virtual DbSet<NotasRapidas> NotasRapidas { get; set; }
-        public virtual DbSet<Personas> Personas { get; set; }
         public virtual DbSet<PanelInformativo> PanelInformativo { get; set; }
+        public virtual DbSet<Personas> Personas { get; set; }
     }
 }

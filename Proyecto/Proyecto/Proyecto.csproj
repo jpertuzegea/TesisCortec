@@ -177,6 +177,7 @@
     <Content Include="Imagenes\LogoSigecor.png" />
     <Content Include="Imagenes\pavicon.png" />
     <Content Include="Imagenes\perfil.jpg" />
+    <Content Include="Imagenes\Sin Foto.jpg" />
     <Content Include="Js_Utilidades\Modals.js" />
     <Content Include="Plantilla\css\animate.css" />
     <Content Include="Plantilla\css\bootstrap.css" />
