@@ -18,6 +18,7 @@ namespace DAO
         public Cursos()
         {
             this.CursoEstudiante = new HashSet<CursoEstudiante>();
+            this.Foro = new HashSet<Foro>();
             this.MaterialDidactico = new HashSet<MaterialDidactico>();
         }
     
@@ -35,6 +36,8 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CursoEstudiante> CursoEstudiante { get; set; }
         public virtual Personas Personas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Foro> Foro { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialDidactico> MaterialDidactico { get; set; }
     }

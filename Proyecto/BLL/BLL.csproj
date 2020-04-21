@@ -147,6 +147,7 @@
     <Compile Include="Bll_Email.cs" />
     <Compile Include="Bll_EvidenciaCorreo.cs" />
     <Compile Include="Bll_File.cs" />
+    <Compile Include="Bll_Foro.cs" />
     <Compile Include="Bll_IngresoAlSistema.cs" />
     <Compile Include="Bll_Login.cs" />
     <Compile Include="Bll_MaterialDidactico.cs" />

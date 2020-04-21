@@ -29,6 +29,7 @@ namespace DAO
         public virtual DbSet<CursoEstudiante> CursoEstudiante { get; set; }
         public virtual DbSet<Cursos> Cursos { get; set; }
         public virtual DbSet<EvidenciaCorreo> EvidenciaCorreo { get; set; }
+        public virtual DbSet<Foro> Foro { get; set; }
         public virtual DbSet<IngresosAlSistema> IngresosAlSistema { get; set; }
         public virtual DbSet<MaterialDidactico> MaterialDidactico { get; set; }
         public virtual DbSet<NotasRapidas> NotasRapidas { get; set; }

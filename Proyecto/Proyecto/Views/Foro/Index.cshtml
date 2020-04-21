@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DAO.CursoEstudiante>
+﻿
+@model IEnumerable<DAO.Foro>
 
 @{
     ViewBag.Title = "Index";
@@ -10,8 +11,8 @@
         <br>
         @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
             {*@
-        <a data-toggle="modal" class="btn btn-primary" onclick=" ()" id="NuevaMatricula" href=@Url.Action("CursosOfertados", "Cursos")>Nueva Matricula</a>
 
+        <a data-toggle="modal" class="btn btn-primary" onclick="CrearForo( @ViewBag.CursoId)" id="btn_NuevoForo" href="#myModal2">Nuevo Foro</a>
 
         @*}*@
     </div>
@@ -27,7 +28,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5 align="center">Listado de Cursos Matriculados Existentes en el Sistema</h5>
+                    <h5 align="center">Listado de Foros Didacticos Para El Curso    <b><FONT COLOR="#1ab394">[ @ViewBag.NombreCurso ]</FONT> </b></h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -57,27 +58,22 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Nombre Curso
+                                        Nombre Docente
                                     </th>
                                     <th>
-                                        Estudiante
+                                        Tema
                                     </th>
                                     <th>
-                                        Fecha Matricula
+                                        Descripcion
+                                    </th>
+                                    <th>
+                                        Fecha Registro
+                                    </th>
+                                    <th>
+                                        Estado
                                     </th>
 
-                                    <th>
-                                        @*Foro*@
-                                    </th>
-
-                                    <th>
-                                        @*Material*@
-                                    </th>
-
-                                    <th>
-                                        @*Mis Notas*@
-                                    </th>
-
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,24 +81,22 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Cursos.Nombre)
-                                        </td>
-                                        <td>
                                             @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.FechaMatricula)
+                                            @Html.DisplayFor(modelItem => item.Tema)
                                         </td>
                                         <td>
-                                            @Html.ActionLink(" ", "Index", "Foro", new { CursoId = item.CursoId }, new { @class = "fa fa-comments", @title = "Foro del Curso" })
+                                            @Html.DisplayFor(modelItem => item.Descripcion)
                                         </td>
-
                                         <td>
-                                            @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
+                                            @Html.DisplayFor(modelItem => item.FechaRegistro)
                                         </td>
-
                                         <td>
-                                            @*       <a href="#" onclick="" title="Mis Notas" data-toggle="modal" id="@item.CursoId"><i class="fa fa-graduation-cap"></i></a>*@
+                                            @Html.DisplayFor(modelItem => item.Estado)
+                                        </td>
+                                        <td>
+                                          @Html.ActionLink(" ", "IngresarAlForo", "Foro", new { ForoId = item.ForoId }, new { @class = "fa fa-handshake-o", @title = "Ingresar al Foro" })
                                         </td>
                                     </tr>
                                 }
@@ -110,27 +104,21 @@
                             <tfoot>
                                 <tr>
                                     <th>
-                                        Nombre Curso
+                                        Nombre Docente
                                     </th>
                                     <th>
-                                        Estudiante
+                                        Tema
                                     </th>
                                     <th>
-                                        Fecha Matricula
+                                        Descripcion
                                     </th>
-
                                     <th>
-                                        @*Foro*@
+                                        Fecha Registro
                                     </th>
-
                                     <th>
-                                        @*Material*@
+                                        Estado
                                     </th>
-
-                                    <th>
-                                        @*Mis Notas*@
-                                    </th>
-
+                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>

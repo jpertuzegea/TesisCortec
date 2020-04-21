@@ -51,10 +51,17 @@ function VisualizarInforme() {
 function CrearMaterialDidactico(id) { 
     $("#contenido").load("/MaterialDidactico/MaterialDidacticoAdd/" + id);
 }
-function ModificarMaterialDidactico(id) {
-    $("#contenido").load("/MaterialDidactico/MaterialDidacticoUpdt/" + id);
-} 
+//function ModificarMaterialDidactico(id) {
+//    $("#contenido").load("/MaterialDidactico/MaterialDidacticoUpdt/" + id);
+//} 
 // -------- Fin MaterialDigital --------
+
+// -------- Inicio Foro --------
+function CrearForo(id) {
+    $("#contenido").load("/Foro/ForoAdd/" + id);
+} 
+// -------- Fin Foro --------
+
 
 
 

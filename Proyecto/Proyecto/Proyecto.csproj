@@ -143,6 +143,7 @@
     <Compile Include="Controllers\CursoEstudianteController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EvidenciaCorreoController.cs" />
+    <Compile Include="Controllers\ForoController.cs" />
     <Compile Include="Controllers\IngresosAlSistemaController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -1664,6 +1665,9 @@
     <Content Include="Views\Cursos\CursosDictados.cshtml" />
     <Content Include="Views\MaterialDidactico\Index.cshtml" />
     <Content Include="Views\MaterialDidactico\MaterialDidacticoAdd.cshtml" />
+    <Content Include="Views\Foro\Index.cshtml" />
+    <Content Include="Views\Foro\ForoAdd.cshtml" />
+    <Content Include="Views\Foro\ForoUpdt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
