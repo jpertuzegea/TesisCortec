@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<DAO.Foro>
+@model IEnumerable<DAO.ForoTema>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
         @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
             {*@
 
-        <a data-toggle="modal" class="btn btn-primary" onclick="CrearForo( @ViewBag.CursoId)" id="btn_NuevoForo" href="#myModal2">Nuevo Foro</a>
+        <a data-toggle="modal" class="btn btn-primary" onclick="CrearForoTema( @ViewBag.CursoId)" id="btn_NuevoForo" href="#myModal2">Nuevo Tema</a>
 
         @*}*@
     </div>
@@ -96,7 +96,10 @@
                                             @Html.DisplayFor(modelItem => item.Estado)
                                         </td>
                                         <td>
-                                          @Html.ActionLink(" ", "IngresarAlForo", "Foro", new { ForoId = item.ForoId }, new { @class = "fa fa-handshake-o", @title = "Ingresar al Foro" })
+                                            <a href="#myModal2" onclick="ModificarForoTema(this.id)" data-toggle="modal" id="@item.ForoTemaId"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "IngresarAlForo", "Foro", new { ForoTemaId = item.ForoTemaId }, new { @class = "fa fa-handshake-o", @title = "Ingresar al Foro" })
                                         </td>
                                     </tr>
                                 }

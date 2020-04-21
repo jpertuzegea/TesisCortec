@@ -49,11 +49,11 @@
           <Property Name="Fecha" Type="datetime" />
           <Property Name="EstadoEnvio" Type="varchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="Foro">
+        <EntityType Name="ForoTema">
           <Key>
-            <PropertyRef Name="ForoId" />
+            <PropertyRef Name="ForoTemaId" />
           </Key>
-          <Property Name="ForoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ForoTemaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CursoId" Type="int" Nullable="false" />
           <Property Name="DocenteId" Type="int" Nullable="false" />
           <Property Name="Tema" Type="varchar" MaxLength="120" />
@@ -106,6 +106,16 @@
           <Property Name="Imagen" Type="varbinary(max)" />
           <Property Name="ContetType" Type="varchar" MaxLength="70" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParticipacionEnForo">
+          <Key>
+            <PropertyRef Name="ParticipacionEnForoId" />
+          </Key>
+          <Property Name="ParticipacionEnForoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParticipanteId" Type="int" Nullable="false" />
+          <Property Name="ForoTemaId" Type="int" Nullable="false" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -163,26 +173,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Foro__CursoId__7CD98669">
+        <Association Name="FK__ForoTema__CursoI__0B27A5C0">
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
-          <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
+          <End Role="ForoTema" Type="Self.ForoTema" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
               <PropertyRef Name="CursoId" />
             </Principal>
-            <Dependent Role="Foro">
+            <Dependent Role="ForoTema">
               <PropertyRef Name="CursoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Foro__DocenteId__7DCDAAA2">
+        <Association Name="FK__ForoTema__Docent__0C1BC9F9">
           <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
-          <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
+          <End Role="ForoTema" Type="Self.ForoTema" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="PersonaId" />
             </Principal>
-            <Dependent Role="Foro">
+            <Dependent Role="ForoTema">
               <PropertyRef Name="DocenteId" />
             </Dependent>
           </ReferentialConstraint>
@@ -223,16 +233,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Participa__ForoT__0EF836A4">
+          <End Role="ForoTema" Type="Self.ForoTema" Multiplicity="1" />
+          <End Role="ParticipacionEnForo" Type="Self.ParticipacionEnForo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForoTema">
+              <PropertyRef Name="ForoTemaId" />
+            </Principal>
+            <Dependent Role="ParticipacionEnForo">
+              <PropertyRef Name="ForoTemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Participa__Parti__0FEC5ADD">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="ParticipacionEnForo" Type="Self.ParticipacionEnForo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="ParticipacionEnForo">
+              <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TESIS_ModelStoreContainer">
           <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursoEstudiante" EntityType="Self.CursoEstudiante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EvidenciaCorreo" EntityType="Self.EvidenciaCorreo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Foro" EntityType="Self.Foro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForoTema" EntityType="Self.ForoTema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IngresosAlSistema" EntityType="Self.IngresosAlSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialDidactico" EntityType="Self.MaterialDidactico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasRapidas" EntityType="Self.NotasRapidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PanelInformativo" EntityType="Self.PanelInformativo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipacionEnForo" EntityType="Self.ParticipacionEnForo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CursoEstu__Curso__51EF2864" Association="Self.FK__CursoEstu__Curso__51EF2864">
             <End Role="Cursos" EntitySet="Cursos" />
@@ -246,13 +281,13 @@
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Foro__CursoId__7CD98669" Association="Self.FK__Foro__CursoId__7CD98669">
+          <AssociationSet Name="FK__ForoTema__CursoI__0B27A5C0" Association="Self.FK__ForoTema__CursoI__0B27A5C0">
             <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Foro" EntitySet="Foro" />
+            <End Role="ForoTema" EntitySet="ForoTema" />
           </AssociationSet>
-          <AssociationSet Name="FK__Foro__DocenteId__7DCDAAA2" Association="Self.FK__Foro__DocenteId__7DCDAAA2">
+          <AssociationSet Name="FK__ForoTema__Docent__0C1BC9F9" Association="Self.FK__ForoTema__Docent__0C1BC9F9">
             <End Role="Personas" EntitySet="Personas" />
-            <End Role="Foro" EntitySet="Foro" />
+            <End Role="ForoTema" EntitySet="ForoTema" />
           </AssociationSet>
           <AssociationSet Name="FK__MaterialD__Curso__6ABAD62E" Association="Self.FK__MaterialD__Curso__6ABAD62E">
             <End Role="Cursos" EntitySet="Cursos" />
@@ -266,6 +301,14 @@
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
           </AssociationSet>
+          <AssociationSet Name="FK__Participa__ForoT__0EF836A4" Association="Self.FK__Participa__ForoT__0EF836A4">
+            <End Role="ForoTema" EntitySet="ForoTema" />
+            <End Role="ParticipacionEnForo" EntitySet="ParticipacionEnForo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Participa__Parti__0FEC5ADD" Association="Self.FK__Participa__Parti__0FEC5ADD">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="ParticipacionEnForo" EntitySet="ParticipacionEnForo" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -276,11 +319,12 @@
           <EntitySet Name="CursoEstudiante" EntityType="TESIS_Model.CursoEstudiante" />
           <EntitySet Name="Cursos" EntityType="TESIS_Model.Cursos" />
           <EntitySet Name="EvidenciaCorreo" EntityType="TESIS_Model.EvidenciaCorreo" />
-          <EntitySet Name="Foro" EntityType="TESIS_Model.Foro" />
+          <EntitySet Name="ForoTema" EntityType="TESIS_Model.ForoTema" />
           <EntitySet Name="IngresosAlSistema" EntityType="TESIS_Model.IngresosAlSistema" />
           <EntitySet Name="MaterialDidactico" EntityType="TESIS_Model.MaterialDidactico" />
           <EntitySet Name="NotasRapidas" EntityType="TESIS_Model.NotasRapidas" />
           <EntitySet Name="PanelInformativo" EntityType="TESIS_Model.PanelInformativo" />
+          <EntitySet Name="ParticipacionEnForo" EntityType="TESIS_Model.ParticipacionEnForo" />
           <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
           <AssociationSet Name="FK__CursoEstu__Curso__51EF2864" Association="TESIS_Model.FK__CursoEstu__Curso__51EF2864">
             <End Role="Cursos" EntitySet="Cursos" />
@@ -294,17 +338,21 @@
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Foro__CursoId__7CD98669" Association="TESIS_Model.FK__Foro__CursoId__7CD98669">
+          <AssociationSet Name="FK__ForoTema__CursoI__0B27A5C0" Association="TESIS_Model.FK__ForoTema__CursoI__0B27A5C0">
             <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Foro" EntitySet="Foro" />
+            <End Role="ForoTema" EntitySet="ForoTema" />
           </AssociationSet>
           <AssociationSet Name="FK__MaterialD__Curso__6ABAD62E" Association="TESIS_Model.FK__MaterialD__Curso__6ABAD62E">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="MaterialDidactico" EntitySet="MaterialDidactico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Foro__DocenteId__7DCDAAA2" Association="TESIS_Model.FK__Foro__DocenteId__7DCDAAA2">
+          <AssociationSet Name="FK__ForoTema__Docent__0C1BC9F9" Association="TESIS_Model.FK__ForoTema__Docent__0C1BC9F9">
             <End Role="Personas" EntitySet="Personas" />
-            <End Role="Foro" EntitySet="Foro" />
+            <End Role="ForoTema" EntitySet="ForoTema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Participa__ForoT__0EF836A4" Association="TESIS_Model.FK__Participa__ForoT__0EF836A4">
+            <End Role="ForoTema" EntitySet="ForoTema" />
+            <End Role="ParticipacionEnForo" EntitySet="ParticipacionEnForo" />
           </AssociationSet>
           <AssociationSet Name="FK__MaterialD__Docen__6BAEFA67" Association="TESIS_Model.FK__MaterialD__Docen__6BAEFA67">
             <End Role="Personas" EntitySet="Personas" />
@@ -313,6 +361,10 @@
           <AssociationSet Name="FK__NotasRapi__Usuar__4A4E069C" Association="TESIS_Model.FK__NotasRapi__Usuar__4A4E069C">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="NotasRapidas" EntitySet="NotasRapidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Participa__Parti__0FEC5ADD" Association="TESIS_Model.FK__Participa__Parti__0FEC5ADD">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="ParticipacionEnForo" EntitySet="ParticipacionEnForo" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Codigos">
@@ -350,7 +402,7 @@
           <Property Name="Estado" Type="Byte" Nullable="false" />
           <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Curso__51EF2864" FromRole="Cursos" ToRole="CursoEstudiante" />
           <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__4F12BBB9" FromRole="Cursos" ToRole="Personas" />
-          <NavigationProperty Name="Foro" Relationship="TESIS_Model.FK__Foro__CursoId__7CD98669" FromRole="Cursos" ToRole="Foro" />
+          <NavigationProperty Name="ForoTema" Relationship="TESIS_Model.FK__ForoTema__CursoI__0B27A5C0" FromRole="Cursos" ToRole="ForoTema" />
           <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Curso__6ABAD62E" FromRole="Cursos" ToRole="MaterialDidactico" />
         </EntityType>
         <EntityType Name="EvidenciaCorreo">
@@ -365,19 +417,20 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="EstadoEnvio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Foro">
+        <EntityType Name="ForoTema">
           <Key>
-            <PropertyRef Name="ForoId" />
+            <PropertyRef Name="ForoTemaId" />
           </Key>
-          <Property Name="ForoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForoTemaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CursoId" Type="Int32" Nullable="false" />
           <Property Name="DocenteId" Type="Int32" Nullable="false" />
           <Property Name="Tema" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Foro__CursoId__7CD98669" FromRole="Foro" ToRole="Cursos" />
-          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Foro__DocenteId__7DCDAAA2" FromRole="Foro" ToRole="Personas" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__ForoTema__CursoI__0B27A5C0" FromRole="ForoTema" ToRole="Cursos" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__ForoTema__Docent__0C1BC9F9" FromRole="ForoTema" ToRole="Personas" />
+          <NavigationProperty Name="ParticipacionEnForo" Relationship="TESIS_Model.FK__Participa__ForoT__0EF836A4" FromRole="ForoTema" ToRole="ParticipacionEnForo" />
         </EntityType>
         <EntityType Name="IngresosAlSistema">
           <Key>
@@ -428,6 +481,18 @@
           <Property Name="ContetType" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
         </EntityType>
+        <EntityType Name="ParticipacionEnForo">
+          <Key>
+            <PropertyRef Name="ParticipacionEnForoId" />
+          </Key>
+          <Property Name="ParticipacionEnForoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+          <Property Name="ForoTemaId" Type="Int32" Nullable="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ForoTema" Relationship="TESIS_Model.FK__Participa__ForoT__0EF836A4" FromRole="ParticipacionEnForo" ToRole="ForoTema" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Participa__Parti__0FEC5ADD" FromRole="ParticipacionEnForo" ToRole="Personas" />
+        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="PersonaId" />
@@ -449,9 +514,10 @@
           <Property Name="Estado" Type="Byte" Nullable="false" />
           <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Estud__52E34C9D" FromRole="Personas" ToRole="CursoEstudiante" />
           <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__4F12BBB9" FromRole="Personas" ToRole="Cursos" />
-          <NavigationProperty Name="Foro" Relationship="TESIS_Model.FK__Foro__DocenteId__7DCDAAA2" FromRole="Personas" ToRole="Foro" />
+          <NavigationProperty Name="ForoTema" Relationship="TESIS_Model.FK__ForoTema__Docent__0C1BC9F9" FromRole="Personas" ToRole="ForoTema" />
           <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Docen__6BAEFA67" FromRole="Personas" ToRole="MaterialDidactico" />
           <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__4A4E069C" FromRole="Personas" ToRole="NotasRapidas" />
+          <NavigationProperty Name="ParticipacionEnForo" Relationship="TESIS_Model.FK__Participa__Parti__0FEC5ADD" FromRole="Personas" ToRole="ParticipacionEnForo" />
         </EntityType>
         <Association Name="FK__CursoEstu__Curso__51EF2864">
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
@@ -489,14 +555,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Foro__CursoId__7CD98669">
+        <Association Name="FK__ForoTema__CursoI__0B27A5C0">
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
-          <End Type="TESIS_Model.Foro" Role="Foro" Multiplicity="*" />
+          <End Type="TESIS_Model.ForoTema" Role="ForoTema" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
               <PropertyRef Name="CursoId" />
             </Principal>
-            <Dependent Role="Foro">
+            <Dependent Role="ForoTema">
               <PropertyRef Name="CursoId" />
             </Dependent>
           </ReferentialConstraint>
@@ -513,15 +579,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Foro__DocenteId__7DCDAAA2">
+        <Association Name="FK__ForoTema__Docent__0C1BC9F9">
           <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
-          <End Type="TESIS_Model.Foro" Role="Foro" Multiplicity="*" />
+          <End Type="TESIS_Model.ForoTema" Role="ForoTema" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="PersonaId" />
             </Principal>
-            <Dependent Role="Foro">
+            <Dependent Role="ForoTema">
               <PropertyRef Name="DocenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Participa__ForoT__0EF836A4">
+          <End Type="TESIS_Model.ForoTema" Role="ForoTema" Multiplicity="1" />
+          <End Type="TESIS_Model.ParticipacionEnForo" Role="ParticipacionEnForo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForoTema">
+              <PropertyRef Name="ForoTemaId" />
+            </Principal>
+            <Dependent Role="ParticipacionEnForo">
+              <PropertyRef Name="ForoTemaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -546,6 +624,18 @@
             </Principal>
             <Dependent Role="NotasRapidas">
               <PropertyRef Name="UsuarioPublica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Participa__Parti__0FEC5ADD">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
+          <End Type="TESIS_Model.ParticipacionEnForo" Role="ParticipacionEnForo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="ParticipacionEnForo">
+              <PropertyRef Name="ParticipanteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -603,16 +693,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Foro">
-            <EntityTypeMapping TypeName="TESIS_Model.Foro">
-              <MappingFragment StoreEntitySet="Foro">
+          <EntitySetMapping Name="ForoTema">
+            <EntityTypeMapping TypeName="TESIS_Model.ForoTema">
+              <MappingFragment StoreEntitySet="ForoTema">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Tema" ColumnName="Tema" />
                 <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
                 <ScalarProperty Name="CursoId" ColumnName="CursoId" />
-                <ScalarProperty Name="ForoId" ColumnName="ForoId" />
+                <ScalarProperty Name="ForoTemaId" ColumnName="ForoTemaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -663,6 +753,17 @@
                 <ScalarProperty Name="ContetType" ColumnName="ContetType" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="PanelInformativoId" ColumnName="PanelInformativoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipacionEnForo">
+            <EntityTypeMapping TypeName="TESIS_Model.ParticipacionEnForo">
+              <MappingFragment StoreEntitySet="ParticipacionEnForo">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="ForoTemaId" ColumnName="ForoTemaId" />
+                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+                <ScalarProperty Name="ParticipacionEnForoId" ColumnName="ParticipacionEnForoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

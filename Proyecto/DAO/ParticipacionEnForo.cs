@@ -12,17 +12,15 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Foro
+    public partial class ParticipacionEnForo
     {
-        public int ForoId { get; set; }
-        public int CursoId { get; set; }
-        public int DocenteId { get; set; }
-        public string Tema { get; set; }
-        public string Descripcion { get; set; }
+        public int ParticipacionEnForoId { get; set; }
+        public int ParticipanteId { get; set; }
+        public int ForoTemaId { get; set; }
+        public string Mensaje { get; set; }
         public System.DateTime FechaRegistro { get; set; }
-        public byte Estado { get; set; }
     
-        public virtual Cursos Cursos { get; set; }
+        public virtual ForoTema ForoTema { get; set; }
         public virtual Personas Personas { get; set; }
     }
 }

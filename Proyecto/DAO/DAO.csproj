@@ -129,7 +129,7 @@
     <Compile Include="EvidenciaCorreo.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="Foro.cs">
+    <Compile Include="ForoTema.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="IngresosAlSistema.cs">
@@ -142,6 +142,9 @@
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="PanelInformativo.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParticipacionEnForo.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Personas.cs">

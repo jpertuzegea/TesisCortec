@@ -138,22 +138,37 @@ FOREIGN KEY (DocenteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (MaterialDidactico, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
-CREATE TABLE Foro(
-ForoId INT NOT NULL IDENTITY(1,1), 
+CREATE TABLE ForoTema(
+ForoTemaId INT NOT NULL IDENTITY(1,1), 
 CursoId INT NOT NULL, 
 DocenteId INT NOT NULL,
 Tema VARCHAR(120) DEFAULT NULL,
 Descripcion VARCHAR(255) DEFAULT NULL,
 FechaRegistro DATETIME NOT null,
 Estado TINYINT NOT NULL,  
-PRIMARY KEY (ForoId), 
+PRIMARY KEY (ForoTemaId), 
 FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
 FOREIGN KEY (DocenteId) REFERENCES Personas (PersonaId)
 );
-DBCC CHECKIDENT (MaterialDidactico, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+DBCC CHECKIDENT (ForoTema, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+ 
+CREATE TABLE ParticipacionEnForo(
+ParticipacionEnForoId INT NOT NULL IDENTITY(1,1), 
+ParticipanteId INT NOT NULL, 
+ForoTemaId INT NOT NULL,  
+Mensaje VARCHAR(MAX),
+FechaRegistro DATETIME NOT null 
+PRIMARY KEY (ParticipacionEnForoId), 
+FOREIGN KEY (ForoTemaId) REFERENCES ForoTema (ForoTemaId),
+FOREIGN KEY (ParticipanteId) REFERENCES Personas (PersonaId)
+);
+DBCC CHECKIDENT (ParticipacionEnForo, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+ 
+ 
  
 -- Borrado de tablas --
-Drop table Foro;
+Drop table ForoTema;
+Drop table ParticipacionEnForo;
 Drop table MaterialDidactico;
 Drop table CursoEstudiante;
 Drop table IngresosAlSistema;

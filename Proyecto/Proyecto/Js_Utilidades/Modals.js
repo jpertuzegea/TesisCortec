@@ -56,9 +56,12 @@ function CrearMaterialDidactico(id) {
 //} 
 // -------- Fin MaterialDigital --------
 
-// -------- Inicio Foro --------
-function CrearForo(id) {
-    $("#contenido").load("/Foro/ForoAdd/" + id);
+// -------- Inicio ForoTema --------
+function CrearForoTema(id) {
+    $("#contenido").load("/ForoTema/ForoTemaAdd/" + id);
+}
+function ModificarForoTema(id) {
+    $("#contenido").load("/ForoTema/ForoTemaUpdt/" + id);
 } 
 // -------- Fin Foro --------
 
