@@ -11,7 +11,7 @@
     <div class="col-lg-10">
         <br>
         @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
-        {*@
+            {*@
         <a data-toggle="modal" class="btn btn-primary" onclick="CrearNotaRapida()" id="btn_NuevaNotaRapida" href="#myModal2">Nueva Nota Rapida</a>
         <a data-toggle="modal" class="btn btn-primary" onclick="ModificarPanelInformaivo()" id="btn_ModificarPanelInformaivo" href="#myModal2">Nuevo Panel Informativo</a>
         @*}*@
@@ -98,7 +98,13 @@
                                             @Html.DisplayFor(modelItem => item.FechaFinalizacion)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
+                                            @{ string Estado = "Inactivo";
+                                                if (item.Estado == 1)
+                                                {
+                                                    Estado = "Activo";
+                                                }
+                                            }
+                                            @Estado
                                         </td>
                                         <td>
                                             @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento

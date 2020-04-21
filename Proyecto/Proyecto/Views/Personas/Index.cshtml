@@ -120,7 +120,13 @@
                                             @Html.DisplayFor(modelItem => item.FechaIngreso)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
+                                            @{ string Estado = "Inactivo";
+                                                if (item.Estado == 1)
+                                                {
+                                                    Estado = "Activo";
+                                                }
+                                            }
+                                            @Estado
                                         </td>
                                         <td>
                                             <a href="#myModal2" onclick="ModificarPersona(this.id)" data-toggle="modal" id="@item.PersonaId"><i class="fa fa-edit"></i></a>

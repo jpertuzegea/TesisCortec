@@ -94,7 +94,13 @@
                                         @Html.DisplayFor(modelItem => item.FechaRegistro)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Estado)
+                                        @{ string Estado = "Inactivo";
+                                            if (item.Estado == 1)
+                                            {
+                                                Estado = "Activo";
+                                            }
+                                        }
+                                        @Estado
                                     </td>
                                     <td>
                                         @Html.ActionLink(" ", "DescargarDocumento", "MaterialDidactico", new { MaterialDidacticoId = item.MaterialDidacticoId }, new { @class = "fa fa-cloud-download", @title = "Descargar Material" })

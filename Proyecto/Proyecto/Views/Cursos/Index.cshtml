@@ -104,7 +104,13 @@
                                             @Html.DisplayFor(modelItem => item.Docente)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Estado)
+                                            @{ string Estado = "Inactivo";
+                                                if (item.Estado == 1)
+                                                {
+                                                    Estado = "Activo";
+                                                }
+                                            }
+                                            @Estado
                                         </td>
                                         <td>
                                             @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento

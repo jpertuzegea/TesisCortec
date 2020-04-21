@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <br>
@@ -98,14 +98,10 @@
                                         </td>
                                         <td>
                                             @{
-                                                string Estado = "";
+                                                string Estado = "Acceso Fallido";
                                                 if (item.EstadoAcceso == 1)
                                                 {
                                                     Estado = "Acceso Exitoso";
-                                                }
-                                                else if (item.EstadoAcceso == 0)
-                                                {
-                                                    Estado = "Acceso Fallido";
                                                 }
                                             }
                                             @Estado
