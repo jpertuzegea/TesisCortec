@@ -144,7 +144,7 @@
     <Compile Include="PanelInformativo.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="ParticipacionEnForo.cs">
+    <Compile Include="ParticipacionEnForoTema.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Personas.cs">

@@ -50,11 +50,9 @@ function VisualizarInforme() {
 // -------- Inicio MaterialDigital --------
 function CrearMaterialDidactico(id) { 
     $("#contenido").load("/MaterialDidactico/MaterialDidacticoAdd/" + id);
-}
-//function ModificarMaterialDidactico(id) {
-//    $("#contenido").load("/MaterialDidactico/MaterialDidacticoUpdt/" + id);
-//} 
+} 
 // -------- Fin MaterialDigital --------
+
 
 // -------- Inicio ForoTema --------
 function CrearForoTema(id) {
@@ -62,7 +60,10 @@ function CrearForoTema(id) {
 }
 function ModificarForoTema(id) {
     $("#contenido").load("/ForoTema/ForoTemaUpdt/" + id);
-} 
+}
+function ParticiparEnForoTema(ForoTemaId) {  
+    $("#contenido").load("/ParticipacionEnForoTema/ParticiparEnForoTemaAdd/" + ForoTemaId);
+}
 // -------- Fin Foro --------
 
 

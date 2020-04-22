@@ -152,23 +152,23 @@ FOREIGN KEY (DocenteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (ForoTema, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
  
-CREATE TABLE ParticipacionEnForo(
-ParticipacionEnForoId INT NOT NULL IDENTITY(1,1), 
+CREATE TABLE ParticipacionEnForoTema(
+ParticipacionEnForoTemaId INT NOT NULL IDENTITY(1,1), 
 ParticipanteId INT NOT NULL, 
 ForoTemaId INT NOT NULL,  
 Mensaje VARCHAR(MAX),
 FechaRegistro DATETIME NOT null 
-PRIMARY KEY (ParticipacionEnForoId), 
+PRIMARY KEY (ParticipacionEnForoTemaId), 
 FOREIGN KEY (ForoTemaId) REFERENCES ForoTema (ForoTemaId),
 FOREIGN KEY (ParticipanteId) REFERENCES Personas (PersonaId)
 );
-DBCC CHECKIDENT (ParticipacionEnForo, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+DBCC CHECKIDENT (ParticipacionEnForoTema, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
  
  
  
 -- Borrado de tablas --
+Drop table ParticipacionEnForoTema;
 Drop table ForoTema;
-Drop table ParticipacionEnForo;
 Drop table MaterialDidactico;
 Drop table CursoEstudiante;
 Drop table IngresosAlSistema;

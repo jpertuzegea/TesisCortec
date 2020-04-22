@@ -17,7 +17,7 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ForoTema()
         {
-            this.ParticipacionEnForo = new HashSet<ParticipacionEnForo>();
+            this.ParticipacionEnForoTema = new HashSet<ParticipacionEnForoTema>();
         }
     
         public int ForoTemaId { get; set; }
@@ -31,6 +31,6 @@ namespace DAO
         public virtual Cursos Cursos { get; set; }
         public virtual Personas Personas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParticipacionEnForo> ParticipacionEnForo { get; set; }
+        public virtual ICollection<ParticipacionEnForoTema> ParticipacionEnForoTema { get; set; }
     }
 }

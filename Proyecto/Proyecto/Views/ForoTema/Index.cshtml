@@ -107,7 +107,7 @@
                                             <a href="#myModal2" onclick="ModificarForoTema(this.id)" title="Modificar Tema Foro" data-toggle="modal" id="@item.ForoTemaId"><i class="fa fa-edit"></i></a>
                                         </td>
                                         <td>
-                                            @Html.ActionLink(" ", "IngresarAlForo", "Foro", new { ForoTemaId = item.ForoTemaId }, new { @class = "fa fa-handshake-o", @title = "Ingresar al Foro" })
+                                            @Html.ActionLink(" ", "IngresarAlForoTema", "ParticipacionEnForoTema", new { ForoTemaId = item.ForoTemaId }, new { @class = "fa fa-handshake-o", @title = "Ingresar al Foro" })
                                         </td>
                                     </tr>
                                 }

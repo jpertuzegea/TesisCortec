@@ -149,6 +149,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MaterialDidacticoController.cs" />
     <Compile Include="Controllers\NotasRapidasController.cs" />
+    <Compile Include="Controllers\ParticipacionEnForoTemaController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1668,6 +1669,8 @@
     <Content Include="Views\ForoTema\Index.cshtml" />
     <Content Include="Views\ForoTema\ForoTemaAdd.cshtml" />
     <Content Include="Views\ForoTema\ForoTemaUpdt.cshtml" />
+    <Content Include="Views\ParticipacionEnForoTema\IngresarAlForoTema.cshtml" />
+    <Content Include="Views\ParticipacionEnForoTema\ParticiparEnForoTemaAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

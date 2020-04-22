@@ -12,9 +12,9 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class ParticipacionEnForo
+    public partial class ParticipacionEnForoTema
     {
-        public int ParticipacionEnForoId { get; set; }
+        public int ParticipacionEnForoTemaId { get; set; }
         public int ParticipanteId { get; set; }
         public int ForoTemaId { get; set; }
         public string Mensaje { get; set; }

@@ -22,7 +22,7 @@ namespace DAO
             this.ForoTema = new HashSet<ForoTema>();
             this.MaterialDidactico = new HashSet<MaterialDidactico>();
             this.NotasRapidas = new HashSet<NotasRapidas>();
-            this.ParticipacionEnForo = new HashSet<ParticipacionEnForo>();
+            this.ParticipacionEnForoTema = new HashSet<ParticipacionEnForoTema>();
         }
     
         public int PersonaId { get; set; }
@@ -52,6 +52,6 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotasRapidas> NotasRapidas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParticipacionEnForo> ParticipacionEnForo { get; set; }
+        public virtual ICollection<ParticipacionEnForoTema> ParticipacionEnForoTema { get; set; }
     }
 }

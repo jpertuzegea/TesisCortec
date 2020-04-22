@@ -6,15 +6,15 @@
     <edmx:Diagrams>
       <Diagram DiagramId="351f6fd49b594b948404705afe4f9a39" Name="Diagram1" ZoomLevel="41">
         <EntityTypeShape EntityType="TESIS_Model.Codigos" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.CursoEstudiante" Width="1.5" PointX="5.25" PointY="9.125" />
-        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="TESIS_Model.CursoEstudiante" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3" PointY="7.875" />
         <EntityTypeShape EntityType="TESIS_Model.EvidenciaCorreo" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.ForoTema" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="TESIS_Model.ForoTema" Width="1.5" PointX="8.25" PointY="7.125" />
         <EntityTypeShape EntityType="TESIS_Model.IngresosAlSistema" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.MaterialDidactico" Width="1.5" PointX="8.25" PointY="8.625" />
-        <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="TESIS_Model.PanelInformativo" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="TESIS_Model.ParticipacionEnForo" Width="1.5" PointX="10.5" PointY="9.5" />
+        <EntityTypeShape EntityType="TESIS_Model.MaterialDidactico" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="TESIS_Model.PanelInformativo" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TESIS_Model.ParticipacionEnForoTema" Width="1.5" PointX="10.5" PointY="7" />
         <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="0.75" PointY="5.75" />
         <AssociationConnector Association="TESIS_Model.FK__CursoEstu__Curso__51EF2864" />
         <AssociationConnector Association="TESIS_Model.FK__CursoEstu__Estud__52E34C9D" />
@@ -22,10 +22,10 @@
         <AssociationConnector Association="TESIS_Model.FK__ForoTema__CursoI__0B27A5C0" />
         <AssociationConnector Association="TESIS_Model.FK__MaterialD__Curso__6ABAD62E" />
         <AssociationConnector Association="TESIS_Model.FK__ForoTema__Docent__0C1BC9F9" />
-        <AssociationConnector Association="TESIS_Model.FK__Participa__ForoT__0EF836A4" />
+        <AssociationConnector Association="TESIS_Model.FK__Participa__ForoT__12C8C788" />
         <AssociationConnector Association="TESIS_Model.FK__MaterialD__Docen__6BAEFA67" />
         <AssociationConnector Association="TESIS_Model.FK__NotasRapi__Usuar__4A4E069C" />
-        <AssociationConnector Association="TESIS_Model.FK__Participa__Parti__0FEC5ADD" />
+        <AssociationConnector Association="TESIS_Model.FK__Participa__Parti__13BCEBC1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
