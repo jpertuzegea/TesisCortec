@@ -97,12 +97,12 @@
                                     </td>
 
                                     <td>
-                                     @*   <a href="#" onclick="" title="Foro del Curso" data-toggle="modal" id="@item.CursoId"><i class="fa fa-comments"></i></a>*@
+                                        @Html.ActionLink(" ", "Index", "ForoTema", new { CursoId = item.CursoId }, new { @class = "fa fa-comments", @title = "Foro del Curso" })
                                     </td>
-                                   
+
                                     <td>
                                         @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
-                                    </td> 
+                                    </td>
 
                                 </tr>
                                 }

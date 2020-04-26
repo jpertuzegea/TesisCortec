@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-
-
+      
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <br>
@@ -20,8 +18,7 @@
     </div>
     <br />
     <br />
-
-
+     
     if (@ViewBag.Cantidad < 1)
     {
         <div class="feed-activity-list">
@@ -52,7 +49,7 @@
             <div class="row">
                 <div class="col-sm-11 b-r">
 
-                    <small class="float-right text-navy"> [ @item.ParticipacionEnForoTemaId ] </small>
+                    <small class="float-right text-navy"> [ @item.ParticipacionEnForoTemaId ] - </small>
                     <strong> @item.Personas.NombreCompleto</strong>
 
                     <br />

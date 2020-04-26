@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System.Web;
 
 namespace BLL
 {
@@ -32,7 +33,7 @@ namespace BLL
             }
         }
 
-        public bool GuardarParticipacionEnForoTema(int ForoTemaId, string Mensaje)
+        public bool GuardarParticipacionEnForoTema(int ForoTemaId, string Mensaje, string NombreDocente, string DocenteId, string Curso, string Tema)
         {
             if (ForoTemaId > 0 && Mensaje != null)
             {// si el objeto es diferente de nulo
@@ -40,13 +41,30 @@ namespace BLL
                 {
                     ParticipacionEnForoTema ParticipacionEnForoTema = new ParticipacionEnForoTema();
 
-                    ParticipacionEnForoTema.ParticipanteId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
+                    ParticipacionEnForoTema.ParticipanteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
                     ParticipacionEnForoTema.ForoTemaId = ForoTemaId;
                     ParticipacionEnForoTema.Mensaje = Mensaje;
                     ParticipacionEnForoTema.FechaRegistro = DateTime.Now;
 
                     BD.ParticipacionEnForoTema.Add(ParticipacionEnForoTema);
                     BD.SaveChanges();
+                     
+                    string Mesnaje =
+                                 $"Buen dia Docente: {NombreDocente}.\n\n" +
+                                 $"Se informa que se ha registrado una participacion en uno de los foros bajo su direccion, los datos son : \n" +
+                                 $"Nombre Curso: {Curso}\n" +
+                                 $"Nombre Participante: {HttpContext.Current.Session["NombreUsuarioTesis"]} \n" +
+                                 $"Tema Tratado: {Tema}\n" +
+                                 $"Hora de la participacion: {DateTime.Now}\n" +
+                                 $"Mensaje: {Mensaje}\n" +
+
+                                 "Feliz resto de dia. \n\n" +
+                                 "Este mensaje es enviado por el sistema de forma automatica, favor No responderlo.";
+
+                    string Email = new Bll_Personas().GetEmailByPersonaId(Int32.Parse(DocenteId));
+                    Bll_Email Bll_Email = new Bll_Email();
+                    Bll_Email.EnviarCorreo(Email, "Nueva Participacion en foro", Mesnaje);
+
                     return true;
                 }
                 catch (Exception error)
