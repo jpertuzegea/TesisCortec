@@ -3,9 +3,11 @@ using BLL.Enums;
 using DAO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Security;
 
 namespace BLL
@@ -15,12 +17,11 @@ namespace BLL
 
         private TESIS_BD BD = new TESIS_BD();
 
-
-        // Metodo para validar Inicio de Sesion al sistema
         public bool IniciarSesion(Personas Persona)
         {
             try
             {
+                VerificarPeriodoDeEvaluacion();
                 var MyClave = Persona.Clave.ComputeHash(HashType.SHA256);
                 Personas login = BD.Personas.Where(u => u.Email.ToUpper().Equals(Persona.Email.ToUpper())
                    &&
@@ -39,7 +40,7 @@ namespace BLL
                     System.Web.HttpContext.Current.Session["CursosMatriculadosActivos"] = Bll_CursoEstudiante.ObtenerCantidadCusosActivosByPersonaId(login.PersonaId);
 
                     Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Exitoso);
-                  
+
                     return true;
                 }
                 else
@@ -56,7 +57,6 @@ namespace BLL
 
         }
 
-        // Metodo para cerrar la sesiojn y eliminar las variables de Sesion
         public void CerrarSesion()
         {
             System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = null;
@@ -65,25 +65,23 @@ namespace BLL
             FormsAuthentication.SignOut();
         }
 
-        // Metodo que valida si existe una sesion activa
         public static void VerificarSesionActiva()
         {
-            String NombreUsuarioTesis = (String)System.Web.HttpContext.Current.Session["NombreUsuarioTesis"];// se captura la variable de sesion con la que se validara que el usuario este logueado 
+            String NombreUsuarioTesis = (String)HttpContext.Current.Session["NombreUsuarioTesis"];// se captura la variable de sesion con la que se validara que el usuario este logueado 
 
             if (NombreUsuarioTesis != null)
             {
                 if (NombreUsuarioTesis.Length < 3)
                 {
-                    System.Web.HttpContext.Current.Response.Redirect("/login");
+                    HttpContext.Current.Response.Redirect("/login");
                 }
             }
             else
             {
-                System.Web.HttpContext.Current.Response.Redirect("/login");
+                HttpContext.Current.Response.Redirect("/login");
             }
         }
 
-        // Metodo para crear Cookies
         public void CrearCookie(string NombreCookie, string ValorCookie, int ExpiracionSegundos)
         {
             System.Web.HttpCookie Cookie = new System.Web.HttpCookie(NombreCookie);
@@ -91,5 +89,18 @@ namespace BLL
             Cookie.Expires = DateTime.Now.AddSeconds(ExpiracionSegundos);
             System.Web.HttpContext.Current.Response.Cookies.Add(Cookie);
         }
+
+        public void VerificarPeriodoDeEvaluacion()
+        {
+            DateTime fechaQuemada = Convert.ToDateTime("31-12-2020").Date;// fecha maxima permitida para el uso del aplicativo 
+            DateTime FechActual = DateTime.Now.Date;
+
+            if (fechaQuemada < FechActual) // Si la fecha quemada es menor a la fecha actual
+            {
+                HttpContext.Current.Response.Redirect("Login/Expiracion");// si la sesion no existe, lo direcciona al login
+            }
+        }
+
+
     }
 }

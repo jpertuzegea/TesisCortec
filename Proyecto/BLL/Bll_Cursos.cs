@@ -22,7 +22,7 @@ namespace BLL
         }
 
         // metodo para listar los Cursos existentes
-        public List<Cursos> ListarCursos(EnumEstadoFiltro Filtro)
+        public List<Cursos> ListarCursos(EnumEstadoFiltro Filtro, EnumEstadosCurso EstadosCurso)
         {
             try
             {
@@ -31,11 +31,11 @@ namespace BLL
                 switch (Filtro)
                 {
                     case EnumEstadoFiltro.Activo://Activo
-                        ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Activo).ToList();
+                        ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Activo && c.EstadoAcademico == (byte)EstadosCurso).ToList();
                         break;
 
                     case EnumEstadoFiltro.Inactivo://Inactivo
-                        ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Inactivo).ToList();
+                        ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Inactivo && c.EstadoAcademico == (byte)EstadosCurso).ToList();
                         break;
 
                     case EnumEstadoFiltro.Todos:// Todos
@@ -74,23 +74,6 @@ namespace BLL
                         break;
                 }
 
-                return (ListCursos);
-            }
-            catch (Exception error)
-            {
-                Bll_File.EscribirLog(error.ToString());
-                return null;
-            }
-        }
-
-
-
-        // Metodo para listar los Cursos existentes que se encentren en estado activo y  la fecha este vigente
-        public List<Cursos> VisualizarCursos()
-        {
-            try
-            {
-                List<Cursos> ListCursos = BD.Cursos.Where(c => c.Estado == (byte)EnumEstados.Activo).Include(x => x.Personas).ToList();
                 return (ListCursos);
             }
             catch (Exception error)
@@ -161,6 +144,7 @@ namespace BLL
 
                 try
                 {
+                    Curso.EstadoAcademico = (byte)EnumEstadosCurso.Ofertado;
                     BD.Cursos.Add(Curso);
                     BD.SaveChanges();
                     return true;
@@ -201,6 +185,7 @@ namespace BLL
                     Cur.TituloOtorgado = Curso.TituloOtorgado;
                     Cur.ValorCurso = Curso.ValorCurso;
                     Cur.DuracionHoras = Curso.DuracionHoras;
+                    Cur.EstadoAcademico = Curso.EstadoAcademico;
                     Cur.Estado = Curso.Estado;
 
                     BD.Entry(Cur).State = EntityState.Modified;
@@ -219,20 +204,6 @@ namespace BLL
             }
         }
 
-        // Arma un select list de Cursos, con la propiedad value y name 
-        public List<SelectListItem> ArmarSelectClientes(EnumEstadoFiltro filtro)
-        {
-            List<Cursos> Lista = null;
-            Lista = ListarCursos(EnumEstadoFiltro.Todos);
-
-            List<SelectListItem> result = new List<SelectListItem>();
-            foreach (var item in Lista)
-            {
-                var nombre = item.Nombre;
-                var valor = item.CursoId;
-                result.Add(new SelectListItem() { Text = nombre, Value = valor.ToString() });
-            }
-            return result;
-        }
+        
     }
 }

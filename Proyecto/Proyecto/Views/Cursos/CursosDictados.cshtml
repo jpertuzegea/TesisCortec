@@ -67,14 +67,17 @@
                                         # Estudiantes
                                     </th>
                                     <th>
+                                        Estado Academico
+                                    </th>
+                                    <th>
                                         Estado
                                     </th>
 
                                     <th>
-
                                     </th>
                                     <th>
-
+                                    </th>
+                                    <th>
                                     </th>
 
                                 </tr>
@@ -93,7 +96,38 @@
                                         colocar # @*@Html.DisplayFor(modelItem => item.TituloOtorgado)*@
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Estado)
+                                        @{ string EstadoAcademico = "";
+                                            if (item.EstadoAcademico == 0)
+                                            {
+                                                EstadoAcademico = "Ofertado";
+                                            }
+                                            else if (item.EstadoAcademico == 1)
+                                            {
+                                                EstadoAcademico = "Iniciado";
+                                            }
+                                            else if (item.EstadoAcademico == 2)
+                                            {
+                                                EstadoAcademico = "Pausado";
+                                            }
+                                            else if (item.EstadoAcademico == 3)
+                                            {
+                                                EstadoAcademico = "Cancelado";
+                                            }
+                                            else if (item.EstadoAcademico == 4)
+                                            {
+                                                EstadoAcademico = "Finalizado";
+                                            }
+                                        }
+                                        @EstadoAcademico
+                                    </td>
+                                    <td>
+                                        @{ string Estado = "Inactivo";
+                                            if (item.Estado == 1)
+                                            {
+                                                Estado = "Activo";
+                                            }
+                                        }
+                                        @Estado
                                     </td>
 
                                     <td>
@@ -104,6 +138,10 @@
                                         @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
                                     </td>
 
+                                    <td>
+                                        <a href="#" onclick="" title="Calificaciones" data-toggle="modal" id="@item.CursoId"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                   
                                 </tr>
                                 }
                             </tbody>
@@ -119,16 +157,18 @@
                                         # Estudiantes
                                     </th>
                                     <th>
+                                        Estado Academico
+                                    </th>
+                                    <th>
                                         Estado
                                     </th>
 
                                     <th>
-
                                     </th>
                                     <th>
-
                                     </th>
-
+                                    <th>
+                                    </th>
 
                                 </tr>
                             </tfoot>

@@ -71,6 +71,8 @@ namespace BLL
                     CursoEstudiante.CursoId = CursoId;
                     CursoEstudiante.EstudianteId = EstudianteId;
                     CursoEstudiante.FechaMatricula = DateTime.Now;
+                    CursoEstudiante.AprobacionCurso = (byte)EnumAprobacionCurso.Cursando;
+                    CursoEstudiante.EstadoEvaluacionCursoyDocente = (byte)EnumEstadoEvaluacionCursoyDocente.Pendiente;
                     CursoEstudiante.Estado = (byte)EnumEstados.Activo;
 
                     BD.CursoEstudiante.Add(CursoEstudiante);

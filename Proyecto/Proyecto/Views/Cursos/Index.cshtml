@@ -75,8 +75,12 @@
                                     <th>
                                         Docente
                                     </th>
+
                                     <th>
                                         Estado
+                                    </th>
+                                    <th>
+                                        Estado Academico
                                     </th>
                                     <th></th>
                                 </tr>
@@ -113,6 +117,31 @@
                                             @Estado
                                         </td>
                                         <td>
+                                            @{ string EstadoAcademico = "";
+                                                if (item.EstadoAcademico == 0)
+                                                {
+                                                    EstadoAcademico = "Ofertado";
+                                                }
+                                                else if (item.EstadoAcademico == 1)
+                                                {
+                                                    EstadoAcademico = "Iniciado";
+                                                }
+                                                else if (item.EstadoAcademico == 2)
+                                                {
+                                                    EstadoAcademico = "Pausado";
+                                                }
+                                                else if (item.EstadoAcademico == 3)
+                                                {
+                                                    EstadoAcademico = "Cancelado";
+                                                }
+                                                else if (item.EstadoAcademico == 4)
+                                                {
+                                                    EstadoAcademico = "Finalizado";
+                                                }
+                                            }
+                                            @EstadoAcademico
+                                        </td>
+                                        <td>
                                             @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
                                                 {*@
                                             <a href="#myModal2" onclick="ModificarCurso(this.id)" data-toggle="modal" id="@item.CursoId"><i class="fa fa-edit"></i></a>
@@ -144,6 +173,9 @@
                                     </th>
                                     <th>
                                         Estado
+                                    </th>
+                                    <th>
+                                        Estado Academico
                                     </th>
                                     <th></th>
                                 </tr>

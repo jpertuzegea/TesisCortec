@@ -31,6 +31,7 @@ namespace DAO
         public Nullable<int> ValorCurso { get; set; }
         public Nullable<int> DuracionHoras { get; set; }
         public Nullable<int> Docente { get; set; }
+        public byte EstadoAcademico { get; set; }
         public byte Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -18,6 +18,8 @@ namespace DAO
         public int CursoId { get; set; }
         public int EstudianteId { get; set; }
         public System.DateTime FechaMatricula { get; set; }
+        public byte EstadoEvaluacionCursoyDocente { get; set; }
+        public byte AprobacionCurso { get; set; }
         public byte Estado { get; set; }
     
         public virtual Cursos Cursos { get; set; }
