@@ -33,14 +33,17 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr class="read">
-                                <td class="mail-ontact"><a href="#"> @item.Personas.NombreCompleto</a> <span class="label label-warning float-right">Cortec</span> </td>
-                                <td class="mail-subject"><a href="#">@item.Asunto</a></td>
-                                <td class="">
-                                    @Html.ActionLink(" Leer ", "LeerCorreo", "SistemaDeCorreo", new { SistemaCorreoId = item.SistemaCorreoId }, new { @class = "fa fa-envelope", @title = "Descargar Certificado" })
-                                </td>
-                                <td class="text-right mail-date">@item.FechaEnvio</td>
-                            </tr>
+                        <tr class="read">
+                            <td class="mail-ontact"><a href="#"> @item.Personas.NombreCompleto</a> <span class="label label-warning float-right">Cortec</span> </td>
+                            <td class="mail-subject"><a href="#">@item.Asunto</a></td>
+                            <td class="">
+                                @Html.ActionLink(" Leer ", "LeerCorreo", "SistemaDeCorreo", new { SistemaCorreoId = item.SistemaCorreoId }, new { @class = "fa fa-envelope", @title = "Descargar Certificado" })
+                            </td>
+                            <td>
+                                Leido:  @item.FechaLectura
+                            </td>
+                            <td class="text-right mail-date">Enviado:@item.FechaEnvio</td>
+                        </tr>
                         }
                     </tbody>
                 </table>

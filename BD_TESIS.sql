@@ -173,7 +173,9 @@ RemitenteId INT NOT NULL,
 DestinoId INT NOT NULL, -- [Destinatario principal, uno por uno de la lista de todos]
 Asunto VARCHAR(170),
 Mensaje VARCHAR(MAX),
-FechaEnvio DATETIME NOT null, 
+FechaEnvio DATETIME NOT null,
+EstadoLectura TINYINT NOT NULL, 
+FechaLectura DATETIME, 
 PRIMARY KEY (SistemaCorreoId), 
 FOREIGN KEY (RemitenteId) REFERENCES Personas (PersonaId),
 FOREIGN KEY (DestinoId) REFERENCES Personas (PersonaId) 

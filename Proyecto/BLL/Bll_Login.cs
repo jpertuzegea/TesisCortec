@@ -33,12 +33,14 @@ namespace BLL
 
                 if ((login != null))
                 {
-                    System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = login.PersonaId;
-                    System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto;
+                    HttpContext.Current.Session["IdUsuarioTesis"] = login.PersonaId;
+                    HttpContext.Current.Session["NombreUsuarioTesis"] = login.NombreCompleto;
+
                     Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
+                    Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
 
-                    System.Web.HttpContext.Current.Session["CursosMatriculadosActivos"] = Bll_CursoEstudiante.ObtenerCantidadCusosActivosByPersonaId(login.PersonaId);
-
+                    HttpContext.Current.Session["CursosMatriculadosActivos"] = Bll_CursoEstudiante.ObtenerCantidadCusosActivosByPersonaId(login.PersonaId);
+                    Bll_SistemaDeCorreo.ObtenerCorreosSinLeerByPersonaId();
                     Bll_IngresoAlSistema.RegistroIngresoAlSitema(Persona.Email.ToUpper(), EnumEstadoAcceso.Acceso_Exitoso);
 
                     return true;

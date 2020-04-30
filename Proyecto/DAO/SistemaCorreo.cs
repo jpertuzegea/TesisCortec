@@ -20,6 +20,8 @@ namespace DAO
         public string Asunto { get; set; }
         public string Mensaje { get; set; }
         public System.DateTime FechaEnvio { get; set; }
+        public byte EstadoLectura { get; set; }
+        public Nullable<System.DateTime> FechaLectura { get; set; }
     
         public virtual Personas Personas { get; set; }
         public virtual Personas Personas1 { get; set; }

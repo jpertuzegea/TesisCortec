@@ -161,6 +161,7 @@
     <Compile Include="Enums\EnumEstadoAcceso.cs" />
     <Compile Include="Enums\EnumEstadoEvaluacionCursoyDocente.cs" />
     <Compile Include="Enums\EnumEstadoFiltro.cs" />
+    <Compile Include="Enums\EnumEstadoLecturaCorreo.cs" />
     <Compile Include="Enums\EnumEstados.cs" />
     <Compile Include="Enums\EnumEstadosCurso.cs" />
     <Compile Include="Enums\EnumTipoDocumento.cs" />

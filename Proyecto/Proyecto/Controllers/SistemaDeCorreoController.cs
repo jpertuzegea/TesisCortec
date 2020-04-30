@@ -34,6 +34,8 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
             Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
             SistemaCorreo SistemaCorreo = Bll_SistemaDeCorreo.ObtenerCorreoBySistemaCorreoId(Int32.Parse(SistemaCorreoId));
+            Bll_SistemaDeCorreo.MarcarCorreoComoLeidoBySistemaCorreoId(SistemaCorreo);
+
             return View(SistemaCorreo);
         }
 
