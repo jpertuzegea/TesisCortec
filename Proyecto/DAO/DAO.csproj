@@ -151,6 +151,9 @@
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SistemaCorreo.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="TesisDao.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

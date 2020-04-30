@@ -122,8 +122,8 @@
 
                         <ul class="nav nav-second-level collapse">
                             <li>@Html.ActionLink("Gestion de Personas", "index", "Personas")</li>
-                            <li>@Html.ActionLink("Gestion Notas Rapidas", "index", "NotasRapidas")</li>
-                            
+                            <li>@Html.ActionLink("Gestion Post Card", "index", "NotasRapidas")</li>
+
                             <li>
                                 <a href="#">Cursos@*<i class="fa fa-sitemap"></i>*@<span class="nav-label"></span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
@@ -132,26 +132,27 @@
                                     <li>@Html.ActionLink("Mis Cursos", "Index", "CursoEstudiante")</li>
                                     <li>@Html.ActionLink("Cursos Dictados", "CursosDictados", "Cursos")</li>
                                 </ul>
-                            </li>
-
-
+                            </li> 
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Sistema de Correo</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>@Html.ActionLink("Nuevo Mensaje", "EnviarCorreo", "SistemaDeCorreo")</li>
+                            <li>@Html.ActionLink("Bandeja de Entrada", "BandejaEntrada", "SistemaDeCorreo")</li>
+                            <li>@Html.ActionLink("Bandeja de Salida", "BandejaSalida", "SistemaDeCorreo")</li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
-
                         <ul class="nav nav-second-level collapse">
                             <li>@Html.ActionLink("Evidencia Correo", "index", "EvidenciaCorreo")</li>
                             <li>@Html.ActionLink("Ingresos al Sistema", "index", "IngresosAlSistema")</li>
                         </ul>
                     </li>
-
-
-
-
-
-
-
+                    
                 </ul>
             </div>
         </nav>

@@ -156,6 +156,7 @@
     <Compile Include="Bll_ParticipacionEnForoTema.cs" />
     <Compile Include="Bll_Personas.cs" />
     <Compile Include="Bll_Seguridad.cs" />
+    <Compile Include="Bll_SistemaDeCorreo.cs" />
     <Compile Include="Enums\EnumAprobacionCurso.cs" />
     <Compile Include="Enums\EnumEstadoAcceso.cs" />
     <Compile Include="Enums\EnumEstadoEvaluacionCursoyDocente.cs" />

@@ -140,6 +140,17 @@
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="SistemaCorreo">
+          <Key>
+            <PropertyRef Name="SistemaCorreoId" />
+          </Key>
+          <Property Name="SistemaCorreoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitenteId" Type="int" Nullable="false" />
+          <Property Name="DestinoId" Type="int" Nullable="false" />
+          <Property Name="Asunto" Type="varchar" MaxLength="170" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+          <Property Name="FechaEnvio" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK__CursoEstu__Curso__540C7B00">
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
@@ -260,6 +271,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SistemaCo__Desti__70A8B9AE">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="SistemaCorreo" Type="Self.SistemaCorreo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="SistemaCorreo">
+              <PropertyRef Name="DestinoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SistemaCo__Remit__6FB49575">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="SistemaCorreo" Type="Self.SistemaCorreo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="SistemaCorreo">
+              <PropertyRef Name="RemitenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TESIS_ModelStoreContainer">
           <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursoEstudiante" EntityType="Self.CursoEstudiante" Schema="dbo" store:Type="Tables" />
@@ -272,6 +307,7 @@
           <EntitySet Name="PanelInformativo" EntityType="Self.PanelInformativo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ParticipacionEnForoTema" EntityType="Self.ParticipacionEnForoTema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SistemaCorreo" EntityType="Self.SistemaCorreo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CursoEstu__Curso__540C7B00" Association="Self.FK__CursoEstu__Curso__540C7B00">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
@@ -312,6 +348,14 @@
             <End Role="Personas" EntitySet="Personas" />
             <End Role="ParticipacionEnForoTema" EntitySet="ParticipacionEnForoTema" />
           </AssociationSet>
+          <AssociationSet Name="FK__SistemaCo__Desti__70A8B9AE" Association="Self.FK__SistemaCo__Desti__70A8B9AE">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="SistemaCorreo" EntitySet="SistemaCorreo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SistemaCo__Remit__6FB49575" Association="Self.FK__SistemaCo__Remit__6FB49575">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="SistemaCorreo" EntitySet="SistemaCorreo" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -329,6 +373,7 @@
           <EntitySet Name="PanelInformativo" EntityType="TESIS_Model.PanelInformativo" />
           <EntitySet Name="ParticipacionEnForoTema" EntityType="TESIS_Model.ParticipacionEnForoTema" />
           <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
+          <EntitySet Name="SistemaCorreo" EntityType="TESIS_Model.SistemaCorreo" />
           <AssociationSet Name="FK__CursoEstu__Curso__540C7B00" Association="TESIS_Model.FK__CursoEstu__Curso__540C7B00">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
@@ -368,6 +413,14 @@
           <AssociationSet Name="FK__Participa__Parti__65370702" Association="TESIS_Model.FK__Participa__Parti__65370702">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="ParticipacionEnForoTema" EntitySet="ParticipacionEnForoTema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SistemaCo__Desti__70A8B9AE" Association="TESIS_Model.FK__SistemaCo__Desti__70A8B9AE">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="SistemaCorreo" EntitySet="SistemaCorreo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SistemaCo__Remit__6FB49575" Association="TESIS_Model.FK__SistemaCo__Remit__6FB49575">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="SistemaCorreo" EntitySet="SistemaCorreo" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Codigos">
@@ -524,6 +577,21 @@
           <NavigationProperty Name="MaterialDidactico" Relationship="TESIS_Model.FK__MaterialD__Docen__5BAD9CC8" FromRole="Personas" ToRole="MaterialDidactico" />
           <NavigationProperty Name="NotasRapidas" Relationship="TESIS_Model.FK__NotasRapi__Usuar__4C6B5938" FromRole="Personas" ToRole="NotasRapidas" />
           <NavigationProperty Name="ParticipacionEnForoTema" Relationship="TESIS_Model.FK__Participa__Parti__65370702" FromRole="Personas" ToRole="ParticipacionEnForoTema" />
+          <NavigationProperty Name="SistemaCorreo" Relationship="TESIS_Model.FK__SistemaCo__Desti__70A8B9AE" FromRole="Personas" ToRole="SistemaCorreo" />
+          <NavigationProperty Name="SistemaCorreo1" Relationship="TESIS_Model.FK__SistemaCo__Remit__6FB49575" FromRole="Personas" ToRole="SistemaCorreo" />
+        </EntityType>
+        <EntityType Name="SistemaCorreo">
+          <Key>
+            <PropertyRef Name="SistemaCorreoId" />
+          </Key>
+          <Property Name="SistemaCorreoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitenteId" Type="Int32" Nullable="false" />
+          <Property Name="DestinoId" Type="Int32" Nullable="false" />
+          <Property Name="Asunto" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__SistemaCo__Desti__70A8B9AE" FromRole="SistemaCorreo" ToRole="Personas" />
+          <NavigationProperty Name="Personas1" Relationship="TESIS_Model.FK__SistemaCo__Remit__6FB49575" FromRole="SistemaCorreo" ToRole="Personas" />
         </EntityType>
         <Association Name="FK__CursoEstu__Curso__540C7B00">
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
@@ -642,6 +710,30 @@
             </Principal>
             <Dependent Role="ParticipacionEnForoTema">
               <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SistemaCo__Desti__70A8B9AE">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
+          <End Type="TESIS_Model.SistemaCorreo" Role="SistemaCorreo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="SistemaCorreo">
+              <PropertyRef Name="DestinoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SistemaCo__Remit__6FB49575">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
+          <End Type="TESIS_Model.SistemaCorreo" Role="SistemaCorreo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="SistemaCorreo">
+              <PropertyRef Name="RemitenteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -794,6 +886,18 @@
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SistemaCorreo">
+            <EntityTypeMapping TypeName="TESIS_Model.SistemaCorreo">
+              <MappingFragment StoreEntitySet="SistemaCorreo">
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="DestinoId" ColumnName="DestinoId" />
+                <ScalarProperty Name="RemitenteId" ColumnName="RemitenteId" />
+                <ScalarProperty Name="SistemaCorreoId" ColumnName="SistemaCorreoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

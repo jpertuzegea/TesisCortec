@@ -166,9 +166,23 @@ FOREIGN KEY (ForoTemaId) REFERENCES ForoTema (ForoTemaId),
 FOREIGN KEY (ParticipanteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (ParticipacionEnForoTema, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
+CREATE TABLE SistemaCorreo(
+SistemaCorreoId INT NOT NULL IDENTITY(1,1), 
+RemitenteId INT NOT NULL, 
+DestinoId INT NOT NULL, -- [Destinatario principal, uno por uno de la lista de todos]
+Asunto VARCHAR(170),
+Mensaje VARCHAR(MAX),
+FechaEnvio DATETIME NOT null, 
+PRIMARY KEY (SistemaCorreoId), 
+FOREIGN KEY (RemitenteId) REFERENCES Personas (PersonaId),
+FOREIGN KEY (DestinoId) REFERENCES Personas (PersonaId) 
+);
+DBCC CHECKIDENT (SistemaCorreo, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
  
   
 -- Borrado de tablas --
+-- Drop table SistemaCorreo;
 -- Drop table ParticipacionEnForoTema;
 -- Drop table ForoTema;
 -- Drop table MaterialDidactico;

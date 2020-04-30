@@ -36,5 +36,6 @@ namespace DAO
         public virtual DbSet<PanelInformativo> PanelInformativo { get; set; }
         public virtual DbSet<ParticipacionEnForoTema> ParticipacionEnForoTema { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
+        public virtual DbSet<SistemaCorreo> SistemaCorreo { get; set; }
     }
 }

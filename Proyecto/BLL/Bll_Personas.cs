@@ -244,7 +244,7 @@ namespace BLL
 
                         Perso.Imagen = imagenData;
                     }
-                     
+
                     BD.Entry(Perso).State = EntityState.Modified;
                     BD.SaveChanges();
 
@@ -297,12 +297,20 @@ namespace BLL
         }
 
 
-        public List<SelectListItem> ArmarSelectPersona(EnumEstadoFiltro filtro, EnumRolAcademico RolAcademico = EnumRolAcademico.Estudiante)
+        public List<SelectListItem> ArmarSelectPersona(EnumEstadoFiltro filtro, EnumRolAcademico RolAcademico = EnumRolAcademico.Estudiante, bool Todos = false)
         {
             List<Personas> Lista = null;
             List<SelectListItem> result = new List<SelectListItem>();
 
-            Lista = ListarPersonas(EnumEstadoFiltro.Todos).Where(p => p.RolAcademico == (byte)RolAcademico).ToList();
+            if (Todos)
+            {
+                Lista = ListarPersonas(EnumEstadoFiltro.Todos).ToList();
+            }
+            else
+            {
+                Lista = ListarPersonas(EnumEstadoFiltro.Todos).Where(p => p.RolAcademico == (byte)RolAcademico).ToList();
+            }
+
 
             if (Lista.Count > 0)
             {
