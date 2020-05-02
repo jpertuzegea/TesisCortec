@@ -141,6 +141,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bll_CalificacionDocenteCursoEstudiante.cs" />
     <Compile Include="Bll_Codigo.cs" />
     <Compile Include="Bll_CursoEstudiante.cs" />
     <Compile Include="Bll_Cursos.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Bll_PanelInformativo.cs" />
     <Compile Include="Bll_ParticipacionEnForoTema.cs" />
     <Compile Include="Bll_Personas.cs" />
+    <Compile Include="Bll_SatisfaccionCurso.cs" />
     <Compile Include="Bll_Seguridad.cs" />
     <Compile Include="Bll_SistemaDeCorreo.cs" />
     <Compile Include="Enums\EnumAprobacionCurso.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="Enums\EnumEstadoLecturaCorreo.cs" />
     <Compile Include="Enums\EnumEstados.cs" />
     <Compile Include="Enums\EnumEstadosCurso.cs" />
+    <Compile Include="Enums\EnumRangoCalificacion.cs" />
     <Compile Include="Enums\EnumTipoDocumento.cs" />
     <Compile Include="Enums\EnumRolAcademico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

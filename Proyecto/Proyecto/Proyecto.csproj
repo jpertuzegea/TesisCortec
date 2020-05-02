@@ -151,6 +151,7 @@
     <Compile Include="Controllers\NotasRapidasController.cs" />
     <Compile Include="Controllers\ParticipacionEnForoTemaController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
+    <Compile Include="Controllers\SatisfaccionCursoController.cs" />
     <Compile Include="Controllers\SistemaDeCorreoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1676,6 +1677,7 @@
     <Content Include="Views\SistemaDeCorreo\BandejaSalida.cshtml" />
     <Content Include="Views\SistemaDeCorreo\EnviarCorreo.cshtml" />
     <Content Include="Views\SistemaDeCorreo\LeerCorreo.cshtml" />
+    <Content Include="Views\SatisfaccionCurso\SatisfaccionCurso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

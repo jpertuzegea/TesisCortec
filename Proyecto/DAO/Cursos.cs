@@ -17,6 +17,7 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cursos()
         {
+            this.CalificacionDocenteCursoEstudiante = new HashSet<CalificacionDocenteCursoEstudiante>();
             this.CursoEstudiante = new HashSet<CursoEstudiante>();
             this.ForoTema = new HashSet<ForoTema>();
             this.MaterialDidactico = new HashSet<MaterialDidactico>();
@@ -34,6 +35,8 @@ namespace DAO
         public byte EstadoAcademico { get; set; }
         public byte Estado { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CalificacionDocenteCursoEstudiante> CalificacionDocenteCursoEstudiante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CursoEstudiante> CursoEstudiante { get; set; }
         public virtual Personas Personas { get; set; }

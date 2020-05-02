@@ -123,16 +123,16 @@
                         <ul class="nav nav-second-level collapse">
                             <li>@Html.ActionLink("Gestion de Personas", "index", "Personas")</li>
                             <li>@Html.ActionLink("Gestion Post Card", "index", "NotasRapidas")</li>
+                            <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li>
+                        </ul>
+                    </li>
 
-                            <li>
-                                <a href="#">Cursos@*<i class="fa fa-sitemap"></i>*@<span class="nav-label"></span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li>
-                                    <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
-                                    <li>@Html.ActionLink("Mis Cursos", "Index", "CursoEstudiante")</li>
-                                    <li>@Html.ActionLink("Cursos Dictados", "CursosDictados", "Cursos")</li>
-                                </ul>
-                            </li>
+                    <li>
+                        <a href="#"><i class="fa fa-book"></i> <span class="nav-label">Cursos</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
+                            <li>@Html.ActionLink("Mis Cursos", "Index", "CursoEstudiante")</li>
+                            <li>@Html.ActionLink("Cursos Dictados", "CursosDictados", "Cursos")</li>
                         </ul>
                     </li>
 
@@ -177,10 +177,10 @@
 
 
                         </li>
-                        <li> 
+                        <li>
                             <a class="dropdown-toggle count-info" href="~/SistemaDeCorreo/BandejaEntrada">
                                 <i class="fa fa-envelope"></i>  <span class="label label-warning">@System.Web.HttpContext.Current.Session["MensajesNoLeidos"].ToString()</span>
-                            </a> 
+                            </a>
                         </li>
                         @*
                             <li class="dropdown">

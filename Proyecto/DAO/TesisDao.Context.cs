@@ -25,6 +25,7 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CalificacionDocenteCursoEstudiante> CalificacionDocenteCursoEstudiante { get; set; }
         public virtual DbSet<Codigos> Codigos { get; set; }
         public virtual DbSet<CursoEstudiante> CursoEstudiante { get; set; }
         public virtual DbSet<Cursos> Cursos { get; set; }
@@ -36,6 +37,7 @@ namespace DAO
         public virtual DbSet<PanelInformativo> PanelInformativo { get; set; }
         public virtual DbSet<ParticipacionEnForoTema> ParticipacionEnForoTema { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
+        public virtual DbSet<PreguntasCalificacionCurso> PreguntasCalificacionCurso { get; set; }
         public virtual DbSet<SistemaCorreo> SistemaCorreo { get; set; }
     }
 }

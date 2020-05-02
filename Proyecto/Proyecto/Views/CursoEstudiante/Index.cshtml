@@ -145,7 +145,7 @@
                                         <td>
                                             @if (item.Cursos.EstadoAcademico == 4 && item.EstadoEvaluacionCursoyDocente == 0)
                                             {
-                                                @Html.ActionLink(" ", "calificar Docente y Curso", "xxxx", new { CursoId = item.CursoId }, new { @class = "fa fa-gavel", @title = "Calificacion Curso y Docente" })
+                                                @Html.ActionLink(" ", "SatisfaccionCurso", "SatisfaccionCurso", new { CursoId = item.CursoId }, new { @class = "fa fa-gavel", @title = "Calificacion Curso y Docente" })
                                             } 
                                         </td>
 

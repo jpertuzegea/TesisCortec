@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TESIS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CalificacionDocenteCursoEstudiante">
+          <Key>
+            <PropertyRef Name="CalificacionDocenteCursoEstudianteId" />
+          </Key>
+          <Property Name="CalificacionDocenteCursoEstudianteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="EstudianteId" Type="int" Nullable="false" />
+          <Property Name="PreguntasCalificacionCursoId" Type="int" Nullable="false" />
+          <Property Name="RespuestaPregunta" Type="tinyint" Nullable="false" />
+          <Property Name="FechaEvaluacion" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Codigos">
           <Key>
             <PropertyRef Name="CodigoInstitucionalId" />
@@ -140,6 +151,13 @@
           <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="PreguntasCalificacionCurso">
+          <Key>
+            <PropertyRef Name="PreguntasCalificacionCursoId" />
+          </Key>
+          <Property Name="PreguntasCalificacionCursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pregunta" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="SistemaCorreo">
           <Key>
             <PropertyRef Name="SistemaCorreoId" />
@@ -153,6 +171,30 @@
           <Property Name="EstadoLectura" Type="tinyint" Nullable="false" />
           <Property Name="FechaLectura" Type="datetime" />
         </EntityType>
+        <Association Name="FK__Calificac__Curso__13F1F5EB">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="CalificacionDocenteCursoEstudiante" Type="Self.CalificacionDocenteCursoEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CalificacionDocenteCursoEstudiante">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__Estud__14E61A24">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="CalificacionDocenteCursoEstudiante" Type="Self.CalificacionDocenteCursoEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="CalificacionDocenteCursoEstudiante">
+              <PropertyRef Name="EstudianteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CursoEstu__Curso__540C7B00">
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="CursoEstudiante" Type="Self.CursoEstudiante" Multiplicity="*" />
@@ -298,6 +340,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TESIS_ModelStoreContainer">
+          <EntitySet Name="CalificacionDocenteCursoEstudiante" EntityType="Self.CalificacionDocenteCursoEstudiante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursoEstudiante" EntityType="Self.CursoEstudiante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
@@ -309,7 +352,16 @@
           <EntitySet Name="PanelInformativo" EntityType="Self.PanelInformativo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ParticipacionEnForoTema" EntityType="Self.ParticipacionEnForoTema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreguntasCalificacionCurso" EntityType="Self.PreguntasCalificacionCurso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SistemaCorreo" EntityType="Self.SistemaCorreo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Calificac__Curso__13F1F5EB" Association="Self.FK__Calificac__Curso__13F1F5EB">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CalificacionDocenteCursoEstudiante" EntitySet="CalificacionDocenteCursoEstudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__Estud__14E61A24" Association="Self.FK__Calificac__Estud__14E61A24">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="CalificacionDocenteCursoEstudiante" EntitySet="CalificacionDocenteCursoEstudiante" />
+          </AssociationSet>
           <AssociationSet Name="FK__CursoEstu__Curso__540C7B00" Association="Self.FK__CursoEstu__Curso__540C7B00">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
@@ -364,6 +416,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TESIS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TESIS_BD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CalificacionDocenteCursoEstudiante" EntityType="TESIS_Model.CalificacionDocenteCursoEstudiante" />
           <EntitySet Name="Codigos" EntityType="TESIS_Model.Codigos" />
           <EntitySet Name="CursoEstudiante" EntityType="TESIS_Model.CursoEstudiante" />
           <EntitySet Name="Cursos" EntityType="TESIS_Model.Cursos" />
@@ -375,7 +428,16 @@
           <EntitySet Name="PanelInformativo" EntityType="TESIS_Model.PanelInformativo" />
           <EntitySet Name="ParticipacionEnForoTema" EntityType="TESIS_Model.ParticipacionEnForoTema" />
           <EntitySet Name="Personas" EntityType="TESIS_Model.Personas" />
+          <EntitySet Name="PreguntasCalificacionCurso" EntityType="TESIS_Model.PreguntasCalificacionCurso" />
           <EntitySet Name="SistemaCorreo" EntityType="TESIS_Model.SistemaCorreo" />
+          <AssociationSet Name="FK__Calificac__Curso__13F1F5EB" Association="TESIS_Model.FK__Calificac__Curso__13F1F5EB">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CalificacionDocenteCursoEstudiante" EntitySet="CalificacionDocenteCursoEstudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__Estud__14E61A24" Association="TESIS_Model.FK__Calificac__Estud__14E61A24">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="CalificacionDocenteCursoEstudiante" EntitySet="CalificacionDocenteCursoEstudiante" />
+          </AssociationSet>
           <AssociationSet Name="FK__CursoEstu__Curso__540C7B00" Association="TESIS_Model.FK__CursoEstu__Curso__540C7B00">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="CursoEstudiante" EntitySet="CursoEstudiante" />
@@ -425,6 +487,19 @@
             <End Role="SistemaCorreo" EntitySet="SistemaCorreo" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CalificacionDocenteCursoEstudiante">
+          <Key>
+            <PropertyRef Name="CalificacionDocenteCursoEstudianteId" />
+          </Key>
+          <Property Name="CalificacionDocenteCursoEstudianteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="EstudianteId" Type="Int32" Nullable="false" />
+          <Property Name="PreguntasCalificacionCursoId" Type="Int32" Nullable="false" />
+          <Property Name="RespuestaPregunta" Type="Byte" Nullable="false" />
+          <Property Name="FechaEvaluacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Calificac__Curso__13F1F5EB" FromRole="CalificacionDocenteCursoEstudiante" ToRole="Cursos" />
+          <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Calificac__Estud__14E61A24" FromRole="CalificacionDocenteCursoEstudiante" ToRole="Personas" />
+        </EntityType>
         <EntityType Name="Codigos">
           <Key>
             <PropertyRef Name="CodigoInstitucionalId" />
@@ -461,6 +536,7 @@
           <Property Name="Docente" Type="Int32" />
           <Property Name="EstadoAcademico" Type="Byte" Nullable="false" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CalificacionDocenteCursoEstudiante" Relationship="TESIS_Model.FK__Calificac__Curso__13F1F5EB" FromRole="Cursos" ToRole="CalificacionDocenteCursoEstudiante" />
           <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Curso__540C7B00" FromRole="Cursos" ToRole="CursoEstudiante" />
           <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__Cursos__Docente__51300E55" FromRole="Cursos" ToRole="Personas" />
           <NavigationProperty Name="ForoTema" Relationship="TESIS_Model.FK__ForoTema__CursoI__607251E5" FromRole="Cursos" ToRole="ForoTema" />
@@ -573,6 +649,7 @@
           <Property Name="RolAcademico" Type="Byte" Nullable="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CalificacionDocenteCursoEstudiante" Relationship="TESIS_Model.FK__Calificac__Estud__14E61A24" FromRole="Personas" ToRole="CalificacionDocenteCursoEstudiante" />
           <NavigationProperty Name="CursoEstudiante" Relationship="TESIS_Model.FK__CursoEstu__Estud__55009F39" FromRole="Personas" ToRole="CursoEstudiante" />
           <NavigationProperty Name="Cursos" Relationship="TESIS_Model.FK__Cursos__Docente__51300E55" FromRole="Personas" ToRole="Cursos" />
           <NavigationProperty Name="ForoTema" Relationship="TESIS_Model.FK__ForoTema__Docent__6166761E" FromRole="Personas" ToRole="ForoTema" />
@@ -581,6 +658,13 @@
           <NavigationProperty Name="ParticipacionEnForoTema" Relationship="TESIS_Model.FK__Participa__Parti__65370702" FromRole="Personas" ToRole="ParticipacionEnForoTema" />
           <NavigationProperty Name="SistemaCorreo" Relationship="TESIS_Model.FK__SistemaCo__Desti__7A3223E8" FromRole="Personas" ToRole="SistemaCorreo" />
           <NavigationProperty Name="SistemaCorreo1" Relationship="TESIS_Model.FK__SistemaCo__Remit__793DFFAF" FromRole="Personas" ToRole="SistemaCorreo" />
+        </EntityType>
+        <EntityType Name="PreguntasCalificacionCurso">
+          <Key>
+            <PropertyRef Name="PreguntasCalificacionCursoId" />
+          </Key>
+          <Property Name="PreguntasCalificacionCursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pregunta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SistemaCorreo">
           <Key>
@@ -597,6 +681,30 @@
           <NavigationProperty Name="Personas" Relationship="TESIS_Model.FK__SistemaCo__Desti__7A3223E8" FromRole="SistemaCorreo" ToRole="Personas" />
           <NavigationProperty Name="Personas1" Relationship="TESIS_Model.FK__SistemaCo__Remit__793DFFAF" FromRole="SistemaCorreo" ToRole="Personas" />
         </EntityType>
+        <Association Name="FK__Calificac__Curso__13F1F5EB">
+          <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
+          <End Type="TESIS_Model.CalificacionDocenteCursoEstudiante" Role="CalificacionDocenteCursoEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CalificacionDocenteCursoEstudiante">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__Estud__14E61A24">
+          <End Type="TESIS_Model.Personas" Role="Personas" Multiplicity="1" />
+          <End Type="TESIS_Model.CalificacionDocenteCursoEstudiante" Role="CalificacionDocenteCursoEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="CalificacionDocenteCursoEstudiante">
+              <PropertyRef Name="EstudianteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CursoEstu__Curso__540C7B00">
           <End Type="TESIS_Model.Cursos" Role="Cursos" Multiplicity="1" />
           <End Type="TESIS_Model.CursoEstudiante" Role="CursoEstudiante" Multiplicity="*" />
@@ -747,6 +855,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TESIS_ModelStoreContainer" CdmEntityContainer="TESIS_BD">
+          <EntitySetMapping Name="CalificacionDocenteCursoEstudiante">
+            <EntityTypeMapping TypeName="TESIS_Model.CalificacionDocenteCursoEstudiante">
+              <MappingFragment StoreEntitySet="CalificacionDocenteCursoEstudiante">
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="RespuestaPregunta" ColumnName="RespuestaPregunta" />
+                <ScalarProperty Name="PreguntasCalificacionCursoId" ColumnName="PreguntasCalificacionCursoId" />
+                <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="CalificacionDocenteCursoEstudianteId" ColumnName="CalificacionDocenteCursoEstudianteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Codigos">
             <EntityTypeMapping TypeName="TESIS_Model.Codigos">
               <MappingFragment StoreEntitySet="Codigos">
@@ -890,6 +1010,14 @@
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreguntasCalificacionCurso">
+            <EntityTypeMapping TypeName="TESIS_Model.PreguntasCalificacionCurso">
+              <MappingFragment StoreEntitySet="PreguntasCalificacionCurso">
+                <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+                <ScalarProperty Name="PreguntasCalificacionCursoId" ColumnName="PreguntasCalificacionCursoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

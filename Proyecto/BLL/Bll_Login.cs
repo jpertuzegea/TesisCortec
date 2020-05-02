@@ -4,6 +4,7 @@ using DAO;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,12 @@ namespace BLL
             {
                 HttpContext.Current.Response.Redirect("/login");
             }
+
+
+            // Esta parte es solo para actualizar el icono de mensajes no leidos en la aplicaicon 
+            Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
+            Bll_SistemaDeCorreo.ObtenerCorreosSinLeerByPersonaId(); 
+
         }
 
         public void CrearCookie(string NombreCookie, string ValorCookie, int ExpiracionSegundos)
@@ -92,17 +99,23 @@ namespace BLL
             System.Web.HttpContext.Current.Response.Cookies.Add(Cookie);
         }
 
-        public void VerificarPeriodoDeEvaluacion()
-        {
-            DateTime fechaQuemada = Convert.ToDateTime("31-12-2020").Date;// fecha maxima permitida para el uso del aplicativo 
-            DateTime FechActual = DateTime.Now.Date;
-
-            if (fechaQuemada < FechActual) // Si la fecha quemada es menor a la fecha actual
+        public static void VerificarPeriodoDeEvaluacion()
+        { 
+            try
             {
-                HttpContext.Current.Response.Redirect("Login/Expiracion");// si la sesion no existe, lo direcciona al login
+                DateTime fechaQuemada = DateTime.ParseExact("31-12-2020", "dd-MM-yyyy", CultureInfo.InvariantCulture);// Permite Convertir de forma Excata la el formato de fecha 
+                DateTime FechActual = DateTime.Now.Date;
+
+                if (fechaQuemada < FechActual) // Si la fecha quemada es menor a la fecha actual
+                {
+                    HttpContext.Current.Response.Redirect("Login/Expiracion");// si la sesion no existe, lo direcciona al login
+                }
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
             }
         }
-
 
     }
 }

@@ -5,18 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="351f6fd49b594b948404705afe4f9a39" Name="Diagram1" ZoomLevel="41">
+        <EntityTypeShape EntityType="TESIS_Model.CalificacionDocenteCursoEstudiante" Width="1.5" PointX="5.25" PointY="10.125" />
         <EntityTypeShape EntityType="TESIS_Model.Codigos" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.CursoEstudiante" Width="1.5" PointX="5.25" PointY="12.25" />
-        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="TESIS_Model.CursoEstudiante" Width="1.5" PointX="5.25" PointY="14" />
+        <EntityTypeShape EntityType="TESIS_Model.Cursos" Width="1.5" PointX="3" PointY="17.25" />
         <EntityTypeShape EntityType="TESIS_Model.EvidenciaCorreo" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.ForoTema" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="TESIS_Model.ForoTema" Width="1.5" PointX="8.25" PointY="13.875" />
         <EntityTypeShape EntityType="TESIS_Model.IngresosAlSistema" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TESIS_Model.MaterialDidactico" Width="1.5" PointX="8.25" PointY="11.875" />
-        <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="TESIS_Model.PanelInformativo" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="TESIS_Model.ParticipacionEnForoTema" Width="1.5" PointX="10.5" PointY="12.25" />
-        <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="TESIS_Model.SistemaCorreo" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="TESIS_Model.MaterialDidactico" Width="1.5" PointX="5.25" PointY="17.75" />
+        <EntityTypeShape EntityType="TESIS_Model.NotasRapidas" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="TESIS_Model.PanelInformativo" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TESIS_Model.ParticipacionEnForoTema" Width="1.5" PointX="10.5" PointY="12" />
+        <EntityTypeShape EntityType="TESIS_Model.Personas" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="TESIS_Model.PreguntasCalificacionCurso" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TESIS_Model.SistemaCorreo" Width="1.5" PointX="3" PointY="6.75" />
+        <AssociationConnector Association="TESIS_Model.FK__Calificac__Curso__13F1F5EB" />
+        <AssociationConnector Association="TESIS_Model.FK__Calificac__Estud__14E61A24" />
         <AssociationConnector Association="TESIS_Model.FK__CursoEstu__Curso__540C7B00" />
         <AssociationConnector Association="TESIS_Model.FK__CursoEstu__Estud__55009F39" />
         <AssociationConnector Association="TESIS_Model.FK__Cursos__Docente__51300E55" />
