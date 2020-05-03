@@ -140,6 +140,20 @@ FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
 FOREIGN KEY (DocenteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (MaterialDidactico, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+ 
+CREATE TABLE CronogramaActividadesCurso(
+CronogramaActividadesCursoId INT NOT NULL IDENTITY(1,1), 
+CursoId INT NOT NULL,
+NombreActividad Varchar(200),
+FechaActividad Varchar(20), 
+FechaPublicacion DATETIME NOT null, 
+Estado TINYINT NOT NULL,
+PRIMARY KEY (CronogramaActividadesCursoId),
+FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId)
+);
+DBCC CHECKIDENT (CronogramaActividadesCurso, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
+
 
 CREATE TABLE ForoTema(
 ForoTemaId INT NOT NULL IDENTITY(1,1), 
@@ -206,7 +220,8 @@ RespuestaPregunta TINYINT NOT NULL,
 FechaEvaluacion DATETIME NOT null, 
 PRIMARY KEY (CalificacionDocenteCursoEstudianteId), 
 FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
-FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId)
+FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId),
+FOREIGN KEY (PreguntasCalificacionCursoId) REFERENCES PreguntasCalificacionCurso (PreguntasCalificacionCursoId)
 );
 DBCC CHECKIDENT (CalificacionDocenteCursoEstudiante, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
@@ -217,6 +232,7 @@ DBCC CHECKIDENT (CalificacionDocenteCursoEstudiante, RESEED,1); -- obliga a que 
 -- Drop table SistemaCorreo;
 -- Drop table ParticipacionEnForoTema;
 -- Drop table ForoTema;
+-- Drop table CronogramaActividadesCurso;
 -- Drop table MaterialDidactico;
 -- Drop table CursoEstudiante;
 -- Drop table IngresosAlSistema;

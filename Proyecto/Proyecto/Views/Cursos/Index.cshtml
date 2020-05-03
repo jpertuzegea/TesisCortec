@@ -83,71 +83,81 @@
                                         Estado Academico
                                     </th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Nombre)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Descripcion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TituloOtorgado)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ValorCurso)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.DuracionHoras)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Docente)
-                                        </td>
-                                        <td>
-                                            @{ string Estado = "Inactivo";
-                                                if (item.Estado == 1)
-                                                {
-                                                    Estado = "Activo";
-                                                }
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TituloOtorgado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ValorCurso)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DuracionHoras)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Docente)
+                                    </td>
+                                    <td>
+                                        @{ string Estado = "Inactivo";
+                                            if (item.Estado == 1)
+                                            {
+                                                Estado = "Activo";
                                             }
-                                            @Estado
-                                        </td>
-                                        <td>
-                                            @{ string EstadoAcademico = "";
-                                                if (item.EstadoAcademico == 0)
-                                                {
-                                                    EstadoAcademico = "Ofertado";
-                                                }
-                                                else if (item.EstadoAcademico == 1)
-                                                {
-                                                    EstadoAcademico = "Iniciado";
-                                                }
-                                                else if (item.EstadoAcademico == 2)
-                                                {
-                                                    EstadoAcademico = "Pausado";
-                                                }
-                                                else if (item.EstadoAcademico == 3)
-                                                {
-                                                    EstadoAcademico = "Cancelado";
-                                                }
-                                                else if (item.EstadoAcademico == 4)
-                                                {
-                                                    EstadoAcademico = "Finalizado";
-                                                }
+                                        }
+                                        @Estado
+                                    </td>
+                                    <td>
+                                        @{ string EstadoAcademico = "";
+                                            if (item.EstadoAcademico == 0)
+                                            {
+                                                EstadoAcademico = "Ofertado";
                                             }
-                                            @EstadoAcademico
-                                        </td>
-                                        <td>
-                                            @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
-                                                {*@
-                                            <a href="#myModal2" onclick="ModificarCurso(this.id)" data-toggle="modal" id="@item.CursoId"><i class="fa fa-edit"></i></a>
-                                            @*}*@
-                                        </td>
-                                    </tr>
+                                            else if (item.EstadoAcademico == 1)
+                                            {
+                                                EstadoAcademico = "Iniciado";
+                                            }
+                                            else if (item.EstadoAcademico == 2)
+                                            {
+                                                EstadoAcademico = "Pausado";
+                                            }
+                                            else if (item.EstadoAcademico == 3)
+                                            {
+                                                EstadoAcademico = "Cancelado";
+                                            }
+                                            else if (item.EstadoAcademico == 4)
+                                            {
+                                                EstadoAcademico = "Finalizado";
+                                            }
+                                        }
+                                        @EstadoAcademico
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink(" ", "ReporteCalificaciones", "CalificacionDocenteCursoEstudiante", new { CursoId = item.CursoId }, new { @class = "fa fa-pie-chart", @title = "Satisfaccion del Curso" })
+                                    </td>
+
+                                   
+                                    <td>
+                                        @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 6))// 5 es poder ver el boton editar departamento
+            {*@
+                                        <a href="#myModal2" onclick="ModificarCurso(this.id)" data-toggle="modal" id="@item.CursoId"><i class="fa fa-edit"></i></a>
+                                        @*}*@
+                                    </td>
+
+
+
+                                </tr>
                                 }
                             </tbody>
                             <tfoot>
@@ -177,6 +187,7 @@
                                     <th>
                                         Estado Academico
                                     </th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </tfoot>

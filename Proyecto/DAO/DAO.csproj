@@ -123,6 +123,9 @@
     <Compile Include="Codigos.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="CronogramaActividadesCurso.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="CursoEstudiante.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
@@ -177,6 +180,7 @@
     </Compile>
     <Compile Include="ViewModel\ListaPreguntas.cs" />
     <Compile Include="ViewModel\PreguntasRespuestasCalificacionModel.cs" />
+    <Compile Include="ViewModel\ReportePreguntasByCurso.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="TesisDao.edmx">

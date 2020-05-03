@@ -79,6 +79,8 @@
                                     </th>
                                     <th>
                                     </th>
+                                    <th>
+                                    </th>
 
                                 </tr>
                             </thead>
@@ -137,11 +139,14 @@
                                     <td>
                                         @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
                                     </td>
-
+                                    <td>
+                                        @Html.ActionLink(" ", "ListCronograma", "CronogramaActividades", new { CursoId = item.CursoId }, new { @class = "fa fa-calendar-o", @title = "Cronograma Actividades" })
+                                    </td>
+                                  
                                     <td>
                                         <a href="#" onclick="" title="Calificaciones" data-toggle="modal" id="@item.CursoId"><i class="fa fa-eye"></i></a>
                                     </td>
-                                   
+
                                 </tr>
                                 }
                             </tbody>
@@ -163,6 +168,8 @@
                                         Estado
                                     </th>
 
+                                    <th>
+                                    </th>
                                     <th>
                                     </th>
                                     <th>

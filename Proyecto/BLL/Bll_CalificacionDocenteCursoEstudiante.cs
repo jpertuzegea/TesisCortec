@@ -53,6 +53,36 @@ namespace BLL
             }
         }
 
+        public List<ReportePreguntasByCurso> ReporteCalificacionesByCuirsoId(int CursoId)
+        {
+            List<ReportePreguntasByCurso> Lista = new List<ReportePreguntasByCurso>();
+            try
+            {
+                var Calificaciones = BD.CalificacionDocenteCursoEstudiante.Where(x => x.CursoId == CursoId).ToList();
+
+                foreach (var item in Calificaciones)
+                {
+                    ReportePreguntasByCurso ReportePreguntasByCurso = new ReportePreguntasByCurso();
+                    ReportePreguntasByCurso.Pregunta = item.PreguntasCalificacionCurso.Pregunta;
+ 
+                    float gg = (float)((Calificaciones.Count(x => x.RespuestaPregunta == (byte)EnumRangoCalificacion.MuyBueno)) * 7) / 100;
+                    ReportePreguntasByCurso.PorcentajeMuyBueno = gg;
+                    ReportePreguntasByCurso.PorcentajeBueno = 10;
+                    ReportePreguntasByCurso.PorcentajeRegular = 10;
+                    ReportePreguntasByCurso.PorcentajeMalo = 10;
+                    ReportePreguntasByCurso.PorcentajeMuyMalo = 10;
+
+                    Lista.Add(ReportePreguntasByCurso);
+                }
+                return (Lista);
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
+
 
     }
 }

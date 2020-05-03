@@ -12,17 +12,15 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class CalificacionDocenteCursoEstudiante
+    public partial class CronogramaActividadesCurso
     {
-        public int CalificacionDocenteCursoEstudianteId { get; set; }
+        public int CronogramaActividadesCursoId { get; set; }
         public int CursoId { get; set; }
-        public int EstudianteId { get; set; }
-        public int PreguntasCalificacionCursoId { get; set; }
-        public byte RespuestaPregunta { get; set; }
-        public System.DateTime FechaEvaluacion { get; set; }
+        public string NombreActividad { get; set; }
+        public string FechaActividad { get; set; }
+        public System.DateTime FechaPublicacion { get; set; }
+        public byte Estado { get; set; }
     
         public virtual Cursos Cursos { get; set; }
-        public virtual Personas Personas { get; set; }
-        public virtual PreguntasCalificacionCurso PreguntasCalificacionCurso { get; set; }
     }
 }

@@ -54,6 +54,17 @@ function CrearMaterialDidactico(id) {
 // -------- Fin MaterialDigital --------
 
 
+// -------- inicio Cronograma --------
+function CrearActividadCronograma(id) {
+    $("#contenido").load("/CronogramaActividades/CronogramaActividadesAdd/" + id);
+}
+function ModificarCronogramaActividadesCurso(id) {
+    $("#contenido").load("/CronogramaActividades/CronogramaActividadesUpdt/" + id);
+} 
+// -------- Fin Cronograma --------
+
+
+
 // -------- Inicio ForoTema --------
 function CrearForoTema(id) {
     $("#contenido").load("/ForoTema/ForoTemaAdd/" + id);

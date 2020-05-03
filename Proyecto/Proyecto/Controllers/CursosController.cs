@@ -176,7 +176,6 @@ namespace Proyecto.Controllers
             }
         }
 
-
         public ActionResult MostrarImagenCurso(int CursoId)
         {
             Bll_Login.VerificarSesionActiva();
@@ -196,5 +195,11 @@ namespace Proyecto.Controllers
             }
             return null;
         }
+
+
+        
+
+
+        
     }
 }

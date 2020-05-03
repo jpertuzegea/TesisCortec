@@ -140,6 +140,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CalificacionDocenteCursoEstudianteController.cs" />
+    <Compile Include="Controllers\CronogramaActividadesController.cs" />
     <Compile Include="Controllers\CursoEstudianteController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EvidenciaCorreoController.cs" />
@@ -1678,6 +1680,10 @@
     <Content Include="Views\SistemaDeCorreo\EnviarCorreo.cshtml" />
     <Content Include="Views\SistemaDeCorreo\LeerCorreo.cshtml" />
     <Content Include="Views\SatisfaccionCurso\SatisfaccionCurso.cshtml" />
+    <Content Include="Views\CalificacionDocenteCursoEstudiante\ReporteCalificaciones.cshtml" />
+    <Content Include="Views\CronogramaActividades\ListCronograma.cshtml" />
+    <Content Include="Views\CronogramaActividades\CronogramaActividadesAdd.cshtml" />
+    <Content Include="Views\CronogramaActividades\CronogramaActividadesUpdt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
