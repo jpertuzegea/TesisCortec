@@ -81,7 +81,7 @@ namespace BLL
                     HttpContext.Current.Session["CursosMatriculadosActivos"] = (int)HttpContext.Current.Session["CursosMatriculadosActivos"] + 1;
 
                     string Mesnaje =
-                                 $"Buen dia señor(a): {EstudianteId}.\n" +
+                                 $"Buen dia señor(a): { HttpContext.Current.Session["NombreUsuarioTesis"]}.\n" +
                                  $"Se informa que su matricula en el curso [ {Nombre} ] con codigo: [ { Codigo} ], se ha realizado de manera exitosa. \n" +
                                  $"Fecha Matricula: {DateTime.Now} \n " +
                                  "Gracias por su pago, le deseamos exito en este nuevo curso. \n " +
