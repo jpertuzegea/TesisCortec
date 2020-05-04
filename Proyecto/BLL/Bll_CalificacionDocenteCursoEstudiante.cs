@@ -1,4 +1,5 @@
 ﻿using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using DAO.ViewModel;
 using System;
@@ -34,7 +35,7 @@ namespace BLL
                     CalificacionDocenteCursoEstudiante.EstudianteId = EstudianteEnSesionId;
                     CalificacionDocenteCursoEstudiante.PreguntasCalificacionCursoId = item.PreguntasCalificacionCursoId;
                     CalificacionDocenteCursoEstudiante.RespuestaPregunta = item.RespuestaPregunta;
-                    CalificacionDocenteCursoEstudiante.FechaEvaluacion = DateTime.Now;
+                    CalificacionDocenteCursoEstudiante.FechaEvaluacion = UtilitiesCommons.ObtenerHorayFechaActualLocal();
 
                     BD.CalificacionDocenteCursoEstudiante.Add(CalificacionDocenteCursoEstudiante);
                     BD.SaveChanges();

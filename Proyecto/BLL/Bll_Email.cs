@@ -1,4 +1,5 @@
-﻿using DAO;
+﻿using BLL.Utilidades;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -59,7 +60,7 @@ namespace BLL
             EvidenciaCorreo.Asunto = Asunto;
             EvidenciaCorreo.EmailDestino = EmailDestino;
             EvidenciaCorreo.EmailRemitente = EmailRemitente;
-            EvidenciaCorreo.Fecha = DateTime.Now;
+            EvidenciaCorreo.Fecha = UtilitiesCommons.ObtenerHorayFechaActualLocal();
             EvidenciaCorreo.Mensaje = Mensaje;
 
             /*-------------------------ENVIO DE CORREO----------------------*/

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using BLL.Enums;
+using BLL.Utilidades;
 
 namespace BLL
 {
@@ -70,7 +71,7 @@ namespace BLL
 
                     CursoEstudiante.CursoId = CursoId;
                     CursoEstudiante.EstudianteId = EstudianteId;
-                    CursoEstudiante.FechaMatricula = DateTime.Now;
+                    CursoEstudiante.FechaMatricula = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     CursoEstudiante.AprobacionCurso = (byte)EnumAprobacionCurso.Cursando;
                     CursoEstudiante.EstadoEvaluacionCursoyDocente = (byte)EnumEstadoEvaluacionCursoyDocente.Pendiente;
                     CursoEstudiante.Estado = (byte)EnumEstados.Activo;
@@ -83,7 +84,7 @@ namespace BLL
                     string Mesnaje =
                                  $"Buen dia señor(a): { HttpContext.Current.Session["NombreUsuarioTesis"]}.\n" +
                                  $"Se informa que su matricula en el curso [ {Nombre} ] con codigo: [ { Codigo} ], se ha realizado de manera exitosa. \n" +
-                                 $"Fecha Matricula: {DateTime.Now} \n " +
+                                 $"Fecha Matricula: {UtilitiesCommons.ObtenerHorayFechaActualLocal()} \n " +
                                  "Gracias por su pago, le deseamos exito en este nuevo curso. \n " +
 
                                  "Despues de 24 horas, el curso estara disponible en su perfil. \n" +

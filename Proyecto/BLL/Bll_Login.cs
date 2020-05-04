@@ -1,5 +1,6 @@
 ﻿using BCrypt.Net;
 using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -95,7 +96,7 @@ namespace BLL
         {
             System.Web.HttpCookie Cookie = new System.Web.HttpCookie(NombreCookie);
             Cookie.Value = ValorCookie;
-            Cookie.Expires = DateTime.Now.AddSeconds(ExpiracionSegundos);
+            Cookie.Expires = UtilitiesCommons.ObtenerHorayFechaActualLocal().AddSeconds(ExpiracionSegundos);
             System.Web.HttpContext.Current.Response.Cookies.Add(Cookie);
         }
 
@@ -104,7 +105,7 @@ namespace BLL
             try
             {
                 DateTime fechaQuemada = DateTime.ParseExact("31-12-2020", "dd-MM-yyyy", CultureInfo.InvariantCulture);// Permite Convertir de forma Excata la el formato de fecha 
-                DateTime FechActual = DateTime.Now.Date;
+                DateTime FechActual = UtilitiesCommons.ObtenerHorayFechaActualLocal().Date;
 
                 if (fechaQuemada < FechActual) // Si la fecha quemada es menor a la fecha actual
                 {

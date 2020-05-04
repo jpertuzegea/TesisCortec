@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -75,7 +76,7 @@ namespace BLL
                 //Write a line of text
                 sw.WriteLine("\n");
                 sw.WriteLine("-------------------------------------------------------------------------------------------------");
-                sw.WriteLine("ERROR TESIS [ " + DateTime.Now + " ] : ");
+                sw.WriteLine("ERROR TESIS [ " + UtilitiesCommons.ObtenerHorayFechaActualLocal() + " ] : ");
                 sw.WriteLine("\n");
 
                 sw.WriteLine(log);

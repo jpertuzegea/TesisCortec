@@ -1,4 +1,5 @@
 ﻿using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,7 @@ namespace BLL
         {
             try
             {
-                List<NotasRapidas> ListNotasRapidas = BD.NotasRapidas.Where(c => c.Estado == (byte)EnumEstados.Activo).Where(c => c.FechaFinalizacion >= DateTime.Now).Include(x =>x.Personas).ToList();
+                List<NotasRapidas> ListNotasRapidas = BD.NotasRapidas.Where(c => c.Estado == (byte)EnumEstados.Activo).Where(c => c.FechaFinalizacion >= UtilitiesCommons.ObtenerHorayFechaActualLocal()).Include(x =>x.Personas).ToList();
                 return (ListNotasRapidas);
             }
             catch (Exception error)
@@ -95,7 +96,7 @@ namespace BLL
                 {
                     Bll_Personas Bll_Personas = new Bll_Personas();
 
-                    NotasRapidas.FechaPublicacion = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+                    NotasRapidas.FechaPublicacion = DateTime.Parse(UtilitiesCommons.ObtenerHorayFechaActualLocal().ToString("yyyy-MM-dd"));
                     var IdUsuario = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
                     NotasRapidas.UsuarioPublica = Bll_Personas.GetPersonaByPersonaId(IdUsuario).PersonaId;
 
@@ -123,7 +124,7 @@ namespace BLL
             {
                 try
                 {
-                    Notas.FechaPublicacion = DateTime.Now;
+                    Notas.FechaPublicacion = UtilitiesCommons.ObtenerHorayFechaActualLocal();
 
                     Notas.FechaFinalizacion = NotasRapidas.FechaFinalizacion;
 

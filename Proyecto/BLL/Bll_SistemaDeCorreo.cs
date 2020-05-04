@@ -1,4 +1,5 @@
 ﻿using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace BLL
                     if (SistemaCorreo.EstadoLectura == (byte)EnumEstadoLecturaCorreo.SinLeer && SistemaCorreo.DestinoId == (int)HttpContext.Current.Session["IdUsuarioTesis"])
                     {
                         SistemaCorreo.EstadoLectura = (byte)EnumEstadoLecturaCorreo.Leido;
-                        SistemaCorreo.FechaLectura = DateTime.Now;
+                        SistemaCorreo.FechaLectura = UtilitiesCommons.ObtenerHorayFechaActualLocal();
 
                         BD.Entry(SistemaCorreo).State = EntityState.Modified;
                         BD.SaveChanges(); 
@@ -85,7 +86,7 @@ namespace BLL
         {
             try
             {
-                SistemaCorreo.FechaEnvio = DateTime.Now;
+                SistemaCorreo.FechaEnvio = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                 SistemaCorreo.RemitenteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
                 BD.SistemaCorreo.Add(SistemaCorreo);
                 BD.SaveChanges();

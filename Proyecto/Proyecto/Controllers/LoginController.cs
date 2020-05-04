@@ -11,17 +11,17 @@ using System.Web.Mvc;
 namespace Proyecto.Controllers
 {
     public class LoginController : Controller
-    { 
+    {
         // GET: Login
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(Personas Persona)
-        { 
+        {
             Bll_Login BLL_Login = new Bll_Login();
 
             if (BLL_Login.IniciarSesion(Persona))
@@ -43,7 +43,7 @@ namespace Proyecto.Controllers
         {
             Bll_Login Bll_Login = new Bll_Login();
             Bll_Login.CerrarSesion();
-            return RedirectToAction("Index", "Login"); 
+            return RedirectToAction("Index", "Login");
         }
 
         // Metodo para validar que la fecha limite de uso para el aplicativo no este expirada 

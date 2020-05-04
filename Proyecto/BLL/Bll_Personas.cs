@@ -1,5 +1,6 @@
 ﻿using BCrypt.Net;
 using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -134,7 +135,7 @@ namespace BLL
                         Persona.CodigoInstitucional = "Cod-" + Codigo;
 
                         Persona.Clave = Persona.Clave.ComputeHash(HashType.SHA256);
-                        Persona.FechaIngreso = DateTime.Now.Date;
+                        Persona.FechaIngreso = UtilitiesCommons.ObtenerHorayFechaActualLocal().Date;
                         Persona.Estado = (byte)EnumEstados.Activo;
                         Persona.RolAcademico = (byte)EnumRolAcademico.Estudiante;
 

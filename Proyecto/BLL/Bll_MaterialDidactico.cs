@@ -1,4 +1,5 @@
 ﻿using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace BLL
                     MaterialDidactico.Filename = MaterialDidactico.Filename + extencion;
                     MaterialDidactico.ContentType = ContentType;
                     MaterialDidactico.Version = 1;
-                    MaterialDidactico.FechaRegistro = DateTime.Now;
+                    MaterialDidactico.FechaRegistro = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     MaterialDidactico.Estado = (byte)EnumEstados.Activo;
                 }
 

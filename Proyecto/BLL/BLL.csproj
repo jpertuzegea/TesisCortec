@@ -172,6 +172,7 @@
     <Compile Include="Enums\EnumRolAcademico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\FuncionesEnum.cs" />
+    <Compile Include="Utilidades\UtilitiesCommons.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">

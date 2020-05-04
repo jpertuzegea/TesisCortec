@@ -1,4 +1,5 @@
 ﻿using BLL.Enums;
+using BLL.Utilidades;
 using DAO;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace BLL
             try
             {
                 IngresosAlSistema.Usuario = UsuarioRed;
-                IngresosAlSistema.FechaIntento = DateTime.Now;
+                IngresosAlSistema.FechaIntento = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                 IngresosAlSistema.IP_Origen = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
                 IngresosAlSistema.EstadoAcceso = (byte)Estado;
 

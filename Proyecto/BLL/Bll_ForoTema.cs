@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
 using BLL.Enums;
+using BLL.Utilidades;
 
 namespace BLL
 {
@@ -59,7 +60,7 @@ namespace BLL
                 try
                 {
                     ForoTema.DocenteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
-                    ForoTema.FechaRegistro = DateTime.Now;
+                    ForoTema.FechaRegistro = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     ForoTema.Estado = (byte)EnumEstados.Activo;
 
                     BD.ForoTema.Add(ForoTema);

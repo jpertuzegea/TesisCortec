@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Web;
+using BLL.Utilidades;
 
 namespace BLL
 {
@@ -44,7 +45,7 @@ namespace BLL
                     ParticipacionEnForoTema.ParticipanteId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
                     ParticipacionEnForoTema.ForoTemaId = ForoTemaId;
                     ParticipacionEnForoTema.Mensaje = Mensaje;
-                    ParticipacionEnForoTema.FechaRegistro = DateTime.Now;
+                    ParticipacionEnForoTema.FechaRegistro = UtilitiesCommons.ObtenerHorayFechaActualLocal();
 
                     BD.ParticipacionEnForoTema.Add(ParticipacionEnForoTema);
                     BD.SaveChanges();
@@ -55,7 +56,7 @@ namespace BLL
                                  $"Nombre Curso: {Curso}\n" +
                                  $"Nombre Participante: {HttpContext.Current.Session["NombreUsuarioTesis"]} \n" +
                                  $"Tema Tratado: {Tema}\n" +
-                                 $"Hora de la participacion: {DateTime.Now}\n" +
+                                 $"Hora de la participacion: {UtilitiesCommons.ObtenerHorayFechaActualLocal()}\n" +
                                  $"Mensaje: {Mensaje}\n\n" +
 
                                  "Feliz resto de dia. \n\n" +

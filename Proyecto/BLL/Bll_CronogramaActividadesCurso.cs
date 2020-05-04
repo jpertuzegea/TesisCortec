@@ -1,4 +1,5 @@
-﻿using DAO;
+﻿using BLL.Utilidades;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -64,7 +65,7 @@ namespace BLL
             {// si el objeto es diferente de nulo
                 try
                 {
-                    CronogramaActividadesCurso.FechaPublicacion = DateTime.Now;
+                    CronogramaActividadesCurso.FechaPublicacion = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     BD.CronogramaActividadesCurso.Add(CronogramaActividadesCurso);
                     BD.SaveChanges();
                     return true;
