@@ -88,7 +88,7 @@ namespace BLL
 
             // Esta parte es solo para actualizar el icono de mensajes no leidos en la aplicaicon 
             Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
-            Bll_SistemaDeCorreo.ObtenerCorreosSinLeerByPersonaId(); 
+            Bll_SistemaDeCorreo.ObtenerCorreosSinLeerByPersonaId();
 
         }
 
@@ -96,12 +96,13 @@ namespace BLL
         {
             System.Web.HttpCookie Cookie = new System.Web.HttpCookie(NombreCookie);
             Cookie.Value = ValorCookie;
-            Cookie.Expires = UtilitiesCommons.ObtenerHorayFechaActualLocal().AddSeconds(ExpiracionSegundos);
-            System.Web.HttpContext.Current.Response.Cookies.Add(Cookie);
+            Cookie.Expires = DateTime.Now.AddSeconds(ExpiracionSegundos);
+            HttpContext.Current.Response.Cookies.Add(Cookie);
+
         }
 
         public static void VerificarPeriodoDeEvaluacion()
-        { 
+        {
             try
             {
                 DateTime fechaQuemada = DateTime.ParseExact("31-12-2020", "dd-MM-yyyy", CultureInfo.InvariantCulture);// Permite Convertir de forma Excata la el formato de fecha 

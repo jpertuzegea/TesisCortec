@@ -11,8 +11,6 @@
         @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
             {*@
         <a data-toggle="modal" class="btn btn-primary" onclick=" ()" id="NuevaMatricula" href=@Url.Action("CursosOfertados", "Cursos")>Nueva Matricula</a>
-
-
         @*}*@
     </div>
 
@@ -98,70 +96,70 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Cursos.Nombre)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FechaMatricula)
-                                    </td>
-                                    <td>
-                                        @{ string EstadoAcademico = "";
-                                            if (item.Cursos.EstadoAcademico == 0)
-                                            {
-                                                EstadoAcademico = "Ofertado";
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Cursos.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FechaMatricula)
+                                        </td>
+                                        <td>
+                                            @{ string EstadoAcademico = "";
+                                                if (item.Cursos.EstadoAcademico == 0)
+                                                {
+                                                    EstadoAcademico = "Ofertado";
+                                                }
+                                                else if (item.Cursos.EstadoAcademico == 1)
+                                                {
+                                                    EstadoAcademico = "Iniciado";
+                                                }
+                                                else if (item.Cursos.EstadoAcademico == 2)
+                                                {
+                                                    EstadoAcademico = "Pausado";
+                                                }
+                                                else if (item.Cursos.EstadoAcademico == 3)
+                                                {
+                                                    EstadoAcademico = "Cancelado";
+                                                }
+                                                else if (item.Cursos.EstadoAcademico == 4)
+                                                {
+                                                    EstadoAcademico = "Finalizado";
+                                                }
                                             }
-                                            else if (item.Cursos.EstadoAcademico == 1)
-                                            {
-                                                EstadoAcademico = "Iniciado";
-                                            }
-                                            else if (item.Cursos.EstadoAcademico == 2)
-                                            {
-                                                EstadoAcademico = "Pausado";
-                                            }
-                                            else if (item.Cursos.EstadoAcademico == 3)
-                                            {
-                                                EstadoAcademico = "Cancelado";
-                                            }
-                                            else if (item.Cursos.EstadoAcademico == 4)
-                                            {
-                                                EstadoAcademico = "Finalizado";
-                                            }
-                                        }
-                                        @EstadoAcademico
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink(" ", "Index", "ForoTema", new { CursoId = item.CursoId }, new { @class = "fa fa-comments", @title = "Foro del Curso" })
-                                    </td>
+                                            @EstadoAcademico
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "Index", "ForoTema", new { CursoId = item.CursoId }, new { @class = "fa fa-comments", @title = "Foro del Curso" })
+                                        </td>
 
-                                    <td>
-                                        @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
-                                    </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
+                                        </td>
 
-                                    <td>
-                                        <a href="#" onclick="" title="Mis Notas" data-toggle="modal" id="@item.CursoId"><i class="fa fa-eye"></i></a>
-                                    </td>
+                                        <td>
+                                            <a href="#" onclick="" title="Mis Notas" data-toggle="modal" id="@item.CursoId"><i class="fa fa-eye"></i></a>
+                                        </td>
 
-                                    <td>
-                                        @if (item.Cursos.EstadoAcademico == 4 && item.EstadoEvaluacionCursoyDocente == 0)
-                                        {
-                                            @Html.ActionLink(" ", "SatisfaccionCurso", "SatisfaccionCurso", new { CursoId = item.CursoId }, new { @class = "fa fa-gavel", @title = "Calificacion Curso y Docente" })
-                                        }
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink(" ", "ListCronograma", "CronogramaActividades", new { CursoId = item.CursoId }, new { @class = "fa fa-calendar-o", @title = "Cronograma Actividades" })
-                                    </td>
-                                    <td>
-                                        @if (item.EstadoEvaluacionCursoyDocente == 1 && item.AprobacionCurso == 1)
-                                        {
-                                            @Html.ActionLink(" ", "Descargar Certificado", "xxxx", new { CursoId = item.CursoId }, new { @class = "fa fa-graduation-cap", @title = "Descargar Certificado" })
-                                        }
-                                    </td>
+                                        <td>
+                                            @if (item.Cursos.EstadoAcademico == 4 && item.EstadoEvaluacionCursoyDocente == 0)
+                                            {
+                                                @Html.ActionLink(" ", "SatisfaccionCurso", "SatisfaccionCurso", new { CursoId = item.CursoId }, new { @class = "fa fa-gavel", @title = "Calificacion Curso y Docente" })
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "ListCronograma", "CronogramaActividades", new { CursoId = item.CursoId }, new { @class = "fa fa-calendar-o", @title = "Cronograma Actividades" })
+                                        </td>
+                                        <td>
+                                            @*@if (item.EstadoEvaluacionCursoyDocente == 1 && item.AprobacionCurso == 1)
+                                                {*@
+                                            @Html.ActionLink(" ", "Index", "Certificados", new { CursoId = item.CursoId }, new { @class = "fa fa-graduation-cap", @title = "Descargar Certificado" })
+                                            @*}*@
+                                        </td>
 
-                                </tr>
+                                    </tr>
                                 }
                             </tbody>
                             <tfoot>

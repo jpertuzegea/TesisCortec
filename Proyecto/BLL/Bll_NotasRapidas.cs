@@ -55,7 +55,8 @@ namespace BLL
         {
             try
             {
-                List<NotasRapidas> ListNotasRapidas = BD.NotasRapidas.Where(c => c.Estado == (byte)EnumEstados.Activo).Where(c => c.FechaFinalizacion >= UtilitiesCommons.ObtenerHorayFechaActualLocal()).Include(x =>x.Personas).ToList();
+                DateTime HoraActual = UtilitiesCommons.ObtenerHorayFechaActualLocal();
+                List<NotasRapidas> ListNotasRapidas = BD.NotasRapidas.Where(c => c.Estado == (byte)EnumEstados.Activo).Where(c => c.FechaFinalizacion >= HoraActual).Include(x =>x.Personas).ToList();
                 return (ListNotasRapidas);
             }
             catch (Exception error)
@@ -96,7 +97,7 @@ namespace BLL
                 {
                     Bll_Personas Bll_Personas = new Bll_Personas();
 
-                    NotasRapidas.FechaPublicacion = DateTime.Parse(UtilitiesCommons.ObtenerHorayFechaActualLocal().ToString("yyyy-MM-dd"));
+                    NotasRapidas.FechaPublicacion = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     var IdUsuario = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
                     NotasRapidas.UsuarioPublica = Bll_Personas.GetPersonaByPersonaId(IdUsuario).PersonaId;
 

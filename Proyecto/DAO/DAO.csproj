@@ -116,6 +116,9 @@
     <Compile Include="CalificacionDocenteCursoEstudiante.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="CertificadoEstudianteCurso.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="Codigos.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>

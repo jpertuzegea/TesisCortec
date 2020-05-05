@@ -26,6 +26,7 @@ namespace DAO
         }
     
         public virtual DbSet<CalificacionDocenteCursoEstudiante> CalificacionDocenteCursoEstudiante { get; set; }
+        public virtual DbSet<CertificadoEstudianteCurso> CertificadoEstudianteCurso { get; set; }
         public virtual DbSet<Codigos> Codigos { get; set; }
         public virtual DbSet<CronogramaActividadesCurso> CronogramaActividadesCurso { get; set; }
         public virtual DbSet<CursoEstudiante> CursoEstudiante { get; set; }

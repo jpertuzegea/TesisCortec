@@ -18,6 +18,7 @@ namespace DAO
         public Cursos()
         {
             this.CalificacionDocenteCursoEstudiante = new HashSet<CalificacionDocenteCursoEstudiante>();
+            this.CertificadoEstudianteCurso = new HashSet<CertificadoEstudianteCurso>();
             this.CronogramaActividadesCurso = new HashSet<CronogramaActividadesCurso>();
             this.CursoEstudiante = new HashSet<CursoEstudiante>();
             this.ForoTema = new HashSet<ForoTema>();
@@ -38,6 +39,8 @@ namespace DAO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CalificacionDocenteCursoEstudiante> CalificacionDocenteCursoEstudiante { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CertificadoEstudianteCurso> CertificadoEstudianteCurso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CronogramaActividadesCurso> CronogramaActividadesCurso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

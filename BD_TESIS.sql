@@ -225,8 +225,21 @@ FOREIGN KEY (PreguntasCalificacionCursoId) REFERENCES PreguntasCalificacionCurso
 );
 DBCC CHECKIDENT (CalificacionDocenteCursoEstudiante, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
-  
+
+CREATE TABLE CertificadoEstudianteCurso(
+CertificadoEstudianteCursoId INT NOT NULL IDENTITY(1,1),
+CursoId INT NOT NULL, 
+EstudianteId INT NOT NULL,
+FechaAprobacion DATETIME NOT null, 
+PRIMARY KEY (CertificadoEstudianteCursoId), 
+FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
+FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId) 
+);
+DBCC CHECKIDENT (CertificadoEstudianteCurso, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
+ 
 -- Borrado de tablas --
+-- Drop table CertificadoEstudianteCurso;
 -- Drop table CalificacionDocenteCursoEstudiante;
 -- Drop table PreguntasCalificacionCurso;
 -- Drop table SistemaCorreo;

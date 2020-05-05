@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bll_CalificacionDocenteCursoEstudiante.cs" />
+    <Compile Include="Bll_Certificado.cs" />
     <Compile Include="Bll_Codigo.cs" />
     <Compile Include="Bll_CronogramaActividadesCurso.cs" />
     <Compile Include="Bll_CursoEstudiante.cs" />

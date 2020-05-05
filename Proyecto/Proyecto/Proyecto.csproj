@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CalificacionDocenteCursoEstudianteController.cs" />
+    <Compile Include="Controllers\CertificadosController.cs" />
     <Compile Include="Controllers\CronogramaActividadesController.cs" />
     <Compile Include="Controllers\CursoEstudianteController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
@@ -185,6 +186,17 @@
     <Content Include="Imagenes\pavicon.png" />
     <Content Include="Imagenes\perfil.jpg" />
     <Content Include="Imagenes\Sin Foto.jpg" />
+    <Content Include="JS_PDF\jspdf.html" />
+    <Content Include="JS_PDF\jspdf.js" />
+    <Content Include="JS_PDF\jspdf.plugin.addimage.js" />
+    <Content Include="JS_PDF\jspdf.plugin.cell.js" />
+    <Content Include="JS_PDF\jspdf.plugin.from_html.js" />
+    <Content Include="JS_PDF\jspdf.plugin.ie_below_9_shim.js" />
+    <Content Include="JS_PDF\jspdf.plugin.javascript.js" />
+    <Content Include="JS_PDF\jspdf.plugin.sillysvgrenderer.js" />
+    <Content Include="JS_PDF\jspdf.plugin.split_text_to_size.js" />
+    <Content Include="JS_PDF\jspdf.plugin.standard_fonts_metrics.js" />
+    <Content Include="Js_Utilidades\Certificdo.js" />
     <Content Include="Js_Utilidades\Modals.js" />
     <Content Include="Plantilla\css\animate.css" />
     <Content Include="Plantilla\css\bootstrap.css" />
@@ -1685,6 +1697,7 @@
     <Content Include="Views\CronogramaActividades\ListCronograma.cshtml" />
     <Content Include="Views\CronogramaActividades\CronogramaActividadesAdd.cshtml" />
     <Content Include="Views\CronogramaActividades\CronogramaActividadesUpdt.cshtml" />
+    <Content Include="Views\Certificados\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
