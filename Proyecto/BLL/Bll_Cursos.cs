@@ -51,10 +51,7 @@ namespace BLL
                 Bll_File.EscribirLog(error.ToString());
                 return null;
             }
-        }
-
-       
-
+        } 
 
         public List<Cursos> ListarCursosByDocenteId(EnumEstadoFiltro Filtro, int DocenteId)
         {

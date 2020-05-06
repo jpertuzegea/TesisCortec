@@ -60,6 +60,28 @@ namespace BLL
             }
         }
 
+        public CursoEstudiante ObtenerNotasByCursoIdEstudianteId(int CursoId, int EstudianteId)
+        {
+            try
+            {
+                CursoEstudiante CursoEstudiante = BD.CursoEstudiante.Where(z => z.CursoId == CursoId && z.EstudianteId == EstudianteId).FirstOrDefault();
+                if (CursoEstudiante != null)
+                {
+                    return (CursoEstudiante);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
+
+
         public bool Matricularse(int CursoId, string Nombre, string Codigo)
         {
             if (CursoId > 0 && Nombre.Length > 3 && Codigo.Length > 0)
@@ -128,7 +150,6 @@ namespace BLL
             }
         }
 
-
         public bool GuargarCalificacionEstudiante(ListaCalificacionestudiantes ListaCalificacionestudiantes)
         {
 
@@ -142,14 +163,14 @@ namespace BLL
 
                         if (CursoEstudiante != null)
                         {
-  
-                            CursoEstudiante.Nota1 = item.Nota1;
-                            CursoEstudiante.Nota2 = item.Nota2;
-                            CursoEstudiante.Nota3 = item.Nota3;
+
+                            CursoEstudiante.Nota1 = item.Nota1.Replace(".", ",");
+                            CursoEstudiante.Nota2 = item.Nota2.Replace(".", ",");
+                            CursoEstudiante.Nota3 = item.Nota3.Replace(".", ",");
                             BD.Entry(CursoEstudiante).State = EntityState.Modified;
                             BD.SaveChanges();
-                        } 
-                    } 
+                        }
+                    }
                     return true;
                 }
                 catch (Exception error)

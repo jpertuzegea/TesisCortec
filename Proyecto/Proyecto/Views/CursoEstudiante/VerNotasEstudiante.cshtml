@@ -1,0 +1,147 @@
+﻿@model DAO.CursoEstudiante
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <br> 
+    </div>
+
+    <div class="col-lg-2">
+    </div>
+</div>
+
+@*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 4))// 4 es poder listar los departamentos
+    {*@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5 align="center">Calificaciones Obtenidas Por El Estudiante</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="ibox-content">
+                    <div class="table-responsive">
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>
+                                        Num Documento
+                                    </th>
+                                    <th>
+                                        Nombre Completo
+                                    </th>
+                                    <th>
+                                       Nota 1
+                                    </th>
+                                    <th>
+                                      Nota 2
+                                    </th>
+                                    <th>
+                                        Nota 3
+                                    </th>
+                                    <th>
+                                      Promedio
+                                    </th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Personas.NumDocumento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Personas.NombreCompleto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Nota1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Nota2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Nota3)
+                                    </td>
+                                    <td align="center">
+                                        @{ string color = "";
+                                            float Nota1, Nota2, Nota3, Final;
+
+                                            Nota1 = (float)(float.Parse(Model.Nota1) * 0.3);
+                                            Nota2 = (float)(float.Parse(Model.Nota2) * 0.3);
+                                            Nota3 = (float)(float.Parse(Model.Nota3) * 0.4);
+
+                                            Final = (Nota1 + Nota2 + Nota3);
+
+                                            if (Final < 2.96)
+                                            {
+                                                color = "#FE2E2E";
+                                            }
+                                            else
+                                            {
+                                                color = "#1ab394";
+                                            }
+                                        }
+                                        <FONT COLOR="@color">@Final</FONT>
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                            <tfoot>
+                                <tr>
+
+                                    <th>
+                                        Num Documento
+                                    </th>
+                                    <th>
+                                        Nombre Completo
+                                    </th>
+                                    <th>
+                                        Nota 1
+                                    </th>
+                                    <th>
+                                        Nota 2
+                                    </th>
+                                    <th>
+                                        Nota 3
+                                    </th>
+                                    <th>
+                                        Promedio
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*}*@

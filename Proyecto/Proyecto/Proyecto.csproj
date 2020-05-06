@@ -1701,6 +1701,7 @@
     <Content Include="Views\CronogramaActividades\CronogramaActividadesUpdt.cshtml" />
     <Content Include="Views\Certificados\Index.cshtml" />
     <Content Include="Views\CursoEstudiante\CalificacionesEstudiante.cshtml" />
+    <Content Include="Views\CursoEstudiante\VerNotasEstudiante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
