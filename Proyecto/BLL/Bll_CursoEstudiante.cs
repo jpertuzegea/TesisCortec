@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using BLL.Enums;
 using BLL.Utilidades;
+using DAO.ViewModel;
 
 namespace BLL
 {
@@ -74,6 +75,10 @@ namespace BLL
                     CursoEstudiante.FechaMatricula = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     CursoEstudiante.AprobacionCurso = (byte)EnumAprobacionCurso.Cursando;
                     CursoEstudiante.EstadoEvaluacionCursoyDocente = (byte)EnumEstadoEvaluacionCursoyDocente.Pendiente;
+                    CursoEstudiante.Nota1 = "0";
+                    CursoEstudiante.Nota2 = "0";
+                    CursoEstudiante.Nota3 = "0";
+
                     CursoEstudiante.Estado = (byte)EnumEstados.Activo;
 
                     BD.CursoEstudiante.Add(CursoEstudiante);
@@ -108,7 +113,56 @@ namespace BLL
             }
         }
 
+        public ListaCalificacionestudiantes ListaEstudiantesByCursoId(int CursoId)
+        {
+            try
+            {
+                ListaCalificacionestudiantes Lista = new ListaCalificacionestudiantes();
+                Lista.ListaCursoEstudiante = BD.CursoEstudiante.Where(c => c.CursoId == CursoId).ToList();
+                return (Lista);
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
 
 
+        public bool GuargarCalificacionEstudiante(ListaCalificacionestudiantes ListaCalificacionestudiantes)
+        {
+
+            if (ListaCalificacionestudiantes != null)
+            {// si el objeto es diferente de nulo 
+                try
+                {
+                    foreach (var item in ListaCalificacionestudiantes.ListaCursoEstudiante)
+                    {
+                        var CursoEstudiante = BD.CursoEstudiante.Find(item.CursoEstudianteId);
+
+                        if (CursoEstudiante != null)
+                        {
+  
+                            CursoEstudiante.Nota1 = item.Nota1;
+                            CursoEstudiante.Nota2 = item.Nota2;
+                            CursoEstudiante.Nota3 = item.Nota3;
+                            BD.Entry(CursoEstudiante).State = EntityState.Modified;
+                            BD.SaveChanges();
+                        } 
+                    } 
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    Bll_File.EscribirLog(error.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }

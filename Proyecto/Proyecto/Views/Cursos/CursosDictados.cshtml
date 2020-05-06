@@ -87,67 +87,67 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td>
-                                        <img width="50" height="50" src="@Url.Action("MostrarImagenCurso", "Cursos", new { CursoId = item.CursoId})" />
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Nombre)
-                                    </td>
-                                    <td>
-                                        colocar # @*@Html.DisplayFor(modelItem => item.TituloOtorgado)*@
-                                    </td>
-                                    <td>
-                                        @{ string EstadoAcademico = "";
-                                            if (item.EstadoAcademico == 0)
-                                            {
-                                                EstadoAcademico = "Ofertado";
+                                    <tr>
+                                        <td>
+                                            <img width="50" height="50" src="@Url.Action("MostrarImagenCurso", "Cursos", new { CursoId = item.CursoId})" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nombre)
+                                        </td>
+                                        <td>
+                                            colocar # @*@Html.DisplayFor(modelItem => item.TituloOtorgado)*@
+                                        </td>
+                                        <td>
+                                            @{ string EstadoAcademico = "";
+                                                if (item.EstadoAcademico == 0)
+                                                {
+                                                    EstadoAcademico = "Ofertado";
+                                                }
+                                                else if (item.EstadoAcademico == 1)
+                                                {
+                                                    EstadoAcademico = "Iniciado";
+                                                }
+                                                else if (item.EstadoAcademico == 2)
+                                                {
+                                                    EstadoAcademico = "Pausado";
+                                                }
+                                                else if (item.EstadoAcademico == 3)
+                                                {
+                                                    EstadoAcademico = "Cancelado";
+                                                }
+                                                else if (item.EstadoAcademico == 4)
+                                                {
+                                                    EstadoAcademico = "Finalizado";
+                                                }
                                             }
-                                            else if (item.EstadoAcademico == 1)
-                                            {
-                                                EstadoAcademico = "Iniciado";
+                                            @EstadoAcademico
+                                        </td>
+                                        <td>
+                                            @{ string Estado = "Inactivo";
+                                                if (item.Estado == 1)
+                                                {
+                                                    Estado = "Activo";
+                                                }
                                             }
-                                            else if (item.EstadoAcademico == 2)
-                                            {
-                                                EstadoAcademico = "Pausado";
-                                            }
-                                            else if (item.EstadoAcademico == 3)
-                                            {
-                                                EstadoAcademico = "Cancelado";
-                                            }
-                                            else if (item.EstadoAcademico == 4)
-                                            {
-                                                EstadoAcademico = "Finalizado";
-                                            }
-                                        }
-                                        @EstadoAcademico
-                                    </td>
-                                    <td>
-                                        @{ string Estado = "Inactivo";
-                                            if (item.Estado == 1)
-                                            {
-                                                Estado = "Activo";
-                                            }
-                                        }
-                                        @Estado
-                                    </td>
+                                            @Estado
+                                        </td>
 
-                                    <td>
-                                        @Html.ActionLink(" ", "Index", "ForoTema", new { CursoId = item.CursoId }, new { @class = "fa fa-comments", @title = "Foro del Curso" })
-                                    </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "Index", "ForoTema", new { CursoId = item.CursoId }, new { @class = "fa fa-comments", @title = "Foro del Curso" })
+                                        </td>
 
-                                    <td>
-                                        @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink(" ", "ListCronograma", "CronogramaActividades", new { CursoId = item.CursoId }, new { @class = "fa fa-calendar-o", @title = "Cronograma Actividades" })
-                                    </td>
-                                  
-                                    <td>
-                                        <a href="#" onclick="" title="Calificaciones" data-toggle="modal" id="@item.CursoId"><i class="fa fa-eye"></i></a>
-                                    </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "Index", "MaterialDidactico", new { CursoId = item.CursoId }, new { @class = "fa fa-book", @title = "Material Didactico" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "ListCronograma", "CronogramaActividades", new { CursoId = item.CursoId }, new { @class = "fa fa-calendar-o", @title = "Cronograma Actividades" })
+                                        </td>
 
-                                </tr>
+                                        <td>
+                                            @Html.ActionLink(" ", "CalificacionesEstudiante", "CursoEstudiante", new { CursoId = item.CursoId }, new { @class = "fa fa-eye", @title = "Calificaciones Estudiantes" })
+                                        </td>
+
+                                    </tr>
                                 }
                             </tbody>
                             <tfoot>

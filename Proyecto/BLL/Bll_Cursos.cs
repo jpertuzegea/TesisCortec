@@ -1,5 +1,6 @@
 ﻿using BLL.Enums;
 using DAO;
+using DAO.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -51,6 +52,8 @@ namespace BLL
                 return null;
             }
         }
+
+       
 
 
         public List<Cursos> ListarCursosByDocenteId(EnumEstadoFiltro Filtro, int DocenteId)
@@ -204,6 +207,6 @@ namespace BLL
             }
         }
 
-        
+
     }
 }

@@ -120,6 +120,9 @@
     <Compile Include="CalificacionDocenteCursoEstudiante.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="CalificacioneEstudiante.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="CertificadoEstudianteCurso.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
@@ -181,6 +184,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TesisDao.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ListaCalificacionestudiantes.cs" />
     <Compile Include="ViewModel\ListaPreguntas.cs" />
     <Compile Include="ViewModel\PreguntasRespuestasCalificacionModel.cs" />
     <Compile Include="ViewModel\ReportePreguntasByCurso.cs" />

@@ -115,6 +115,9 @@ CursoId int NOT NULL,
 EstudianteId int NOT NULL,
 FechaMatricula datetime NOT NULL,
 EstadoEvaluacionCursoyDocente TINYINT NOT NULL,
+Nota1 VARCHAR(2), 
+Nota2 VARCHAR(2),  
+Nota3 VARCHAR(2), 
 AprobacionCurso TINYINT NOT NULL,
 Estado TINYINT NOT NULL,
 PRIMARY KEY (CursoEstudianteId),
@@ -237,8 +240,8 @@ FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (CertificadoEstudianteCurso, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
- 
--- Borrado de tablas --
+  
+-- Borrado de tablas -- 
 -- Drop table CertificadoEstudianteCurso;
 -- Drop table CalificacionDocenteCursoEstudiante;
 -- Drop table PreguntasCalificacionCurso;
