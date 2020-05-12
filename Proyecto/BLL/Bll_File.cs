@@ -67,6 +67,14 @@ namespace BLL
                 }
             }
 
+            string Mesnaje = $"Se ha presentado el siguiente error en Cortec: \n\n" +
+                        $"ERROR: {log} \n" +
+                        $"Hora: {UtilitiesCommons.ObtenerHorayFechaActualLocal()} \n\n" +
+                        $"Usuario en sesion: {HttpContext.Current.Session["NombreUsuarioTesis"]} \n";
+
+            Bll_Email Bll_Email = new Bll_Email();
+            Bll_Email.EnviarCorreo(ConfigurationManager.AppSettings.Get("EmailDestinoErrores"), "Error en sistema Cortec", Mesnaje);
+
 
             try
             {

@@ -67,8 +67,8 @@ namespace Proyecto.Controllers
             Personas persona = Bll_Personas.GetPersonaByPersonaId(id);
 
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)persona.TipoDocumento);
-            ViewBag.RolAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumRolAcademico>(), "Value", "Text", persona.RolAcademico);
-
+            ViewBag.RolAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumRolAcademico>(), "Value", "Text", (int)persona.RolAcademico);
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)persona.Estado);
             return View(persona);
         }
 
@@ -80,6 +80,7 @@ namespace Proyecto.Controllers
             Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)Persona.Estado);
             ViewBag.RolAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumRolAcademico>(), "Value", "Text", Persona.RolAcademico);
+            ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Persona.Estado);
 
             if (Persona != null)
             {

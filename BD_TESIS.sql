@@ -156,8 +156,6 @@ FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId)
 );
 DBCC CHECKIDENT (CronogramaActividadesCurso, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
-
-
 CREATE TABLE ForoTema(
 ForoTemaId INT NOT NULL IDENTITY(1,1), 
 CursoId INT NOT NULL, 

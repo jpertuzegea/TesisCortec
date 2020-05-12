@@ -58,10 +58,11 @@ namespace BLL
                 {
                     Bll_Login.CrearCookie("Respuesta", "true", DuracionCookie);
                     Bll_Login.CrearCookie("NombreCurso", CertificadoEstudianteCurso.Cursos.Nombre, DuracionCookie);
-                    Bll_Login.CrearCookie("CodigoCurso", CertificadoEstudianteCurso.Cursos.Codigo, DuracionCookie);
+                    Bll_Login.CrearCookie("CodigoCurso", CertificadoEstudianteCurso.Cursos.Codigo, DuracionCookie);                  
                     Bll_Login.CrearCookie("NombreEstudiante", CertificadoEstudianteCurso.Personas.NombreCompleto, DuracionCookie);
                     Bll_Login.CrearCookie("TipoDocumentoEstudiante", CertificadoEstudianteCurso.Personas.TipoDocumento.ToString(), DuracionCookie);
                     Bll_Login.CrearCookie("NumeroDocumentoEstudiante", CertificadoEstudianteCurso.Personas.NumDocumento, DuracionCookie);
+                    Bll_Login.CrearCookie("DuracionHoras", CertificadoEstudianteCurso.Cursos.DuracionHoras.ToString(), DuracionCookie);
 
                     return true;
                 }

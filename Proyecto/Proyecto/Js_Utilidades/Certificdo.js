@@ -33,11 +33,12 @@ function stiker() {
     doc.addImage(imgData, 'JPEG', 340, 360, 100, 100);
     doc.text(180, 120, "! Felicitaciones por culminar el curso con exito !"); // posicion en X y Y
     doc.text(290, 170, "Nombre Curso: " + LeerCookie("NombreCurso")); // posicion en X y Y 
+    doc.text(300, 190, "DuracionHoras: " + LeerCookie("DuracionHoras")); // posicion en X y Y  
+
 
     doc.text(295, 260, LeerCookie("NombreEstudiante")); // posicion en X y Y
     doc.text(290, 280, "Cedula: " + LeerCookie("NumeroDocumentoEstudiante")); // posicion en X y Y  
-
-
+    
 
     //doc.text(136, 35, "# de Folios Radicados: " + LeerCookie("NumFolios")); // posicion en X y Y
     //doc.text(136, 38, "Fecha Radicacion : " + LeerCookie("FechaRadicacion")); // posicion en X y Y

@@ -35,8 +35,7 @@ namespace BLL
             // luego colocar los datos de la cuenta y la clave
 
             MailMessage mensaje = new System.Net.Mail.MailMessage();
-
-            // mensaje.To.Add("katherin3125 @hotmail.com");
+           
             mensaje.To.Add("Luzkduco@gmail.com");
            
             mensaje.To.Add(EmailDestino);
