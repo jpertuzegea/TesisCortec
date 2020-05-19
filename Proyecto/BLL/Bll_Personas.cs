@@ -198,8 +198,7 @@ namespace BLL
                     Perso.Departamento = Persona.Departamento;
                     Perso.Direccion = Persona.Direccion;
                     Perso.Telefono = Persona.Telefono;
-                    Perso.RolAcademico = (byte)Persona.RolAcademico;
-
+                    Perso.RolAcademico = (byte)Persona.RolAcademico; 
 
                     if (Persona.Clave != null)
                     {
@@ -209,9 +208,7 @@ namespace BLL
                     Perso.Estado = Persona.Estado;
 
                     BD.Entry(Perso).State = EntityState.Modified;
-                    BD.SaveChanges();
-
-                    Bll_File.EscribirLog("Persona modificada con exito");
+                    BD.SaveChanges(); 
 
                     return true;
                 }

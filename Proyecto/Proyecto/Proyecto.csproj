@@ -182,11 +182,16 @@
     <Content Include="Imagenes\fondoxxx.jpeg" />
     <Content Include="Imagenes\fondoxxxx.png" />
     <Content Include="Imagenes\footer.png" />
+    <Content Include="Imagenes\foro.jpg" />
     <Content Include="Imagenes\Imagen Luz.jpeg" />
     <Content Include="Imagenes\Imagen Yuli.jpeg" />
     <Content Include="Imagenes\LogoSigecor.png" />
+    <Content Include="Imagenes\nueva actividad.jpg" />
+    <Content Include="Imagenes\nuevo material.jpg" />
     <Content Include="Imagenes\pavicon.png" />
     <Content Include="Imagenes\perfil.jpg" />
+    <Content Include="Imagenes\post card 1.jpg" />
+    <Content Include="Imagenes\post card.jpg" />
     <Content Include="Imagenes\Sin Foto.jpg" />
     <Content Include="JS_PDF\jspdf.html" />
     <Content Include="JS_PDF\jspdf.js" />
