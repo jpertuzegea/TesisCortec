@@ -27,7 +27,6 @@ function ModificarNotaRapida(id) {
 function ModificarPanelInformaivo() {
     $("#contenido").load("/NotasRapidas/PanelInformativoUpdt");
 }
-
 // -------- fin notas rapidas --------
 
 // -------- inicio Cursos --------
@@ -63,8 +62,6 @@ function ModificarCronogramaActividadesCurso(id) {
 } 
 // -------- Fin Cronograma --------
 
-
-
 // -------- Inicio ForoTema --------
 function CrearForoTema(id) {
     $("#contenido").load("/ForoTema/ForoTemaAdd/" + id);
@@ -77,6 +74,18 @@ function ParticiparEnForoTema(ForoTemaId) {
 }
 // -------- Fin Foro --------
 
+
+// -------- inicio Roles --------
+function CrearRol() {
+    $("#contenido").load("/Roles/RolesAdd");
+}
+function ModificarRol(id) {
+    $("#contenido").load("/Roles/RolesUpdt/" + id);
+}
+function RolPerfilAdd(id) {
+    $("#contenido").load("/Roles/RolPerfilAdd/" + id);
+} 
+// -------- fin Roles --------
 
 
 

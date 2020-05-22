@@ -163,6 +163,7 @@
     <Compile Include="Bll_NotasRapidas.cs" />
     <Compile Include="Bll_PanelInformativo.cs" />
     <Compile Include="Bll_ParticipacionEnForoTema.cs" />
+    <Compile Include="Bll_Perfiles.cs" />
     <Compile Include="Bll_Personas.cs" />
     <Compile Include="Bll_Roles.cs" />
     <Compile Include="Bll_SatisfaccionCurso.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Enums\EnumRangoCalificacion.cs" />
     <Compile Include="Enums\EnumTipoDocumento.cs" />
     <Compile Include="Enums\EnumRolAcademico.cs" />
+    <Compile Include="Enums\EnumTipoPerfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\FuncionesEnum.cs" />
     <Compile Include="Utilidades\UtilitiesCommons.cs" />

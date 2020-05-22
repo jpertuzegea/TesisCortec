@@ -157,6 +157,7 @@
     <Compile Include="Controllers\NotasRapidasController.cs" />
     <Compile Include="Controllers\ParticipacionEnForoTemaController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SatisfaccionCursoController.cs" />
     <Compile Include="Controllers\SistemaDeCorreoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1712,6 +1713,10 @@
     <Content Include="Views\Certificados\Index.cshtml" />
     <Content Include="Views\CursoEstudiante\CalificacionesEstudiante.cshtml" />
     <Content Include="Views\CursoEstudiante\VerNotasEstudiante.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\RolesAdd.cshtml" />
+    <Content Include="Views\Roles\RolesUpdt.cshtml" />
+    <Content Include="Views\Roles\RolPerfilAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

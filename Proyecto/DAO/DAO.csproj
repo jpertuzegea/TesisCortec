@@ -197,6 +197,7 @@
       <DependentUpon>TesisDao.edmx</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListaCalificacionestudiantes.cs" />
+    <Compile Include="ViewModel\ListaPerfilesDelRol.cs" />
     <Compile Include="ViewModel\ListaPreguntas.cs" />
     <Compile Include="ViewModel\PreguntasRespuestasCalificacionModel.cs" />
     <Compile Include="ViewModel\ReportePreguntasByCurso.cs" />

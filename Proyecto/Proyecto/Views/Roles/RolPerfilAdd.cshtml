@@ -1,0 +1,85 @@
+﻿
+@model DAO.ViewModel.ListaPerfilesDelRol
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("RolPerfilAdd", "Roles", FormMethod.Post, new { onsubmit = "return  validar_doble_clic()" }))
+{ // el return indica que la accion del formulario llega false cuando ya le han dado clic una vez
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.RolId)
+
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 style="color:#1ab394" class="modal-title"> Agregar Perfiles al Rol</h4>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="row">
+            @*<div align="center" class="col-sm-1"> </div>*@
+            <div align="center" class="col-sm-12">
+
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Modulo
+                            </th>
+                            <th>
+                                Descripcion
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < Model.ListaPerfiles.Count; i++)
+                        {
+                            string color = "";
+                            if (Model.ListaPerfiles[i].Tipo == 0)
+                            {
+                                color = "#FE2E2E";
+                            }
+                            if (Model.ListaPerfiles[i].Tipo == 1)
+                            {
+                                color = "#1ab394";
+                            }
+                            <tr>
+                                <td>
+                                    <FONT COLOR="@color">@Html.DisplayFor(m => m.ListaPerfiles[i].Modulo)</FONT>
+                                </td>
+
+                                <td>
+                                    <FONT COLOR="@color">@Model.ListaPerfiles[i].NombrePerfil</FONT>
+                                    @Html.HiddenFor(m => Model.ListaPerfiles[i].PerfilId)
+                                    @Html.HiddenFor(m => Model.ListaPerfiles[i].Descripcion)
+                                </td>
+                                <td>
+                                    <FONT COLOR="@color">@Html.DisplayFor(m => m.ListaPerfiles[i].Descripcion)</FONT>
+                                </td>
+
+                                <td>
+                                    @Html.CheckBoxFor(m => Model.ListaPerfiles[i].EstadoChecbox)   @*este es el campo importante para identificar el perfil seleccionado junto con el perfil_id *@
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            @*<div align="center" class="col-sm-1"> </div>*@
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="boton" type="submit"><strong>Modificar</strong></button>
+    </div>
+}

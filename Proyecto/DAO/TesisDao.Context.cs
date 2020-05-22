@@ -48,6 +48,21 @@ namespace DAO
         public virtual DbSet<RolPersona> RolPersona { get; set; }
         public virtual DbSet<SistemaCorreo> SistemaCorreo { get; set; }
     
-     
+        public virtual ObjectResult<MiSp_Result> MiSp(string nombre, string apellido, Nullable<int> cedula)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MiSp_Result>("MiSp", nombreParameter, apellidoParameter, cedulaParameter);
+        }
     }
 }

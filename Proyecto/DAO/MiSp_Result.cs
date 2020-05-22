@@ -10,16 +10,10 @@
 namespace DAO
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RolPerfil
+    public partial class MiSp_Result
     {
-        public int RolPerfilId { get; set; }
-        public Nullable<int> PerfilId { get; set; }
-        public Nullable<int> RolId { get; set; }
-    
-        public virtual Perfiles Perfiles { get; set; }
-        public virtual Roles Roles { get; set; }
-        public bool EstadoChecbox { get; set; }
+        public int CodigoInstitucionalId { get; set; }
+        public int Contador { get; set; }
     }
 }

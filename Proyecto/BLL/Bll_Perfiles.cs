@@ -1,0 +1,62 @@
+﻿using DAO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BLL
+{
+    public class Bll_Perfiles
+    {
+        private TESIS_BD BD = null;
+
+        public Bll_Perfiles()
+        {
+            BD = new TESIS_BD();
+        }
+
+        public List<Perfiles> ListarPerfiles()
+        {
+            try
+            {
+                List<Perfiles> Lista = BD.Perfiles.ToList();
+                return (Lista);
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                throw;
+            }
+        }
+
+        public static bool VerificarPerfil(int UserId, int PerfilId)
+        {
+            TESIS_BD Bd = new TESIS_BD();
+
+            // esta consulta es para verificar si un usuario ingresado tiene el perfil por el cual se solicita permiso
+            var resultado = from perf in Bd.Perfiles
+                            join ro_pe in Bd.RolPerfil on perf.PerfilId equals ro_pe.PerfilId
+                            join rol in Bd.Roles on ro_pe.RolId equals rol.RolId
+                            join rol_usu in Bd.RolPersona on rol.RolId equals rol_usu.RolId
+                            join usu in Bd.Personas on rol_usu.PersonaId equals usu.PersonaId
+                            where perf.PerfilId == PerfilId && usu.PersonaId == UserId
+                            select new { 
+                                nombre = perf.NombrePerfil,
+                                usu.NombreCompleto 
+                            }; //  query de validacion de usuario y perfil
+
+            if (resultado.Count() > 0)
+            { 
+                return true;
+            }
+            else
+            { 
+                return false;
+            }     
+        } 
+
+
+
+    }
+}

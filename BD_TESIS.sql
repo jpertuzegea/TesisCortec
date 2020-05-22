@@ -237,7 +237,6 @@ FOREIGN KEY (CursoId) REFERENCES Cursos (CursoId),
 FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId) 
 );
 DBCC CHECKIDENT (CertificadoEstudianteCurso, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
-
  
 CREATE TABLE Perfiles(
 PerfilId INT NOT NULL IDENTITY(1,1),
@@ -248,8 +247,7 @@ Tipo TINYINT,-- SE DEBE CREAR UN ENUM CON LAS OPCIONES (MENU, ACCION, SUBMENU)
 PRIMARY KEY (PerfilId)
 );
 DBCC CHECKIDENT (Perfiles, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
--- INSERT INTO Perfiles VALUES ('Menu Administracion','Administracion','Permite visualizar las opciones del menu Administrador','Menu');
-
+INSERT INTO Perfiles VALUES ('Menu Reportes','Reportes','Permite visualizar las opciones del menu Reportes',0);
 
 CREATE TABLE Roles(
 RolId INT NOT NULL IDENTITY(1,1),
