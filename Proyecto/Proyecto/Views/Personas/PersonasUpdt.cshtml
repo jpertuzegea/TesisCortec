@@ -1,6 +1,7 @@
 ﻿@model DAO.Personas
 
-@*<script src="~/Js_Utilidades/Validaciones.js"></script>*@
+
+<script src="~/Js_Utilidades/Validaciones/Personas.js"></script>
 
 @{
     Layout = null;
@@ -46,7 +47,7 @@
                 <div class="form-group">
                     <label>Ciudad </label>
                     @Html.EditorFor(model => model.Ciudad, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
-                </div> 
+                </div>
 
             </div>
 

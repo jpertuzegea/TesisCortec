@@ -17,65 +17,7 @@
     <link href="~/Plantilla/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
     <link href="~/Imagenes/pavicon.png" rel="icon">
     <link href="~/Plantilla/css/plugins/chosen/chosen.css" rel="stylesheet">
-
-    <!-- Mainly scripts -->
-    <script src="~/Plantilla/js/jquery-2.1.1.js"></script>
-    <script src="~/Plantilla/js/bootstrap.min.js"></script>
-    <script src="~/Plantilla/js/plugins/toastr/toastr.min.js"></script>
-
-    <script src="~/Plantilla/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="~/Plantilla/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- Custom and plugin javascript -->
-    <script src="~/Plantilla/js/inspinia.js"></script>
-    <script src="~/Plantilla/js/plugins/pace/pace.min.js"></script>
-
-    <!-- JS -->
-    <!-- Para el pdf con js -->
-    <script type="text/javascript" src="~/JS_PDF/jspdf.js"></script>
-    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.addimage.js"></script>
-    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.standard_fonts_metrics.js"></script>
-    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.split_text_to_size.js"></script>
-    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.from_html.js"></script>
-
-    <script src="~/Plantilla/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="~/Plantilla/js/plugins/dataTables/datatables.min.js"></script>
-
-    <script src="~/Js_Utilidades/Utilidades.js"></script>
-
-    <!-- Morris -->
-    <script src="~/Plantilla/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="~/Plantilla/js/plugins/morris/morris.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').DataTable({
-                pageLength: 25,
-                responsive: true,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    { extend: 'copy' },
-                    { extend: 'csv' },
-                    { extend: 'excel', title: 'ExampleFile' },
-                    { extend: 'pdf', title: 'ExampleFile' },
-
-                    {
-                        extend: 'print',
-                        customize: function (win) {
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-
-                            $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
-
-    <script src="~/Js_Utilidades/Modals.js"></script>
-    <script src="~/Js_Utilidades/Validacion_Doble_clic_Submit.js"></script>
+     
 
 </head>
 
@@ -327,5 +269,66 @@
         </div>
     </div>
 
+
+
+    <!-- Mainly scripts -->
+    <script src="~/Plantilla/js/jquery-2.1.1.js"></script>
+    <script src="~/Plantilla/js/bootstrap.min.js"></script>
+    <script src="~/Plantilla/js/plugins/toastr/toastr.min.js"></script>
+
+    <script src="~/Plantilla/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Plantilla/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="~/Plantilla/js/inspinia.js"></script>
+    <script src="~/Plantilla/js/plugins/pace/pace.min.js"></script>
+
+    <!-- JS -->
+    <!-- Para el pdf con js -->
+    <script type="text/javascript" src="~/JS_PDF/jspdf.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.addimage.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="~/JS_PDF/jspdf.plugin.from_html.js"></script>
+
+    <script src="~/Plantilla/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Plantilla/js/plugins/dataTables/datatables.min.js"></script>
+
+    <script src="~/Js_Utilidades/Utilidades.js"></script>
+
+    <!-- Morris -->
+    <script src="~/Plantilla/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="~/Plantilla/js/plugins/morris/morris.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'ExampleFile' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+    <script src="~/Js_Utilidades/Modals.js"></script>
+    <script src="~/Js_Utilidades/Validacion_Doble_clic_Submit.js"></script>
+    <script src="~/Js_Utilidades/Utilidades.js"></script>
 </body>
 </html>

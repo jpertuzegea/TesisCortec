@@ -1,5 +1,7 @@
 ﻿@model DAO.Personas
 
+<script src="~/Js_Utilidades/Validaciones/Personas.js"></script>
+
 @{
     Layout = null;
 }
@@ -25,7 +27,7 @@
 
                 <div class="form-group">
                     <label>Clave Nueva</label>
-                    <input id="NuevaClave" name="NuevaClave" type="password" class="form-control" placeholder="Contraseña" required=""> 
+                    <input id="NuevaClave" name="NuevaClave" type="password" class="form-control" placeholder="Contraseña" required="">
                 </div>
 
             </div>
@@ -39,6 +41,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="BotonRegistrar" type="submit"><strong>Registrar</strong></button>
+        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="BotonCambiarClave" type="submit"><strong>Registrar</strong></button>
     </div>
 }
