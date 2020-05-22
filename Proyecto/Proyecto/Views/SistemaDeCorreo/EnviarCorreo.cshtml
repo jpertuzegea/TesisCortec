@@ -1,4 +1,5 @@
 ﻿@model  DAO.SistemaCorreo
+ 
 
 @using (Html.BeginForm("EnviarCorreo", "SistemaDeCorreo", FormMethod.Post))
 { // el return indica que la accion del formulario llega false cuando ya le han dado clic una vez
@@ -54,7 +55,7 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="BotonRegistrar" type="submit"><strong><i class="fa fa-reply"></i> Enviar</strong></button>
+                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="BotonEnviarCorreo" type="submit"><strong><i class="fa fa-reply"></i> Enviar</strong></button>
             </div>
 
             <div class="clearfix"></div>
