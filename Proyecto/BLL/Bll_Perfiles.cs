@@ -32,31 +32,38 @@ namespace BLL
 
         public static bool VerificarPerfil(int UserId, int PerfilId)
         {
-            TESIS_BD Bd = new TESIS_BD();
+            try
+            {
+                TESIS_BD Bd = new TESIS_BD();
 
-            // esta consulta es para verificar si un usuario ingresado tiene el perfil por el cual se solicita permiso
-            var resultado = from perf in Bd.Perfiles
-                            join ro_pe in Bd.RolPerfil on perf.PerfilId equals ro_pe.PerfilId
-                            join rol in Bd.Roles on ro_pe.RolId equals rol.RolId
-                            join rol_usu in Bd.RolPersona on rol.RolId equals rol_usu.RolId
-                            join usu in Bd.Personas on rol_usu.PersonaId equals usu.PersonaId
-                            where perf.PerfilId == PerfilId && usu.PersonaId == UserId
-                            select new { 
-                                nombre = perf.NombrePerfil,
-                                usu.NombreCompleto 
-                            }; //  query de validacion de usuario y perfil
+                // esta consulta es para verificar si un usuario ingresado tiene el perfil por el cual se solicita permiso
+                var resultado = from perf in Bd.Perfiles
+                                join ro_pe in Bd.RolPerfil on perf.PerfilId equals ro_pe.PerfilId
+                                join rol in Bd.Roles on ro_pe.RolId equals rol.RolId
+                                join rol_usu in Bd.RolPersona on rol.RolId equals rol_usu.RolId
+                                join usu in Bd.Personas on rol_usu.PersonaId equals usu.PersonaId
+                                where perf.PerfilId == PerfilId && usu.PersonaId == UserId
+                                select new
+                                {
+                                    nombre = perf.NombrePerfil,
+                                    usu.NombreCompleto
+                                }; //  query de validacion de usuario y perfil
 
-            if (resultado.Count() > 0)
-            { 
-                return true;
+                if (resultado.Count() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
-            { 
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
                 return false;
-            }     
+            }
         } 
-
-
 
     }
 }
