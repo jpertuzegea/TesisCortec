@@ -164,6 +164,7 @@
     <Compile Include="Bll_PanelInformativo.cs" />
     <Compile Include="Bll_ParticipacionEnForoTema.cs" />
     <Compile Include="Bll_Personas.cs" />
+    <Compile Include="Bll_Roles.cs" />
     <Compile Include="Bll_SatisfaccionCurso.cs" />
     <Compile Include="Bll_Seguridad.cs" />
     <Compile Include="Bll_SistemaDeCorreo.cs" />

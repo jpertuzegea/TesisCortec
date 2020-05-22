@@ -18,7 +18,6 @@ namespace DAO
         public Personas()
         {
             this.CalificacionDocenteCursoEstudiante = new HashSet<CalificacionDocenteCursoEstudiante>();
-            this.CalificacioneEstudiante = new HashSet<CalificacioneEstudiante>();
             this.CertificadoEstudianteCurso = new HashSet<CertificadoEstudianteCurso>();
             this.CursoEstudiante = new HashSet<CursoEstudiante>();
             this.Cursos = new HashSet<Cursos>();
@@ -26,6 +25,7 @@ namespace DAO
             this.MaterialDidactico = new HashSet<MaterialDidactico>();
             this.NotasRapidas = new HashSet<NotasRapidas>();
             this.ParticipacionEnForoTema = new HashSet<ParticipacionEnForoTema>();
+            this.RolPersona = new HashSet<RolPersona>();
             this.SistemaCorreo = new HashSet<SistemaCorreo>();
             this.SistemaCorreo1 = new HashSet<SistemaCorreo>();
         }
@@ -49,8 +49,6 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CalificacionDocenteCursoEstudiante> CalificacionDocenteCursoEstudiante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CalificacioneEstudiante> CalificacioneEstudiante { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CertificadoEstudianteCurso> CertificadoEstudianteCurso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CursoEstudiante> CursoEstudiante { get; set; }
@@ -64,6 +62,8 @@ namespace DAO
         public virtual ICollection<NotasRapidas> NotasRapidas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParticipacionEnForoTema> ParticipacionEnForoTema { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RolPersona> RolPersona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SistemaCorreo> SistemaCorreo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

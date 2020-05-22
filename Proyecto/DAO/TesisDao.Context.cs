@@ -12,6 +12,8 @@ namespace DAO
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class TESIS_BD : DbContext
     {
@@ -26,7 +28,6 @@ namespace DAO
         }
     
         public virtual DbSet<CalificacionDocenteCursoEstudiante> CalificacionDocenteCursoEstudiante { get; set; }
-        public virtual DbSet<CalificacioneEstudiante> CalificacioneEstudiante { get; set; }
         public virtual DbSet<CertificadoEstudianteCurso> CertificadoEstudianteCurso { get; set; }
         public virtual DbSet<Codigos> Codigos { get; set; }
         public virtual DbSet<CronogramaActividadesCurso> CronogramaActividadesCurso { get; set; }
@@ -39,8 +40,14 @@ namespace DAO
         public virtual DbSet<NotasRapidas> NotasRapidas { get; set; }
         public virtual DbSet<PanelInformativo> PanelInformativo { get; set; }
         public virtual DbSet<ParticipacionEnForoTema> ParticipacionEnForoTema { get; set; }
+        public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
         public virtual DbSet<PreguntasCalificacionCurso> PreguntasCalificacionCurso { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<RolPerfil> RolPerfil { get; set; }
+        public virtual DbSet<RolPersona> RolPersona { get; set; }
         public virtual DbSet<SistemaCorreo> SistemaCorreo { get; set; }
+    
+     
     }
 }

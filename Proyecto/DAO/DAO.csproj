@@ -120,9 +120,6 @@
     <Compile Include="CalificacionDocenteCursoEstudiante.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="CalificacioneEstudiante.cs">
-      <DependentUpon>TesisDao.tt</DependentUpon>
-    </Compile>
     <Compile Include="CertificadoEstudianteCurso.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
@@ -150,6 +147,9 @@
     <Compile Include="MaterialDidactico.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="MiSp_Result.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="NotasRapidas.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
@@ -159,6 +159,9 @@
     <Compile Include="ParticipacionEnForoTema.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="Perfiles.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="Personas.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
@@ -166,6 +169,15 @@
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RolPerfil.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RolPersona.cs">
+      <DependentUpon>TesisDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="SistemaCorreo.cs">
       <DependentUpon>TesisDao.tt</DependentUpon>
     </Compile>

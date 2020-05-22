@@ -238,8 +238,56 @@ FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (CertificadoEstudianteCurso, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
 
-  
+ 
+CREATE TABLE Perfiles(
+PerfilId INT NOT NULL IDENTITY(1,1),
+NombrePerfil VARCHAR(50),
+Modulo VARCHAR(50),
+Descripcion VARCHAR(250),
+Tipo TINYINT,-- SE DEBE CREAR UN ENUM CON LAS OPCIONES (MENU, ACCION, SUBMENU)
+PRIMARY KEY (PerfilId)
+);
+DBCC CHECKIDENT (Perfiles, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+-- INSERT INTO Perfiles VALUES ('Menu Administracion','Administracion','Permite visualizar las opciones del menu Administrador','Menu');
+
+
+CREATE TABLE Roles(
+RolId INT NOT NULL IDENTITY(1,1),
+Nombre VARCHAR(70),
+Descripcion VARCHAR(250),
+Estado TINYINT NOT NULL,
+PRIMARY KEY (RolId)
+);
+DBCC CHECKIDENT (Roles, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+-- INSERT INTO Roles VALUES ('Administrador','Permite acceder y tener control total de las opciones del sistema');
+
+CREATE TABLE RolPerfil(
+RolPerfilId INT NOT NULL IDENTITY(1,1),
+PerfilId INT,
+RolId INT,
+PRIMARY KEY (RolPerfilId),
+FOREIGN KEY (PerfilId) REFERENCES Perfiles (PerfilId),
+FOREIGN KEY (RolId) REFERENCES Roles (RolId)
+);
+DBCC CHECKIDENT (RolPerfil, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
+CREATE TABLE RolPersona(
+RolPersonaId INT NOT NULL IDENTITY(1,1),
+PersonaId INT,
+RolId INT,
+PRIMARY KEY (RolPersonaId),
+FOREIGN KEY (PersonaId) REFERENCES Personas (PersonaId),
+FOREIGN KEY (RolId) REFERENCES Roles (RolId)
+);
+DBCC CHECKIDENT (RolPersona, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
+
+ 
 -- Borrado de tablas -- 
+
+-- Drop table RolPersona;
+-- Drop table RolPerfil;
+-- Drop table Roles;
+-- Drop table Perfiles;
 -- Drop table CertificadoEstudianteCurso;
 -- Drop table CalificacionDocenteCursoEstudiante;
 -- Drop table PreguntasCalificacionCurso;

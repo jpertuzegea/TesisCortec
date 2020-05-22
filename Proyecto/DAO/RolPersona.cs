@@ -12,16 +12,13 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class CalificacioneEstudiante
+    public partial class RolPersona
     {
-        public int CalificacioneEstudianteId { get; set; }
-        public int CursoId { get; set; }
-        public int EstudianteId { get; set; }
-        public Nullable<int> Nota1 { get; set; }
-        public Nullable<int> Nota2 { get; set; }
-        public Nullable<int> Nota3 { get; set; }
+        public int RolPersonaId { get; set; }
+        public Nullable<int> PersonaId { get; set; }
+        public Nullable<int> RolId { get; set; }
     
-        public virtual Cursos Cursos { get; set; }
         public virtual Personas Personas { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }
