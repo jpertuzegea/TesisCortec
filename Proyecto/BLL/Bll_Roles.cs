@@ -120,7 +120,7 @@ namespace BLL
                 return false;
             }
         }
-         
+
         public ListaPerfilesDelRol ListarPerfilesDeUnRol(int RolId)
         {
             try
@@ -150,20 +150,26 @@ namespace BLL
         {
             try
             {
-                EliminarPerfilesDelRol(Lista.RolId);
-                foreach (var item in Lista.ListaPerfiles.Where(x => x.EstadoChecbox == true))
+                if (EliminarPerfilesDelRol(Lista.RolId))
                 {
-                    AgregarPerfilAlRol(Lista.RolId, item.PerfilId);
+                    foreach (var item in Lista.ListaPerfiles.Where(x => x.EstadoChecbox == true))
+                    {
+                        AgregarPerfilAlRol(Lista.RolId, item.PerfilId);
+                    }
+                    return true;
                 }
-                return true;
+                else
+                {
+                    return false;
+                } 
             }
             catch (Exception error)
             {
                 Bll_File.EscribirLog(error.ToString());
                 return false;
-            } 
+            }
         }
-         
+
         public bool EliminarPerfilesDelRol(int RolId)
         {
             if (RolId > 0)
@@ -219,7 +225,7 @@ namespace BLL
                 return null;
             }
         }
-          
+
         public bool AgregarPerfilAlRol(int RolId, int PerfilId)
         {
             if (PerfilId > 0 && RolId > 0)
@@ -244,7 +250,7 @@ namespace BLL
                 return false;
             }
         }
-         
+
         public bool VerificarPerfilDelRol(int RolId, int PerfilId)
         {
             if (RolId > 0 && PerfilId > 0)

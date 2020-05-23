@@ -1717,6 +1717,7 @@
     <Content Include="Views\Roles\RolesAdd.cshtml" />
     <Content Include="Views\Roles\RolesUpdt.cshtml" />
     <Content Include="Views\Roles\RolPerfilAdd.cshtml" />
+    <Content Include="Views\Personas\PersonaRolAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,6 +14,12 @@ function CambiarImagen(id) {
 function CambiarClave(id) {
     $("#contenido").load("/Personas/CambioClave/" + id);
 }
+function PersonaRolAdd(id) {
+    $("#contenido").load("/Personas/PersonaRolAdd/" + id);
+}
+
+
+
 // -------- fin Personas --------
 
 

@@ -2,6 +2,7 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
+using DAO.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -204,6 +205,43 @@ namespace Proyecto.Controllers
             }
 
         }
+
+
+        [HttpGet]
+        public ActionResult PersonaRolAdd(int id)
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            Bll_Personas Bll_Personas = new Bll_Personas();
+            ListaRolesDelaPersona lista = Bll_Personas.ListarRolesDeUnaPersona(id); 
+            return View(lista);
+        }
+
+        [HttpPost]
+        public ActionResult PersonaRolAdd(ListaRolesDelaPersona Lista)
+        {
+            Bll_Login.VerificarSesionActiva();
+
+            if (Lista != null)
+            {
+                Bll_Personas Bll_Personas = new Bll_Personas();
+
+                if (Bll_Personas.GestionarRolesDeUnaPersona(Lista))
+                {
+                    return RedirectToAction("Index", "Personas");
+                }
+                else
+                {
+                    return View(Lista);
+                }
+            }
+            else
+            {
+                return View(Lista);
+            }
+        }
+
+
 
 
     }

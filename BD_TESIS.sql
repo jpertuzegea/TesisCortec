@@ -126,7 +126,6 @@ FOREIGN KEY (EstudianteId) REFERENCES Personas (PersonaId)
 );
 DBCC CHECKIDENT (CursoEstudiante, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1
  
- 
 CREATE TABLE MaterialDidactico(
 MaterialDidacticoId INT NOT NULL IDENTITY(1,1), 
 CursoId INT NOT NULL, 
@@ -247,7 +246,76 @@ Tipo TINYINT,-- SE DEBE CREAR UN ENUM CON LAS OPCIONES (MENU, ACCION, SUBMENU)
 PRIMARY KEY (PerfilId)
 );
 DBCC CHECKIDENT (Perfiles, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
-INSERT INTO Perfiles VALUES ('Menu Reportes','Reportes','Permite visualizar las opciones del menu Reportes',0);
+----------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO Perfiles VALUES ('Menu Administracion','Administracion','Permite visualizar las opciones del menu Administracion',0);
+
+INSERT INTO Perfiles VALUES ('SubMenu Gestion de Personas','Administracion','Permite visualizar las opciones del Sub menu Gestion de Personas',1);
+INSERT INTO Perfiles VALUES ('Listar Personas','Administracion','Permite visualizar las Personas registradas en el sistema',2);
+INSERT INTO Perfiles VALUES ('Agregar Personas','Administracion','Permite habilitar la opcion de crear personas',2);
+INSERT INTO Perfiles VALUES ('Modificar Personas','Administracion','Permite habilitar la opcion de modificar personas',2);
+INSERT INTO Perfiles VALUES ('Asignar Rol a Personas','Administracion','Permite habilitar la opcion de Asignar Rol a Personas',2);
+
+INSERT INTO Perfiles VALUES ('SubMenu Gestion de Post Card','Administracion','Permite visualizar las opciones del Sub menu Post Card',1);
+INSERT INTO Perfiles VALUES ('Listar Post Card','Administracion','Permite visualizar los Post Card registrados en el sistema',2);
+INSERT INTO Perfiles VALUES ('Agregar Post Card','Administracion','Permite habilitar la opcion de crear Post Card',2);
+INSERT INTO Perfiles VALUES ('Modificar Post Card','Administracion','Permite habilitar la opcion de modificar Post Card',2);
+INSERT INTO Perfiles VALUES ('Modificar Panel Informativo','Administracion','Permite habilitar la opcion de modificar el Panel Informativo',2);
+
+INSERT INTO Perfiles VALUES ('SubMenu Gestion de Cursos','Administracion','Permite visualizar las opciones del Sub menu Cursos',1);
+INSERT INTO Perfiles VALUES ('Listar Cursos','Administracion','Permite visualizar los Cursos registrados en el sistema',2);
+INSERT INTO Perfiles VALUES ('Agregar Cursos','Administracion','Permite habilitar la opcion de Cursos',2);
+INSERT INTO Perfiles VALUES ('Modificar Cursos','Administracion','Permite habilitar la opcion de modificar Cursos',2);
+INSERT INTO Perfiles VALUES ('Listar Calificacion Docente y Curso','Administracion','Permite habilitar la opcion de Listar Calificacion Docente y Curso',2);
+
+INSERT INTO Perfiles VALUES ('SubMenu Gestion de Roles','Administracion','Permite visualizar las opciones del Sub menu Roles',1);
+INSERT INTO Perfiles VALUES ('Listar Roles','Administracion','Permite visualizar los Roles registrados en el sistema',2);
+INSERT INTO Perfiles VALUES ('Agregar Roles','Administracion','Permite habilitar la opcion de Roles',2);
+INSERT INTO Perfiles VALUES ('Modificar Roles','Administracion','Permite habilitar la opcion de modificar Roles',2);
+INSERT INTO Perfiles VALUES ('Asignar Perfil Al Roles','Administracion','Permite habilitar la opcion de Perfil Al Roles',2);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO Perfiles VALUES ('Menu Cursos','Cursos','Permite visualizar las opciones del menu Cursos',0);
+
+INSERT INTO Perfiles VALUES ('SubMenu Cursos Ofertados','Cursos','Permite visualizar las opciones del Sub menu Gestion de Personas',1);
+INSERT INTO Perfiles VALUES ('Listar Cursos Ofertados','Cursos','Permite visualizar los Cursos Ofertados en el sistema',2);
+
+INSERT INTO Perfiles VALUES ('SubMenu Mis Cursos','Cursos','Permite visualizar las opciones del Sub menu Mis Cursos',1);
+INSERT INTO Perfiles VALUES ('Nueva Matricula','Cursos','Permite habilitar la opcion de Nueva Matricula',2);
+INSERT INTO Perfiles VALUES ('Listar Mis Cursos','Cursos','Permite visualizar los Cursos matriculados para el usuario en sesion',2);
+INSERT INTO Perfiles VALUES ('Foro del Curso','Cursos','Permite habilitar la opcion de Foro del curso',2);
+INSERT INTO Perfiles VALUES ('Material Didactico','Cursos','Permite habilitar la opcion de Material Didactico de un curso',2);
+INSERT INTO Perfiles VALUES ('Crear Material Didactico','Cursos','Permite habilitar la opcion de Crear nuevo Material Didactico de un curso',2);
+INSERT INTO Perfiles VALUES ('Visualizar Notas del Estudiante ','Cursos','Permite habilitar la opcion de Visualizar Notas del estudiante en un curso',2);
+INSERT INTO Perfiles VALUES ('Satisfaccion del Curso','Cursos','Permite habilitar la opcion de Calificar la satisfaccion del curso y docente',2);
+INSERT INTO Perfiles VALUES ('Cronograma de Actividades','Cursos','Permite habilitar la opcion de Cronograma de Actividades del curso',2);
+INSERT INTO Perfiles VALUES ('Descargar Certificado','Cursos','Permite habilitar la opcion de Descargar Certificado del curso',2);
+
+INSERT INTO Perfiles VALUES ('SubMenu Cursos Dictados','Cursos','Permite visualizar las opciones del Sub menu Cursos Dictados',1); 
+INSERT INTO Perfiles VALUES ('Listar Cursos Dictados','Cursos','Permite visualizar los Cursos Dictados para el usuario en sesion',2);
+INSERT INTO Perfiles VALUES ('Foro del Curso Dictado','Cursos','Permite habilitar la opcion de Foro del curso',2);
+INSERT INTO Perfiles VALUES ('Material Didactico','Cursos','Permite habilitar la opcion de Material Didactico de un curso',2);
+INSERT INTO Perfiles VALUES ('Cronograma de Actividades','Cursos','Permite habilitar la opcion de Cronograma de Actividades del curso',2);
+INSERT INTO Perfiles VALUES ('Crear Actividad','Cursos','Permite habilitar la opcion de Crear nueva Actividad del curso',2);
+INSERT INTO Perfiles VALUES ('Calificar a Estudiante','Cursos','Permite habilitar la opcion de Calificar a Estudiante en el curso',2);
+
+INSERT INTO Perfiles VALUES ('Foro del Curso','Cursos','Permite habilitar la opcion de Foro del curso',2);
+INSERT INTO Perfiles VALUES ('Nuevo Tema Foro del Curso','Cursos','Permite habilitar la opcion de Crear nuevo tema en Foro del curso',2);
+INSERT INTO Perfiles VALUES ('Material Didactico','Cursos','Permite habilitar la opcion de Material Didactico de un curso',2);
+INSERT INTO Perfiles VALUES ('Crear Material Didactico','Cursos','Permite habilitar la opcion de Crear nuevo Material Didactico de un curso',2);
+INSERT INTO Perfiles VALUES ('Visualizar Notas del Estudiante ','Cursos','Permite habilitar la opcion de Visualizar Notas del estudiante en un curso',2);
+INSERT INTO Perfiles VALUES ('Satisfaccion del Curso','Cursos','Permite habilitar la opcion de Calificar la satisfaccion del curso y docente',2);
+INSERT INTO Perfiles VALUES ('Cronograma de Actividades','Cursos','Permite habilitar la opcion de Cronograma de Actividades del curso',2);
+INSERT INTO Perfiles VALUES ('Descargar Certificado','Cursos','Permite habilitar la opcion de Descargar Certificado del curso',2);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO Perfiles VALUES ('Menu Reporte','Reporte','Permite visualizar las opciones del menu Reporte',0);
+
+INSERT INTO Perfiles VALUES ('SubMenu Evidencia Correos','Reporte','Permite visualizar las opciones del Sub menu Evidencia Correos',1);
+INSERT INTO Perfiles VALUES ('Listar Correos Enviados','Reporte','Permite visualizar los enviados por el sistema',2);
+
+INSERT INTO Perfiles VALUES ('SubMenu Ingreso AL Sistema','Reporte','Permite visualizar las opciones del Sub menu Ingreso AL Sistema',1);
+INSERT INTO Perfiles VALUES ('Listar Ingreso AL Sistema','Reporte','Permite visualizar los Ingreso AL Sistema',2);
 
 CREATE TABLE Roles(
 RolId INT NOT NULL IDENTITY(1,1),
@@ -257,7 +325,9 @@ Estado TINYINT NOT NULL,
 PRIMARY KEY (RolId)
 );
 DBCC CHECKIDENT (Roles, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
--- INSERT INTO Roles VALUES ('Administrador','Permite acceder y tener control total de las opciones del sistema');
+INSERT INTO Roles VALUES ('Administrador','Permite acceder y tener control total de las opciones del sistema');
+INSERT INTO Roles VALUES ('Docente','Permite acceder y tener control solo de las opciones para el docente en el sistema');
+INSERT INTO Roles VALUES ('Estudiante','Permite acceder y tener control total de las opciones para estudiantes en el sistema');
 
 CREATE TABLE RolPerfil(
 RolPerfilId INT NOT NULL IDENTITY(1,1),
@@ -278,27 +348,27 @@ FOREIGN KEY (PersonaId) REFERENCES Personas (PersonaId),
 FOREIGN KEY (RolId) REFERENCES Roles (RolId)
 );
 DBCC CHECKIDENT (RolPersona, RESEED,1); -- obliga a que el contador de llave primaria empiece en 1 
-
  
 -- Borrado de tablas -- 
 
--- Drop table RolPersona;
--- Drop table RolPerfil;
--- Drop table Roles;
--- Drop table Perfiles;
--- Drop table CertificadoEstudianteCurso;
--- Drop table CalificacionDocenteCursoEstudiante;
--- Drop table PreguntasCalificacionCurso;
--- Drop table SistemaCorreo;
--- Drop table ParticipacionEnForoTema;
--- Drop table ForoTema;
--- Drop table CronogramaActividadesCurso;
--- Drop table MaterialDidactico;
--- Drop table CursoEstudiante;
--- Drop table IngresosAlSistema;
--- Drop table Cursos;
--- Drop table EvidenciaCorreo;
--- Drop table NotasRapidas;
--- Drop table PanelInformativo;
--- Drop table Codigos;
--- Drop table Personas;
+-- Drop Table RolPersona;
+-- Drop Table RolPerfil;
+-- Drop Table Roles;
+-- Drop Table Perfiles;
+-- Drop Table CertificadoEstudianteCurso;
+-- Drop Table CalificacionDocenteCursoEstudiante;
+-- Drop Table PreguntasCalificacionCurso;
+-- Drop Table SistemaCorreo;
+-- Drop Table ParticipacionEnForoTema;
+-- Drop Table ForoTema;
+-- Drop Table CronogramaActividadesCurso;
+-- Drop Table MaterialDidactico;
+-- Drop Table CursoEstudiante;
+-- Drop Table Cursos;
+-- Drop Table EvidenciaCorreo;
+-- Drop Table NotasRapidas;
+-- Drop Table PanelInformativo;
+-- Drop Table IngresosAlSistema;
+-- Drop Table Codigos;
+-- Drop Table Personas;
+

@@ -2,6 +2,7 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
+using DAO.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -198,7 +199,7 @@ namespace BLL
                     Perso.Departamento = Persona.Departamento;
                     Perso.Direccion = Persona.Direccion;
                     Perso.Telefono = Persona.Telefono;
-                    Perso.RolAcademico = (byte)Persona.RolAcademico; 
+                    Perso.RolAcademico = (byte)Persona.RolAcademico;
 
                     if (Persona.Clave != null)
                     {
@@ -208,7 +209,7 @@ namespace BLL
                     Perso.Estado = Persona.Estado;
 
                     BD.Entry(Perso).State = EntityState.Modified;
-                    BD.SaveChanges(); 
+                    BD.SaveChanges();
 
                     return true;
                 }
@@ -293,8 +294,7 @@ namespace BLL
                 return false;
             }
         }
-
-
+         
         public List<SelectListItem> ArmarSelectPersona(EnumEstadoFiltro filtro, EnumRolAcademico RolAcademico = EnumRolAcademico.Estudiante, bool Todos = false)
         {
             List<Personas> Lista = null;
@@ -323,5 +323,166 @@ namespace BLL
             return result;
         }
 
+         
+
+        // Roles Y Perfiles
+        public ListaRolesDelaPersona ListarRolesDeUnaPersona(int PersonaId)
+        {
+            try
+            {
+                ListaRolesDelaPersona ListaRolesDelaPersona = new ListaRolesDelaPersona();
+
+                Bll_Roles Bll_Roles = new Bll_Roles();
+                List<Roles> Roles = Bll_Roles.ListarRoles(EnumEstadoFiltro.Todos);
+                if (Roles != null)
+                {
+                    foreach (var item in Roles)
+                    {
+                        item.EstadoChecbox = VerificarPerfilDelRol(PersonaId, item.RolId);
+                    }
+                    ListaRolesDelaPersona.PersonaId = PersonaId;
+                    ListaRolesDelaPersona.ListaRoles = Roles;
+                }
+                return ListaRolesDelaPersona;
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
+
+        public bool GestionarRolesDeUnaPersona(ListaRolesDelaPersona Lista)
+        {
+            try
+            {
+                if (EliminarRolDelaPersona(Lista.PersonaId))
+                {
+                    foreach (var item in Lista.ListaRoles.Where(x => x.EstadoChecbox == true))
+                    {
+                        AgregarolAlaPersona(Lista.PersonaId, item.RolId);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return false;
+            }
+        }
+
+        public bool EliminarRolDelaPersona(int PersonaId)
+        {
+            if (PersonaId > 0)
+            {
+                try
+                {
+                    ListaRolesDelaPersona lista = ListarRolesDeUnaPersona(PersonaId);
+                    if (lista != null)
+                    {
+                        foreach (var item in lista.ListaRoles.Where(x => x.EstadoChecbox == true))
+                        {
+                            var PersonaRol = GetPersonaRolByPersonaIdRolId(PersonaId, item.RolId);
+
+                            BD.RolPersona.Remove(PersonaRol);
+                        }
+                        BD.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception error)
+                {
+                    Bll_File.EscribirLog(error.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public RolPersona GetPersonaRolByPersonaIdRolId(int PersonaId, int RolId)
+        {
+            try
+            {
+                RolPersona RolPersona = BD.RolPersona.Where(x => x.PersonaId == PersonaId && x.RolId == RolId).FirstOrDefault();
+                if (RolPersona != null)
+                {
+                    return RolPersona;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString());
+                return null;
+            }
+        }
+
+        public bool AgregarolAlaPersona(int PersonaId, int RolId)
+        {
+            if (PersonaId > 0 && RolId > 0)
+            {// si el objeto es mayor a 0 osea que es un id valido
+                try
+                {
+                    RolPersona RolPersona = new RolPersona();
+                    RolPersona.PersonaId = PersonaId;
+                    RolPersona.RolId = RolId;
+                    BD.RolPersona.Add(RolPersona);
+                    BD.SaveChanges();
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    Bll_File.EscribirLog(error.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool VerificarPerfilDelRol(int PersonaId, int RolId)
+        {
+            if (RolId > 0 && PersonaId > 0)
+            {// si el objeto es mayor a 0 osea que es un id valido
+                try
+                {
+                    List<RolPersona> resultado = BD.RolPersona.Where(r => r.PersonaId == PersonaId && r.RolId == RolId).ToList();
+                    if (resultado.Count() > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception error)
+                {
+                    Bll_File.EscribirLog(error.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

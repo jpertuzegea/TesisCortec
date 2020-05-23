@@ -84,7 +84,7 @@
                                     <th>
                                         Estado
                                     </th>
-
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -131,6 +131,9 @@
                                         <td>
                                             <a href="#myModal2" onclick="ModificarPersona(this.id)" data-toggle="modal" id="@item.PersonaId"><i class="fa fa-edit"></i></a>
                                         </td>
+                                        <td>
+                                            <a href="#myModal2" onclick="PersonaRolAdd(this.id)" data-toggle="modal" id="@item.PersonaId" title="Agregar Rol A Persona"><i class="fa fa-wrench"></i></a>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
@@ -166,6 +169,7 @@
                                     <th>
                                         Estado
                                     </th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </tfoot>
