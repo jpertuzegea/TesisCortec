@@ -1,29 +1,28 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@{
+        Layout = null;
+    }
 
-@Html.AntiForgeryToken()
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    <h4 style="color:#1ab394" class="modal-title"> Usted No tiene permisos para acceder a esta opcion</h4>
-</div>
-
-
-
-
-<div class="modal-body">
-    <div class="row">
-
-        <div align="center" class="col-sm-12 ">
-
-            <a align="center" href="#" class="pull-left">
-                <img src="~/Imagenes/AreaRestringida.jpg" width="100%" height="100%" />
-            </a>
-        </div>
-
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 style="color:#1ab394" class="modal-title"> Usted No tiene permisos para acceder a esta opcion</h4>
     </div>
-</div>
- 
+
+
+
+    <div class="modal-body">
+        <div align="center" class="row">
+             
+            <div align="center" class="col-sm-12 ">
+
+                <a align="center" href="#" class="pull-left">
+                    <img align="center" src="~/Imagenes/AreaRestringida.jpg" width="50%" height="50%" />
+                </a>
+            </div>
+
+           
+        </div>
+    </div>
+

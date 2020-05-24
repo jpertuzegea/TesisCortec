@@ -16,7 +16,7 @@ namespace Proyecto.Controllers
     public class PersonasController : Controller
     {
 
-        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Prueba)]
+       
         public ActionResult Index()
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -26,7 +26,7 @@ namespace Proyecto.Controllers
         }
 
 
-      
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Prueba)]
         public ActionResult PersonaAdd()
         {
             //Bll_Login.VerificarSesionActiva();

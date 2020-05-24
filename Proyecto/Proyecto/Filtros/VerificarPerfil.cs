@@ -37,8 +37,6 @@ namespace Proyecto.Filtros
 
             //base.OnAuthorization(filterContext);// Si se coloca el metodo Base se bloquea el acceso
         }
-
-
-
+         
     }
 }
