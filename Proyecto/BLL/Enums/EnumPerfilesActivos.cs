@@ -10,7 +10,7 @@ namespace BLL.Enums
     {
 
         // Menus 
-        Permite_Visualizar_Menu_Administrador,
+        Permite_Visualizar_Menu_Administrador=1,
         Permite_Visualizar_Menu_Cursos,
         Permite_Visualizar_Menu_Reportes,
 

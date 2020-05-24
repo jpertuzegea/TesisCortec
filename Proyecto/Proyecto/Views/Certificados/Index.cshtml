@@ -18,7 +18,10 @@
 
     <h1 id="TituloStiker"></h1>
     <br />
-    <iframe frameborder="0" title="Stiker" width="1100" height="600"></iframe>
-    <br /> <br /> <br /> <br /> <br /> <br /> <br />
-    <script src="~/Js_Utilidades/Certificdo.js"></script>
-</div> 
+    @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Descargar_Certificado_Del_Curso))
+    {
+        <iframe frameborder="0" title="Stiker" width="1100" height="600"></iframe>
+        <br /> <br /> <br /> <br /> <br /> <br /> <br />
+    }
+        <script src="~/Js_Utilidades/Certificdo.js"></script>
+    </div> 

@@ -153,6 +153,8 @@ namespace BLL
                         Bll_Codigo.GuardarCodigo(Codigo);
                         BD.SaveChanges();
 
+                        AgregaRolAlaPersona(Persona.PersonaId, 3);// Toda nueva persona ingresa con Rol Estudiante
+
                         string Mesnaje = $"Buen dia señor(a): {Persona.NombreCompleto}." +
                             "\n Se informa que su inscripcion fue realizada de manera exitosa en la plataforma TESIS. \n" +
                             "Sus datos de acceso son : \n " +
@@ -360,7 +362,7 @@ namespace BLL
                 {
                     foreach (var item in Lista.ListaRoles.Where(x => x.EstadoChecbox == true))
                     {
-                        AgregarolAlaPersona(Lista.PersonaId, item.RolId);
+                        AgregaRolAlaPersona(Lista.PersonaId, item.RolId);
                     }
                     return true;
                 }
@@ -432,7 +434,7 @@ namespace BLL
             }
         }
 
-        public bool AgregarolAlaPersona(int PersonaId, int RolId)
+        public bool AgregaRolAlaPersona(int PersonaId, int RolId)
         {
             if (PersonaId > 0 && RolId > 0)
             {// si el objeto es mayor a 0 osea que es un id valido

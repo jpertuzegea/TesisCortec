@@ -5,134 +5,135 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <br>
-        @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
-        {*@
-       
-        <a data-toggle="modal" class="btn btn-primary" onclick="CrearMaterialDidactico( @ViewBag.CursoId)" id="btn_NuevoCurso" href="#myModal2">Nuevo Material</a>
-
-        @*}*@
+        @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Crear_Material_Didactico_Del_Curso))
+        {
+            <a data-toggle="modal" class="btn btn-primary" onclick="CrearMaterialDidactico( @ViewBag.CursoId)" id="btn_NuevoCurso" href="#myModal2">Nuevo Material</a>
+        }
     </div>
 
     <div class="col-lg-2">
     </div>
 </div>
 
-@*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 4))// 4 es poder listar los departamentos
-    {*@
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5 align="center">Listado de Material Didactico Para El Curso    <b><FONT COLOR="#1ab394">[ @ViewBag.NombreCurso ]</FONT> </b></h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li>
-                                <a href="#">Config option 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
+@if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Listar_Material_Didactico_Del_Curso))
+{
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5 align="center">Listado de Material Didactico Para El Curso    <b><FONT COLOR="#1ab394">[ @ViewBag.NombreCurso ]</FONT> </b></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#">Config option 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="ibox-content">
-                    <div class="table-responsive">
+                    <div class="ibox-content">
+                        <div class="table-responsive">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <thead>
-                                <tr>
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr>
 
-                                    <th>
-                                        Nombre Material
-                                    </th>
-                                    <th>
-                                        Mensaje
-                                    </th>
-                                    <th>
-                                        Docente
-                                    </th>
-                                    <th>
-                                        Fecha Publicacion
-                                    </th>
-                                    <th>
-                                        Estado
-                                    </th>
+                                        <th>
+                                            Nombre Material
+                                        </th>
+                                        <th>
+                                            Mensaje
+                                        </th>
+                                        <th>
+                                            Docente
+                                        </th>
+                                        <th>
+                                            Fecha Publicacion
+                                        </th>
+                                        <th>
+                                            Estado
+                                        </th>
 
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Filename)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Mensaje)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FechaRegistro)
-                                    </td>
-                                    <td>
-                                        @{ string Estado = "Inactivo";
-                                            if (item.Estado == 1)
-                                            {
-                                                Estado = "Activo";
-                                            }
-                                        }
-                                        @Estado
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink(" ", "DescargarDocumento", "MaterialDidactico", new { MaterialDidacticoId = item.MaterialDidacticoId }, new { @class = "fa fa-cloud-download", @title = "Descargar Material" })
-                                    </td>
-                                </tr>
-                                }
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>
-                                        Nombre Material
-                                    </th>
-                                    <th>
-                                       Mensaje
-                                    </th>
-                                    <th>
-                                        Docente
-                                    </th>
-                                    <th>
-                                        Fecha Publicacion
-                                    </th>
-                                    <th>
-                                        Estado
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Filename)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Mensaje)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Personas.NombreCompleto)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FechaRegistro)
+                                            </td>
+                                            <td>
+                                                @{ string Estado = "Inactivo";
+                                                    if (item.Estado == 1)
+                                                    {
+                                                        Estado = "Activo";
+                                                    }
+                                                }
+                                                @Estado
+                                            </td>
+                                            <td>
+                                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Descargar_Material_Didactico_Del_Curso))
+                                                {
+                                                    @Html.ActionLink(" ", "DescargarDocumento", "MaterialDidactico", new { MaterialDidacticoId = item.MaterialDidacticoId }, new { @class = "fa fa-cloud-download", @title = "Descargar Material" })
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            Nombre Material
+                                        </th>
+                                        <th>
+                                            Mensaje
+                                        </th>
+                                        <th>
+                                            Docente
+                                        </th>
+                                        <th>
+                                            Fecha Publicacion
+                                        </th>
+                                        <th>
+                                            Estado
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@*}*@
+}

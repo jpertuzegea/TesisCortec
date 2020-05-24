@@ -3,75 +3,77 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-      
+
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <br>
-            @*@if (PROYECTO_SIGECOR.Controllers.Utilidades.Funciones_Perfiles.Verificar_perfil((int)Session["id_usuario_sigecor"], 5))// 5 es poder ver el boton crear departamento
-                {*@
-            <a data-toggle="modal" class="btn btn-primary" onclick="ParticiparEnForoTema(@ViewBag.ForoTemaId)" id="btn_ParticiparEnForoTema" href="#myModal2">Participar En Foro</a>
-            @*}*@
+            @if(BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Crear_Participacion_Foro_Tema_Del_Curso))
+            {
+                <a data-toggle="modal" class="btn btn-primary" onclick="ParticiparEnForoTema(@ViewBag.ForoTemaId)" id="btn_ParticiparEnForoTema" href="#myModal2">Participar En Foro</a>
+            }
         </div>
 
         <div class="col-lg-2">
         </div>
     </div>
-    <br />
-    <br />
-     
-    if (@ViewBag.Cantidad < 1)
-    {
-        <div class="feed-activity-list">
-            <div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
 
-                <h3 align="center">[ <font color="#1ab394">No hay Comentarios en el foro</font> ]</h3>
+    <br />
+    <br />
+
+    if(BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Listar_Participaciones_Foro_Tema_Del_Curso))
+    {
+        if (@ViewBag.Cantidad < 1)
+        {
+            <div class="feed-activity-list">
+                <div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <h3 align="center">[ <font color="#1ab394">No hay Comentarios en el foro</font> ]</h3>
+                </div>
+            </div>
+        }
+    }
+
+    foreach (var item in Model)
+    {
+
+        <div class="ibox-content">
+            <div class="feed-activity-list">
+
+                <div class="row">
+                    <div class="col-sm-11 b-r">
+
+                        <small class="float-right text-navy"> [ @item.ParticipacionEnForoTemaId ] - </small>
+                        <strong> @item.Personas.NombreCompleto</strong>
+
+                        <br />
+                        <div class="alert alert-warning">
+                            <div>@item.Mensaje</div>
+                            <small class="text-muted">[ @item.FechaRegistro ]</small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1 ">
+                        <span>
+                            <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId = @item.Personas.PersonaId })" />
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     }
+    <br />
+    <br />
+
+    <br />
+    <br /> 
 }
-
-@foreach (var item in Model)
-{
-
-    <div class="ibox-content">
-        <div class="feed-activity-list">
-
-            <div class="row">
-                <div class="col-sm-11 b-r">
-
-                    <small class="float-right text-navy"> [ @item.ParticipacionEnForoTemaId ] - </small>
-                    <strong> @item.Personas.NombreCompleto</strong>
-
-                    <br />
-                    <div class="alert alert-warning">
-                        <div>@item.Mensaje</div>
-                        <small class="text-muted">[ @item.FechaRegistro ]</small>
-                    </div>
-                </div>
-
-                <div class="col-sm-1 ">
-                    <span>
-                        <img width="70" height="70" alt="image" class="img-circle" src="@Url.Action("ConvertirImagen", "Personas", new { PersonaId =  @item.Personas.PersonaId })" />
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-<br />
-<br />
-
-<br />
-<br />
-
-

@@ -33,9 +33,9 @@
                             <th>
                                 Modulo
                             </th>
-                            <th>
+                            @*<th>
                                 Descripcion
-                            </th>
+                            </th>*@
                             <th></th>
                         </tr>
                     </thead>
@@ -62,9 +62,9 @@
                                     @Html.HiddenFor(m => Model.ListaPerfiles[i].PerfilId)
                                     @Html.HiddenFor(m => Model.ListaPerfiles[i].Descripcion)
                                 </td>
-                                <td>
+                                @*<td>
                                     <FONT COLOR="@color">@Html.DisplayFor(m => m.ListaPerfiles[i].Descripcion)</FONT>
-                                </td>
+                                </td>*@
 
                                 <td>
                                     @Html.CheckBoxFor(m => Model.ListaPerfiles[i].EstadoChecbox)   @*este es el campo importante para identificar el perfil seleccionado junto con el perfil_id *@
