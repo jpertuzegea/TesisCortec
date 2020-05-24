@@ -13,7 +13,7 @@ namespace Proyecto.Controllers
         // GET: MaterialDidactico
         public ActionResult Index(int CursoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
             List<MaterialDidactico> Lista = Bll_MaterialDidactico.ListarMaterialByCursoId(CursoId);
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
@@ -29,7 +29,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult MaterialDidacticoAdd(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             ViewBag.CursoId = id;
             return View();
         }
@@ -38,7 +38,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult MaterialDidacticoAdd(MaterialDidactico MaterialDidactico, HttpPostedFileBase file)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             ViewBag.CursoId = MaterialDidactico.CursoId;
 
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
@@ -56,7 +56,7 @@ namespace Proyecto.Controllers
 
         public FileContentResult DescargarDocumento(int MaterialDidacticoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
 

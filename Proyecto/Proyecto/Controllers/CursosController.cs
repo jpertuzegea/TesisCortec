@@ -16,7 +16,7 @@ namespace Proyecto.Controllers
         // GET: Cursos
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Todos, EnumEstadosCurso.Ofertado);// aca no importa el segundo parametro porque va a traer el total de los cursos
@@ -27,7 +27,7 @@ namespace Proyecto.Controllers
         // GET: CursosOfertados
         public ActionResult CursosOfertados()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Activo, EnumEstadosCurso.Ofertado);
 
@@ -37,7 +37,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult DetalleCurso(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
@@ -50,7 +50,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DetalleCurso(int CursoId, string Nombre, string Codigo)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
           
@@ -69,7 +69,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult CursosDictados()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             int DocenteId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
@@ -81,7 +81,7 @@ namespace Proyecto.Controllers
         // GET: CursoAdd
         public ActionResult CursosAdd()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
 
@@ -96,7 +96,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CursosAdd(Cursos Curso, HttpPostedFileBase file)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
 
@@ -125,7 +125,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult CursoUpdt(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
@@ -143,7 +143,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CursoUpdt(Cursos Curso, HttpPostedFileBase file)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
             ViewBag.EstadoAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumEstadosCurso>(), "Value", "Text", (int)Curso.EstadoAcademico);
@@ -178,7 +178,7 @@ namespace Proyecto.Controllers
 
         public ActionResult MostrarImagenCurso(int CursoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             byte[] CursoImagen = Bll_Cursos.GetImagenByCursoId(CursoId);
 

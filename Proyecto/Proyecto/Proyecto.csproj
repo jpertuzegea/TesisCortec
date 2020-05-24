@@ -148,6 +148,7 @@
     <Compile Include="Controllers\CronogramaActividadesController.cs" />
     <Compile Include="Controllers\CursoEstudianteController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\ErrorPerfilController.cs" />
     <Compile Include="Controllers\EvidenciaCorreoController.cs" />
     <Compile Include="Controllers\ForoTemaController.cs" />
     <Compile Include="Controllers\IngresosAlSistemaController.cs" />
@@ -160,6 +161,8 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SatisfaccionCursoController.cs" />
     <Compile Include="Controllers\SistemaDeCorreoController.cs" />
+    <Compile Include="Filtros\VerificarPerfil.cs" />
+    <Compile Include="Filtros\VerificarSesion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1718,6 +1721,7 @@
     <Content Include="Views\Roles\RolesUpdt.cshtml" />
     <Content Include="Views\Roles\RolPerfilAdd.cshtml" />
     <Content Include="Views\Personas\PersonaRolAdd.cshtml" />
+    <Content Include="Views\ErrorPerfil\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

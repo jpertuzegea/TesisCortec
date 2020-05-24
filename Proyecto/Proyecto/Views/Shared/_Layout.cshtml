@@ -88,9 +88,8 @@
                             <li>@Html.ActionLink("Bandeja de Salida", "BandejaSalida", "SistemaDeCorreo")</li>
                         </ul>
                     </li>
-                  
-                    @if (BLL.Bll_Perfiles.VerificarPerfil((int)HttpContext.Current.Session["IdUsuarioTesis"], 1))
-                    {
+
+                     
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
@@ -98,7 +97,8 @@
                                 <li>@Html.ActionLink("Ingresos al Sistema", "index", "IngresosAlSistema")</li>
                             </ul>
                         </li>
-                    }
+
+                     
                 </ul>
             </div>
         </nav>

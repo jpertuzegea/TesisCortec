@@ -3,6 +3,7 @@ using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
 using DAO.ViewModel;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,17 +15,18 @@ namespace Proyecto.Controllers
 {
     public class PersonasController : Controller
     {
-        // GET: Personas
+
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Prueba)]
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             List<Personas> Lista = Bll_Personas.ListarPersonas(EnumEstadoFiltro.Todos);
             return View(Lista);
         }
 
 
-        // GET: PersonaAdd
+      
         public ActionResult PersonaAdd()
         {
             //Bll_Login.VerificarSesionActiva();
@@ -32,9 +34,8 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        // POST:   PersonaAdd
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         public ActionResult PersonaAdd(Personas Persona)
         {
             //Bll_Login.VerificarSesionActiva();
@@ -59,11 +60,10 @@ namespace Proyecto.Controllers
             }
         }
 
-        //Update
         [HttpGet]
         public ActionResult PersonasUpdt(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             Personas persona = Bll_Personas.GetPersonaByPersonaId(id);
 
@@ -73,12 +73,11 @@ namespace Proyecto.Controllers
             return View(persona);
         }
 
-        //Update
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PersonasUpdt(Personas Persona)
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             ViewBag.TipoDocumento = new SelectList(FuncionesEnum.ListaEnum<EnumTipoDocumento>(), "Value", "Text", (int)Persona.Estado);
             ViewBag.RolAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumRolAcademico>(), "Value", "Text", Persona.RolAcademico);
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Persona.Estado);
@@ -111,7 +110,7 @@ namespace Proyecto.Controllers
         public ActionResult ConvertirImagen(int PersonaId)
         {
 
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             if (PersonaId == 0)// panel informativo siempre sera 0 (se reutilizo el metodo)
             {
@@ -144,20 +143,17 @@ namespace Proyecto.Controllers
             return null;
         }
 
-
-        // GET: CambioImagen
         public ActionResult CambioImagen()
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             return View();
         }
 
-        // POST: CambioImagen
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CambioImagen(HttpPostedFileBase file)
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             if (ModelState.IsValid)
             {
@@ -178,20 +174,17 @@ namespace Proyecto.Controllers
             }
         }
 
-
-        // GET: CambioClave
         public ActionResult CambioClave()
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             return View();
         }
 
-        // POST: CambioClave
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CambioClave(string Clave, string NuevaClave)
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Personas Bll_Personas = new Bll_Personas();
 
@@ -206,21 +199,20 @@ namespace Proyecto.Controllers
 
         }
 
-
         [HttpGet]
         public ActionResult PersonaRolAdd(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Personas Bll_Personas = new Bll_Personas();
-            ListaRolesDelaPersona lista = Bll_Personas.ListarRolesDeUnaPersona(id); 
+            ListaRolesDelaPersona lista = Bll_Personas.ListarRolesDeUnaPersona(id);
             return View(lista);
         }
 
         [HttpPost]
         public ActionResult PersonaRolAdd(ListaRolesDelaPersona Lista)
         {
-            Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             if (Lista != null)
             {
@@ -240,9 +232,6 @@ namespace Proyecto.Controllers
                 return View(Lista);
             }
         }
-
-
-
 
     }
 }

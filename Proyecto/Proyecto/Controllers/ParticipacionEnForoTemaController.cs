@@ -13,7 +13,7 @@ namespace Proyecto.Controllers
     {
         public ActionResult IngresarAlForoTema(int ForoTemaId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_ParticipacionEnForoTema Bll_ParticipacionEnForoTema = new Bll_ParticipacionEnForoTema();
             List<ParticipacionEnForoTema> Lista = Bll_ParticipacionEnForoTema.ListarParticipacionEnForoTema(ForoTemaId);
@@ -26,7 +26,7 @@ namespace Proyecto.Controllers
 
         public ActionResult ParticiparEnForoTemaAdd(int id)//ForoTemaId
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_ForoTema Bll_ForoTema = new Bll_ForoTema();
             ForoTema ForoTema = Bll_ForoTema.ObtenerForoTemaByForoTemaId(id);
 
@@ -41,7 +41,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult ParticiparEnForoTemaAdd(ParticipacionEnForoTema ParticipacionEnForoTema, string NombreDocente, string DocenteId, string NombreCurso, string Tema)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_ParticipacionEnForoTema Bll_ParticipacionEnForoTema = new Bll_ParticipacionEnForoTema();
 
             if (Bll_ParticipacionEnForoTema.GuardarParticipacionEnForoTema(ParticipacionEnForoTema.ForoTemaId, ParticipacionEnForoTema.Mensaje, NombreDocente, DocenteId, NombreCurso, Tema))

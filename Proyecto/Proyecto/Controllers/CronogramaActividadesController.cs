@@ -14,7 +14,7 @@ namespace Proyecto.Controllers
     {
         public ActionResult ListCronograma(int CursoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_CronogramaActividadesCurso Bll_CronogramaActividadesCurso = new Bll_CronogramaActividadesCurso();
             List<CronogramaActividadesCurso> Lista = Bll_CronogramaActividadesCurso.ListarConogramasActividadesByCursoId(CursoId);
             ViewBag.CursoId = CursoId;
@@ -24,7 +24,7 @@ namespace Proyecto.Controllers
         public ActionResult CronogramaActividadesAdd(int id)
         {
 
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
             ViewBag.CursoId = id;
             return View();
@@ -34,7 +34,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CronogramaActividadesAdd(CronogramaActividadesCurso CronogramaActividadesCurso)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)CronogramaActividadesCurso.Estado);
             ViewBag.CursoId = CronogramaActividadesCurso.CursoId;
@@ -60,7 +60,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult CronogramaActividadesUpdt(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_CronogramaActividadesCurso Bll_CronogramaActividadesCurso = new Bll_CronogramaActividadesCurso();
             CronogramaActividadesCurso CronogramaActividadesCurso = Bll_CronogramaActividadesCurso.GetCronogramaActividadesCursoByCronogramaActividadesCursoId(id);
@@ -74,7 +74,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CronogramaActividadesUpdt(CronogramaActividadesCurso CronogramaActividadesCurso)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)CronogramaActividadesCurso.Estado);
 

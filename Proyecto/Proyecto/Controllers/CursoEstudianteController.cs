@@ -14,7 +14,7 @@ namespace Proyecto.Controllers
         // GET: CursoEstudiante
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             int EstudianteId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
             Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
             List<CursoEstudiante> Lista = Bll_CursoEstudiante.ListarCursosActivosbyPersonaId(EstudianteId);
@@ -25,7 +25,7 @@ namespace Proyecto.Controllers
 
         public ActionResult CalificacionesEstudiante(int CursoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
             ListaCalificacionestudiantes Lista = Bll_CursoEstudiante.ListaEstudiantesByCursoId(CursoId);
 
@@ -34,7 +34,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult CalificacionesEstudiante(ListaCalificacionestudiantes ListaCalificacionestudiantes)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
             if (Bll_CursoEstudiante.GuargarCalificacionEstudiante(ListaCalificacionestudiantes))
             {// pregunta si la funcion de creacion se ejecuto con exito
@@ -49,7 +49,7 @@ namespace Proyecto.Controllers
 
         public ActionResult VerNotasEstudiante(int CursoId, int EstudianteId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
             CursoEstudiante CursoEstudiante = Bll_CursoEstudiante.ObtenerNotasByCursoIdEstudianteId(CursoId, EstudianteId);
             return View(CursoEstudiante); 

@@ -13,7 +13,7 @@ namespace Proyecto.Controllers
     {
         public ActionResult BandejaEntrada()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
             List<SistemaCorreo> Lista = Bll_SistemaDeCorreo.BandejaEntrada();
             ViewBag.CantidadMensajes = Lista.Count();
@@ -21,7 +21,7 @@ namespace Proyecto.Controllers
         }
         public ActionResult BandejaSalida()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
             List<SistemaCorreo> Lista = Bll_SistemaDeCorreo.BandejaSalida();
             ViewBag.CantidadMensajes = Lista.Count();
@@ -31,7 +31,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult LeerCorreo(string SistemaCorreoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
             SistemaCorreo SistemaCorreo = Bll_SistemaDeCorreo.ObtenerCorreoBySistemaCorreoId(Int32.Parse(SistemaCorreoId));
             Bll_SistemaDeCorreo.MarcarCorreoComoLeidoBySistemaCorreoId(SistemaCorreo);
@@ -43,7 +43,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult EnviarCorreo()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_Personas Bll_Personas = new Bll_Personas();
             List<SelectListItem> lista = Bll_Personas.ArmarSelectPersona(EnumEstadoFiltro.Activo, EnumRolAcademico.Estudiante, true);
 
@@ -56,7 +56,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult EnviarCorreo(SistemaCorreo SistemaCorreo)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             if (ModelState.IsValid)
             {

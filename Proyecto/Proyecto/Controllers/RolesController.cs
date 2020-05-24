@@ -15,7 +15,7 @@ namespace Proyecto.Controllers
     {
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_Roles BLL_Roles = new Bll_Roles();
             List<Roles> Roles = BLL_Roles.ListarRoles(EnumEstadoFiltro.Todos);
@@ -25,7 +25,7 @@ namespace Proyecto.Controllers
 
         public ActionResult RolesAdd()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
             return View();
@@ -35,7 +35,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RolesAdd(Roles Roles)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Roles.Estado);
 
@@ -61,7 +61,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult RolesUpdt(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_Roles Bll_Roles = new Bll_Roles();
             Roles NotaRapida = Bll_Roles.GetRolByRolId(id);
@@ -74,7 +74,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RolesUpdt(Roles Roles)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Roles.Estado);
 
@@ -107,7 +107,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult RolPerfilAdd(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_Roles BLL_Roles = new Bll_Roles();
             ListaPerfilesDelRol lista = BLL_Roles.ListarPerfilesDeUnRol(id);
@@ -118,7 +118,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult RolPerfilAdd(ListaPerfilesDelRol Lista)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
              
             if (Lista != null)
             { 

@@ -15,7 +15,7 @@ namespace Proyecto.Controllers
 
         public ActionResult Index(int CursoId)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_ForoTema Bll_Foro = new Bll_ForoTema();
             List<ForoTema> Lista = Bll_Foro.ListarForosTemaByCursoId(CursoId);
 
@@ -31,7 +31,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult ForoTemaAdd(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             ViewBag.CursoId = id;
             return View();
         }
@@ -40,7 +40,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult ForoTemaAdd(ForoTema ForoTema)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             ViewBag.CursoId = ForoTema.CursoId;
 
             Bll_ForoTema Bll_Foro = new Bll_ForoTema();
@@ -60,7 +60,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult ForoTemaUpdt(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_ForoTema Bll_ForoTema = new Bll_ForoTema();
             ForoTema ForoTema = Bll_ForoTema.ObtenerForoTemaByForoTemaId(id);
@@ -75,7 +75,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult ForoTemaUpdt(ForoTema ForoTema)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)ForoTema.Estado);
             ViewBag.ForoTemaId = ForoTema.ForoTemaId;

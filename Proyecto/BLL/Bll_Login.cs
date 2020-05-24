@@ -69,29 +69,7 @@ namespace BLL
             FormsAuthentication.SignOut();
         }
 
-        public static void VerificarSesionActiva()
-        {
-            String NombreUsuarioTesis = (String)HttpContext.Current.Session["NombreUsuarioTesis"];// se captura la variable de sesion con la que se validara que el usuario este logueado 
-
-            if (NombreUsuarioTesis != null)
-            {
-                if (NombreUsuarioTesis.Length < 3)
-                {
-                    HttpContext.Current.Response.Redirect("/login");
-                }
-            }
-            else
-            {
-                HttpContext.Current.Response.Redirect("/login");
-            }
-
-
-            // Esta parte es solo para actualizar el icono de mensajes no leidos en la aplicaicon 
-            Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();
-            Bll_SistemaDeCorreo.ObtenerCorreosSinLeerByPersonaId();
-
-        }
-
+    
         public void CrearCookie(string NombreCookie, string ValorCookie, int ExpiracionSegundos)
         {
             System.Web.HttpCookie Cookie = new System.Web.HttpCookie(NombreCookie);

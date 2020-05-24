@@ -1,9 +1,11 @@
-﻿using DAO;
+﻿using BLL.Enums;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BLL
 {
@@ -30,11 +32,13 @@ namespace BLL
             }
         }
 
-        public static bool VerificarPerfil(int UserId, int PerfilId)
-        {
+        public static bool VerificarPerfil(EnumPerfilesActivos EnumPerfilesActivos)
+        { 
             try
             {
+                int PerfilId = (int)EnumPerfilesActivos;
                 TESIS_BD Bd = new TESIS_BD();
+                int UserId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
 
                 // esta consulta es para verificar si un usuario ingresado tiene el perfil por el cual se solicita permiso
                 var resultado = from perf in Bd.Perfiles
@@ -63,7 +67,7 @@ namespace BLL
                 Bll_File.EscribirLog(error.ToString());
                 return false;
             }
-        } 
+        }
 
     }
 }

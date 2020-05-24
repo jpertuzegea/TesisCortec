@@ -13,7 +13,7 @@ namespace Proyecto.Controllers
         // GET: EvienciaCorreo
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_EvidenciaCorreo Bll_EvidenciaCorreo = new Bll_EvidenciaCorreo();
             List<EvidenciaCorreo> Lista = Bll_EvidenciaCorreo.ListarEvidenciaCorreo();

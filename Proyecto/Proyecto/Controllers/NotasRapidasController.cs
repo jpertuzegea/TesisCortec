@@ -16,7 +16,7 @@ namespace Proyecto.Controllers
         // GET: Notas_Rapidas
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_NotasRapidas BLL_NotasRapidas = new Bll_NotasRapidas();
             List<NotasRapidas> Notas_Rapidas = BLL_NotasRapidas.ListarNotasRapidas(EnumEstadoFiltro.Todos);
@@ -27,7 +27,7 @@ namespace Proyecto.Controllers
         // GET: Notas_RapidasAdd
         public ActionResult NotasRapidasAdd()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
             return View();
@@ -38,7 +38,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NotasRapidasAdd(NotasRapidas NotasRapidas)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)NotasRapidas.Estado);
 
@@ -65,7 +65,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult NotasRapidasUpdt(int id)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_NotasRapidas Bll_NotasRapidas = new Bll_NotasRapidas();
             NotasRapidas NotaRapida = Bll_NotasRapidas.GetNotasRapidasByNotaRapidaId(id);
@@ -79,7 +79,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NotasRapidasUpdt(NotasRapidas NotasRapidas)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)NotasRapidas.Estado);
 
@@ -112,7 +112,7 @@ namespace Proyecto.Controllers
         [HttpGet]
         public ActionResult PanelInformativoUpdt()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
             Bll_PanelInformativo Bll_PanelInformativo = new Bll_PanelInformativo();
             PanelInformativo PanelInformativo = Bll_PanelInformativo.ObtenerPanelInformativoByPanelInformativoId();
 
@@ -126,7 +126,7 @@ namespace Proyecto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PanelInformativoUpdt(PanelInformativo PanelInformativo, HttpPostedFileBase file)
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)PanelInformativo.Estado);
 

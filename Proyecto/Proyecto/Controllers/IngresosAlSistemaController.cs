@@ -13,7 +13,7 @@ namespace Proyecto.Controllers
         // GET: IngresosAlSistema
         public ActionResult Index()
         {
-            Bll_Login.VerificarSesionActiva();
+           //   Bll_Login.VerificarSesionActiva();
 
             Bll_IngresoAlSistema Bll_IngresoAlSistema = new Bll_IngresoAlSistema();
             List<IngresosAlSistema>lista = Bll_IngresoAlSistema.ListIngresosAlSistema();
