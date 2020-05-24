@@ -2,6 +2,7 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Proyecto.Controllers
     public class CursosController : Controller
     {
 
-        // GET: Cursos
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cursos)]
         public ActionResult Index()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -24,7 +25,7 @@ namespace Proyecto.Controllers
             return View(Cursos);
         }
 
-        // GET: CursosOfertados
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cursos_Ofertados)]
         public ActionResult CursosOfertados()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -35,6 +36,7 @@ namespace Proyecto.Controllers
         }
 
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Detalle_Del_Cursos)]
         public ActionResult DetalleCurso(int id)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -48,6 +50,7 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Detalle_Del_Cursos)]
         public ActionResult DetalleCurso(int CursoId, string Nombre, string Codigo)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -67,6 +70,7 @@ namespace Proyecto.Controllers
          
 
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cursos_Dictados)]
         public ActionResult CursosDictados()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -76,9 +80,8 @@ namespace Proyecto.Controllers
             List<Cursos> Curso = Bll_Cursos.ListarCursosByDocenteId(EnumEstadoFiltro.Activo, DocenteId);
             return View(Curso);
         }
-         
 
-        // GET: CursoAdd
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Curso)]
         public ActionResult CursosAdd()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -91,9 +94,10 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        // POST: Crear Notas_Rapidas
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Curso)]
         public ActionResult CursosAdd(Cursos Curso, HttpPostedFileBase file)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -122,7 +126,9 @@ namespace Proyecto.Controllers
             }
         }
 
+
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Curso)]
         public ActionResult CursoUpdt(int id)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -137,10 +143,10 @@ namespace Proyecto.Controllers
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
             return View(Curso);
         }
-
-        //Update Curso
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Curso)]
         public ActionResult CursoUpdt(Cursos Curso, HttpPostedFileBase file)
         {
            //   Bll_Login.VerificarSesionActiva();

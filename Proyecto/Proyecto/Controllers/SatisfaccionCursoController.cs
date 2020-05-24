@@ -3,6 +3,7 @@ using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
 using DAO.ViewModel;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Proyecto.Controllers
 {
     public class SatisfaccionCursoController : Controller
     {
-
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Calificar_Docente_y_Curso)]
         public ActionResult SatisfaccionCurso(int CursoId)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -26,6 +27,7 @@ namespace Proyecto.Controllers
         }
 
         [HttpPost]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Calificar_Docente_y_Curso)]
         public ActionResult SatisfaccionCurso(ListaPreguntas ListaPreguntas)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -54,8 +56,6 @@ namespace Proyecto.Controllers
 
 
         }
-
-
-
+         
     }
 }

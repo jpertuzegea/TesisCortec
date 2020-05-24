@@ -16,7 +16,7 @@ namespace Proyecto.Controllers
     public class PersonasController : Controller
     {
 
-       
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Persona)]
         public ActionResult Index()
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -26,7 +26,7 @@ namespace Proyecto.Controllers
         }
 
 
-        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Prueba)]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Persona)]
         public ActionResult PersonaAdd()
         {
             //Bll_Login.VerificarSesionActiva();
@@ -34,8 +34,10 @@ namespace Proyecto.Controllers
             return View();
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken] 
+        [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Persona)]
         public ActionResult PersonaAdd(Personas Persona)
         {
             //Bll_Login.VerificarSesionActiva();
@@ -60,7 +62,9 @@ namespace Proyecto.Controllers
             }
         }
 
+
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Persona)]
         public ActionResult PersonasUpdt(int id)
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -75,6 +79,7 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Persona)]        
         public ActionResult PersonasUpdt(Personas Persona)
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -107,6 +112,7 @@ namespace Proyecto.Controllers
             }
         }
 
+         
         public ActionResult ConvertirImagen(int PersonaId)
         {
 
@@ -143,6 +149,9 @@ namespace Proyecto.Controllers
             return null;
         }
 
+
+
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Cambiar_Imagen_Persona)]
         public ActionResult CambioImagen()
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -151,6 +160,7 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Cambiar_Imagen_Persona)]
         public ActionResult CambioImagen(HttpPostedFileBase file)
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -174,6 +184,10 @@ namespace Proyecto.Controllers
             }
         }
 
+
+
+
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Cambiar_Clave_Persona)]
         public ActionResult CambioClave()
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -182,6 +196,7 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Cambiar_Clave_Persona)]
         public ActionResult CambioClave(string Clave, string NuevaClave)
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -199,7 +214,10 @@ namespace Proyecto.Controllers
 
         }
 
+
+
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Asignar_Rol_Persona)]
         public ActionResult PersonaRolAdd(int id)
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -210,6 +228,7 @@ namespace Proyecto.Controllers
         }
 
         [HttpPost]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Asignar_Rol_Persona)]
         public ActionResult PersonaRolAdd(ListaRolesDelaPersona Lista)
         {
             //   Bll_Login.VerificarSesionActiva();

@@ -22,10 +22,8 @@ namespace Proyecto.Filtros
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             try
-            { 
-                bool Respuesta = Bll_Perfiles.VerificarPerfil(Perfil);
-
-                if (!Respuesta)
+            {  
+                if (!Bll_Perfiles.VerificarPerfil(Perfil))
                 {
                     filterContext.HttpContext.Response.Redirect("/ErrorPerfil");
                 }

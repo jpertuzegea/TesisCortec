@@ -1,5 +1,7 @@
 ﻿using BLL;
+using BLL.Enums;
 using DAO;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,10 @@ namespace Proyecto.Controllers
 {
     public class MaterialDidacticoController : Controller
     {
-        // GET: MaterialDidactico
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Material_Didactico_Del_Curso)]
         public ActionResult Index(int CursoId)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
             List<MaterialDidactico> Lista = Bll_MaterialDidactico.ListarMaterialByCursoId(CursoId);
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
@@ -26,19 +28,22 @@ namespace Proyecto.Controllers
             return View(Lista);
         }
 
+
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Material_Didactico_Del_Curso)]
         public ActionResult MaterialDidacticoAdd(int id)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             ViewBag.CursoId = id;
             return View();
         }
 
 
         [HttpPost]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Material_Didactico_Del_Curso)]
         public ActionResult MaterialDidacticoAdd(MaterialDidactico MaterialDidactico, HttpPostedFileBase file)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             ViewBag.CursoId = MaterialDidactico.CursoId;
 
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
@@ -54,9 +59,11 @@ namespace Proyecto.Controllers
 
         }
 
+
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Descargar_Material_Didactico_Del_Curso)]
         public FileContentResult DescargarDocumento(int MaterialDidacticoId)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_MaterialDidactico Bll_MaterialDidactico = new Bll_MaterialDidactico();
 

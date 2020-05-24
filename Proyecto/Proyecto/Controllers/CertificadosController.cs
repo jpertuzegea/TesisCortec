@@ -12,7 +12,7 @@ namespace Proyecto.Controllers
     public class CertificadosController : Controller
     {
 
- 
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Descargar_Certificado_Del_Curso)]
         public ActionResult Index(int CursoId)
         {
            //   Bll_Login.VerificarSesionActiva();

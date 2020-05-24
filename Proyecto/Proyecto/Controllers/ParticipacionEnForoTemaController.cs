@@ -1,6 +1,8 @@
 ﻿using BLL;
+using BLL.Enums;
 using DAO;
 using Microsoft.Ajax.Utilities;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace Proyecto.Controllers
 {
     public class ParticipacionEnForoTemaController : Controller
     {
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Participaciones_Foro_Tema_Del_Curso)]
         public ActionResult IngresarAlForoTema(int ForoTemaId)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -24,6 +27,7 @@ namespace Proyecto.Controllers
             return View(Lista);
         }
 
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Participacion_Foro_Tema_Del_Curso)]
         public ActionResult ParticiparEnForoTemaAdd(int id)//ForoTemaId
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -38,7 +42,9 @@ namespace Proyecto.Controllers
 
             return View();
         }
+        
         [HttpPost]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Participacion_Foro_Tema_Del_Curso)]
         public ActionResult ParticiparEnForoTemaAdd(ParticipacionEnForoTema ParticipacionEnForoTema, string NombreDocente, string DocenteId, string NombreCurso, string Tema)
         {
            //   Bll_Login.VerificarSesionActiva();

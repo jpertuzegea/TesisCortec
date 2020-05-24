@@ -3,6 +3,7 @@ using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
 using DAO.ViewModel;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,10 @@ namespace Proyecto.Controllers
 {
     public class RolesController : Controller
     {
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Roles)]
         public ActionResult Index()
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Roles BLL_Roles = new Bll_Roles();
             List<Roles> Roles = BLL_Roles.ListarRoles(EnumEstadoFiltro.Todos);
@@ -23,9 +25,10 @@ namespace Proyecto.Controllers
             return View(Roles);
         }
 
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Roles)]
         public ActionResult RolesAdd()
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
             return View();
@@ -33,9 +36,10 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Roles)]
         public ActionResult RolesAdd(Roles Roles)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Roles.Estado);
 
@@ -59,9 +63,10 @@ namespace Proyecto.Controllers
         }
 
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Roles)]
         public ActionResult RolesUpdt(int id)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Roles Bll_Roles = new Bll_Roles();
             Roles NotaRapida = Bll_Roles.GetRolByRolId(id);
@@ -72,9 +77,10 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Roles)]
         public ActionResult RolesUpdt(Roles Roles)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Roles.Estado);
 
@@ -105,28 +111,30 @@ namespace Proyecto.Controllers
         }
 
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Asignar_Perfil_Al_Rol)]
         public ActionResult RolPerfilAdd(int id)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Roles BLL_Roles = new Bll_Roles();
             ListaPerfilesDelRol lista = BLL_Roles.ListarPerfilesDeUnRol(id);
 
             return View(lista);
         }
-      
+
         [HttpPost]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Asignar_Perfil_Al_Rol)]
         public ActionResult RolPerfilAdd(ListaPerfilesDelRol Lista)
         {
-           //   Bll_Login.VerificarSesionActiva();
-             
+            //   Bll_Login.VerificarSesionActiva();
+
             if (Lista != null)
-            { 
+            {
                 Bll_Roles BLL_Roles = new Bll_Roles();
 
                 if (BLL_Roles.GestionarPerfilesDelRol(Lista))
                 {
-                    return RedirectToAction("Index","Roles");
+                    return RedirectToAction("Index", "Roles");
                 }
                 else
                 {
@@ -136,7 +144,7 @@ namespace Proyecto.Controllers
             else
             {
                 return View(Lista);
-            } 
+            }
         }
 
     }

@@ -45,10 +45,18 @@
                                 </a>
 
                                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                    @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Cambiar_Imagen_Persona))
+                                    {
+                                        <li><a href="#myModal2" onclick="CambiarImagen(this.id)" data-toggle="modal" id="@System.Web.HttpContext.Current.Session["IdUsuarioTesis"]">Cambio Imagen</a></li>
+                                    }
 
-                                    <li><a href="#myModal2" onclick="CambiarImagen(this.id)" data-toggle="modal" id="@System.Web.HttpContext.Current.Session["IdUsuarioTesis"]">Cambio Imagen</a></li>
-                                    <li><a href="#myModal2" onclick="CambiarClave(this.id)" data-toggle="modal" id="@System.Web.HttpContext.Current.Session["IdUsuarioTesis"]">Cambio Clave</a></li>
+                                    @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Cambiar_Clave_Persona))
+                                    {
+                                        <li><a href="#myModal2" onclick="CambiarClave(this.id)" data-toggle="modal" id="@System.Web.HttpContext.Current.Session["IdUsuarioTesis"]">Cambio Clave</a></li>
+                                    }
+
                                     <li>@Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Login")</li>
+
                                 </ul>
 
                             </div>
@@ -58,27 +66,55 @@
                             IN+
                         </div>
                     </li>
+                    @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_Menu_Administrador))
+                    {
+                        <li>
+                            <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Administracion</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Gestion_Personas))
+                                {
+                                    <li>@Html.ActionLink("Gestion de Personas", "index", "Personas")</li>
+                                }
 
-                    <li>
-                        <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Administracion</span> <span class="fa arrow"></span></a>
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Gestion_PostCard))
+                                {
+                                    <li>@Html.ActionLink("Gestion Post Card", "index", "NotasRapidas")</li>
+                                }
 
-                        <ul class="nav nav-second-level collapse">
-                            <li>@Html.ActionLink("Gestion de Personas", "index", "Personas")</li>
-                            <li>@Html.ActionLink("Gestion Post Card", "index", "NotasRapidas")</li>
-                            <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li>
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Gestion_Cursos))
+                                {
+                                    <li>@Html.ActionLink("Gestion de Cursos", "index", "Cursos")</li>
+                                }
 
-                            <li>@Html.ActionLink("Gestion de Roles", "index", "Roles")</li>
-                        </ul>
-                    </li>
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Gestion_Roles))
+                                {
+                                    <li>@Html.ActionLink("Gestion de Roles", "index", "Roles")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
 
-                    <li>
-                        <a href="#"><i class="fa fa-book"></i> <span class="nav-label">Cursos</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
-                            <li>@Html.ActionLink("Mis Cursos", "Index", "CursoEstudiante")</li>
-                            <li>@Html.ActionLink("Cursos Dictados", "CursosDictados", "Cursos")</li>
-                        </ul>
-                    </li>
+                    @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_Menu_Cursos))
+                    {
+                        <li>
+                            <a href="#"><i class="fa fa-book"></i> <span class="nav-label">Cursos</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Listar_Cursos_Ofertados))
+                                {
+                                    <li>@Html.ActionLink("Cursos Ofertados", "CursosOfertados", "Cursos")</li>
+                                }
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Listar_Mis_Cursos))
+                                {
+                                    <li>@Html.ActionLink("Mis Cursos", "Index", "CursoEstudiante")</li>
+                                }
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Listar_Cursos_Dictados))
+                                {
+                                    <li>@Html.ActionLink("Cursos Dictados", "CursosDictados", "Cursos")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
 
                     <li>
                         <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Sistema de Correo</span> <span class="fa arrow"></span></a>
@@ -89,16 +125,23 @@
                         </ul>
                     </li>
 
-                     
+                    @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_Menu_Reportes))
+                    {
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
-                                <li>@Html.ActionLink("Evidencia Correo", "index", "EvidenciaCorreo")</li>
-                                <li>@Html.ActionLink("Ingresos al Sistema", "index", "IngresosAlSistema")</li>
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Evidencia_De_Correos))
+                                {
+                                    <li>@Html.ActionLink("Evidencia Correo", "index", "EvidenciaCorreo")</li>
+                                }
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_IngresosAlSistema))
+                                {
+                                    <li>@Html.ActionLink("Ingresos al Sistema", "index", "IngresosAlSistema")</li>
+                                }
                             </ul>
                         </li>
+                    }
 
-                     
                 </ul>
             </div>
         </nav>
@@ -116,9 +159,15 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
                             <span class="m-r-sm text-muted welcome-message">
-                                <b><FONT COLOR="#1ab394">Mis Cursos:</FONT> </b>  <FONT COLOR="red">
-                                    [ @Html.ActionLink(System.Web.HttpContext.Current.Session["CursosMatriculadosActivos"].ToString(), "Index", "CursoEstudiante") ]
-                                </FONT>
+                                @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Acceder_Listar_Mis_Cursos))
+                                {
+                                    <b>
+                                        <FONT COLOR="#1ab394"> Mis Cursos:</FONT>
+                                    </b> <FONT COLOR="red">
+
+                                        [@Html.ActionLink(System.Web.HttpContext.Current.Session["CursosMatriculadosActivos"].ToString(), "Index", "CursoEstudiante")]
+                                    </FONT>
+                                }
                             </span>
 
 

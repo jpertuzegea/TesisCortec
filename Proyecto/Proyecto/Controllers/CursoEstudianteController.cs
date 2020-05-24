@@ -1,6 +1,8 @@
 ﻿using BLL;
+using BLL.Enums;
 using DAO;
 using DAO.ViewModel;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace Proyecto.Controllers
 {
     public class CursoEstudianteController : Controller
     {
-        // GET: CursoEstudiante
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Mis_Cursos)]
         public ActionResult Index()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -23,6 +25,7 @@ namespace Proyecto.Controllers
         }
 
 
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Calificar_Estudiantes)]
         public ActionResult CalificacionesEstudiante(int CursoId)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -31,7 +34,9 @@ namespace Proyecto.Controllers
 
             return View(Lista);
         }
+       
         [HttpPost]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Calificar_Estudiantes)]
         public ActionResult CalificacionesEstudiante(ListaCalificacionestudiantes ListaCalificacionestudiantes)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -47,6 +52,7 @@ namespace Proyecto.Controllers
         }
 
 
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Ver_Notas_Estudiente)]
         public ActionResult VerNotasEstudiante(int CursoId, int EstudianteId)
         {
            //   Bll_Login.VerificarSesionActiva();

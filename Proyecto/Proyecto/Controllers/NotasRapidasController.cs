@@ -1,7 +1,8 @@
 ﻿using BLL;
 using BLL.Enums;
 using BLL.Utilidades;
-using DAO; 
+using DAO;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,7 @@ namespace Proyecto.Controllers
 {
     public class NotasRapidasController : Controller
     {
-        // GET: Notas_Rapidas
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_PostCard)]
         public ActionResult Index()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -24,7 +25,8 @@ namespace Proyecto.Controllers
             return View(Notas_Rapidas);
         }
 
-        // GET: Notas_RapidasAdd
+
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_PostCard)]
         public ActionResult NotasRapidasAdd()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -33,9 +35,10 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        // POST: Crear Notas_Rapidas
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_PostCard)]
         public ActionResult NotasRapidasAdd(NotasRapidas NotasRapidas)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -63,6 +66,7 @@ namespace Proyecto.Controllers
 
 
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_PostCard)]
         public ActionResult NotasRapidasUpdt(int id)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -74,9 +78,10 @@ namespace Proyecto.Controllers
             return View(NotaRapida);
         }
 
-        //Update Notas_Rapidas
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_PostCard)]
         public ActionResult NotasRapidasUpdt(NotasRapidas NotasRapidas)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -109,7 +114,9 @@ namespace Proyecto.Controllers
             }
         }
 
+
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_PanelInformativo)]
         public ActionResult PanelInformativoUpdt()
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -121,9 +128,10 @@ namespace Proyecto.Controllers
             return View(PanelInformativo);
         }
 
-        //Update Notas_Rapidas
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_PanelInformativo)]
         public ActionResult PanelInformativoUpdt(PanelInformativo PanelInformativo, HttpPostedFileBase file)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -155,8 +163,7 @@ namespace Proyecto.Controllers
                 return View(PanelInformativo);
             }
         }
-
-
+         
 
     }
 }

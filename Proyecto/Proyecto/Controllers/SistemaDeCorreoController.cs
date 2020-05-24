@@ -11,7 +11,7 @@ namespace Proyecto.Controllers
 {
     public class SistemaDeCorreoController : Controller
     {
-        public ActionResult BandejaEntrada()
+        public ActionResult BandejaEntrada() 
         {
            //   Bll_Login.VerificarSesionActiva();
             Bll_SistemaDeCorreo Bll_SistemaDeCorreo = new Bll_SistemaDeCorreo();

@@ -1,5 +1,7 @@
 ﻿using BLL;
+using BLL.Enums;
 using DAO.ViewModel;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace Proyecto.Controllers
 {
     public class CalificacionDocenteCursoEstudianteController : Controller
     {
-
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Calificaciones_Del_Curso_y_Docente)]
         public ActionResult ReporteCalificaciones(int CursoId)
         {
            //   Bll_Login.VerificarSesionActiva();

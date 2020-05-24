@@ -2,6 +2,7 @@
 using BLL.Enums;
 using BLL.Utilidades;
 using DAO;
+using Proyecto.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Proyecto.Controllers
 {
     public class CronogramaActividadesController : Controller
     {
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cronograma_Actividades_Del_Curso)]
         public ActionResult ListCronograma(int CursoId)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -21,9 +23,11 @@ namespace Proyecto.Controllers
             return View(Lista);
         }
 
+
+
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Cronograma_Actividades_Del_Curso)]
         public ActionResult CronogramaActividadesAdd(int id)
         {
-
            //   Bll_Login.VerificarSesionActiva();
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
             ViewBag.CursoId = id;
@@ -32,6 +36,7 @@ namespace Proyecto.Controllers
          
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Cronograma_Actividades_Del_Curso)]
         public ActionResult CronogramaActividadesAdd(CronogramaActividadesCurso CronogramaActividadesCurso)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -57,7 +62,9 @@ namespace Proyecto.Controllers
             }
         }
 
+
         [HttpGet]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Cronograma_Actividades_Del_Curso)]
         public ActionResult CronogramaActividadesUpdt(int id)
         {
            //   Bll_Login.VerificarSesionActiva();
@@ -72,6 +79,7 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Cronograma_Actividades_Del_Curso)]
         public ActionResult CronogramaActividadesUpdt(CronogramaActividadesCurso CronogramaActividadesCurso)
         {
            //   Bll_Login.VerificarSesionActiva();

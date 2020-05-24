@@ -8,51 +8,68 @@ namespace BLL.Enums
 {
     public enum EnumPerfilesActivos
     {
-        Prueba=1,
-        Permite_visualizar_las_opciones_del_menu_Administracion ,
-        Permite_visualizar_las_opciones_del_Sub_menu_Gestion_dePersonas,
-        Permite_visualizar_lasPersonas_registradas_en_el_sistema,
-        Permite_habilitar_la_opcion_de_crearPersonas,
-        Permite_habilitar_la_opcion_de_modificarPersonas,
-        Permite_habilitar_la_opcion_de_Asignar_Rol_aPersonas,
-        Permite_visualizar_las_opciones_del_Sub_menuPost_Card,
-        Permite_visualizar_losPost_Card_registrados_en_el_sistema,
-        Permite_habilitar_la_opcion_de_crearPost_Card,
-        Permite_habilitar_la_opcion_de_modificarPost_Card,
-        Permite_habilitar_la_opcion_de_modificar_elPanel_Informativo,
-        Permite_visualizar_las_opciones_del_Sub_menu_Cursos,
-        Permite_visualizar_los_Cursos_registrados_en_el_sistema,
-        Permite_habilitar_la_opcion_de_Cursos,
-        Permite_habilitar_la_opcion_de_modificar_Cursos,
-        Permite_habilitar_la_opcion_de_Listar_Calificacion_Docente_y_Curso,
-        Permite_visualizar_las_opciones_del_Sub_menu_Roles,
-        Permite_visualizar_los_Roles_registrados_en_el_sistema,
-        Permite_habilitar_la_opcion_de_Roles,
-        Permite_habilitar_la_opcion_de_modificar_Roles,
-        Permite_habilitar_la_opcion_dePerfil_Al_Roles,
-        Permite_visualizar_las_opciones_del_menu_Cursos,
-        Permite_visualizar_las_opciones_del_Sub_menu_Gestion_de_Personas,
-        Permite_visualizar_los_Cursos_Ofertados_en_el_sistema,
-        Permite_visualizar_las_opciones_del_Sub_menu_Mis_Cursos,
-        Permite_habilitar_la_opcion_de_Nueva_Matricula,
-        Permite_visualizar_los_Cursos_matriculadosPara_el_usuario_en_sesion,
-        Permite_habilitar_la_opcion_de_Foro_del_curso,
-        Permite_habilitar_la_opcion_de_Material_Didactico_de_un_curso,
-        Permite_habilitar_la_opcion_de_Crear_nuevo_Material_Didactico_de_un_curso,
-        Permite_habilitar_la_opcion_de_Visualizar_Notas_del_estudiante_en_un_curso,
-        Permite_habilitar_la_opcion_de_Calificar_la_satisfaccion_del_curso_y_docente,
-        Permite_habilitar_la_opcion_de_Cronograma_de_Actividades_del_curso,
-        Permite_habilitar_la_opcion_de_Descargar_Certificado_del_curso,
-        Permite_visualizar_las_opciones_del_Sub_menu_Cursos_Dictados,
-        Permite_visualizar_los_Cursos_DictadosPara_el_usuario_en_sesion,
-        Permite_habilitar_la_opcion_de_Foro_del_curso_Docente,
-        Permite_habilitar_la_opcion_de_Crear_nueva_Actividad_del_curso,
-        Permite_habilitar_la_opcion_de_Calificar_a_Estudiante_en_el_curso,
-        Permite_habilitar_la_opcion_de_Crear_nuevo_tema_en_Foro_del_curso,
-        Permite_visualizar_las_opciones_del_menu_Reporte,
-        Permite_visualizar_las_opciones_del_Sub_menu_Evidencia_Correos,
-        Permite_visualizar_los_enviadosPor_el_sistema,
-        Permite_visualizar_las_opciones_del_Sub_menu_Ingreso_AL_Sistema,
-        Permite_visualizar_los_Ingreso_AL_Sistema 
+
+        // Menus 
+        Permite_Visualizar_Menu_Administrador,
+        Permite_Visualizar_Menu_Cursos,
+        Permite_Visualizar_Menu_Reportes,
+
+        // Sub Menus
+        Permite_Visualizar_SubMenu_Gestion_Personas,
+        Permite_Visualizar_SubMenu_Gestion_PostCard,
+        Permite_Visualizar_SubMenu_Gestion_Cursos,
+        Permite_Visualizar_SubMenu_Gestion_Roles,
+        Permite_Visualizar_SubMenu_Evidencia_De_Correos,
+        Permite_Visualizar_SubMenu_IngresosAlSistema,
+
+        // Personas       
+        Permite_Acceder_Listar_Persona,
+        Permite_Acceder_Crear_Persona ,
+        Permite_Acceder_Modificar_Persona,
+        Permite_Acceder_Cambiar_Imagen_Persona,
+        Permite_Acceder_Cambiar_Clave_Persona,
+        Permite_Acceder_Asignar_Rol_Persona,
+
+        // PostCard
+        Permite_Acceder_Listar_PostCard,
+        Permite_Acceder_Crear_PostCard,
+        Permite_Acceder_Modificar_PostCard,
+        Permite_Acceder_Modificar_PanelInformativo,
+
+        // Cursos
+        Permite_Acceder_Listar_Cursos,
+        Permite_Acceder_Listar_Cursos_Ofertados,
+        Permite_Acceder_Crear_Curso,
+        Permite_Acceder_Modificar_Curso,
+        Permite_Acceder_Detalle_Del_Cursos,
+        Permite_Acceder_Listar_Cursos_Dictados,
+        Permite_Acceder_Listar_Mis_Cursos,
+        Permite_Acceder_Calificar_Estudiantes,
+        Permite_Acceder_Ver_Notas_Estudiente,
+        Permite_Acceder_Listar_Cronograma_Actividades_Del_Curso,
+        Permite_Acceder_Crear_Cronograma_Actividades_Del_Curso,
+        Permite_Acceder_Modificar_Cronograma_Actividades_Del_Curso,
+        Permite_Acceder_Listar_Foro_Tema_Del_Curso,
+        Permite_Acceder_Crear_Foro_Tema_Del_Curso,
+        Permite_Acceder_Listar_Participaciones_Foro_Tema_Del_Curso,
+        Permite_Acceder_Crear_Participacion_Foro_Tema_Del_Curso,
+        Permite_Acceder_Modificar_Foro_Tema_Del_Curso,
+        Permite_Acceder_Calificaciones_Del_Curso_y_Docente,
+        Permite_Acceder_Calificar_Docente_y_Curso,
+        Permite_Acceder_Listar_Material_Didactico_Del_Curso,
+        Permite_Acceder_Crear_Material_Didactico_Del_Curso,
+        Permite_Acceder_Descargar_Material_Didactico_Del_Curso,
+        Permite_Acceder_Descargar_Certificado_Del_Curso,
+
+        // Roles
+        Permite_Acceder_Listar_Roles,
+        Permite_Acceder_Crear_Roles,
+        Permite_Acceder_Modificar_Roles,
+        Permite_Acceder_Asignar_Perfil_Al_Rol, 
+
+        // Reportes
+        Permite_Acceder_Listar_Evidencia_Correo,
+        Permite_Acceder_Listar_Ingreso_Al_Sistema
+
     }
 }
