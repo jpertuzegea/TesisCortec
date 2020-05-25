@@ -29,7 +29,7 @@ $("#BotonRegistrar").click(function () {
 
     if ($("#ValorCurso").val() == "" || !PermiteNumeros.test($("#ValorCurso").val()) || ($("#ValorCurso").val().length) < 3) {
         $("#ValorCurso").focus();
-        toastr.error('El Valor Curso Debe tener mas de 3 caracteres', 'ERROR');
+        toastr.error('El Valor Curso Debe tener mas de 3 digitos', 'ERROR');
         return false;
     }
 
