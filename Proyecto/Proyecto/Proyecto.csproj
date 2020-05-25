@@ -208,6 +208,12 @@
     <Content Include="JS_PDF\jspdf.plugin.split_text_to_size.js" />
     <Content Include="JS_PDF\jspdf.plugin.standard_fonts_metrics.js" />
     <Content Include="Js_Utilidades\Certificdo.js" />
+    <Content Include="Js_Utilidades\Validaciones\CronogramaActividades.js" />
+    <Content Include="Js_Utilidades\Validaciones\Cursos.js" />
+    <Content Include="Js_Utilidades\Validaciones\ForoTema.js" />
+    <Content Include="Js_Utilidades\Validaciones\MaterialDidactico.js" />
+    <Content Include="Js_Utilidades\Validaciones\ParticiparEnForoTema.js" />
+    <Content Include="Js_Utilidades\Validaciones\Roles.js" />
     <Content Include="Js_Utilidades\Validaciones\PostCard.js" />
     <Content Include="Js_Utilidades\Validaciones\Personas.js" />
     <Content Include="Js_Utilidades\Validacion_Doble_clic_Submit.js" />
