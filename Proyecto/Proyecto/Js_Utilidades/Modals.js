@@ -5,6 +5,10 @@
 function RegistrarPersona() {
     $("#contenido").load("/Personas/PersonaAdd");
 }
+function Registrarse() {
+    $("#contenido").load("/Registrarse/PersonaAdd");
+}
+ 
 function ModificarPersona(id) {
     $("#contenido").load("/Personas/PersonasUpdt/" + id);
 }

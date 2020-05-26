@@ -17,16 +17,18 @@ namespace Proyecto.Filtros
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
+
             try
             {
                 string NombreUsuarioTesis = (string)HttpContext.Current.Session["NombreUsuarioTesis"];// se captura la variable de sesion con la que se validara que el usuario este logueado 
 
                 if (NombreUsuarioTesis == null)
-                {
-                    if (filterContext.Controller is LoginController == false)
+                { 
+                    if (filterContext.Controller is LoginController == false && filterContext.Controller is RegistrarseController == false)
                     {
                         filterContext.HttpContext.Response.Redirect("/login");
-                    }
+                    } 
+
                 }
                 else
                 {

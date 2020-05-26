@@ -79,7 +79,7 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Persona)]        
+        [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Persona)]
         public ActionResult PersonasUpdt(Personas Persona)
         {
             //   Bll_Login.VerificarSesionActiva();
@@ -112,7 +112,7 @@ namespace Proyecto.Controllers
             }
         }
 
-         
+
         public ActionResult ConvertirImagen(int PersonaId)
         {
 
@@ -214,8 +214,7 @@ namespace Proyecto.Controllers
 
         }
 
-
-
+         
         [HttpGet]
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Asignar_Rol_Persona)]
         public ActionResult PersonaRolAdd(int id)

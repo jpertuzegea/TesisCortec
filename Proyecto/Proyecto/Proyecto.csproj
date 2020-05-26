@@ -158,6 +158,7 @@
     <Compile Include="Controllers\NotasRapidasController.cs" />
     <Compile Include="Controllers\ParticipacionEnForoTemaController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
+    <Compile Include="Controllers\RegistrarseController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SatisfaccionCursoController.cs" />
     <Compile Include="Controllers\SistemaDeCorreoController.cs" />
@@ -1728,6 +1729,7 @@
     <Content Include="Views\Roles\RolPerfilAdd.cshtml" />
     <Content Include="Views\Personas\PersonaRolAdd.cshtml" />
     <Content Include="Views\ErrorPerfil\Index.cshtml" />
+    <Content Include="Views\Registrarse\PersonaAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

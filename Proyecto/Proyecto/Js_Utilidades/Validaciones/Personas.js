@@ -37,7 +37,7 @@ $("#BotonRegistrar").click(function () {
         return false;
     }
 
-    if ($("#Direccion").val() == "" || !PermiteLetras.test($("#Direccion").val()) || ($("#Direccion").val().length) < 3) {
+    if ($("#Direccion").val() == "" || ($("#Direccion").val().length) < 3) {
         $("#Direccion").focus();
         toastr.error('La Direccion solo puede tener letras mayor a 3 caracteres', 'ERROR');
         return false;
@@ -94,7 +94,7 @@ $("#BotonModificar").click(function () {
         return false;
     }
 
-    if ($("#Direccion").val() == "" || !PermiteLetras.test($("#Direccion").val()) || ($("#Direccion").val().length) < 3) {
+    if ($("#Direccion").val() == "" || ($("#Direccion").val().length) < 3) {
         $("#Direccion").focus();
         toastr.error('La Direccion solo puede tener letras mayor a 3 caracteres', 'ERROR');
         return false;

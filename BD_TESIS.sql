@@ -250,12 +250,12 @@ INSERT INTO Perfiles VALUES ('Permite_Visualizar_Menu_Administrador','Menus','Pe
 INSERT INTO Perfiles VALUES ('Permite_Visualizar_Menu_Cursos','Menus','Permite_Visualizar_Menu_Cursos',0);  
 INSERT INTO Perfiles VALUES ('Permite_Visualizar_Menu_Reportes','Menus','Permite_Visualizar_Menu_Reportes',0);  
 
-INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_Personas','SubMenus','Permite_Visualizar_SubMenu_Gestion_Personas',1);  
-INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_PostCard','SubMenus','Permite_Visualizar_SubMenu_Gestion_PostCard',1);  
-INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_Cursos','SubMenus','Permite_Visualizar_SubMenu_Gestion_Cursos',1);  
-INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_Roles','SubMenus','Permite_Visualizar_SubMenu_Gestion_Roles',1);  
-INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Evidencia_De_Correos','SubMenus','Permite_Visualizar_SubMenu_Evidencia_De_Correos',1);  
-INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_IngresosAlSistema','SubMenus','Permite_Visualizar_SubMenu_IngresosAlSistema',1);  
+INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_Personas','SubMenu','Permite_Visualizar_SubMenu_Gestion_Personas',1);  
+INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_PostCard','SubMenu','Permite_Visualizar_SubMenu_Gestion_PostCard',1);  
+INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_Cursos','SubMenu','Permite_Visualizar_SubMenu_Gestion_Cursos',1);  
+INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Gestion_Roles','SubMenu','Permite_Visualizar_SubMenu_Gestion_Roles',1);  
+INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_Evidencia_De_Correos','SubMenu','Permite_Visualizar_SubMenu_Evidencia_De_Correos',1);  
+INSERT INTO Perfiles VALUES ('Permite_Visualizar_SubMenu_IngresosAlSistema','SubMenu','Permite_Visualizar_SubMenu_IngresosAlSistema',1);  
 
 INSERT INTO Perfiles VALUES ('Permite_Acceder_Listar_Persona','Accion','Permite_Acceder_Listar_Persona',2);  
 INSERT INTO Perfiles VALUES ('Permite_Acceder_Crear_Persona','Accion','Permite_Acceder_Crear_Persona',2);  

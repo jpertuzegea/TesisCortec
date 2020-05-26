@@ -63,10 +63,18 @@ namespace BLL
 
         public void CerrarSesion()
         {
-            System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = null;
-            System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = null;
-            System.Web.HttpContext.Current.Session.Abandon();// destruye los objetos de sesion existentes
-            FormsAuthentication.SignOut();
+            try
+            {
+                System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = null;
+                System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = null;
+                System.Web.HttpContext.Current.Session.Abandon();// destruye los objetos de sesion existentes
+                FormsAuthentication.SignOut();
+            }
+            catch (Exception error)
+            {
+                Bll_File.EscribirLog(error.ToString()); 
+            }
+          
         }
 
     
