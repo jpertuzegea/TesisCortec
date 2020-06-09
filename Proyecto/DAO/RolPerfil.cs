@@ -20,6 +20,5 @@ namespace DAO
     
         public virtual Perfiles Perfiles { get; set; }
         public virtual Roles Roles { get; set; }
-        public bool EstadoChecbox { get; set; }
     }
 }

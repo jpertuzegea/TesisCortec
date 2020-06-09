@@ -68,7 +68,7 @@ namespace BLL
                 System.Web.HttpContext.Current.Session["IdUsuarioTesis"] = null;
                 System.Web.HttpContext.Current.Session["NombreUsuarioTesis"] = null;
                 System.Web.HttpContext.Current.Session.Abandon();// destruye los objetos de sesion existentes
-                FormsAuthentication.SignOut();
+                //FormsAuthentication.SignOut(); FormsAuthentication.SignOut();
             }
             catch (Exception error)
             {

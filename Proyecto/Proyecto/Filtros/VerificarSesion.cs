@@ -20,14 +20,14 @@ namespace Proyecto.Filtros
 
             try
             {
-                string NombreUsuarioTesis = (string)HttpContext.Current.Session["NombreUsuarioTesis"];// se captura la variable de sesion con la que se validara que el usuario este logueado 
+                string NombreUsuarioTesis = (string)HttpContext.Current.Session["NombreUsuarioTesis"];
 
                 if (NombreUsuarioTesis == null)
-                { 
-                    if (filterContext.Controller is LoginController == false && filterContext.Controller is RegistrarseController == false)
+                {
+                    if (filterContext.Controller is LoginController == false && filterContext.Controller is RegistrarseController == false)// Aca se colocan todos los controladores a las cuales se quiera acceder son iniciar sesion, separados por &&
                     {
                         filterContext.HttpContext.Response.Redirect("/login");
-                    } 
+                    }
 
                 }
                 else

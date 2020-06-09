@@ -13,12 +13,7 @@ namespace BLL
 
         // Encripta en Has256
         public static string ComputeHash(this string input, HashType hashType)
-        {
-            //if (string.IsNullOrWhiteSpace(input))
-            //{
-            //    return input;
-            //}
-
+        { 
             byte[] numArray;
             byte[] bytes = Encoding.ASCII.GetBytes(input);
 
