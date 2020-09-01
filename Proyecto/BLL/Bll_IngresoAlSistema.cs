@@ -13,12 +13,11 @@ namespace BLL
     public class Bll_IngresoAlSistema
     {
         private TESIS_BD BD = null;
-        private IngresosAlSistema IngresosAlSistema = null;
+
 
         public Bll_IngresoAlSistema()
         {
             BD = new TESIS_BD();
-            IngresosAlSistema = new IngresosAlSistema();
         }
 
         // Metodo para listar los ingresos al sistema existentes
@@ -41,6 +40,7 @@ namespace BLL
         {
             try
             {
+                IngresosAlSistema IngresosAlSistema = new IngresosAlSistema();
                 IngresosAlSistema.Usuario = UsuarioRed;
                 IngresosAlSistema.FechaIntento = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                 IngresosAlSistema.IP_Origen = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
