@@ -22,12 +22,14 @@ namespace BLL
             BD = new TESIS_BD();
         }
 
-        // metodo para listar los Cursos existentes
+        // Metodo para listar los Cursos existentes
         public List<Cursos> ListarCursos(EnumEstadoFiltro Filtro, EnumEstadosCurso EstadosCurso)
         {
+            List<Cursos> ListCursos = new List<Cursos>();
             try
             {
-                List<Cursos> ListCursos = null;
+                int IdUsuarioTesis = 0;
+                IdUsuarioTesis = (int)HttpContext.Current.Session["IdUsuarioTesis"];
 
                 switch (Filtro)
                 {
@@ -44,14 +46,34 @@ namespace BLL
                         break;
                 }
 
-                return (ListCursos);// retorna una lista de entidades
+                if (IdUsuarioTesis > 0)
+                {
+                    List<CursoEstudiante> Lista;
+                    Lista = BD.CursoEstudiante.ToList();
+
+                    List<Cursos> ListCursosNoMatriculados = new List<Cursos>();
+
+                    foreach (var item in ListCursos)
+                    {
+                        bool EstaMatriculado = Lista.Where(x => x.CursoId == item.CursoId && x.EstudianteId == IdUsuarioTesis).Count() > 0;
+
+                        if (!EstaMatriculado)
+                        {
+                            ListCursosNoMatriculados.Add(item);
+                        }
+                    }
+                    return (ListCursosNoMatriculados); 
+                }
+                else {
+                    return (ListCursos);// retorna una lista de entidades 
+                } 
             }
             catch (Exception error)
             {
-                Bll_File.EscribirLog(error.ToString());
-                return null;
+                // Bll_File.EscribirLog(error.ToString());
+                return ListCursos;
             }
-        } 
+        }
 
         public List<Cursos> ListarCursosByDocenteId(EnumEstadoFiltro Filtro, int DocenteId)
         {

@@ -91,7 +91,7 @@ namespace BLL
         {
             try
             {
-                DateTime fechaQuemada = DateTime.ParseExact("31-12-2020", "dd-MM-yyyy", CultureInfo.InvariantCulture);// Permite Convertir de forma Excata la el formato de fecha 
+                DateTime fechaQuemada = DateTime.ParseExact("31-12-2021", "dd-MM-yyyy", CultureInfo.InvariantCulture);// Permite Convertir de forma Excata la el formato de fecha 
                 DateTime FechActual = UtilitiesCommons.ObtenerHorayFechaActualLocal().Date;
 
                 if (fechaQuemada < FechActual) // Si la fecha quemada es menor a la fecha actual
