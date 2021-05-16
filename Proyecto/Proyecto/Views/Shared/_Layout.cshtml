@@ -73,7 +73,7 @@
                             <ul class="nav nav-second-level collapse">
                                 @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Gestion_Personas))
                                 {
-                                    <li>@Html.ActionLink("Gestion de Personas", "index", "Personas")</li>
+                                    <li>@Html.ActionLink("Gestion de Usuarios", "index", "Personas")</li>
                                 }
 
                                 @if (BLL.Bll_Perfiles.VerificarPerfil(BLL.Enums.EnumPerfilesActivos.Permite_Visualizar_SubMenu_Gestion_PostCard))

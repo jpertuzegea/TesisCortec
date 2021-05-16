@@ -153,14 +153,14 @@
                                                 @Html.ActionLink(" ", "ListCronograma", "CronogramaActividades", new { CursoId = item.CursoId }, new { @class = "fa fa-calendar-o", @title = "Cronograma Actividades" })
                                             </td>
                                             <td>
-                                                @*@if (item.EstadoEvaluacionCursoyDocente == 1 && item.AprobacionCurso == 1)
-                                                    {*@
-                                                @Html.ActionLink(" ", "Index", "Certificados", new { CursoId = item.CursoId }, new { @class = "fa fa-graduation-cap", @title = "Descargar Certificado" })
-                                                @*}*@
+                                                @if (item.EstadoEvaluacionCursoyDocente == 1 && item.AprobacionCurso == 1)
+                                                {
+                                                    @Html.ActionLink(" ", "Index", "Certificados", new { CursoId = item.CursoId }, new { @class = "fa fa-graduation-cap", @title = "Descargar Certificado" })
+                                                }
                                             </td>
 
                                         </tr>
-                                                    }
+                                    }
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -208,4 +208,4 @@
             </div>
         </div>
     </div>
-                                                    }
+}

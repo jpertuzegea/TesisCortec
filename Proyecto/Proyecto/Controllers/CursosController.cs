@@ -17,10 +17,10 @@ namespace Proyecto.Controllers
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cursos)]
         public ActionResult Index()
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
-            List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Todos, EnumEstadosCurso.Ofertado);// aca no importa el segundo parametro porque va a traer el total de los cursos
+            List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Todos, EnumEstadosCurso.Ofertado, true);// aca no importa el segundo parametro porque va a traer el total de los cursos
 
             return View(Cursos);
         }
@@ -28,7 +28,7 @@ namespace Proyecto.Controllers
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cursos_Ofertados)]
         public ActionResult CursosOfertados()
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             List<Cursos> Cursos = Bll_Cursos.ListarCursos(EnumEstadoFiltro.Activo, EnumEstadosCurso.Ofertado);
 
@@ -39,7 +39,7 @@ namespace Proyecto.Controllers
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Detalle_Del_Cursos)]
         public ActionResult DetalleCurso(int id)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
@@ -53,10 +53,10 @@ namespace Proyecto.Controllers
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Detalle_Del_Cursos)]
         public ActionResult DetalleCurso(int CursoId, string Nombre, string Codigo)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_CursoEstudiante Bll_CursoEstudiante = new Bll_CursoEstudiante();
-          
+
             if (Bll_CursoEstudiante.Matricularse(CursoId, Nombre, Codigo))
             {// pregunta si la funcion de creacion se ejecuto con exito
                 return RedirectToAction("CursosOfertados", "Cursos");
@@ -67,13 +67,13 @@ namespace Proyecto.Controllers
             }
 
         }
-         
+
 
         [HttpGet]
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Listar_Cursos_Dictados)]
         public ActionResult CursosDictados()
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             int DocenteId = (int)System.Web.HttpContext.Current.Session["IdUsuarioTesis"];
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
@@ -84,7 +84,7 @@ namespace Proyecto.Controllers
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Curso)]
         public ActionResult CursosAdd()
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text");
 
@@ -94,13 +94,13 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Crear_Curso)]
         public ActionResult CursosAdd(Cursos Curso, HttpPostedFileBase file)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
 
@@ -131,7 +131,7 @@ namespace Proyecto.Controllers
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Curso)]
         public ActionResult CursoUpdt(int id)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             Cursos Curso = Bll_Cursos.GetCursoByCursoId(id);
@@ -143,13 +143,13 @@ namespace Proyecto.Controllers
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
             return View(Curso);
         }
- 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [VerificarPerfil(_Perfil: EnumPerfilesActivos.Permite_Acceder_Modificar_Curso)]
         public ActionResult CursoUpdt(Cursos Curso, HttpPostedFileBase file)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
 
             ViewBag.Estado = new SelectList(FuncionesEnum.ListaEnum<EnumEstados>(), "Value", "Text", (int)Curso.Estado);
             ViewBag.EstadoAcademico = new SelectList(FuncionesEnum.ListaEnum<EnumEstadosCurso>(), "Value", "Text", (int)Curso.EstadoAcademico);
@@ -184,7 +184,7 @@ namespace Proyecto.Controllers
 
         public ActionResult MostrarImagenCurso(int CursoId)
         {
-           //   Bll_Login.VerificarSesionActiva();
+            //   Bll_Login.VerificarSesionActiva();
             Bll_Cursos Bll_Cursos = new Bll_Cursos();
             byte[] CursoImagen = Bll_Cursos.GetImagenByCursoId(CursoId);
 
@@ -203,9 +203,9 @@ namespace Proyecto.Controllers
         }
 
 
-        
 
 
-        
+
+
     }
 }

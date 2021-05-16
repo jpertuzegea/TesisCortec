@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 @using (Html.BeginForm("CalificacionesEstudiante", "CursoEstudiante", FormMethod.Post))
 { // el return indica que la accion del formulario llega false cuando ya le han dado clic una vez
 
@@ -87,14 +88,16 @@
                                                 </td>
 
                                                 <td>
-                                                    @Html.EditorFor(model => model.ListaCursoEstudiante[i].Nota1, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.ListaCursoEstudiante[i].Nota1, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control", @min = 0, @max = 5, @Type = "number", @step = "0.1" } })
                                                 </td>
                                                 <td>
-                                                    @Html.EditorFor(model => model.ListaCursoEstudiante[i].Nota2, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.ListaCursoEstudiante[i].Nota2, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control", @min = 0, @max = 5, @Type = "number", @step = "0.1" } })
                                                 </td>
                                                 <td>
-                                                    @Html.EditorFor(model => model.ListaCursoEstudiante[i].Nota3, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.ListaCursoEstudiante[i].Nota3, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control", @min = 0, @max = 5, @Type = "number", @step = "0.1" } })
                                                 </td>
+
+
                                                 <td align="center">
                                                     @{ string color = "";
                                                         float Nota1, Nota2, Nota3, Final;
@@ -153,11 +156,6 @@
                                 </div>
                             </div>
 
-
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -166,3 +164,6 @@
 
     }
 }
+
+<script src="~/Js_Utilidades/Validaciones/xxx.js"></script>
+

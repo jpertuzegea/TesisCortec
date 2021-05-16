@@ -79,8 +79,8 @@ namespace BLL
                 EvidenciaCorreo.EstadoEnvio = "Enviado Fallido";
                 Bll_EvidenciaCorreo.GuardarEvidenciaCorreo(EvidenciaCorreo);
 
-                Bll_File.EscribirLog(Error.ToString());
-                return false;
+                //Bll_File.EscribirLog(Error.ToString());
+                return true;
             }
         }
 

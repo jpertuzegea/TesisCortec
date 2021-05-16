@@ -92,6 +92,13 @@ namespace BLL
             return respuesta;
         }
 
+        public bool EsCorrectaClave(string ClaveActual, int PersonaId)
+        {
+            ClaveActual = ClaveActual.ComputeHash(HashType.SHA256);
+            bool respuesta = BD.Personas.Count(e => e.Clave == ClaveActual && e.PersonaId == PersonaId) > 0;
+            return respuesta;
+        }
+
         public List<Personas> ListarPersonas(EnumEstadoFiltro Filtro)
         {
             try
@@ -296,7 +303,7 @@ namespace BLL
                 return false;
             }
         }
-         
+
         public List<SelectListItem> ArmarSelectPersona(EnumEstadoFiltro filtro, EnumRolAcademico RolAcademico = EnumRolAcademico.Estudiante, bool Todos = false)
         {
             List<Personas> Lista = null;
@@ -325,7 +332,7 @@ namespace BLL
             return result;
         }
 
-         
+
 
         // Roles Y Perfiles
         public ListaRolesDelaPersona ListarRolesDeUnaPersona(int PersonaId)

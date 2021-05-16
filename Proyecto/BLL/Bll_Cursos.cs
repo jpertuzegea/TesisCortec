@@ -23,7 +23,7 @@ namespace BLL
         }
 
         // Metodo para listar los Cursos existentes
-        public List<Cursos> ListarCursos(EnumEstadoFiltro Filtro, EnumEstadosCurso EstadosCurso)
+        public List<Cursos> ListarCursos(EnumEstadoFiltro Filtro, EnumEstadosCurso EstadosCurso, bool todos = false)
         {
             List<Cursos> ListCursos = new List<Cursos>();
             try
@@ -46,27 +46,35 @@ namespace BLL
                         break;
                 }
 
-                if (IdUsuarioTesis > 0)
-                {
-                    List<CursoEstudiante> Lista;
-                    Lista = BD.CursoEstudiante.ToList();
-
-                    List<Cursos> ListCursosNoMatriculados = new List<Cursos>();
-
-                    foreach (var item in ListCursos)
+                if (!todos)
+                { 
+                    if (IdUsuarioTesis > 0)
                     {
-                        bool EstaMatriculado = Lista.Where(x => x.CursoId == item.CursoId && x.EstudianteId == IdUsuarioTesis).Count() > 0;
+                        List<CursoEstudiante> Lista;
+                        Lista = BD.CursoEstudiante.ToList();
 
-                        if (!EstaMatriculado)
+                        List<Cursos> ListCursosNoMatriculados = new List<Cursos>();
+
+                        foreach (var item in ListCursos)
                         {
-                            ListCursosNoMatriculados.Add(item);
+                            bool EstaMatriculado = Lista.Where(x => x.CursoId == item.CursoId && x.EstudianteId == IdUsuarioTesis).Count() > 0;
+
+                            if (!EstaMatriculado)
+                            {
+                                ListCursosNoMatriculados.Add(item);
+                            }
                         }
+                        return (ListCursosNoMatriculados);
                     }
-                    return (ListCursosNoMatriculados); 
+                    else
+                    {
+                        return (ListCursos);// retorna una lista de entidades 
+                    }
                 }
-                else {
+                else
+                {
                     return (ListCursos);// retorna una lista de entidades 
-                } 
+                }
             }
             catch (Exception error)
             {

@@ -173,6 +173,7 @@
     <Compile Include="Enums\EnumEstados.cs" />
     <Compile Include="Enums\EnumEstadosCurso.cs" />
     <Compile Include="Enums\EnumPerfilesActivos.cs" />
+    <Compile Include="Enums\EnumPuntajeNota.cs" />
     <Compile Include="Enums\EnumRangoCalificacion.cs" />
     <Compile Include="Enums\EnumTipoDocumento.cs" />
     <Compile Include="Enums\EnumRolAcademico.cs" />

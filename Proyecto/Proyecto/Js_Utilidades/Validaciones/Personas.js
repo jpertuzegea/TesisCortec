@@ -114,6 +114,19 @@ $("#BotonCambiarClave").click(function () {
         toastr.error('La clave No debe tener menos de 9 caracteres', 'ERROR');
         return false;
     } 
+     
+    let Parameter = {
+        ClaveActual: $('#Clave').val(),
+        PersonaId: $('#PersonaId').val()
+    }
+
+    var datos = EjecutarAjax(Parameter);
+    if (!datos) {
+        toastr.error("Clave actual NO Valida", "Error");
+        return false;
+    }
+
+   
 
     if ($("#NuevaClave").val() == "" || ($("#NuevaClave").val().length) < 9) {
         $("#NuevaClave").focus();
@@ -124,6 +137,36 @@ $("#BotonCambiarClave").click(function () {
 
 
 
+function EjecutarAjax(Parameter){
+    let resultado;
 
+    $.ajax({
+        dataType: "json",
+        // headers: { 'Authorization': 'Bearer ' + localStorage.getItem('Token') },
+        contentType: 'application/json',
+        async: false,
+        type: 'post',
+        url: '/api/EsCorrectaClave',
+        data: JSON.stringify(Parameter),
+        success: function (datos) {
+            resultado = datos; 
+        },
+
+        error: (function (Response, textStatus, errorThrown) {
+
+            if (Response.status == 401) {
+                alert("Usted NO Esta Autorizado Para Acceder A Este Recurso");
+            } else {
+                console.log(" ----------------------------- ");
+                console.log(" errorThrown --> " + JSON.stringify(errorThrown) + "\n\n\n  jqXHR --> " + JSON.stringify(Response));
+
+                alert(" errorThrown --> " + JSON.stringify(errorThrown) + "\n\n\n  jqXHR --> " + JSON.stringify(Response));
+            }
+        })
+
+    });
+
+    return resultado;
+} 
 
 

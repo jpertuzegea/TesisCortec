@@ -2,9 +2,9 @@
 
 $("#BotonRegistrar").click(function () {
       
-    if ($("#Mensaje").val() == "" || !PermiteLetras.test($("#Mensaje").val()) || ($("#Mensaje").val().length) < 3) {
+    if ($("#Mensaje").val() == "" || ($("#Mensaje").val().length) < 3) {
         $("#Mensaje").focus();
-        toastr.error('El Mensaje solo puede tener letras mayor a 3 caracteres', 'ERROR');
+        toastr.error('El Mensaje minimo son 3 caracteres', 'ERROR');
         return false;
     } 
       
