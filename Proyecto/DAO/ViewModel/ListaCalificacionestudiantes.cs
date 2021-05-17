@@ -9,5 +9,6 @@ namespace DAO.ViewModel
     public class ListaCalificacionestudiantes
     {
         public List<CursoEstudiante> ListaCursoEstudiante { get; set; }
+         
     }
 }

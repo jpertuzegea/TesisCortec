@@ -13,11 +13,11 @@ namespace BLL
     public class Bll_PanelInformativo
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_PanelInformativo()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public PanelInformativo ObtenerPanelInformativoByPanelInformativoId()

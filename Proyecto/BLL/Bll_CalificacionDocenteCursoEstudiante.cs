@@ -15,11 +15,11 @@ namespace BLL
     public class Bll_CalificacionDocenteCursoEstudiante
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_CalificacionDocenteCursoEstudiante()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public bool GuardarCalificacion(ListaPreguntas ListaPreguntas)

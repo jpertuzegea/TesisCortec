@@ -13,11 +13,11 @@ namespace BLL
 {
     public class Bll_SistemaDeCorreo
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_SistemaDeCorreo()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public SistemaCorreo ObtenerCorreoBySistemaCorreoId(int SistemaCorreoId)

@@ -13,11 +13,11 @@ namespace BLL
     public class Bll_Roles
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_Roles()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public Roles GetRolByRolId(int? RolId)

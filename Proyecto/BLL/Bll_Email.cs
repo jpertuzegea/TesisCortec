@@ -12,12 +12,12 @@ namespace BLL
 {
     public class Bll_Email
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
         private Bll_EvidenciaCorreo Bll_EvidenciaCorreo = null;
 
         public Bll_Email()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
             Bll_EvidenciaCorreo = new Bll_EvidenciaCorreo();
         }
 

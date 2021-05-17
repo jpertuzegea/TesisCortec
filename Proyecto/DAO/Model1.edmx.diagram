@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2cda19ec1014cebb62c4e59cb0ebf68" Name="Diagram1" ZoomLevel="11">
+        <EntityTypeShape EntityType="TESISCortecModel.CalificacionDocenteCursoEstudiante" Width="1.5" PointX="5.25" PointY="28.125" />
+        <EntityTypeShape EntityType="TESISCortecModel.CertificadoEstudianteCurso" Width="1.5" PointX="8.25" PointY="24.375" />
+        <EntityTypeShape EntityType="TESISCortecModel.Codigos" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TESISCortecModel.CronogramaActividadesCurso" Width="1.5" PointX="5.25" PointY="40.875" />
+        <EntityTypeShape EntityType="TESISCortecModel.CursoEstudiante" Width="1.5" PointX="5.25" PointY="23.875" />
+        <EntityTypeShape EntityType="TESISCortecModel.Cursos" Width="1.5" PointX="3" PointY="32" />
+        <EntityTypeShape EntityType="TESISCortecModel.EvidenciaCorreo" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TESISCortecModel.ForoTema" Width="1.5" PointX="5.25" PointY="20" />
+        <EntityTypeShape EntityType="TESISCortecModel.IngresosAlSistema" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TESISCortecModel.MaterialDidactico" Width="1.5" PointX="8.25" PointY="27.875" />
+        <EntityTypeShape EntityType="TESISCortecModel.NotasRapidas" Width="1.5" PointX="3" PointY="28.75" />
+        <EntityTypeShape EntityType="TESISCortecModel.PanelInformativo" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TESISCortecModel.ParticipacionEnForoTema" Width="1.5" PointX="7.5" PointY="17.5" />
+        <EntityTypeShape EntityType="TESISCortecModel.Perfiles" Width="1.5" PointX="0.75" PointY="24.375" />
+        <EntityTypeShape EntityType="TESISCortecModel.Personas" Width="1.5" PointX="0.75" PointY="14.5" />
+        <EntityTypeShape EntityType="TESISCortecModel.PreguntasCalificacionCurso" Width="1.5" PointX="3" PointY="25.75" />
+        <EntityTypeShape EntityType="TESISCortecModel.Roles" Width="1.5" PointX="0.75" PointY="21.375" />
+        <EntityTypeShape EntityType="TESISCortecModel.RolPerfil" Width="1.5" PointX="3" PointY="21.5" />
+        <EntityTypeShape EntityType="TESISCortecModel.RolPersona" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="TESISCortecModel.SistemaCorreo" Width="1.5" PointX="3" PointY="14.5" />
+        <AssociationConnector Association="TESISCortecModel.FK__Calificac__Curso__489AC854" />
+        <AssociationConnector Association="TESISCortecModel.FK__Calificac__Estud__498EEC8D" />
+        <AssociationConnector Association="TESISCortecModel.FK__Calificac__Pregu__4A8310C6" />
+        <AssociationConnector Association="TESISCortecModel.FK__Certifica__Curso__4D5F7D71" />
+        <AssociationConnector Association="TESISCortecModel.FK__Certifica__Estud__4E53A1AA" />
+        <AssociationConnector Association="TESISCortecModel.FK__Cronogram__Curso__367C1819" />
+        <AssociationConnector Association="TESISCortecModel.FK__CursoEstu__Curso__5CA1C101" />
+        <AssociationConnector Association="TESISCortecModel.FK__CursoEstu__Estud__5D95E53A" />
+        <AssociationConnector Association="TESISCortecModel.FK__Cursos__Docente__29221CFB" />
+        <AssociationConnector Association="TESISCortecModel.FK__ForoTema__CursoI__3B40CD36" />
+        <AssociationConnector Association="TESISCortecModel.FK__MaterialD__Curso__32AB8735" />
+        <AssociationConnector Association="TESISCortecModel.FK__ForoTema__Docent__3C34F16F" />
+        <AssociationConnector Association="TESISCortecModel.FK__Participa__ForoT__3F115E1A" />
+        <AssociationConnector Association="TESISCortecModel.FK__MaterialD__Docen__339FAB6E" />
+        <AssociationConnector Association="TESISCortecModel.FK__NotasRapi__Usuar__245D67DE" />
+        <AssociationConnector Association="TESISCortecModel.FK__Participa__Parti__40058253" />
+        <AssociationConnector Association="TESISCortecModel.FK__RolPerfil__Perfi__55009F39" />
+        <AssociationConnector Association="TESISCortecModel.FK__RolPerson__Perso__58D1301D" />
+        <AssociationConnector Association="TESISCortecModel.FK__SistemaCo__Desti__43D61337" />
+        <AssociationConnector Association="TESISCortecModel.FK__SistemaCo__Remit__42E1EEFE" />
+        <AssociationConnector Association="TESISCortecModel.FK__RolPerfil__RolId__55F4C372" />
+        <AssociationConnector Association="TESISCortecModel.FK__RolPerson__RolId__59C55456" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

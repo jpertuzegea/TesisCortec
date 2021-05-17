@@ -15,11 +15,11 @@ namespace BLL
 {
     public class Bll_Cursos
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_Cursos()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         // Metodo para listar los Cursos existentes

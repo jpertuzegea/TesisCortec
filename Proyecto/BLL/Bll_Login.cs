@@ -17,7 +17,7 @@ namespace BLL
     public class Bll_Login
     {
 
-        private TESIS_BD BD = new TESIS_BD();
+        private TESISCortecEntities BD = new TESISCortecEntities();
 
         public bool IniciarSesion(Personas Persona)
         {

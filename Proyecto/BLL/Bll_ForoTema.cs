@@ -14,11 +14,11 @@ namespace BLL
     public class Bll_ForoTema
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_ForoTema()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public ForoTema ObtenerForoTemaByForoTemaId(int ForoTemaId)

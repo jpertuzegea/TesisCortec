@@ -11,11 +11,11 @@ namespace BLL
     public class Bll_ParticipacionEnForoTema
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_ParticipacionEnForoTema()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public List<ParticipacionEnForoTema> ListarParticipacionEnForoTema(int ForoTemaId)

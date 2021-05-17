@@ -13,11 +13,11 @@ namespace BLL
 {
     public class Bll_MaterialDidactico
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_MaterialDidactico()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public bool GuardarMaterialDidactico(MaterialDidactico MaterialDidactico, HttpPostedFileBase file)

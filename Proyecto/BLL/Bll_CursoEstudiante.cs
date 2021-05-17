@@ -15,11 +15,11 @@ namespace BLL
     public class Bll_CursoEstudiante
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_CursoEstudiante()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public List<CursoEstudiante> ListarCursosActivosbyPersonaId(int PersonaId)
@@ -97,9 +97,9 @@ namespace BLL
                     CursoEstudiante.FechaMatricula = UtilitiesCommons.ObtenerHorayFechaActualLocal();
                     CursoEstudiante.AprobacionCurso = (byte)EnumAprobacionCurso.Cursando;
                     CursoEstudiante.EstadoEvaluacionCursoyDocente = (byte)EnumEstadoEvaluacionCursoyDocente.Pendiente;
-                    CursoEstudiante.Nota1 = "0";
-                    CursoEstudiante.Nota2 = "0";
-                    CursoEstudiante.Nota3 = "0";
+                    CursoEstudiante.Nota1 = 0;
+                    CursoEstudiante.Nota2 = 0;
+                    CursoEstudiante.Nota3 = 0;
 
                     CursoEstudiante.Estado = (byte)EnumEstados.Activo;
 
@@ -162,11 +162,41 @@ namespace BLL
                         var CursoEstudiante = BD.CursoEstudiante.Find(item.CursoEstudianteId);
 
                         if (CursoEstudiante != null)
-                        {
+                        { 
+                            
+                            CursoEstudiante.Nota2 = item.Nota2;
+                            CursoEstudiante.Nota3 = item.Nota3;
 
-                            CursoEstudiante.Nota1 = item.Nota1.Replace(".", ",");
-                            CursoEstudiante.Nota2 = item.Nota2.Replace(".", ",");
-                            CursoEstudiante.Nota3 = item.Nota3.Replace(".", ",");
+
+                            if (item.Nota1 > 0 || item.Nota1 < 5)
+                            {
+                                CursoEstudiante.Nota1 = item.Nota1;
+                            }
+                            else
+                            {
+                                CursoEstudiante.Nota1 = 0;
+                            }
+
+
+                            if (item.Nota2 > 0 || item.Nota2 < 5)
+                            {
+                                CursoEstudiante.Nota2 = item.Nota2;
+                            }
+                            else
+                            {
+                                CursoEstudiante.Nota2 = 0;
+                            }
+
+                            if (item.Nota3 > 0 || item.Nota3 < 5)
+                            {
+                                CursoEstudiante.Nota3 = item.Nota3;
+                            }
+                            else
+                            {
+                                CursoEstudiante.Nota3 = 0;
+                            }
+                             
+
                             BD.Entry(CursoEstudiante).State = EntityState.Modified;
                             BD.SaveChanges();
                         }

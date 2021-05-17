@@ -10,11 +10,11 @@ namespace BLL
 {
     public class Bll_EvidenciaCorreo
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_EvidenciaCorreo()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public List<EvidenciaCorreo> ListarEvidenciaCorreo()

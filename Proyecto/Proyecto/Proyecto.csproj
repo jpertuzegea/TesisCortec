@@ -210,7 +210,7 @@
     <Content Include="JS_PDF\jspdf.plugin.standard_fonts_metrics.js" />
     <Content Include="Js_Utilidades\Certificdo.js" />
     <Content Include="Js_Utilidades\Validaciones\CronogramaActividades.js" />
-    <Content Include="Js_Utilidades\Validaciones\xxx.js" />
+    <Content Include="Js_Utilidades\Validaciones\CursoEstudiante.js" />
     <Content Include="Js_Utilidades\Validaciones\Cursos.js" />
     <Content Include="Js_Utilidades\Validaciones\ForoTema.js" />
     <Content Include="Js_Utilidades\Validaciones\MaterialDidactico.js" />

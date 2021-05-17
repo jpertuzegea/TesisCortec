@@ -11,11 +11,11 @@ namespace BLL
     public class Bll_SatisfaccionCurso
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_SatisfaccionCurso()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
 

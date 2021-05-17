@@ -12,11 +12,11 @@ namespace BLL
     public class Bll_CronogramaActividadesCurso
     {
 
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_CronogramaActividadesCurso()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public CronogramaActividadesCurso GetCronogramaActividadesCursoByCronogramaActividadesCursoId(int CronogramaActividadesCursoId)

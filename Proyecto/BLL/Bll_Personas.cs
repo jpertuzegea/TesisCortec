@@ -17,11 +17,11 @@ namespace BLL
 {
     public class Bll_Personas
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_Personas()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public Personas GetPersonaByPersonaId(int? PersonaId)

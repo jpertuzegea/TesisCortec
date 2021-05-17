@@ -11,7 +11,8 @@ namespace DAO
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Perfiles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,7 @@ namespace DAO
         {
             this.RolPerfil = new HashSet<RolPerfil>();
         }
-
-        public bool EstadoChecbox { get; set; }
-
+    
         public int PerfilId { get; set; }
         public string NombrePerfil { get; set; }
         public string Modulo { get; set; }
@@ -30,5 +29,8 @@ namespace DAO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RolPerfil> RolPerfil { get; set; }
+
+        [NotMapped]
+        public bool EstadoChecbox { get; set; }
     }
 }

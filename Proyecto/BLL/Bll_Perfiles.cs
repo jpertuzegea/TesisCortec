@@ -11,11 +11,11 @@ namespace BLL
 {
     public class Bll_Perfiles
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_Perfiles()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         public List<Perfiles> ListarPerfiles()
@@ -37,7 +37,7 @@ namespace BLL
             try
             {
                 int PerfilId = (int)EnumPerfilesActivos;
-                TESIS_BD Bd = new TESIS_BD();
+                TESISCortecEntities Bd = new TESISCortecEntities();
                 int UserId = (int)HttpContext.Current.Session["IdUsuarioTesis"];
 
                 // esta consulta es para verificar si un usuario ingresado tiene el perfil por el cual se solicita permiso

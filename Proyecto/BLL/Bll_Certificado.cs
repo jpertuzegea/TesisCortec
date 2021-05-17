@@ -12,11 +12,11 @@ namespace BLL
 {
     public class Bll_Certificado
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_Certificado()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
          
         public CertificadoEstudianteCurso ObtenerCertificadoEstudianteCursoByEstudianteIdCursoId(int CursoId, int EstudianteId)

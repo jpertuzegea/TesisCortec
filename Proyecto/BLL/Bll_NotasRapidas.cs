@@ -12,11 +12,11 @@ namespace BLL
 {
     public class Bll_NotasRapidas
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
         public Bll_NotasRapidas()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         // metodo para listar las NotasRapidas existentes

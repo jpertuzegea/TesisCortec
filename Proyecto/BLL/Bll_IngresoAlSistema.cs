@@ -12,12 +12,12 @@ namespace BLL
 {
     public class Bll_IngresoAlSistema
     {
-        private TESIS_BD BD = null;
+        private TESISCortecEntities BD = null;
 
 
         public Bll_IngresoAlSistema()
         {
-            BD = new TESIS_BD();
+            BD = new TESISCortecEntities();
         }
 
         // Metodo para listar los ingresos al sistema existentes
